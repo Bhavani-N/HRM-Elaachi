@@ -1,0 +1,78 @@
+img{
+	max-width:100%;
+}
+select{
+    border:none;
+}
+select,input,.time-tracking{
+    background-color: #e7d2b7;
+}
+input{
+    border:1px solid grey;
+    width:55px;
+    height:23px;
+}
+ul li{
+    list-style: none;
+    display: inline;
+    padding-right:15px;
+}
+ul li a{
+    color:white;
+    text-decoration: none !important;
+    font-size: 14px;
+}
+ul li a:hover{
+    color:white;
+}
+.bg-grey{
+    background-color: grey;
+}
+
+
+
+
+#header{
+	background-color: #287058;
+}
+.nav-bar{
+    background-color: #2d5a46;
+}
+.fa{
+	font-size: 19px;
+	padding-left:15px;
+}
+.has-search .form-control {
+    padding-left: 33px;
+    height:30px;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    top: 6px;
+    padding-left: 10px;
+    font-size: 18px;
+}
+.time-sheet span{
+    font-size: 11px;
+    padding-right:17px;
+}
+
+/*table css*/
+th{
+    text-align: center;
+}
+.table-responsive{
+    border:1px solid black;
+}
+.title th{
+    text-align: left;
+}
+.table thead th{
+    vertical-align: top;
+    border-bottom:2px solid grey;
+}
+.table td,.table th{
+    border-top:1px solid grey;
+    vertical-align:middle;
+}
+

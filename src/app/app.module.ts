@@ -9,11 +9,13 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './modules/header/header.component';
+import { InputDirective } from './directives/numbers.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    InputDirective
   ],
   imports: [
     BrowserModule, 

@@ -1,1 +1,20 @@
-<p>pay-slip works!</p>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">My PaySlip</h5>
+            <input type="file" (change)="onFileChange($event)" multiple="false" />
+        </div>
+    </div>
+
+    <table>
+        <tbody>
+            <tr *ngFor="let row of data">
+                <td *ngFor="let cell of row">
+                    {{ cell }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

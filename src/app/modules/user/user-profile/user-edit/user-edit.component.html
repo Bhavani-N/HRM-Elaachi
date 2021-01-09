@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col-md-6">
+        <h6>CONTACT DETAILS</h6>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit()" class="btn btn-success" [disabled]="!this.editForm.valid">Save</button> | 
+                    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="mob">Mobile :- </label>
+                    <input id="mob" limitedDigits (change)="onChange($event)" type="text"  formControlName="mobile" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="ext">Ext No :- </label>
+                    <input id="ext" type="text" formControlName="extno" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="email">Email/Skype :- </label>
+                    <input id="email" type="text" formControlName="email" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="twitter">Twitter :- </label>
+                    <input id="twitter" type="text" formControlName="twitter" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="fb">Facebook :- </label>
+                    <input id="fb" type="text" formControlName="facebook" class="form-control" required/>
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="form-group">
+                    <label for="linkedIn">LinkedIn :- </label>
+                    <input id="linkedIn" type="text" formControlName="linkedin" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="work">WorkStation :- </label>
+                    <input id="work" type="text" formControlName="workstation" class="form-control" required/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="col-md-6" *ngIf="submitted">
+        <div class="contact">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h6>CONTACT DETAILS</h6>
+                    <div class="float-right" (click)="onEdit()">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    Mobile  :- 9566778767
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-12">
+                    ExtNo  :- 9767
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-12">
+                    Email/Skype  :- test@elaachi.com
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-12">
+                    Twitter  :- test@twitter.com
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-12">
+                    Facebook  :- test@facebook.com
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-12">
+                    LinkedIn  :- test@linkedin.com
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-xs-12">
+                    WorkStation  :- -
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

@@ -1,1 +1,35 @@
-<p>user-profile works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row m-0">
+            <div class="col-md-3">
+                <img src="../../../../assets/icons/images/user-profile.png" routerLink="../userProfile"
+                        style="size: 40px;" class="rounded" alt="user-profile">
+            </div>
+            <div class="col-md-9">
+                <p><strong>User Name(User_ID)</strong></p>
+                <p class="lead">Designation</p>
+                <p >Bengaluru</p>
+                <button type="button" class="btn btn-outline-light">VIEW DIRECT REPORTS</button>
+            </div>
+        </div> 
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="../userProfile/about">ABOUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >PERSONAL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >ASSETS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >OTHER</a>
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

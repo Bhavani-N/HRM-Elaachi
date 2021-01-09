@@ -1,0 +1,9 @@
+.jumbotron {
+    background-color: #0b090a;
+    color: #ffffff;
+}
+
+img {
+    /* max-width: 100%; */
+    width: 40%;
+}
