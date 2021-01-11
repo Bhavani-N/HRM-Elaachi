@@ -1,8 +1,173 @@
-img {
-    /* max-width: 100%; */
+/* img {
     width: 40%;
 }
 
 .dashboard {
     margin-top: 10%;
-}
+} */
+body {
+    background-image: url('../../../../assets/icons/images/bg-1.jpg');
+    background-size: cover;
+  }
+  
+  h5{
+      font-size: 12px;
+      color:#7f1b1d;
+      position: relative;
+  }
+  h5:after {
+      content: '';
+      position: absolute;
+      left: 0px;
+      bottom: -5px;
+      width: 15px;
+      border-bottom: 2px solid;
+      color: red;
+  }
+  .fonts{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  }
+  .font-icons{
+      background-color: #832023;
+      margin-right: 15px;
+      padding: 10px 0px;
+      transform: skewX(-17deg);
+  }
+  .transform{
+      transform: skewX(+17deg);
+  }
+  .font-icons i{
+      margin: 0px 3px;
+  }
+  
+  .icons .fa {
+      margin: 0px 10px;
+  }
+  /*------------header starts here-------------------*/
+  /*-------------main starts here---------------------*/
+  .profile{
+      margin-top: 60px !important;
+      position: relative;
+  }
+  .heading{
+      width: 80%;
+      margin: 0 auto;
+      background-color: white;
+  }
+  .avatar{
+      width: 50%;
+      margin: 30px auto;
+  }
+  .avatar img{
+      width: 50%;
+      margin-left: 10px;
+  }
+  .avatar span{
+      margin: 12px 0px;
+  }
+  .work-hours{
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+  }
+  .work-hours small{
+      display: block;
+      font-size: 12px;
+  }
+  .month-data h5{
+      border-bottom: 1px solid;
+      padding: 5px 0px;
+  }
+  .month-data h5:after {
+      border-bottom: none;
+  }
+  .functions{
+      width: 100%;
+      background-color: white;
+  }
+  .functions span{
+      display: block;
+      font-size: 12px;
+  }
+  .quick-access{
+      height: 100%;
+  }
+  .access{
+      margin: 10px;
+  }
+  .access i{
+      font-size: 20px;
+  }
+  
+  /*-------------main ends here---------------------*/
+  @media (min-width: 769px) and (max-width: 991px){
+      .elaachi-logo input {
+          width: 50% !important;
+      }
+      .navbar-brand {
+          margin-left: 10px;
+      }
+      .heading{
+          width: 90%;
+      }
+      .work-hours small {
+          font-size: 9px;
+      }
+      .avatar span {
+          font-size: 13px;
+      }
+      /*.quick-access {
+          width: 43%;
+      }*/
+      .functions{
+          width: 100%;
+      }
+  }
+  @media (min-width: 706px) and (max-width: 768px){
+      .elaachi-logo input {
+          width: 50% !important;
+      }
+      .navbar-brand {
+          margin-left: 10px;
+      }
+      .heading{
+          width: 90%;
+      }
+      .work-hours small {
+          font-size: 9px;
+      }
+      .avatar span {
+          font-size: 13px;
+      }
+      .functions{
+          width: 100%;
+      }
+      /*.quick-access {
+          width: 43%;
+      }*/
+  }
+   @media (min-width: 360px) and (max-width: 705px){
+      .elaachi-logo input {
+          width: 50% !important;
+      }
+      .navbar-brand {
+          margin-left: 10px;
+      }
+      .heading{
+          width: 90%;
+      }
+      .work-hours small {
+          font-size: 9px;
+      }
+      .avatar span {
+          font-size: 13px;
+      }
+      .functions{
+          width: 100%;
+      }
+      /*.quick-access {
+          width: 43%;
+      }*/
+   }

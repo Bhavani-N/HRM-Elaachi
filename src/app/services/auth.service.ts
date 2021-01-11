@@ -5,6 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { User } from "../models/user.model";
+import { ok } from "assert";
 
 
 export interface AuthResponseData {
@@ -16,6 +17,12 @@ export interface AuthResponseData {
     localId: string;
     registered?: boolean;
 }
+const userData: {
+    email: string;
+    id: string;
+    _token: string;
+    _tokenExpirationDate: string;
+} = JSON.parse(localStorage.getItem('userData'));
 
 @Injectable({
     providedIn: 'root'
@@ -72,12 +79,12 @@ export class AuthService {
     }
 
     autoLogin() {
-        const userData: {
-            email: string;
-            id: string;
-            _token: string;
-            _tokenExpirationDate: string;
-        } = JSON.parse(localStorage.getItem('userData'));
+        // const userData: {
+        //     email: string;
+        //     id: string;
+        //     _token: string;
+        //     _tokenExpirationDate: string;
+        // } = JSON.parse(localStorage.getItem('userData'));
         if (!userData) {
             return;
         }
@@ -112,6 +119,10 @@ export class AuthService {
             this.logout();
         }, expirationDuration);
     }
+
+    // getUsers() {
+    //     return ok(userData);
+    // }
 
     private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
         const expirationDate = new Date(

@@ -59,51 +59,51 @@
             </div>
         </form>
     </div>
-    <!-- <div class="col-md-6" *ngIf="submitted">
-        <div class="contact">
+    <div class="col-md-6" *ngIf="submitted">
+        <div class="contact" *ngFor="let user of userDetails; let i = index">
             <div class="row">
                 <div class="col-xs-12">
                     <h6>CONTACT DETAILS</h6>
-                    <div class="float-right" (click)="onEdit()">
+                    <div class="float-right" (click)="userEdit(user, i)">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    Mobile  :- 9566778767
+                    Mobile  :- {{ user.mobile }}
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-12">
-                    ExtNo  :- 9767
+                    ExtNo  :- {{ user.extno }}
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-12">
-                    Email/Skype  :- test@elaachi.com
+                    Email  :- {{ user.email }}
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-12">
-                    Twitter  :- test@twitter.com
+                    Twitter  :- {{ user.twitter }}
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-12">
-                    Facebook  :- test@facebook.com
+                    Facebook  :- {{ user.facebook }}
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-12">
-                    LinkedIn  :- test@linkedin.com
+                    LinkedIn  :- {{ user.linkedin }}
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-12">
-                    WorkStation  :- -
+                    WorkStation  :- {{ user.workstation }}
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 </div>

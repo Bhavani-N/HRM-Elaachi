@@ -5,21 +5,13 @@ import { ApplyLeaveComponent } from "./apply-leave/apply-leave.component";
 import { AttendanceComponent } from "./attendance/attendance.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 import { TaskDetailsComponent } from "./task-details/task-details.component";
-import { AboutUserComponent } from "./user-profile/about-user/about-user.component";
-import { UserEditComponent } from "./user-profile/user-edit/user-edit.component";
-import { UserProfileComponent } from "./user-profile/user-profile.component";
 
 const routes: Routes = [
  { path: 'paySlip', component: PaySlipComponent },
  { path: 'applyLeave', component: ApplyLeaveComponent },
  { path: 'taskDetails', component: TaskDetailsComponent },
  { path: 'attendance', component: AttendanceComponent },
- { path: '', component: UserProfileComponent,
-    children: [
-        { path: 'about', component: AboutUserComponent },
-        { path: 'edit', component: UserEditComponent }
-    ]
- }
+ { path: '', loadChildren: () => import('./user-profile/userProfile.module').then(m => m.UserProfileModule) }
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -8,25 +9,31 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  editMode = false;
-  editForm: FormGroup;
-  submitted = false;
+  editMode: boolean = false;
+  public editForm: FormGroup;
+  submitted: boolean = false;
   counter = 0;
 
-
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
+            public empService: UserService) { }
 
   ngOnInit() {
+    this.empService.getEmployeesList();
+    this.edittForm()
+  }
+
+  edittForm() {
     this.editForm = this.formBuilder.group({
-      'mobile': ['', Validators.required],
-      'extno': [''],
-      'email': ['', [Validators.required, Validators.email]],
-      'twitter': [''],
-      'facebook': [''],
-      'linkedin': [''],
-      'workstation': ['']
+      mobile: ['', Validators.required],
+      extno: [''],
+      email: ['', [Validators.required, Validators.email]],
+      twitter: [''],
+      facebook: [''],
+      linkedin: [''],
+      workstation: ['']
     });
   }
+  
 
   get f() {
     return this.editForm.controls;
@@ -42,6 +49,8 @@ export class UserEditComponent implements OnInit {
     //   return;
     // }
     console.log(this.editForm)
+    this.empService.AddEmployee(this.editForm.value);
+    console.log(this.editForm.controls['mobile'].value + 'successfully added!');
     this.editForm.reset();
   }
 

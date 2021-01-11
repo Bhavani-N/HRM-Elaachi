@@ -1,45 +1,46 @@
-<div class="contact">
+<div class="contact" *ngFor="let emp of Employee; let i = index">
     <div class="row">
         <div class="col-xs-12">
             <h6>CONTACT DETAILS</h6>
-            <div class="float-right" (click)="onEdit()">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+            <!-- <div class="float-right" (click)="onEdit()"> -->
+                <div class="float-right">
+                <i class="fa fa-pencil" routerLink="/edit/{{emp.$id }}" aria-hidden="true"></i>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            Mobile  :- 9566778767
+            Mobile  :- {{ emp.mobile }}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            ExtNo  :- 9767
+            ExtNo  :- {{ emp.extno }}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            Email/Skype  :- test@elaachi.com
+            Email :- {{ emp.email }}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            Twitter  :- test@twitter.com
+            Twitter  :- {{ emp.twitter }}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            Facebook  :- test@facebook.com
+            Facebook  :- {{ emp.facebook }}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            LinkedIn  :- test@linkedin.com
+            LinkedIn  :- {{ emp.linkedIn }}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            WorkStation  :- -
+            WorkStation  :- {{ emp.workstation }}
         </div>
     </div>
 </div>
