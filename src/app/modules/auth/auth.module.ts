@@ -7,6 +7,7 @@ import { LoginComponent } from "./login/login.component";
 import { NewPasswordComponent } from "./new-password/new-password.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { LoginHomeComponent } from "./login-home/login-home.component";
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
           { path: 'forgotpassword', component: ResetPasswordComponent },
           { path: 'resetpassword', component: NewPasswordComponent }
         ]
-    }
+    },
+    { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ const routes: Routes = [
         LoginComponent,
         LoginHomeComponent,
         NewPasswordComponent,
-        ResetPasswordComponent
+        ResetPasswordComponent,
+        RegisterComponent
     ],
     imports: [
         CommonModule,

@@ -14,11 +14,11 @@ const routes: Routes = [
  { path: 'applyLeave', component: ApplyLeaveComponent },
  { path: 'taskDetails', component: TaskDetailsComponent },
  { path: 'attendance', component: AttendanceComponent },
- { path: 'userProfile', component: UserProfileComponent, 
+ { path: '', component: UserProfileComponent,
     children: [
         { path: 'about', component: AboutUserComponent },
         { path: 'edit', component: UserEditComponent }
-    ] 
+    ]
  }
 ];
 
