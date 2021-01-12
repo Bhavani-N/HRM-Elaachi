@@ -30,7 +30,6 @@ export class UserService {
     }
 
     getEmployeesList() {
-
         this.usersRef = this.db.list('employees-list');
         console.log(this.usersRef)
         return this.usersRef;

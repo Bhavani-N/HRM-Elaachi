@@ -26,6 +26,6 @@ export class UserContactComponent implements OnInit {
   }
 
   onEdit() {
-    this.router.navigate(['../edit'], {relativeTo: this.route})
+    this.router.navigate(['../edit/fgf'], {relativeTo: this.route})
   }
 }

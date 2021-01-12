@@ -14,7 +14,7 @@ export class UserEditComponent implements OnInit {
   submitted: boolean = false;
   counter = 0;
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
             public empService: UserService) { }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class UserEditComponent implements OnInit {
   }
 
   edittForm() {
-    this.editForm = this.formBuilder.group({
+    this.editForm = this.fb.group({
       mobile: ['', Validators.required],
       extno: [''],
       email: ['', [Validators.required, Validators.email]],

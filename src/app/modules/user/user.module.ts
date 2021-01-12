@@ -7,13 +7,14 @@ import { AttendanceComponent } from "./attendance/attendance.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 import { TaskDetailsComponent } from "./task-details/task-details.component";
 import { UserRoutingModule } from "./user-routing.module";
+import { AddUserComponent } from './user-profile/add-user/add-user.component';
 
 @NgModule({
     declarations: [
         AttendanceComponent,
         PaySlipComponent,
         TaskDetailsComponent,
-        ApplyLeaveComponent,
+        ApplyLeaveComponent
     ],
     imports: [
         CommonModule,
