@@ -5,10 +5,13 @@
                 <img src="../../../../assets/icons/images/user-profile.png" routerLink="../userProfile"
                         style="size: 40px;" class="rounded" alt="user-profile">
             </div>
-            <div class="col-md-9">
-                <p><strong>User Name(User_ID)</strong></p>
-                <p class="lead">Designation</p>
-                <p >Bengaluru</p>
+            <div class="col-md-9" >
+              <ng-container *ngFor="let emp of Employee" >
+                <p><strong>{{ emp?.name }}</strong></p>
+                <p class="lead">{{ emp?.designation  }}</p>
+                <p >{{ emp?.state }}</p>
+              </ng-container>
+                
                 <button type="button" class="btn btn-outline-light">VIEW DIRECT REPORTS</button>
             </div>
         </div> 

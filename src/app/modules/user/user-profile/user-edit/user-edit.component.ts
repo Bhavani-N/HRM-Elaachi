@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserEditComponent implements OnInit {
   public editForm: FormGroup;
   submitted: boolean = false;
+  value = '';
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
             public empService: UserService) { }
@@ -25,6 +26,9 @@ export class UserEditComponent implements OnInit {
 
   updateData() {
     this.editForm = this.fb.group({
+      name: ['', Validators.required],
+      designation: ['', Validators.required],
+      state: ['', Validators.required],
       mobile: ['', Validators.required],
       extno: [''],
       email: ['', [Validators.required, Validators.email]],
@@ -43,11 +47,15 @@ export class UserEditComponent implements OnInit {
   updateForm() {
     console.log(this.editForm);
     this.empService.updateEmployee(this.editForm.value);
-    this.router.navigate(['../'], { relativeTo: this.route})
+    this.router.navigate(['./userProfile/about'])
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route})
+    this.router.navigate(['./userProfile/about'])
+  }
+
+  onChange(event) {
+    console.log('input directive working') 
   }
 
 }

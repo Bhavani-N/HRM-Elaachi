@@ -21,6 +21,9 @@ export class AddUserComponent implements OnInit {
 
   employeeForm() {
     this.empForm = this.fb.group({
+      name: ['', Validators.required],
+      designation: ['', Validators.required],
+      state: ['', Validators.required],
       mobile: ['', Validators.required],
       extno: [''],
       email: ['', [Validators.required, Validators.email]],

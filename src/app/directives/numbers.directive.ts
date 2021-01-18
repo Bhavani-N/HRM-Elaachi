@@ -1,22 +1,18 @@
 import { Directive, ElementRef, HostListener, Input } from "@angular/core";
 
 @Directive({
-    selector: '[limitedDigits]'
+    selector: 'input[numbersOnly]'
 })
 
-export class InputDirective {
-    constructor(private elRef: ElementRef) {
-       elRef.nativeElement.maxLength = 10;
-       elRef.nativeElement.max = 10;
-       console.log(elRef)
-    }
+export class NumberDirective {
+    constructor(private _el: ElementRef) {}
 
     @HostListener('input', ['$event']) onInputChange(event) {
-        const initialValue = this.elRef.nativeElement.value;
-        this.elRef.nativeElement.value = initialValue.replace(/[^0-9]*/g, '');// replaces anything that is not a number with nothing
-        if(initialValue !== this.elRef.nativeElement.value) {
-            event.stopPropagation();
+        const initalValue = this._el.nativeElement.value;
+        this._el.nativeElement.value = initalValue.replace(/[^0-9]*/g, '');
+        if ( initalValue !== this._el.nativeElement.value) {
+          event.stopPropagation();
         }
-    }
+      }
 
 }

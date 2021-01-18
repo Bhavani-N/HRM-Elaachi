@@ -14,7 +14,10 @@ export class UserService {
 
     AddEmployee(employee: Employee) {
         this.usersRef.push({
-            mobile: employee.email,
+            name: employee.name,
+            designation: employee.designation,
+            state: employee.state,
+            mobile: employee.mobile,
             extno: employee.extno,
             email: employee.email,
             twitter: employee.twitter,
@@ -37,7 +40,10 @@ export class UserService {
 
     updateEmployee(employee: Employee) {
         this.userRef.update({
-            mobile: employee.email,
+            name: employee.name,
+            designation: employee.designation,
+            state: employee.state,
+            mobile: employee.mobile,
             extno: employee.extno,
             email: employee.email,
             twitter: employee.twitter,

@@ -9,6 +9,7 @@ import { UserProfileComponent } from "./user-profile.component";
 const routes: Routes = [
     { path: '', component: UserProfileComponent,
         children: [
+            { path: '', redirectTo: 'about', pathMatch: 'full' },
             { path: 'about', component: AboutUserComponent },
             { path: 'edit/:id', component: UserEditComponent },
             { path: 'add-user', component: AddUserComponent }

@@ -13,7 +13,6 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InputDirective } from './directives/numbers.directive';
 import { SharedModule } from './modules/shared/shared.module';
 
 // FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -25,7 +24,6 @@ import { SharedModule } from './modules/shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    InputDirective
   ],
   imports: [
     BrowserModule,

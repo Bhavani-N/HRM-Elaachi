@@ -4,15 +4,36 @@
         <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit()" class="btn btn-success" [disabled]="!editForm.valid">Update</button> |
+                    <button type="submit" class="btn btn-success" [disabled]="!editForm.valid">Update</button> |
                     <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group">
+                    <label for="name">Name :- </label>
+                    <input id="name" type="text"  formControlName="name" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="desig">Designation :- </label>
+                    <input id="desig" type="text" formControlName="designation" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="state">State :- </label>
+                    <input id="state" type="text" formControlName="state" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
                     <label for="mob">Mobile :- </label>
-                    <input id="mob" type="text"  formControlName="mobile" class="form-control" required/>
+                    <input id="mob" type="text" [ngModel]="value" (ngModelChange)="onChange($event)"  formControlName="mobile" class="form-control" numbersOnly required/>
                 </div>
             </div>
 
@@ -25,7 +46,7 @@
 
             <div class="row">
                 <div class="form-group">
-                    <label for="email">Email/Skype :- </label>
+                    <label for="email">Email :- </label>
                     <input id="email" type="text" formControlName="email" class="form-control" required/>
                 </div>
             </div>

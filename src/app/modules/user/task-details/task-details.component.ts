@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/angular';
 
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-task-details',
+  template: '<ejs-schedule></ejs-schedule>',
   templateUrl: './task-details.component.html',
   styleUrls: ['./task-details.component.css']
 })
@@ -13,28 +15,19 @@ export class TaskDetailsComponent implements OnInit {
   noData: boolean = false;
 
   calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    headerToolbar: {
-      left: 'prev, next today',
-      center: 'title',
-      right: 'dayGridMonth, dayGridWeek, listWeek'
-    },
+    initialView: 'dayGridWeek',
+    // headerToolbar: {
+    //   left: 'prev, next today',
+    //   center: 'title',
+    //   right: 'dayGridMonth, dayGridWeek, listWeek'
+    // },
     dayMaxEvents: true,
     events: [
       { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 1', date: '2021-01-17' },
-      { title: 'event 2', date: '2021-01-17' },
     ]
   };
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.dataState();
@@ -57,6 +50,10 @@ export class TaskDetailsComponent implements OnInit {
         this.noData = false;
       }
     })
+  }
+
+  onAddTask() {
+    this.router.navigate(['/userProfile/add-task'])
   }
 
   deleteTask(task: string) {

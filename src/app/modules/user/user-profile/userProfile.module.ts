@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NumberDirective } from "src/app/directives/numbers.directive";
 
 import { AboutUserComponent } from "./about-user/about-user.component";
 import { AddUserComponent } from "./add-user/add-user.component";
@@ -15,7 +16,8 @@ import { UserProfileRoutingModule } from "./userProfile-routing.component";
         AboutUserComponent,
         UserEditComponent,
         UserContactComponent,
-        AddUserComponent
+        AddUserComponent,
+        NumberDirective 
     ],
     imports: [
         CommonModule,
