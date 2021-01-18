@@ -51,6 +51,7 @@
                       <th>Planned Effort</th>
                       <th>Logged Effort</th>
                       <th>Rem Effort</th>
+                      <!-- <full-calendar [options]="calendarOptions"></full-calendar> -->
                       <th>Mon 04/01</th>
                       <th>Tue 05/01</th>
                       <th>Wed 06/01</th>
@@ -99,410 +100,13 @@
                       <td></td>
                       <td>24.00</td>
                 </tr>
-                <tr>
-                      <th scope="row">TSK204</th>
-                      <td>Meeting/Training-Dont Log Efforts</td>
+                <tr *ngFor="let task of taskListArray">
+                      <th scope="row">{{ task.key }}</th>
+                      <td>{{ task.name }}</td>
                       <td>
                           <select>
                               <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK412</th>
-                      <td>Mercury JDE Reporting-Requirements</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK413</th>
-                      <td>Mercury JDE Reporting-Design</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                           <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK414</th>
-                      <td>Mercury JDE Reporting-Development</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>128.00</td>
-                      <td>1,079.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>24.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK415</th>
-                      <td>Mercury JDE Reporting-Documentation</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK416</th>
-                      <td>Mercury JDE Reporting-UAT</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK417</th>
-                      <td>Mercury JDE Reporting-Testing</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK418</th>
-                      <td>Mercury JDE Reporting-Requirements</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK419</th>
-                      <td>Mercury JDE Reporting-Defects</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>40.00</td>
-                      <td>1,167.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK420</th>
-                      <td>Mercury JDE Reporting-Deployment Activity</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK421</th>
-                      <td>Mercury JDE Reporting-Production Support</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
-                          </select>
-                      </td>
-                      <td>1207.00</td>
-                      <td>20.00</td>
-                      <td>1,186.00</td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-                <tr>
-                      <th scope="row">TSK423</th>
-                      <td>Mercury JDE Reporting-Client-Holiday</td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Open</option>
-                              <option>Open</option>
+                              <option>Completed</option>
                           </select>
                       </td>
                       <td>1207.00</td>
@@ -536,3 +140,401 @@
         </div>
     </div>
 </div>
+
+
+<!-- <tr>
+  <th scope="row">TSK412</th>
+  <td>Mercury JDE Reporting-Requirements</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK413</th>
+  <td>Mercury JDE Reporting-Design</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+       <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK414</th>
+  <td>Mercury JDE Reporting-Development</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>128.00</td>
+  <td>1,079.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>24.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK415</th>
+  <td>Mercury JDE Reporting-Documentation</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK416</th>
+  <td>Mercury JDE Reporting-UAT</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK417</th>
+  <td>Mercury JDE Reporting-Testing</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK418</th>
+  <td>Mercury JDE Reporting-Requirements</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK419</th>
+  <td>Mercury JDE Reporting-Defects</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>40.00</td>
+  <td>1,167.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK420</th>
+  <td>Mercury JDE Reporting-Deployment Activity</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK421</th>
+  <td>Mercury JDE Reporting-Production Support</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>20.00</td>
+  <td>1,186.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr>
+<tr>
+  <th scope="row">TSK423</th>
+  <td>Mercury JDE Reporting-Client-Holiday</td>
+  <td>
+      <select>
+          <option>Open</option>
+          <option>Open</option>
+          <option>Open</option>
+      </select>
+  </td>
+  <td>1207.00</td>
+  <td>0.00</td>
+  <td>1,207.00</td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input type="number" name="">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>
+      <input class="bg-grey" type="number">
+  </td>
+  <td>0.00</td>
+</tr> -->

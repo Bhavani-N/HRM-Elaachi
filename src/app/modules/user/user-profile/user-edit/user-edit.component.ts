@@ -9,49 +9,41 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  editMode: boolean = false;
   public editForm: FormGroup;
   submitted: boolean = false;
-  counter = 0;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
             public empService: UserService) { }
 
   ngOnInit() {
-    this.empService.getEmployeesList();
-    this.edittForm()
+    this.updateData();
+    const id = this.route.snapshot.paramMap.get('id');
+    this.empService.getEmployee(id).valueChanges().subscribe(data => {
+      this.editForm.setValue(data);
+    })
   }
 
-  edittForm() {
+  updateData() {
     this.editForm = this.fb.group({
       mobile: ['', Validators.required],
       extno: [''],
       email: ['', [Validators.required, Validators.email]],
       twitter: [''],
       facebook: [''],
-      linkedin: [''],
+      linkedIn: [''],
       workstation: ['']
     });
   }
-  
+
 
   get f() {
     return this.editForm.controls;
   }
 
-  onChange(event) {
-    this.counter = this.counter + 1; 
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    // if( this.editForm.invalid) {
-    //   return;
-    // }
-    console.log(this.editForm)
-    this.empService.AddEmployee(this.editForm.value);
-    console.log(this.editForm.controls['mobile'].value + 'successfully added!');
-    this.editForm.reset();
+  updateForm() {
+    console.log(this.editForm);
+    this.empService.updateEmployee(this.editForm.value);
+    this.router.navigate(['../'], { relativeTo: this.route})
   }
 
   onCancel() {
