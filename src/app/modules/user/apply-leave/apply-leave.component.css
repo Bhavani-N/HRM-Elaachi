@@ -1,5 +1,43 @@
-.cal-month-view .bg-pink,
-      .cal-week-view .cal-day-columns .bg-pink,
-      .cal-day-view .bg-pink {
-        background-color: hotpink !important;
-      }
+body{
+	min-height: 100vh;
+}
+.previous-page i{
+	border: 1px solid;
+    padding: 0px 5px;
+    margin: 5px;
+    font-size: 30px;
+}
+#leaves{
+	width: 25%;
+	display: block;
+	margin: 0px auto;
+	font-size: 12px;
+    padding: 5px 0px;
+}
+.calender{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+.check-boxes .form-check{
+	padding-left: 20px !important;
+    margin-right: 0px !important;
+    font-size: 12px;
+}
+.approver span{
+	margin: 10px 0px;
+}
+.approver input{
+	width: 50%;
+}
+.approver textarea{
+	width: 50%;
+	height: 100px;
+}
+.remind-user{
+	background-color: black;
+    display: flex;
+    justify-content: flex-end;
+}
+.remind-user button{
+	color: white;
+}

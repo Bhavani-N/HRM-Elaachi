@@ -7,6 +7,7 @@ select{
 select,input,.time-tracking{
     background-color: #e7d2b7;
 }
+
 input{
     border:1px solid grey;
     width:55px;
@@ -62,6 +63,7 @@ th{
 }
 .table-responsive{
     border:1px solid black;
+    height: 400px;
 }
 .title th{
     text-align: left;
@@ -74,4 +76,6 @@ th{
     border-top:1px solid grey;
     vertical-align:middle;
 }
+
+   
 

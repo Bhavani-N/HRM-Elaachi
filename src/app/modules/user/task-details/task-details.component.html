@@ -1,36 +1,3 @@
-<!-- <header id="header">
-    <div class="col-md-12 row m-0 p-3">
-        <div class="col-md-5 row m-0">
-            <a class="d-block" href="#">
-                <img src="img/logo.png">
-            </a>
-        </div>
-        <div class="col-md-7 row m-0">
-            <div class="text-white">
-                <i class="fa fa-home" aria-hidden="true"></i>
-                <i class="fa fa-bars" aria-hidden="true"></i>
-                <i class="fa fa-bell-o" aria-hidden="true"></i>
-            </div>
-              <div class="form-group has-search m-0 px-4">
-                <span class="fa fa-search form-control-feedback">
-                </span>
-                <input type="text" class="form-control w-100" placeholder="Search workitems">
-              </div>
-              <i class="fa fa-user-circle pt-1 text-white" aria-hidden="true"></i>
-              <span class="text-white pl-2">Dharani Gavvagi</span>
-        </div>
-    </div>
-    <div class="nav-bar py-1">
-        <ul class="m-0">
-            <li><a href="#">DASHBOARD</a></li>
-            <li><a href="#">MY WORK</a></li>
-            <li><a href="#">TIME SHEET</a></li>
-            <li><a href="#">SETUP</a></li>
-        </ul>
-    </div>
-</header> -->
-
-<!---main part starts--->
 <div class="time-tracking">
     <div class="col-md-12 row m-0 time-sheet py-2">
         <span>Timesheet For: <b>Dharani Gavvagi</b></span>
@@ -39,72 +6,72 @@
         <span>Work-Item Status: <b>Multiple</b></span>
         <span>TimeSheet Status: <b>All</b></span>
         <span>Week: <b>04-Jan-2021</b></span>
-        
-    </div>
-    <div class="float-right">
-        <button class="btn btn-success" (click)="onAddTask()">Add New Task</button>
+        <div class="float-right">
+            <button class="btn btn-success" (click)="onAddTask()">Add New Task</button>
+        </div>
     </div>
     <div class="container">
-        <div class="col-md-6">
-            <div class="table-responsive mt-3">
-                <table class="table">
-                <thead class="title">
-                  <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Planned Effort</th>
-                        <th>Logged Effort</th>
-                        <th>Rem Effort</th>
-                        <!-- <th>Mon 04/01</th>
-                        <th>Tue 05/01</th>
-                        <th>Wed 06/01</th>
-                        <th>Thu 07/01</th>
-                        <th>Fri 08/01</th>
-                        <th>Sat 09/01</th>
-                        <th>Sun 10/01</th>
-                        <th>Billing Hour</th> -->
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">
-                            <select>
-                                <option></option>
-                            </select>
-                        </th>
-                        <td>Total</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <!-- <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td> -->
-  
-                  </tr>
-                  <tr>
-                        <th scope="row">PROJ003546R.0034051...</th>
-                        <td>Baxter CoreFlex Services-Flex</td>
-                        <td>Routed</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <!-- <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td> -->
-                  </tr>
-                  <tr *ngFor="let task of taskListArray">
+        <div class="col-md-12 row m-0">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table">
+                    <thead class="title">
+                      <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Planned Effort</th>
+                            <th>Logged Effort</th>
+                            <th>Rem Effort</th>
+                            <!-- <th>Mon 04/01</th>
+                            <th>Tue 05/01</th>
+                            <th>Wed 06/01</th>
+                            <th>Thu 07/01</th>
+                            <th>Fri 08/01</th>
+                            <th>Sat 09/01</th>
+                            <th>Sun 10/01</th>
+                            <th>Billing Hour</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                <select>
+                                    <option></option>
+                                </select>
+                            </th>
+                            <td>Total</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td>9.00</td>
+                            <td>9.00</td>
+                            <td>9.00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>24.00</td> -->
+      
+                      </tr>
+                      <tr>
+                            <th scope="row">PROJ003546R.0034051...</th>
+                            <td>Baxter CoreFlex Services-Flex</td>
+                            <td>Routed</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td>9.00</td>
+                            <td>9.00</td>
+                            <td>9.00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>24.00</td> -->
+                      </tr>
+                    <tr *ngFor="let task of taskListArray">
                         <th scope="row">{{ task.key }}</th>
                         <td>{{ task.name }}</td>
                         <td>
@@ -113,436 +80,42 @@
                                 <option>Completed</option>
                             </select>
                         </td>
-                        <td>1207.00</td>
-                        <td>0.00</td>
-                        <td>1,207.00</td>
-                        <!-- <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="number">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="number">
-                        </td>
-                        <td>0.00</td> -->
-                  </tr>
-                </tbody>
-              </table>
-          </div>
+                    </tr>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <ng-template
+                    #currentTimeMarkerTemplate
+                    let-columnDate="columnDate"
+                    let-dayStartHour="dayStartHour"
+                    let-dayStartMinute="dayStartMinute"
+                    let-dayEndHour="dayEndHour"
+                    let-dayEndMinute="dayEndMinute"
+                    let-isVisible="isVisible"
+                    let-topPx="topPx"
+                >
+                <div
+                    class="cal-current-time-marker"
+                    *ngIf="isVisible && showMarker"
+                    [style.top.px]="topPx"
+                ></div>
+                </ng-template>
+                
+                <mwl-calendar-week-view
+                [viewDate]="viewDate"
+                [events]="events"
+                [refresh]="refresh"
+                (eventTimesChanged)="eventTimesChanged($event)"
+                [currentTimeMarkerTemplate]="currentTimeMarkerTemplate"
+                [dayStartHour]="dayStartHour"
+                [dayEndHour]="dayEndHour"
+                >
+                </mwl-calendar-week-view>
+            </div>
         </div>
-        <div class="col-md-6">
-            <full-calendar [options]="calendarOptions"></full-calendar>
-        </div>
+        
+        <!-- <full-calendar [options]="calendarOptions"></full-calendar> -->
     </div>
 </div>
-
-
-<!-- <tr>
-  <th scope="row">TSK412</th>
-  <td>Mercury JDE Reporting-Requirements</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK413</th>
-  <td>Mercury JDE Reporting-Design</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-       <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK414</th>
-  <td>Mercury JDE Reporting-Development</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>128.00</td>
-  <td>1,079.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>24.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK415</th>
-  <td>Mercury JDE Reporting-Documentation</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK416</th>
-  <td>Mercury JDE Reporting-UAT</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK417</th>
-  <td>Mercury JDE Reporting-Testing</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK418</th>
-  <td>Mercury JDE Reporting-Requirements</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK419</th>
-  <td>Mercury JDE Reporting-Defects</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>40.00</td>
-  <td>1,167.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK420</th>
-  <td>Mercury JDE Reporting-Deployment Activity</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK421</th>
-  <td>Mercury JDE Reporting-Production Support</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>20.00</td>
-  <td>1,186.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr>
-<tr>
-  <th scope="row">TSK423</th>
-  <td>Mercury JDE Reporting-Client-Holiday</td>
-  <td>
-      <select>
-          <option>Open</option>
-          <option>Open</option>
-          <option>Open</option>
-      </select>
-  </td>
-  <td>1207.00</td>
-  <td>0.00</td>
-  <td>1,207.00</td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input type="number" name="">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>
-      <input class="bg-grey" type="number">
-  </td>
-  <td>0.00</td>
-</tr> -->
