@@ -2,11 +2,13 @@
   <i class="fa fa-angle-left" aria-hidden="true"></i>
 </div>
 <select name="leaves" id="leaves">
-<option value="Medical Leave">Medical Leave</option>
+  <option value="Medical Leave">Medical Leave</option>
+  <option value="Sick Leave">Sick Leave</option>
 </select>
 <div class="col-md-12 mt-3 p-0 ">
   <div class="row mx-3 p-2 calender">
       <div class="col-md-7 p-0 check-boxes">
+        <div id="app-calendar" #appCalendar></div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
             <label class="form-check-label" for="inlineCheckbox1">Working Day</label>
@@ -35,7 +37,9 @@
             <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
             <label class="form-check-label" for="inlineCheckbox3">Selected Day(s)</label>
           </div>
+          
       </div>
+      
       <div class="col-md-5 p-0">
           <div class="d-flex">
               <div>
