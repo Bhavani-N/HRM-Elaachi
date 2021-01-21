@@ -7,6 +7,16 @@ select{
 select,input,.time-tracking{
     background-color: #e7d2b7;
 }
+button{
+    margin: 10px;
+    padding:3px 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    outline:none;
+    border-radius:5px;
+    font-size: 13px;
+}
 
 .time-tracking {
     min-height: 100vh;
@@ -59,10 +69,17 @@ ul li a:hover{
 }
 .time-sheet span{
     font-size: 11px;
-    padding-right:17px;
+    padding-right:8px;
+    width:auto;
 }
 
-th{
+.border-r{
+    border-right:2px solid grey;
+}
+.border-l{
+    border-left: 2px solid grey;
+}
+.table th{
     text-align: center;
 }
 .table-responsive{
@@ -73,7 +90,7 @@ th{
     text-align: left;
 }
 .table thead th{
-    vertical-align: top;
+    vertical-align: middle;
     border-bottom:2px solid grey;
 }
 .table td,.table th{

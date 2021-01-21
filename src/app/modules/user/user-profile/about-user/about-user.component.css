@@ -1,0 +1,69 @@
+body,.card,.card-header{
+	background-color: #e3ceb3;
+}
+h6{
+	color:#8f624b;
+	padding:20px 0px 12px;
+}
+.about-user,button{
+	width: auto;
+}
+
+button{
+	margin-left: auto;
+}
+.about-user span{
+	margin-top:15px;
+}
+.card{
+	border:none;
+	border-bottom: 1px solid rgba(0,0,0,.125);
+	border-radius:0px;
+}
+.card-header{
+	border-bottom: none;
+	padding-bottom: 0px;
+}
+button.btn.btn-link{
+	color:black;
+	text-decoration: none;
+	font-size: 18px;
+}
+.btn:focus{
+	box-shadow: none;
+}
+.card-body{
+	padding-left: 32px;
+}
+
+
+
+
+
+
+/* body,.card,.card-header{
+	background-color: #e3ceb3;
+}
+h6{
+	color:#8f624b;
+	padding-top:20px;
+}
+
+.card{
+	border-top:none;
+}
+.card-header{
+	border-bottom: none;
+	padding-bottom: 0px;
+}
+button.btn.btn-link{
+	color:black;
+	text-decoration: none;
+	font-size: 18px;
+}
+.btn:focus{
+	box-shadow: none;
+}
+.card-body{
+	padding-left: 32px;
+} */

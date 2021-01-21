@@ -7,7 +7,7 @@ import { isWeekend } from 'date-fns';
   styleUrls: ['./apply-leave.component.css'],
 })
 export class ApplyLeaveComponent implements OnInit, AfterViewInit {
- @ViewChild('appCalendar', {static: false}) appCalendar: ElementRef;
+//  @ViewChild('appCalendar', {static: false}) appCalendar: ElementRef;
 
   constructor() {}
   
@@ -16,19 +16,19 @@ export class ApplyLeaveComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    for(let day= 1; day <= 31; day++) {
-      console.log(this.getDayName(day));
-      let name = "";
-      if (day <= 7) {
-        const dayName = this.getDayName(day);
-        name = `<div class="name">${dayName}</div>`
-      }
-      const dayName = this.getDayName(day);
-      this.appCalendar.nativeElement.insertAdjacentHTML("beforeend", `<div class="day">
-      ${name}${day}</div>`);
-      console.log(day)
-    }
-    console.log(this.appCalendar)
+    // for(let day= 1; day <= 31; day++) {
+    //   console.log(this.getDayName(day));
+    //   let name = "";
+    //   if (day <= 7) {
+    //     const dayName = this.getDayName(day);
+    //     name = `<div class="name">${dayName}</div>`
+    //   }
+    //   const dayName = this.getDayName(day);
+    //   this.appCalendar.nativeElement.insertAdjacentHTML("beforeend", `<div class="day">
+    //   ${name}${day}</div>`);
+    //   console.log(day)
+    // }
+    // console.log(this.appCalendar)
   }
 
   getDayName(day) {

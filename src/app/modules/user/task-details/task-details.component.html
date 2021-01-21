@@ -87,7 +87,10 @@
         
     </div>
 </div> -->
-
+<div class="float-right">
+        <button class="btn" (click)="onAddTask()">Add New Task</button>
+        <button>Save</button>
+    </div>
 <div class="time-tracking">
     <div class="col-md-12 row m-0 time-sheet py-2">
         <span>Timesheet For: <b>Dharani Gavvagi</b></span>
@@ -96,39 +99,27 @@
         <span>Work-Item Status: <b>Multiple</b></span>
         <span>TimeSheet Status: <b>All</b></span>
         <span>Week: <b>04-Jan-2021</b></span>
-        <div class="float-right">
-            <button class="btn btn-success" (click)="onAddTask()">Add New Task</button>
-        </div>
     </div>
     <div class="container">
         <div class="table-responsive mt-3">
               <table class="table">
               <thead class="title">
-                <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Status</th>
-                      <!-- <th>Planned Effort</th>
-                      <th>Logged Effort</th>
-                      <th>Rem Effort</th> -->
-                      <th>Mon</th>
-                      <th>Tue</th>
-                      <th>Wed</th>
-                      <th>Thu</th>
-                      <th>Fri</th>
-                      <th>Sat</th>
-                      <th>Sun</th>
-                      <th>Billing Hour</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <!-- <th>Planned Effort</th>
-                    <th>Logged Effort</th>
-                    <th>Rem Effort</th> -->
-                    <th *ngFor="let dates of week">{{ dates }}</th>
-              </tr>
+                    <tr>
+                        <th class="text-center" rowspan="2">ID</th>
+                        <th rowspan="2">Name</th>
+                        <th class="border-r" rowspan="2">Status</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                        <th class="border-l" rowspan="2">Billing Hour</th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let dates of week">{{ dates }}</th>
+                    </tr>
               </thead>
               <tbody>
                   <tr>
@@ -138,9 +129,6 @@
                           </select>
                       </th>
                       <td>Total</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
                       <td></td>
                       <td>9.00</td>
                       <td>9.00</td>
@@ -156,23 +144,7 @@
                       <th scope="row">PROJ003546R.0034051...</th>
                       <td>Baxter CoreFlex Services-Flex</td>
                       <td>Routed</td>
-                      <!-- <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>9.00</td>
-                      <td>9.00</td>
-                      <td>9.00</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>24.00</td> -->
                 </tr>
-                <ng-container *ngIf='taskListArray.length === 0'>
-                    <tr>
-                        <th>No Results Found</th>
-                    </tr>
-                </ng-container>
                 <tr *ngFor="let task of taskListArray">
                       <th scope="row">{{ task.key }}</th>
                       <td>{{ task.name }}</td>
@@ -182,9 +154,6 @@
                               <option>Completed</option>
                           </select>
                       </td>
-                      <!-- <td>1207.00</td>
-                      <td>0.00</td>
-                      <td>1,207.00</td> -->
                       <td>
                           <input type="number" name="">
                       </td>
@@ -208,41 +177,6 @@
                       </td>
                       <td>0.00</td>
                 </tr>
-                <tr>
-                    <th scope="row">TSK</th>
-                    <td>Mercury JDE Reporting-Documentation</td>
-                    <td>
-                        <select>
-                            <option>Open</option>
-                            <option>Completed</option>
-                        </select>
-                    </td>
-                    <!-- <td>1207.00</td>
-                    <td>0.00</td>
-                    <td>1,207.00</td> -->
-                    <td>
-                        <input type="number" name="">
-                    </td>
-                    <td>
-                        <input type="number" name="">
-                    </td>
-                    <td>
-                        <input type="number" name="">
-                    </td>
-                    <td>
-                        <input type="number" name="">
-                    </td>
-                    <td>
-                        <input type="number" name="">
-                    </td>
-                    <td>
-                        <input class="bg-grey" type="number">
-                    </td>
-                    <td>
-                        <input class="bg-grey" type="number">
-                    </td>
-                    <td>0.00</td>
-              </tr>
               </tbody>
             </table>
         </div>
