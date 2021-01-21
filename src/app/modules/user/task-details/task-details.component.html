@@ -168,6 +168,11 @@
                       <td></td>
                       <td>24.00</td> -->
                 </tr>
+                <ng-container *ngIf='taskListArray.length === 0'>
+                    <tr>
+                        <th>No Results Found</th>
+                    </tr>
+                </ng-container>
                 <tr *ngFor="let task of taskListArray">
                       <th scope="row">{{ task.key }}</th>
                       <td>{{ task.name }}</td>
@@ -203,6 +208,41 @@
                       </td>
                       <td>0.00</td>
                 </tr>
+                <tr>
+                    <th scope="row">TSK</th>
+                    <td>Mercury JDE Reporting-Documentation</td>
+                    <td>
+                        <select>
+                            <option>Open</option>
+                            <option>Completed</option>
+                        </select>
+                    </td>
+                    <!-- <td>1207.00</td>
+                    <td>0.00</td>
+                    <td>1,207.00</td> -->
+                    <td>
+                        <input type="number" name="">
+                    </td>
+                    <td>
+                        <input type="number" name="">
+                    </td>
+                    <td>
+                        <input type="number" name="">
+                    </td>
+                    <td>
+                        <input type="number" name="">
+                    </td>
+                    <td>
+                        <input type="number" name="">
+                    </td>
+                    <td>
+                        <input class="bg-grey" type="number">
+                    </td>
+                    <td>
+                        <input class="bg-grey" type="number">
+                    </td>
+                    <td>0.00</td>
+              </tr>
               </tbody>
             </table>
         </div>

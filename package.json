@@ -31,6 +31,7 @@
     "jqwidgets-framework": "^11.0.1",
     "jqwidgets-ng": "^11.0.1",
     "jqwidgets-scripts": "^11.0.1",
+    "ng2-pdf-viewer": "^6.3.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "xlsx": "^0.16.9",

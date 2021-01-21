@@ -8,6 +8,8 @@ import * as XLSX from 'xlsx';
 })
 export class PaySlipComponent implements OnInit {
   data: [][];
+  src = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+  // src = "assets/JAN_Geethika_Payslip.pdf"
 
   constructor() { }
 

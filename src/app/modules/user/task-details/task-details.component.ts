@@ -10,26 +10,32 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit {
-  taskListArray: any[];
+  taskListArray: any[] = [];
   noData: boolean = false;
   week: any[] = [];
 
-  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { 
+    console.log(this.taskListArray)
+  }
 
   ngOnInit() {
     this.getCurrentWeek();
     this.dataState();
-    let t = this.taskService.getTaskList();
+    this.getTask();
+  }
+
+  async getTask() {
+    let t = await this.taskService.getTaskList();
     console.log(t)
     t.snapshotChanges().subscribe(data => {
-      this.taskListArray = [];
+      // this.taskListArray = [];
       data.forEach(item => {
         let a = item.payload.toJSON();
         a['key'] = item.key;
         this.taskListArray.push(a);
-        console.log(this.taskListArray)
       })
     })
+    console.log(this.taskListArray) 
   }
 
   getCurrentWeek() {
