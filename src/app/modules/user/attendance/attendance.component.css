@@ -11,8 +11,14 @@ img{
 .content-end{
 	justify-content: flex-end;
 }
-
-
+button,.average-swipe .fa{
+	border:1px solid transparent;
+	background-color: #470000;
+	color:white;
+}
+button,.dropdown,.form-check-inline,.average-swipe span,.average-swipe .fa{
+	width:auto;
+}
 
 
 #header{
@@ -25,12 +31,28 @@ img{
 	background-color: #d3d0c8;
 	padding:10px;
 }
+.dropdown-toggle{
+	background-color:white;
+	color: black;
+}
+.dropdown-menu a{
+	color:black;
+}
 button{
-	border:1px solid transparent;
-	background-color: #470000;
 	border-radius: 15px;
 	padding:2px 10px;
-	color:white;
+}
+.form-check-input:checked{
+	border-color: #470000;
+	background-color: #470000;
+	border-radius: 2px;
+	margin-top: 5px;
+}
+.average-swipe .fa{
+	margin-left: auto;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 14px;
 }
 h6{
 	color:#d18b42;
