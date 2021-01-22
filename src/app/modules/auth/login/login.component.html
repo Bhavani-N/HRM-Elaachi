@@ -4,13 +4,24 @@
         <strong class="d-block pt-5 pb-3">
             Sign in with your organizational account
         </strong>
-        <input type="text" placeholder="someone@itprofound.com">
-        <input type="text" placeholder="Password">	
-        <div class="row m-0 password">
-            <button class="my-4">Sign in</button>
-            <button class="my-4 ml-2">Swith to login</button>
-            <a routerLink='../resetpassword'>Forgot password ?</a>
+        <div class="alert alert-danger" *ngIf="error">
+            <p>{{ error }}</p>
         </div>
+        <form name="login" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+            <input type="email" class="form-control" id="Email1" #email="ngModel" ngModel name="email" email
+               placeholder="someone@example.com" required />
+               <input type="password" class="form-control" id="Password1" #password="ngModel" ngModel name="password" 
+               placeholder="Password" minlength="5" required/>	
+            <div class="row m-0 password">
+                <button type="submit" class="my-4" [disabled]="!authForm.form.valid">
+                    {{ isLoginMode ? 'Login': 'Sign Up' }}
+                </button> | 
+                <button type="button" class="my-4 ml-2" (click)="onSwitchMode()">
+                    Switch to {{ isLoginMode? 'Sign Up': 'Login' }}
+                </button>
+                <a routerLink='../resetpassword'>Forgot password ?</a>
+            </div>
+        </form>
         <span>
             For login password issue, please connect with mail to someone@itprofound.com 
         </span>

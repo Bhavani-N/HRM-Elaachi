@@ -5,7 +5,6 @@ import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-task-details',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './task-details.component.html',
   styleUrls: ['./task-details.component.css']
 })
