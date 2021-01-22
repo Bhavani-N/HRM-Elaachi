@@ -63,6 +63,10 @@ export class TaskDetailsComponent implements OnInit {
     this.router.navigate(['/userProfile/add-task'])
   }
 
+  onSave() {
+    this.router.navigate(['/userProfile/hr-approve'])
+  }
+
   deleteTask(task: string) {
     if(window.confirm('Are you sure you want to delete this task?') == true) {
       this.taskService.removeTask(task);

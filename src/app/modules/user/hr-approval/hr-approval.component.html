@@ -1,0 +1,23 @@
+<div class="container">
+    <hr>
+    <h2>Task Approval</h2>
+        <div class="col-md-6">
+            <div class="row m-0">
+                <h4>Task Details</h4>
+        
+                <div *ngFor="let task of tempTaskListArray">
+                    <label>Task ID: </label> <p>{{ task.key }}</p>
+                    <label>Task Name: </label><p>{{ task.name }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">Would you like to approve or deny this request?</p>
+                    <button type="button" class="btn btn-success">Approve</button> |
+                    <button type="button" class="btn btn-danger">Deny</button>
+                </div>
+            </div>
+        </div>
+</div> 

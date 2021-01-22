@@ -7,7 +7,7 @@
 } */
 .wrapper {
     background-image: url('../../../../assets/icons/images/bg-1.jpg');
-    background-size: cover;
+    background-size: 100% 100%;
     min-height: 100vh;
   }
   

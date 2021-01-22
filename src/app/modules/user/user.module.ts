@@ -11,6 +11,7 @@ import { UserRoutingModule } from "./user-routing.module";
 import { AddTaskComponent } from './add-task/add-task.component';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { HRApprovalComponent } from './hr-approval/hr-approval.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         PaySlipComponent,
         TaskDetailsComponent,
         ApplyLeaveComponent,
-        AddTaskComponent
+        AddTaskComponent,
+        HRApprovalComponent
     ],
     imports: [
         CommonModule,
