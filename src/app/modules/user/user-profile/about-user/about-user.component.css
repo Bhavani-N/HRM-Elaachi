@@ -1,5 +1,5 @@
-body,.card,.card-header{
-	background-color: #e3ceb3;
+.user-details,.card,.card-header{
+	background-color: #e9ecef;
 }
 h6{
 	color:#8f624b;
@@ -8,7 +8,6 @@ h6{
 .about-user,button{
 	width: auto;
 }
-
 button{
 	margin-left: auto;
 }
@@ -36,34 +35,3 @@ button.btn.btn-link{
 	padding-left: 32px;
 }
 
-
-
-
-
-
-/* body,.card,.card-header{
-	background-color: #e3ceb3;
-}
-h6{
-	color:#8f624b;
-	padding-top:20px;
-}
-
-.card{
-	border-top:none;
-}
-.card-header{
-	border-bottom: none;
-	padding-bottom: 0px;
-}
-button.btn.btn-link{
-	color:black;
-	text-decoration: none;
-	font-size: 18px;
-}
-.btn:focus{
-	box-shadow: none;
-}
-.card-body{
-	padding-left: 32px;
-} */
