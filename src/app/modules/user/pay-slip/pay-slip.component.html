@@ -1,4 +1,91 @@
-<div class="container">
+<div class="wrapper">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light headline p-0">
+            <div class="col-md-12 p-0 row m-0 h-100">
+                <div class="col-md-10 p-0 elaachi-logo">
+                    <a href="#" class="navbar-brand pl-2">
+                            <img src="../../../../assets/icons/images/logo.png" height="28" alt="logo">
+                    </a>
+                    <div class="notifications">
+                            <a href="#"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <span>Alerts</span></a>
+                            <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>Messages</span></a>
+                        <div class="mr-3">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Need help?
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 p-0">
+                    <div class="avatar-image pl-3">
+                        <span class="fs-12">Dharani 143380</span>
+                        <img src="../../../../assets/icons/images/avatar.png" alt="avatar" width="50px" height="50px">
+                    </div>
+                </div>
+            </div>
+        </nav>	
+    </header>
+    <main>
+        <div class="client-bills">
+            <div class="col-md-12 p-0">
+                <div class="row m-0">
+                    <div class="menu">
+                        <div class="main-menu">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Main Menu
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">payslips</a>
+                                    <a class="dropdown-item" href="#">Personal Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Payslip-Period mt-3">
+                        <div class="payslip">
+                            <div class="row m-0 justify-content-between">
+                                <h6 class="p-0">My Payslip</h6>
+                                <i class="fa fa-close fs-12 p-0"></i>
+                            </div>
+                            <div class="fs-12">
+                                <label for="months">Select Payslip Period:</label>
+                                <select name="months" id="months">
+                                    <option value="January">January 2020</option>
+                                    <option value="february">february 2020</option>
+                                    <option value="March">March 2020</option>
+                                    <option value="April">April 2020</option>
+                                    <option value="January">May 2020</option>
+                                    <option value="february">June 2020</option>
+                                    <option value="March">July 2020</option>
+                                    <option value="April">August 2020</option>
+                                    <option value="January">September 2020</option>
+                                    <option value="february">October 2020</option>
+                                    <option value="March">November 2020</option>
+                                    <option value="April">December 2020</option>
+                                </select>
+                                <button class="mx-3 fs-12">Go</button>
+                                <button class="mx-3 fs-12">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- <div class="container">
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">My PaySlip</h5>
@@ -18,7 +105,6 @@
     <pdf-viewer [src]="src" [render-text]="true" style="display: block;"    
               [original-size]="false" 
   ></pdf-viewer>
-    <!-- <pdf-viewer [src]="'assets/JAN_Geethika_Payslip.pdf'" [render-text]="true" style="display: block;"></pdf-viewer> -->
-</div>
+</div> -->
 
 
