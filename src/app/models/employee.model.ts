@@ -9,5 +9,5 @@ export class Employee {
     public twitter: string;
     public facebook: string;
     public linkedIn: string;
-    public workstation: string;
+    public workStation: string;
 }

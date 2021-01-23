@@ -14,6 +14,13 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
+import {RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
+
+
+
+
+
+
 
 // FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 //   dayGridPlugin,
@@ -32,7 +39,8 @@ import { SharedModule } from './modules/shared/shared.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     // FullCalendarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RxReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
