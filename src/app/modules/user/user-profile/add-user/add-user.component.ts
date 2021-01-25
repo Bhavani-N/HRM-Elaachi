@@ -15,7 +15,7 @@ export class AddUserComponent implements OnInit {
           public fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.empService.getEmployeesList();
+    // this.empService.getEmployeesList();
     this.employeeForm();
   }
 
@@ -35,9 +35,9 @@ export class AddUserComponent implements OnInit {
   }
 
   submitEmployee() {
-    this.empService.AddEmployee(this.empForm.value);
-    console.log(this.empForm.value);
-    this.empForm.reset();
+    // this.empService.AddEmployee(this.empForm.value);
+    // console.log(this.empForm.value);
+    // this.empForm.reset();
   }
 
   onCancel() {

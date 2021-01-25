@@ -1,13 +1,8 @@
-export class Employee {
-    $id: string;
-    public name: string;
-    public designation: string;
-    public state: string;
-    public mobile: number;
-    public extno: number;
-    public email: string;
-    public twitter: string;
-    public facebook: string;
-    public linkedIn: string;
-    public workstation: string;
-}
+// export class User {
+//     id: string;
+//     username: string;
+//     password: string;
+//     firstName: string;
+//     lastName: string;
+//     token: string;
+// }

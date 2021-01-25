@@ -1,6 +1,6 @@
 .login-page{
     background-image:url(../../../../assets/icons/images/conference-room.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 img{
 	width: 90%

@@ -6,6 +6,7 @@ import { AttendanceComponent } from "./attendance/attendance.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 import { AddTaskComponent } from "./add-task/add-task.component";
 import { TaskDetailsComponent } from "./task-details/task-details.component";
+import { HRApprovalComponent } from "./hr-approval/hr-approval.component";
 
 const routes: Routes = [
  { path: 'paySlip', component: PaySlipComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
  { path: 'taskDetails', component: TaskDetailsComponent },
  { path: 'add-task', component: AddTaskComponent },
  { path: 'attendance', component: AttendanceComponent },
+ { path: 'hr-approve', component: HRApprovalComponent },
  { path: '', loadChildren: () => import('./user-profile/userProfile.module').then(m => m.UserProfileModule) }
 ];
 
