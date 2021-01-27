@@ -1,47 +1,47 @@
-<div class="contact" *ngFor="let emp of Employee">
+<div class="contact" >
     <div class="row">
         <div class="col-xs-12">
             <h6>CONTACT DETAILS</h6>
             <!-- <div class="float-right" (click)="onEdit()"> -->
                 <div class="float-right">
-                    <i class="fa fa-pencil" routerLink="/userProfile/edit/{{emp.$id }}" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" routerLink="/userProfile/edit" aria-hidden="true"></i>
                 <!-- <i class="fa fa-pencil" routerLink="/userProfile/edit/{{emp.$id }}" aria-hidden="true"></i> -->
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            Mobile  :- {{ emp.mobile }}
+            Mobile  :-{{mobile?.value}}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            ExtNo  :- {{ emp.extno }}
+            ExtNo  :- {{extno}}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            Email :- {{ emp.email }}
+            Email :- {{email}}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            Twitter  :- {{ emp.twitter }}
+            Twitter  :{{twitter}}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            Facebook  :- {{ emp.facebook }}
+            Facebook  :- {{facebook}}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            LinkedIn  :- {{ emp.linkedIn }}
+            LinkedIn  :- {{linkedIn}}
         </div>
     </div><br>
     <div class="row">
         <div class="col-xs-12">
-            WorkStation  :- {{ emp.workstation }}
+            WorkStation  :-{{workStation}}
         </div>
     </div>
 </div>

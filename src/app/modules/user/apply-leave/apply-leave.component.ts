@@ -32,6 +32,26 @@ export class ApplyLeaveComponent implements OnInit, AfterViewInit {
     // console.log(this.appCalendar)
   }
 
+<<<<<<< HEAD
+=======
+// <<<<<<< HEAD
+//   // getDaysInMonth(month: number, year: number) {
+//   //   var date = new Date(year, month, 1);
+//   //   // var previousDate = new Date(year, month + 1, 1);
+//   //   var days = [];
+//   //   while (date.getMonth() === month) {
+//   //     days.push(new Date(date));
+//   //     date.setDate(date.getDate() + 1);
+//   //   }
+//     // while (previousDate.getMonth() === month + 1) {
+//     //   days.push(new Date(previousDate));
+//     //   date.setDate(previousDate.getDate() + 1); 
+//     // }
+//     // console.log(days) ;
+
+//   }
+// =======
+>>>>>>> 4b19fc8e40ed70a53ec49f08477cba5655f247c7
 
 
 
@@ -66,5 +86,10 @@ export class ApplyLeaveComponent implements OnInit, AfterViewInit {
     // }
 
     
+<<<<<<< HEAD
+=======
+// >>>>>>> 753d69f123aed04219303799e76227b4b76c0ee8
 
-}
+>>>>>>> 4b19fc8e40ed70a53ec49f08477cba5655f247c7
+
+ }

@@ -7,8 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 // import interactionPlugin from '@fullcalendar/interaction';
 // import listPlugin from '@fullcalendar/list';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+// import { AngularFireModule } from '@angular/fire';
+// import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,8 +36,8 @@ import {RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
     BrowserModule,
     HttpClientModule,
     SharedModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireDatabaseModule,
     // FullCalendarModule,
     AppRoutingModule,
     RxReactiveFormsModule

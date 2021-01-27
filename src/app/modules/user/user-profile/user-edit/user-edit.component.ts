@@ -11,56 +11,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  // public editForm: FormGroup;
-  // submitted: boolean = false;
-  // value = '';
-
-  // constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
-  //           public empService: UserService) { }
-
-  // ngOnInit() {
-    // this.updateData();
-    // const id = this.route.snapshot.paramMap.get('id');
-    // this.empService.getEmployee(id).valueChanges().subscribe(data => {
-    //   this.editForm.setValue(data);
-    // })
-  // }
-
-  // updateData() {
-  //   this.editForm = this.fb.group({
-  //     name: ['', Validators.required],
-  //     designation: ['', Validators.required],
-  //     state: ['', Validators.required],
-  //     mobile: ['', Validators.required],
-  //     extno: [''],
-  //     email: ['', [Validators.required, Validators.email]],
-  //     twitter: [''],
-  //     facebook: [''],
-  //     linkedIn: [''],
-  //     workstation: ['']
-  //   });
-  // }
-
-
-  // get f() {
-  //   return this.editForm.controls;
-  // }
-
-  // updateForm() {
-  //   console.log(this.editForm);
-  //   this.empService.updateEmployee(this.editForm.value);
-  //   this.router.navigate(['./userProfile/about'])
-  // }
-
-  // onCancel() {
-  //   this.router.navigate(['./userProfile/about'])
-  // }
-
-  // onChange(event) {
-  //   console.log('input directive working') 
-  // }
+  
   editForm:FormGroup;
-
+ ;
   constructor(private formBuilder:RxFormBuilder , private route: ActivatedRoute, private router: Router,
                public empService: UserService){}
   
@@ -105,12 +58,17 @@ this.editForm = this.formBuilder.group({
     });
 this.onSubmit();
 const id = this.route.snapshot.paramMap.get('id');
+
+    //  this.empService.updateEmployee(id).subscribe(data => {
+    //    this.editForm.setValue(data);
+    //  })
   }
 
   onSubmit() {
     console.log(this.editForm.value)
    let isDirty = (<FormGroupExtension>this.editForm).isDirty()  
-       this.empService.updateEmployee(this.editForm.value);
-       this.router.navigate(['./userProfile/about'])  
+          this.empService.updateEmployee(this.editForm.value);
+        //  this.router.navigate(['./userProfile/about'])  
   }
+  
 }
