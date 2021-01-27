@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       }
 
       this.loading = true;
-      this.authService.login(this.f.username.value, this.f.password.value)
+      this.authService.login(this.f.username.value)
           .pipe(first())
           .subscribe(
               data => {
@@ -67,5 +67,7 @@ export class LoginComponent implements OnInit {
                   this.loading = false;
               });
   }
-
+gotoRegister(){
+    this.router.navigate(['/register'])
+}
 }

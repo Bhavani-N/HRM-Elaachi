@@ -26,13 +26,13 @@ export class AuthService {
         return this.userSubject.value;
     }
 
-    login(username, password) {
-        return this.http.post<User>(`${environment. API_HOST}/users/authenticate`, { username, password })
-            .pipe(map(user => {
+    login(logindata: any) {
+        return this.http.post<User>(`${environment. API_HOST}/api/v1/staffs/login`, logindata)
+            .pipe(map((user: any)=> {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
-                return user;
+                return user;    
             }));
     }
 
@@ -44,7 +44,7 @@ export class AuthService {
     }
 
     register(user: User) {
-        return this.http.post(`${environment. API_HOST}/users/register`, user);
+        return this.http.post(`${environment. API_HOST}/api/v1/staffs/signup`, user);
     }
 
     getAll() {
