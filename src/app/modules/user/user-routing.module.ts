@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { ApplyLeaveComponent } from "./apply-leave/apply-leave.component";
-import { AttendanceComponent } from "./attendance/attendance.component";
+import { AttendanceComponent } from "../home/modals/attendance/attendance.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 import { AddTaskComponent } from "./add-task/add-task.component";
 import { TaskDetailsComponent } from "./task-details/task-details.component";

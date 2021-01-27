@@ -1,0 +1,52 @@
+.password-page{
+    background-image:url(../../../../assets/icons/images/thinking.jpg);
+	background-size: 100% 100%;
+    min-height: 100vh;
+}
+img{
+	width:20%;
+}
+input{
+    width:100%;
+}
+input,button{
+	border:none;
+	border-radius: 6px;
+}
+a,a:hover,button{
+	color:white;
+}
+input{
+	margin-top: 21px;
+	padding:6px;
+}
+button{
+	margin-top: 20px;
+	padding:3px 15px;
+	background-color: #ac492b;
+}
+span{
+	font-size: 24px;
+    display: inline-block;
+    line-height: 27px;
+    padding-top:5px;
+}
+.signup,.password a{
+    text-align: center;
+	display: block;
+}
+.password a{
+	font-size: 19px;
+	padding-top: 20px;
+}
+.password{
+	position: absolute;
+	width:33%;
+	background:rgba(0,0,0,.85);
+	border-radius: 10px;
+	top:40px;
+	right: 44px;
+	padding:26px;
+	border:1px solid grey;
+    
+}
