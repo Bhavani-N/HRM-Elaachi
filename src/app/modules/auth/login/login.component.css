@@ -3,53 +3,53 @@
     background-size: 100% 100%;
 }
 img{
-	width: 90%
+	width: 90%;
 }
 input,button{
 	border:none;
 	border-radius: 5px;
 }
 input{
-	width:70%;
-	margin-top: 10px;
-	padding:4px;
+	width:100%;
+}
+input[type="password"] {
+    letter-spacing: 0em;
 }
 button{
 	display: block;
-	background-color: #2672ec;
 	color:white;
-    padding: 4px 18px;
-    width:auto;
+	background-color:#ac492b;
 }
-.password a{
-    color:#ff6633;
-    font-weight: bold;
-    padding-bottom:15px;
-    text-align: center;
+button,.create-account button{
+	width:75%;
+	border-radius: 15px;
+	margin: 0px auto;
+	padding:7px 20px;
+	outline: none;
 }
 strong{
 	font-size: 17px;
 	font-weight: normal;
 }
-a{
-	color:white;
-	padding:0px 10px;
+.forgot-password a{
+	text-align: end;
+	display: block;
+	font-size: 14px;
 }
-a:hover{
-	color:white;
-	text-decoration: none;
+.create-account button{
+    background-color: black;
+    border: 1px solid #ac492b;
 }
-
 .signin-page{
 	width:35%;
-	padding-left: 25px;
+	padding: 25px;
 	background:rgba(0,0,0,.75);
     min-height: 100vh;
     margin-left: auto;
 }
-.privacy-policy{
+/* .privacy-policy{
 	position: absolute;
 	bottom:20px;
 	font-size: 13px;
-}
+} */
 

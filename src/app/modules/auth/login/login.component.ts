@@ -1,62 +1,71 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { AuthResponseData, AuthService } from 'src/app/services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
+import { AlertService } from 'src/app/services/alert.service';
+
+// import { AccountService, AlertService } from '../_services';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  isLoginMode: boolean = true;
-  isLoading = false;
-  error:string = null;
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
 
-  private closeSub: Subscription;
-
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+      private formBuilder: FormBuilder,
+      private route: ActivatedRoute,
+      private router: Router,
+      private authService: AuthService,
+      private alertService: AlertService
+  ) {
+      // redirect to home if already logged in
+      if (this.authService.userValue) {
+          this.router.navigate(['/']);
+      }
+  }
 
   ngOnInit() {
+      this.loginForm = this.formBuilder.group({
+          username: ['', Validators.required],
+          password: ['', Validators.required]
+      });
+
+      // get return url from route parameters or default to '/'
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  onSwitchMode() {
-    this.isLoginMode = !this.isLoginMode;
-  }
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
 
-  onSubmit(form: NgForm) {
-    if(!form.valid) {
-      return;
-    }
-    const email = form.value.email;
-    const password = form.value.password;
+  onSubmit() {
+      this.submitted = true;
 
-    let authObs: Observable<AuthResponseData>;
-    if(this.isLoginMode) {
-      authObs = this.authService.login(email, password)
-    } else {
-      authObs = this.authService.signup(email, password);
-    }
+      // reset alerts on submit
+      this.alertService.clear();
 
-    authObs.subscribe(
-      resData => {
-        console.log(resData);
-        this.router.navigate(['/home'])
-      },
-      errorMessage => {
-        console.log(errorMessage);
-        this.error = errorMessage;
+      // stop here if form is invalid
+      if (this.loginForm.invalid) {
+          return;
       }
-    );
-    console.log('submitted successfully');
-    form.reset();
-  }
 
-  ngOnDestroy() {
-    if(this.closeSub) {
-      this.closeSub.unsubscribe();
-    }
+      this.loading = true;
+      this.authService.login(this.f.username.value, this.f.password.value)
+          .pipe(first())
+          .subscribe(
+              data => {
+                  this.router.navigate([this.returnUrl]);
+              },
+              error => {
+                  this.alertService.error(error);
+                  this.loading = false;
+              });
   }
 
 }

@@ -1,35 +1,49 @@
 <div class="login-page">
     <div class="signin-page text-white pt-5">
         <img src="../../../../assets/icons/images/logo1.png" alt="logo">
-        <strong class="d-block pt-5 pb-3">
+        <strong class="d-block py-4">
             Sign in with your organizational account
         </strong>
         <div class="alert alert-danger" *ngIf="error">
             <p>{{ error }}</p>
         </div>
-        <form name="login" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-            <input type="email" class="form-control" id="Email1" #email="ngModel" ngModel name="email" email
-               placeholder="someone@example.com" required />
-               <input type="password" class="form-control" id="Password1" #password="ngModel" ngModel name="password" 
-               placeholder="Password" minlength="5" required/>	
-            <div class="row m-0 password">
-                <button type="submit" class="my-4" [disabled]="!authForm.form.valid">
-                    {{ isLoginMode ? 'Login': 'Sign Up' }}
-                </button> | 
-                <button type="button" class="my-4 ml-2" (click)="onSwitchMode()">
-                    Switch to {{ isLoginMode? 'Sign Up': 'Login' }}
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="Email">Email address</label>
+                <input type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" email
+                placeholder="someone@example.com" required />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="*****" required/>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="form-group forgot-password">
+                <a class="pb-4 text-white" href="#">Forgot password ?</a>
+                <button [disabled]="loading">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
                 </button>
-                <a routerLink='../resetpassword'>Forgot password ?</a>
+                
+                <!-- <a routerLink="../register" class="btn btn-link">Create new account</a> -->
+                <div class="create-account mt-4">
+                    <button>Create new account</button>
+                </div>
             </div>
         </form>
-        <span>
+        <!-- <span>
             For login password issue, please connect with mail to someone@itprofound.com 
         </span>
         <div class="privacy-policy">
-            &copy; 2021 Microsoft
+            &copy; 2021 Microsoft   
             <a href="#">Home</a>
             <a href="#">Privacy Policy</a>
-        </div>
+        </div> -->
     </div>
 </div>
 

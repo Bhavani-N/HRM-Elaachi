@@ -1,156 +1,84 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { catchError, tap } from 'rxjs/operators';
-import { BehaviorSubject, throwError } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from "src/environments/environment";
 import { User } from "../models/user.model";
-import { ok } from "assert";
-
-
-export interface AuthResponseData {
-    kind: string;
-    idToken: string;
-    email: string;
-    refreshToken: string;
-    expiresIn: string;
-    localId: string;
-    registered?: boolean;
-}
-const userData: {
-    email: string;
-    id: string;
-    _token: string;
-    _tokenExpirationDate: string;
-} = JSON.parse(localStorage.getItem('userData'));
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class AuthService {
-    user = new BehaviorSubject<User>(null);
-    private tokenExpirationTimer: any;
+    private userSubject: BehaviorSubject<User>;
+    public user: Observable<User>;
 
-    constructor(private http: HttpClient, private router: Router) {}
-
-    signup(email: string, password: string) {
-        return this.http.post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebase.apiKey,
-            {
-               email: email,
-               password: password,
-               returnSecureToken: true
-            }
-        )
-        .pipe(
-            catchError(this.handleError), 
-            tap(resData => {
-                this.handleAuthentication(
-                    resData.email,
-                    resData.localId,
-                    resData.idToken,
-                    +resData.expiresIn
-                );
-            })
-        );
+    constructor(
+        private router: Router,
+        private http: HttpClient
+    ) {
+        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+        this.user = this.userSubject.asObservable();
     }
 
-    login(email: string, password: string) {
-        return this.http.post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +environment.firebase.apiKey,
-            {
-                email: email,
-                password: password,
-                returnSecureToken: true
-            }
-        )
-        .pipe(
-            catchError(this.handleError),
-            tap(resData => {
-                this.handleAuthentication(
-                    resData.email,
-                    resData.localId,
-                    resData.idToken,
-                    +resData.expiresIn
-                )
-            })
-        )
+    public get userValue(): User {
+        return this.userSubject.value;
     }
 
-    autoLogin() {
-        // const userData: {
-        //     email: string;
-        //     id: string;
-        //     _token: string;
-        //     _tokenExpirationDate: string;
-        // } = JSON.parse(localStorage.getItem('userData'));
-        if (!userData) {
-            return;
-        }
-        const loadedUser  = new User(
-            userData.email,
-            userData.id,
-            userData._token,
-            new Date(userData._tokenExpirationDate)
-        );
-
-        if(loadedUser.token) {
-            this.user.next(loadedUser);
-            const expirationDuration = 
-                new Date(userData._tokenExpirationDate).getTime() - 
-                new Date().getTime();
-            this.autoLogout(expirationDuration);
-        }
+    login(username, password) {
+        return this.http.post<User>(`${environment. API_HOST}/users/authenticate`, { username, password })
+            .pipe(map(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', JSON.stringify(user));
+                this.userSubject.next(user);
+                return user;
+            }));
     }
 
     logout() {
-        this.user.next(null);
-        this.router.navigate(['/auth']);
-        localStorage.removeItem('userData');
-        if(this.tokenExpirationTimer) {
-            clearTimeout(this.tokenExpirationTimer);
-        }
-        this.tokenExpirationTimer = null;
+        // remove user from local storage and set current user to null
+        localStorage.removeItem('user');
+        this.userSubject.next(null);
+        this.router.navigate(['/account/login']);
     }
 
-    autoLogout(expirationDuration: number) {
-        this.tokenExpirationTimer = setTimeout(() => {
-            this.logout();
-        }, expirationDuration);
+    register(user: User) {
+        return this.http.post(`${environment. API_HOST}/users/register`, user);
     }
 
-    // getUsers() {
-    //     return ok(userData);
-    // }
-
-    private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
-        const expirationDate = new Date(
-            new Date().getTime() + expiresIn * 1000
-        );
-        const user = new User(email, userId, token, expirationDate);
-        this.user.next(user);
-        this.autoLogout(expiresIn*1000);
-        localStorage.setItem('userData', JSON.stringify(user));
+    getAll() {
+        return this.http.get<User[]>(`${environment. API_HOST}/users`);
     }
 
-    private handleError(errorRes: HttpErrorResponse) {
-        let errorMessage = 'An unknown error occurred';
-        if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errorMessage);
-        }
-        switch (errorRes.error.error.message) {
-            case 'EMAIL_EXISTS':
-                errorMessage = 'This email exists already';
-                break;
-            case 'EMAIL_NOT_FOUND':
-                errorMessage = 'This email does not exist.';
-                break;
-            case 'INVALID_PASSWORD':
-                errorMessage = 'This password is not correct.';
-                break;
-        }
-        return throwError(errorMessage);
+    getById(id: string) {
+        return this.http.get<User>(`${environment. API_HOST}/users/${id}`);
     }
 
+    update(id, params) {
+        return this.http.put(`${environment. API_HOST}/users/${id}`, params)
+            .pipe(map(x => {
+                // update stored user if the logged in user updated their own record
+                if (id == this.userValue.id) {
+                    // update local storage
+                    const user = { ...this.userValue, ...params };
+                    localStorage.setItem('user', JSON.stringify(user));
+
+                    // publish updated user to subscribers
+                    this.userSubject.next(user);
+                }
+                return x;
+            }));
+    }
+
+    delete(id: string) {
+        return this.http.delete(`${environment. API_HOST}/users/${id}`)
+            .pipe(map(x => {
+                // auto logout if the logged in user deleted their own record
+                if (id == this.userValue.id) {
+                    this.logout();
+                }
+                return x;
+            }));
+    }
 }
