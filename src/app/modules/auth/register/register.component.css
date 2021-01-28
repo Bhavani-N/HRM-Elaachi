@@ -1,5 +1,5 @@
 .password-page{
-    background-image:url(../../../../assets/icons/images/thinking.jpg);
+    background-image:url(../../../../assets/icons/images/signup-page.jpg);
 	background-size: 100% 100%;
     min-height: 100vh;
 }
@@ -13,7 +13,7 @@ input,button{
 	border:none;
 	border-radius: 6px;
 }
-a,a:hover,button{
+button{
 	color:white;
 }
 input{
@@ -25,28 +25,30 @@ button{
 	padding:3px 15px;
 	background-color: #ac492b;
 }
-span{
-	font-size: 24px;
-    display: inline-block;
-    line-height: 27px;
-    padding-top:5px;
-}
-.signup,.password a{
+.signup,span{
     text-align: center;
 	display: block;
 }
 .password a{
-	font-size: 19px;
-	padding-top: 20px;
+	color:#ac492b;
+	font-weight: bold;
 }
 .password{
+	/* position: absolute;
+	width: 33%;
+    background: rgba(0,0,0,.85);
+    border-radius: 10px;
+    top: 41px;
+    left: 355px;
+	padding: 25px;
+	border:1px solid grey; */
 	position: absolute;
 	width:33%;
 	background:rgba(0,0,0,.85);
 	border-radius: 10px;
-	top:40px;
-	right: 44px;
-	padding:26px;
+	top:50px;
+	right: 30px;
+	padding:30px;
 	border:1px solid grey;
     
 }

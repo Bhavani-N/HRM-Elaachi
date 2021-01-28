@@ -18,32 +18,27 @@ input[type="password"] {
 button{
 	display: block;
 	color:white;
-	background-color: #2b9348;
+	background-color:#ac492b;
+}
+button,.create-account button{
+	width:75%;
+	border-radius: 15px;
 	margin: 0px auto;
-	padding:4px 20px;
+	padding:7px 20px;
+	outline: none;
 }
 strong{
 	font-size: 17px;
 	font-weight: normal;
 }
-.forot-password{
-	text-align: center;
+.forgot-password a{
+	text-align: end;
 	display: block;
-	padding:20px;
+	font-size: 14px;
 }
 .create-account button{
-	width:70%;
-	margin:0px auto;
-	padding:10px 0px;
-	background-color:#ac492b;
-}
-a{
-	color:white;
-	padding:0px 10px;
-}
-a:hover{
-	color:white;
-	text-decoration: none;
+    background-color: black;
+    border: 1px solid #ac492b;
 }
 .signin-page{
 	width:35%;
