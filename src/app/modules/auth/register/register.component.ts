@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     signupForm: FormGroup;
     loading = false;
     submitted = false;
-
+    message:any;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -61,6 +61,8 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['../login'], { relativeTo: this.route });
                 },
                 error => {
+                    this.message= error.error.message;
+                    console.log(error.error.message);
                     this.alertService.error(error);
                     this.loading = false;
                 });

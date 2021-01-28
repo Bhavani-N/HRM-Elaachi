@@ -20,7 +20,7 @@ export class AuthService {
     ) {
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('email')));
         this.user = this.userSubject.asObservable();
-        this.isloggedIn=false;
+        this.isloggedIn = false;
     }
 
 
@@ -35,20 +35,9 @@ export class AuthService {
             localStorage.setItem('userData', JSON.stringify(userData));
             this.userSubject.next(userData);
             return userData;
-
-
-
-
-            // this.isloggedIn=true;
-            
-            // return of(this.isloggedIn);
         }));
-        
+
     }
-    isUserLoggedIn(): boolean {
-        return this.isloggedIn;
-    }
- 
 
     logout() {
         // remove user from local storage and set current user to null
@@ -59,15 +48,15 @@ export class AuthService {
 
     register(user: User) {
         console.log(user);
-        return this.http.post(`${environment. API_HOST}/api/v1/staffs/signup`, user);
+        return this.http.post(`${environment.API_HOST}/api/v1/staffs/signup`, user);
     }
 
     getAll() {
-        return this.http.get<User[]>(`${environment. API_HOST}/users`);
+        return this.http.get<User[]>(`${environment.API_HOST}/users`);
     }
 
     getById(id: string) {
-        return this.http.get<User>(`${environment. API_HOST}/users/${id}`);
+        return this.http.get<User>(`${environment.API_HOST}/users/${id}`);
     }
 
     // update(id, params) {
