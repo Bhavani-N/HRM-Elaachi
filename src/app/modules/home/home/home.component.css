@@ -61,7 +61,7 @@ h5:after {
     float: left;
 }
 .heading{
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-color: white;
 }
@@ -70,11 +70,13 @@ h5:after {
     margin: 30px auto;
 }
 .avatar img{
-    width: 50%;
-    margin-left: 10px;
+    width: 55%;
+    margin:0px auto;
+    display: block;    
 }
 .avatar span{
-    margin: 12px 0px;
+    margin: 15px 0px;
+    text-align: center;
 }
 .work-hours{
     display: flex;
@@ -93,7 +95,7 @@ h5:after {
     border-bottom: none;
 }
 .functions{
-    width: 100%;
+    width: 60%;
     background-color: white;
 }
 .functions span{
