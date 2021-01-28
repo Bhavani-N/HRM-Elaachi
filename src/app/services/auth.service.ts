@@ -18,23 +18,30 @@ export class AuthService {
         private router: Router,
         private http: HttpClient
     ) {
-        // this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
-        // this.user = this.userSubject.asObservable();
+        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('email')));
+        this.user = this.userSubject.asObservable();
         this.isloggedIn=false;
     }
 
 
-    // public get userValue(): User {
-    //     return this.userSubject.value;
-    // }
+    public get userValue(): User {
+        return this.userSubject.value;
+    }
 
     login(logindata: any) {
         console.log(logindata);
-        return this.http.post<User>(`${environment.API_HOST}/api/v1/staffs/login`, logindata).pipe(map(user => {
+        return this.http.post<User>(`${environment.API_HOST}/api/v1/staffs/login`, logindata).pipe(map(userData => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            this.isloggedIn=true;
+            localStorage.setItem('userData', JSON.stringify(userData));
+            this.userSubject.next(userData);
+            return userData;
+
+
+
+
+            // this.isloggedIn=true;
             
-            return of(this.isloggedIn);
+            // return of(this.isloggedIn);
         }));
         
     }
