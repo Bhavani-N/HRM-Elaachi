@@ -9,17 +9,17 @@ export class AuthguardGuard implements CanActivate {
   constructor(
     private router: Router,
     private authService: AuthService
-) {}
+  ) { }
 
-canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const user = this.authService.userValue;
-    if (user) {
-        // authorised so return true
-        return true;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    // const user = this.authService.userValue;
+    if (!this.authService.isUserLoggedIn()) {
+      alert('You are not allowed to view this page. You are redirected to login Page');
+
+      this.router.navigate(["login"], { queryParams: { retUrl: route.url } });
+      return false;
+
+      
     }
-
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url }});
-    return false;
-}
+  }
 }

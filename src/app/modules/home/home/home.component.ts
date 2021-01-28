@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  getUrl() {
-    return "url('../../../../assets/icons/images/bg-1.jpg')";
-  }
+  // getUrl() {
+  //   return "url('../../../../assets/icons/images/bg-1.jpg')";
+  // }
 
   constructor() { }
 
