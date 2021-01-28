@@ -32,8 +32,6 @@ export class ApplyLeaveComponent implements OnInit, AfterViewInit {
     // console.log(this.appCalendar)
   }
 
-// <<<<<<< HEAD
-//   // getDaysInMonth(month: number, year: number) {
 //   //   var date = new Date(year, month, 1);
 //   //   // var previousDate = new Date(year, month + 1, 1);
 //   //   var days = [];

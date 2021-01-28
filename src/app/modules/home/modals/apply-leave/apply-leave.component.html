@@ -1,0 +1,178 @@
+<!-- <p>apply-leave works!</p> -->
+<div class="previous-page">
+    <i class="fa fa-angle-left" aria-hidden="true"></i>
+  </div>
+  <select name="leaves" id="leaves">
+    <option value="Medical Leave">Medical Leave</option>
+    <option value="Sick Leave">Sick Leave</option>
+  </select>
+  <div class="col-md-12 mt-3 p-0 ">
+    <div class="row m-0 mx-3 p-2 calender">
+        <div class="col-md-4 p-0 mt-3 check-boxes">
+          <h6 class="text-center">Dec 2020</h6>
+            <ul class="weekdays">
+              <li>MON</li>
+              <li>TUE</li>
+              <li>WED</li>
+              <li>THU</li>
+              <li>FRI</li>
+              <li>SAT</li>
+              <li>SUN</li>
+            </ul>
+              
+            <ul class="days">
+              <li></li>  
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+            </ul>
+  <<<<<<< HEAD
+            <button (click)=" getDaysInMonth(0,2021)" >fff</button>
+  =======
+  
+            <button (click)=" getDaysInMonth(0,2021)">hhh</button>
+  
+            <button (click)=" getDaysInMonth(0,2021)" >fff</button>
+  
+  >>>>>>> 4b19fc8e40ed70a53ec49f08477cba5655f247c7
+          <!-- <div id="app-calendar" #appCalendar></div> -->
+            <div class="form-check form-check-inline mt-5">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">Working Day</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">Non-Working Day/Public Holiday</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="form-check-label" for="inlineCheckbox3">Approved</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="form-check-label" for="inlineCheckbox3">Approval Pending</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="form-check-label" for="inlineCheckbox3">Rejected</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="form-check-label" for="inlineCheckbox3">Today</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="form-check-label" for="inlineCheckbox3">Selected Day(s)</label>
+            </div>
+            
+        </div>
+        <div class="col-md-4 p-0 mt-3 check-boxes">
+          <h6 class="text-center">Jan 2021</h6>
+            <ul class="weekdays">
+              <li>MON</li>
+              <li>TUE</li>
+              <li>WED</li>
+              <li>THU</li>
+              <li>FRI</li>
+              <li>SAT</li>
+              <li>SUN</li>
+            </ul>
+              
+            <ul class="days"> 
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+            </ul>
+          <!-- <div id="app-calendar" #appCalendar></div> -->
+          
+        </div>
+        
+        
+        <div class="col-md-4 p-0">
+            <div class="d-flex">
+                <div>
+                    <h5>0 Days</h5>
+                    <small>Used</small>
+                </div>
+                <div class="ml-auto">
+                    <h5>15 Days</h5>
+                    <small>Available</small>
+                </div>
+            </div>
+            <div class="approver my-4">
+                <span class="d-block">Approver</span>
+                <input type="text" id="fname" name="fname">
+            </div>
+            <div class="approver">
+                <span class="d-block">Note</span>
+                <textarea name="comments" id="comments"></textarea>
+            </div>
+            <div class="input-group upload-file">
+              <div class="custom-file my-3 p-0">
+                <input type="file" class="custom-file-input" id="inputGroupFile04">
+                <label class="custom-file-label" for="inputGroupFile04">Add Attachment</label>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
