@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ApplyLeaveComponent } from '../modals/apply-leave/apply-leave.component';
+import { AttendanceComponent } from '../modals/attendance/attendance.component';
 
 @Component({
   selector: 'app-home',
@@ -25,4 +26,8 @@ export class HomeComponent implements OnInit {
     console.log('jhhhh')
     this.modalRef = this.modalService.show(ApplyLeaveComponent, { class: 'modal-lg' });
   }
+  openAttendance(){
+    this.modalRef = this.modalService.show( AttendanceComponent, {class: 'modal-lg'}); 
+ }
+
 }
