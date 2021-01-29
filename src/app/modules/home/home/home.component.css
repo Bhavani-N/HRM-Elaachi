@@ -10,9 +10,9 @@
     background-size: 100% 100%;
     min-height: 100vh;
     display: flex;
-  }
+}
   
-  h5{
+h5{
     font-size: 12px;
     color:#7f1b1d;
     position: relative;
@@ -58,14 +58,9 @@ h5:after {
 /*------------header starts here-------------------*/
 /*-------------main starts here---------------------*/
 .profile{
-    /* margin-top: 100px !important;
-    float: left; */
     align-items: center;
 }
 .heading{
-    /* width: 80%;
-    margin: 0 auto;
-    background-color: white; */
     background-color: white;
     max-height: 55vh;
     min-height: 55vh;
@@ -100,13 +95,9 @@ h5:after {
     border-bottom: none;
 }
 .functions{
-    /* width: 100%;
-    background-color: white;
-    padding:29px; */
     width: 100%;
     background-color: white;
     padding: 29px;
-    max-height: 55vh;
     min-height: 55vh;
 }
 .functions span{
@@ -121,12 +112,9 @@ a{
 /* .quick-access{
     height: 100%;
 } */
-/* .access{
-    margin: 10px;
-} */
+
 .access .fa{
     font-size: 20px;
-    /* padding: 8px 0px; */
 }
 .access{
     border: 1px solid grey;
@@ -138,7 +126,6 @@ a{
 .heading,.functions{
     width:90%;
     margin:0px auto;
-
 }
 
 /*-------------main ends here---------------------*/
