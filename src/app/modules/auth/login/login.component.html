@@ -8,12 +8,15 @@
             <p>{{ error }}</p>
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="alert alert-danger" *ngIf="message">
+                <p >{{message}}</p>
+            </div>
             <div class="form-group">
                 <label for="Email">Email address</label>
-                <input type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" email
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" email
                 placeholder="someone@example.com" required />
-                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                    <div *ngIf="f.username.errors.required">Username is required</div>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Username is required</div>
                 </div>
             </div>
             <div class="form-group">
@@ -32,7 +35,7 @@
                 
                 <!-- <a routerLink="../register" class="btn btn-link">Create new account</a> -->
                 <div class="create-account mt-4">
-                    <button>Create new account</button>
+                    <button type="button" (click)="gotoRegister()" >Create new account</button>
                 </div>
             </div>
         </form>
@@ -46,33 +49,4 @@
         </div> -->
     </div>
 </div>
-
-<!-- <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3 justify-content-center">
-        <div class="alert alert-danger" *ngIf="error">
-            <p>{{ error }}</p>
-        </div>
-        <form name="login" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-            <div class="form-group">
-              <label for="Email1">Email address</label>
-              <input type="email" class="form-control" id="Email1" #email="ngModel" ngModel name="email" email
-               placeholder="someone@example.com" required />
-            </div>
-            <div class="form-group">
-              <label for="Password1">Password</label>
-              <input type="password" class="form-control" id="Password1" #password="ngModel" ngModel name="password" 
-              placeholder="Password" minlength="5" required/>
-            </div>
-            <div class="fgt-pwd">
-                <a routerLink='../resetpassword'>Forgot password?</a>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!authForm.form.valid">
-                {{ isLoginMode ? 'Login': 'Sign Up' }}
-            </button> | 
-            <button type="button" class="btn btn-primary" (click)="onSwitchMode()">
-                Switch to {{ isLoginMode? 'Sign Up': 'Login' }}
-            </button>
-        </form>
-    </div>
-</div> -->
 

@@ -4,12 +4,124 @@
             <h6>CONTACT DETAILS</h6>
             <!-- <div class="float-right" (click)="onEdit()"> -->
                 <div class="float-right">
-                    <i class="fa fa-pencil" routerLink="/userProfile/edit" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" (click)="onEdit()"  aria-hidden="true"></i>
                 <!-- <i class="fa fa-pencil" routerLink="/userProfile/edit/{{emp.$id }}" aria-hidden="true"></i> -->
             </div>
         </div>
     </div>
+<div *ngIf="isEdit === false" >
+    <div class="row" >
+        <div class="col-xs-12">
+            Mobile  :-{{mobile}}
+        </div>
+    </div><br>
     <div class="row">
+        <div class="col-xs-12">
+           ExtNo:-{{extno}}
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-xs-12">
+          Email:-{{Email}}
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-xs-12">
+            Twitter:-{{Twitter}}
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-xs-12">
+            Facebook:-{{FaceBook}}
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-xs-12">
+            LinkedIn:-{{linkedIn}}
+        </div>
+    </div><br><div class="row">
+        <div class="col-xs-12">
+           WorkStation:-{{workstation}}
+        </div>
+    </div><br>
+</div>
+    <form [formGroup]="updateForm" *ngIf="isEdit === true"(ngSubmit)="onSubmit()">
+     <div class="form-group">
+            <label for="mobile">Mobile</label>
+            <input type="tel" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">Mobile No  is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="extno">ExtNo</label>
+            <input type="number" formControlName="extno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.extno.errors }" />
+            <div *ngIf="submitted && f.extno.errors" class="invalid-feedback">
+                <div *ngIf="f.extno.errors.required">ExtNo  is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="twitter">Twitter</label>
+            <input type="text" formControlName="twitter" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.twitter.errors }" />
+            <div *ngIf="submitted && f.twitter.errors" class="invalid-feedback">
+                <div *ngIf="f.twitter.errors.required">Twitter Id  is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="facebook">Facebook</label>
+            <input type="text" formControlName="facebook" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.facebook.errors }" />
+            <div *ngIf="submitted && f.facebook.errors" class="invalid-feedback">
+                <div *ngIf="f.facebook.errors.required">Facebook Id is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="linkedIn">LinkedIn</label>
+            <input type="text" formControlName="linkedIn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.linkedIn.errors }" />
+            <div *ngIf="submitted && f.linkedIn.errors" class="invalid-feedback">
+                <div *ngIf="f.linkedIn.errors.required">LinkedIn Id is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="workstation">WorkStation</label>
+            <input type="text" formControlName="workstation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.workstation.errors }" />
+            <div *ngIf="submitted && f.workstation.errors" class="invalid-feedback">
+                <div *ngIf="f.workstation.errors.required">WorkStation is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="firstname">firstname</label>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">firstname is required</div>
+            </div>
+        </div>
+        
+        <div class="form-group signup py-3">
+            <button [disabled]="loading">
+          
+                Update
+            </button>
+           
+            
+        </div>
+    </form>
+
+
+
+</div>
+    <!-- <div class="row">
         <div class="col-xs-12">
             Mobile  :-{{mobile?.value}}
         </div>
@@ -43,5 +155,4 @@
         <div class="col-xs-12">
             WorkStation  :-{{workStation}}
         </div>
-    </div>
-</div>
+    </div> -->
