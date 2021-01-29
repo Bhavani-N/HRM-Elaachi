@@ -9,6 +9,8 @@ import { UserContactComponent } from "./user-contact/user-contact.component";
 import { UserEditComponent } from "./user-edit/user-edit.component";
 import { UserProfileComponent } from "./user-profile.component";
 import { UserProfileRoutingModule } from "./userProfile-routing.component";
+import { UserSkillsComponent } from './user-skills/user-skills.component';
+import { UserAssetsComponent } from './user-assets/user-assets.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import { UserProfileRoutingModule } from "./userProfile-routing.component";
         UserEditComponent,
         UserContactComponent,
         AddUserComponent,
-        NumberDirective 
+        NumberDirective,
+        UserSkillsComponent,
+        UserAssetsComponent 
     ],
     imports: [
         CommonModule,
