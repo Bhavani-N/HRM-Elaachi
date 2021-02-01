@@ -10,11 +10,12 @@ import { ResetPasswordComponent } from "./reset-password/reset-password.componen
 import { LoginHomeComponent } from "./login-home/login-home.component";
 import { RegisterComponent } from './register/register.component';
 
+
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     {
         path: '', component: LoginHomeComponent, children: [
-          { path: 'login', component: LoginComponent },
+          { path: 'login', component: LoginComponent  },
           { path: 'resetpassword', component: ResetPasswordComponent },
           { path: 'forgotpassword', component: NewPasswordComponent }
         ]

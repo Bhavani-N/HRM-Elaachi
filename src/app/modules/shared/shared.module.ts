@@ -4,11 +4,13 @@ import { NgxModule } from './ngx/ngx.module';
 
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
     declarations: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        AlertComponent
     ],
     imports: [
         CommonModule,
