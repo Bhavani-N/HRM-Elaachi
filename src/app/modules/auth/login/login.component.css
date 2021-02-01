@@ -3,7 +3,9 @@
     background-size: 100% 100%;
 }
 img{
-	width: 90%;
+	width: 80%;
+    display: block;
+    margin: 0px auto;
 }
 input,button{
 	border:none;
@@ -21,7 +23,7 @@ button{
 	background-color:#ac492b;
 }
 button,.create-account button{
-	width:75%;
+	width:67%;
 	border-radius: 15px;
 	margin: 0px auto;
 	padding:7px 20px;
@@ -41,7 +43,7 @@ strong{
     border: 1px solid #ac492b;
 }
 .signin-page{
-	width:35%;
+	width:32%;
 	padding: 25px;
 	background:rgba(0,0,0,.75);
     min-height: 100vh;
