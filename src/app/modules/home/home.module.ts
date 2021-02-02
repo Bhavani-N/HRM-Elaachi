@@ -7,13 +7,11 @@ import { HomeComponent } from "./home/home.component";
 import { ApplyLeaveComponent } from './modals/apply-leave/apply-leave.component';
 import { AttendanceComponent } from "./modals/attendance/attendance.component";
 
-
 @NgModule({
     declarations: [
         HomeComponent,
         ApplyLeaveComponent,
         AttendanceComponent,
-
     ],
     imports: [
         CommonModule,

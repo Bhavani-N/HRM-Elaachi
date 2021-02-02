@@ -1,0 +1,15 @@
+.project-details{
+    height: 80vh;
+}
+.project-details form{
+    border: 2px solid;
+    padding: 20px 30px;
+    border-radius: 15px;
+}
+.project-details input{
+    width: 80%;
+}
+.project-details button{
+    background-color: green;
+    color: white;
+}
