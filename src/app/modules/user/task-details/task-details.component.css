@@ -3,6 +3,7 @@ img{
 }
 select{
     border:none;
+    cursor: pointer;
 }
 select,input,.time-tracking{
     background-color: #e7d2b7;
