@@ -1,39 +1,38 @@
-.card{
-    height:80vh;
+.project-details{
+    height: 80vh;
 }
-.task{
-    margin:auto;
-    border:2px solid black;
-    border-radius:15px;
+.project-details form{
+    border: 2px solid;
+    padding: 20px 30px;
+    border-radius: 15px;
 }
-span{
-    display: block;
-    margin-top: 15px;
+.project-details input,.dropdown{
+    width: 80%;
 }
-input,.dropdown{
-    width:90%;
-    margin-top: 6px;
-    border:1px solid grey;
-    border-radius: 5px;
-}
-.btn{
-    padding:0px;
-}
-button{
-    margin-top: 20px;
-    padding:3px 10px;
+.project-details button{
     background-color: green;
     color: white;
-    border: none;
-    outline:none;
-    border-radius:5px;
-    font-size: 14px;
+    padding: 3px 7px;
+    font-size: 15px;
 }
 a#dropdownMenuLink:focus{
     box-shadow: none;
 }
 ::after {
     position: absolute;
-    right: 9px;
-    top: 12px;
+    right: 10px;
+    top: 15px;
+}
+.btn{
+    padding:4px;
+}
+.dropdown{
+    padding:5px 0px;
+}
+.dropdown,input{
+    border:1px solid grey;
+    border-radius: 5px;
+}
+.dropdown-menu{
+    top:8px !important;
 }
