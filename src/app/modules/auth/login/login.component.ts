@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertService } from 'src/app/services/alert.service';
 
@@ -59,9 +58,9 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authService.login(this.loginForm.value)
             .subscribe(
-                data => {
+                userData => {
                     
-                   console.log(data);                    
+                   console.log(userData);                    
                     this.router.navigate(['/home']);
                   
                 },
