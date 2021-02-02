@@ -11,5 +11,20 @@ export class AddProjectComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  userData = {
+    projectName: '',
+    projectCode: '',
+   
+  };
+  submitted = false;
 
+  
+onSubmit(form,formData) {
+    console.log('submitted formdata',formData);  
+    
+    alert('Form submitted successfully');
+    
+    form.reset();
+  }
 }

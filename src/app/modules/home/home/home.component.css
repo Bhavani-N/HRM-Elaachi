@@ -51,7 +51,6 @@ h5:after {
 .font-icons i{
 	margin: 0px 3px;
 }
-
 .icons .fa {
     margin: 0px 10px;
 }
@@ -113,6 +112,7 @@ a{
 .access{
     border: 1px solid grey;
     border-radius: 7px;
+    margin-top:20px;
 }
 .access:hover{
     background-color: burlywood;
@@ -131,7 +131,7 @@ a{
         margin-left: 10px;
     }
     .heading{
-        width: 90%;
+        width: 100%;
     }
     .work-hours small {
         font-size: 9px;
@@ -151,7 +151,7 @@ a{
         margin-left: 10px;
     }
     .heading{
-        width: 90%;
+        width: 100%;
     }
     .work-hours small {
         font-size: 9px;
@@ -174,7 +174,7 @@ a{
         margin-left: 10px;
     }
     .heading{
-        width: 90%;
+        width: 100%;
     }
     .work-hours small {
         font-size: 9px;
@@ -186,6 +186,10 @@ a{
         width: 100%;
     }
     .quick-access {
-    margin-top: 10px;
+        margin-top: 10px;
+    }
+    .access{
+        margin-top:20px;
+        width:43%;
     }
 }
