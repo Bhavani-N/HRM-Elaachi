@@ -1,41 +1,20 @@
 <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <form (ngSubmit)="onSubmit(project, userData)" #project="ngForm">
-          
-            <div class="form-group">
-              <label for="username">ProjectName</label>
-              <input
-                type="text"
-                id="projectName"
-                class="form-control"
-                [(ngModel)]="userData.projectName" 
-                name="projectName"
-                required>
-            </div>
-            
-            <div class="form-group">
-              <label for="projectCode">projectCode</label>
-              <input
-                type="text"
-                id="projectCode"
-                class="form-control"
-                [(ngModel)]="userData.projectCode"
-                name="projectCode"
-                required
-                projectCode
-                #projectCode="ngModel">
-              <span class="help-block" *ngIf="!projectCode.valid && projectCode.touched">Please enter a projectCode</span>
-            </div>
-          
-        
-          <button
-            class="btn btn-primary"
-            type="submit"
-            [disabled]="!project.valid">Submit</button>
-        </form>
-      </div>
+  <div class="row project-details">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 m-auto p-3">
+      <h3 class="text-center mb-4">ADD NEW PROJECT</h3>
+      <form (ngSubmit)="onSubmit(project, userData)" #project="ngForm">
+        <div class="form-group">
+          <label for="username">Project Name:</label>
+          <input type="text" id="projectName"class="form-control"[(ngModel)]="userData.projectName" name="projectName" required>
+        </div>
+        <div class="form-group">
+          <label for="projectCode">project Code:</label>
+          <input type="text" id="projectCode" class="form-control"[(ngModel)]="userData.projectCode"name="projectCode" required projectCode #projectCode="ngModel">
+          <span class="help-block" *ngIf="!projectCode.valid && projectCode.touched">Please enter a projectCode</span>
+        </div>
+        <button class="btn"type="submit"[disabled]="!project.valid">Submit</button>
+      </form>
     </div>
-  
   </div>
+</div>
   
