@@ -1,7 +1,9 @@
-import { Component,ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { AddProjectComponent } from '../modals/add-project/add-project.component';
+import { AddTaskComponent } from '../modals/add-task/add-task.component';
 
-import { TaskService } from 'src/app/services/task.service';
+
 
 @Component({
   selector: 'app-task-details',
@@ -9,12 +11,10 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit {
-  taskListArray: any[] = [];
-  noData: boolean = false;
-  week: any[] = [];
+  modalRef: BsModalRef | null;
+  modalRef2: BsModalRef;
+  constructor(private modalService: BsModalService) {
 
-  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { 
-    console.log(this.taskListArray)
   }
 
   ngOnInit() {
@@ -60,11 +60,11 @@ export class TaskDetailsComponent implements OnInit {
   // }
 
   onAddTask() {
-    this.router.navigate(['/userProfile/add-task'])
+    this.modalRef = this.modalService.show(AddTaskComponent, { class: 'modal-lg' });
   }
 
-  onSave() {
-    this.router.navigate(['/userProfile/hr-approve'])
+  onAddProject() {
+    this.modalRef = this.modalService.show(AddProjectComponent, { class: 'modal-lg' });
   }
 
   // deleteTask(task: string) {

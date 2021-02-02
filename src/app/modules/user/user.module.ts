@@ -7,10 +7,13 @@ import { ApplyLeaveComponent } from "./apply-leave/apply-leave.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 import { TaskDetailsComponent } from "./task-details/task-details.component";
 import { UserRoutingModule } from "./user-routing.module";
-import { AddTaskComponent } from './add-task/add-task.component';
+
+
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { HRApprovalComponent } from './hr-approval/hr-approval.component';
+import { AddTaskComponent } from "./modals/add-task/add-task.component";
+import { AddProjectComponent } from './modals/add-project/add-project.component';
 
 @NgModule({
     declarations: [
@@ -18,13 +21,19 @@ import { HRApprovalComponent } from './hr-approval/hr-approval.component';
         TaskDetailsComponent,
         ApplyLeaveComponent,
         AddTaskComponent,
-        HRApprovalComponent
+        HRApprovalComponent,
+        AddProjectComponent,
+
     ],
     imports: [
         CommonModule,
         UserRoutingModule,
         PdfViewerModule,
         SharedModule,
+    ],
+    entryComponents: [
+        AddTaskComponent,
+        AddProjectComponent
     ],
     providers: []
 })

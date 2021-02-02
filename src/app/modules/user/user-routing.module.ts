@@ -4,7 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ApplyLeaveComponent } from "./apply-leave/apply-leave.component";
 
 // import { PaySlipComponent } from "./pay-slip/pay-slip.component";
-import { AddTaskComponent } from "./add-task/add-task.component";
+
 import { TaskDetailsComponent } from "./task-details/task-details.component";
 import { HRApprovalComponent } from "./hr-approval/hr-approval.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'paySlip', component: PaySlipComponent },
  { path: 'applyLeave', component: ApplyLeaveComponent },
  { path: 'taskDetails', component: TaskDetailsComponent },
- { path: 'add-task', component: AddTaskComponent },
+ 
  { path: 'hr-approve', component: HRApprovalComponent },
  { path: '', loadChildren: () => import('./user-profile/userProfile.module').then(m => m.UserProfileModule) }
 ];
