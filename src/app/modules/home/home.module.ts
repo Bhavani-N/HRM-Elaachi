@@ -6,14 +6,14 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home/home.component";
 import { ApplyLeaveComponent } from './modals/apply-leave/apply-leave.component';
 import { AttendanceComponent } from "./modals/attendance/attendance.component";
-import { AddTaskComponent } from '../user/modals/add-task/add-task.component';
+
 
 @NgModule({
     declarations: [
         HomeComponent,
         ApplyLeaveComponent,
         AttendanceComponent,
-        AddTaskComponent,
+
     ],
     imports: [
         CommonModule,

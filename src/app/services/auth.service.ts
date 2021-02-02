@@ -25,16 +25,17 @@ export class AuthService {
 
 
     public get userValue() {
-        const token =  localStorage.getItem('token');
+        const token =  localStorage.getItem('userData');
         console.log(token);
         return token;
     }
   
     login(logindata: any) {
         console.log(logindata);
-        return this.http.post<User>(`${environment.API_HOST}/api/v1/staffs/login`, logindata).pipe(map((userData: any) => {
+        return this.http.post<User>(`${environment.API_HOST}/api/v1/auth/login`, logindata).pipe(map((userData:any) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('userData', userData.result.token);
+            console.log(userData)
+            localStorage.setItem('userData', JSON.stringify(userData.result.token));
             this.userSubject.next(userData);
             return userData;
         }));
@@ -50,7 +51,7 @@ export class AuthService {
 
     register(user: User) {
         console.log(user);
-        return this.http.post(`${environment.API_HOST}/api/v1/staffs/signup`, user);
+        return this.http.post(`${environment.API_HOST}/api/v1/auth/signup`, user);
     }
 
     getAll() {
