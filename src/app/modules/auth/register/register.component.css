@@ -34,16 +34,8 @@ button{
 	font-weight: bold;
 }
 .password{
-	/* position: absolute;
-	width: 33%;
-    background: rgba(0,0,0,.85);
-    border-radius: 10px;
-    top: 41px;
-    left: 355px;
-	padding: 25px;
-	border:1px solid grey; */
 	position: absolute;
-	width:33%;
+	width:32%;
 	background:rgba(0,0,0,.85);
 	border-radius: 10px;
 	top:50px;

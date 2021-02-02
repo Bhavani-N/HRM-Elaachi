@@ -15,49 +15,37 @@
                 <div class="alert alert-danger" *ngIf="message">
                     <p >{{message}}</p>
                 </div>
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                    </div>
+                <input type="text" placeholder="First Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
                 </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                    </div>
+                <input type="text" placeholder="Last Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Username</label>
-                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Username is required</div>
-                    </div>
+                <input type="text" placeholder="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Username is required</div>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                    </div>
+                <input type="text" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                 </div>
-                <div class="form-group signup py-3">
+                <div class="form-group signup py-3 m-0">
                     <button [disabled]="loading">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Sign up
                     </button>
-                    <span>Already have an account ?<a routerLink="/login"> Sign in</a></span>
-                    
                 </div>
+                <span>Already have an account ?<a routerLink="/login"> Sign in</a></span>
             </form>
         </div>
-        
+    </div>
+</div>        
 
 
-
+       
 
 
 
