@@ -4,7 +4,6 @@ import { SharedModule } from "../shared/shared.module";
 
 
 import { ApplyLeaveComponent } from "./apply-leave/apply-leave.component";
-import { AttendanceComponent } from "../home/modals/attendance/attendance.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 import { TaskDetailsComponent } from "./task-details/task-details.component";
 import { UserRoutingModule } from "./user-routing.module";
@@ -15,7 +14,6 @@ import { HRApprovalComponent } from './hr-approval/hr-approval.component';
 
 @NgModule({
     declarations: [
-        AttendanceComponent,
         PaySlipComponent,
         TaskDetailsComponent,
         ApplyLeaveComponent,

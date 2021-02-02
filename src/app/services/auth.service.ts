@@ -24,14 +24,12 @@ export class AuthService {
     }
 
 
-    // public get userValue() {
-    //     const token = localStorage.getItem('userData')
-    //     return token;
-    // }
-    public get userValue(): User {
-        return this.userSubject.value;
+    public get userValue() {
+        const token =  localStorage.getItem('token');
+        console.log(token);
+        return token;
     }
-
+  
     login(logindata: any) {
         console.log(logindata);
         return this.http.post<User>(`${environment.API_HOST}/api/v1/staffs/login`, logindata).pipe(map((userData: any) => {
@@ -64,10 +62,10 @@ export class AuthService {
     }
 
     // update(id, params) {
-    //     return this.http.put(`${environment. API_HOST}/users/${id}`, params)
+    //     return this.http.put(`${environment. API_HOST}/api/v1/staffs/`, params)
     //         .pipe(map(x => {
     //             // update stored user if the logged in user updated their own record
-    //             if (id == this.userValue.id) {
+    //             if (id == this.userValue.firstName) {
     //                 // update local storage
     //                 const user = { ...this.userValue, ...params };
     //                 localStorage.setItem('user', JSON.stringify(user));
