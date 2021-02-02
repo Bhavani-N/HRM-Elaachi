@@ -12,14 +12,14 @@ export class HRApprovalComponent implements OnInit {
   // tempTaskListArray =[];
   // noData: boolean = false;
 
-  // constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { 
-  //   this.getTask();
-  // }
+  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { 
+    // this.getTask();
+  }
 
-  // ngOnInit() {
-  //   // this.getTask();
-  //   this.dataState();
-  // }
+  ngOnInit() {
+    // this.getTask();
+    // this.dataState();
+  }
 
   // async getTask() {
   //   let t = await this.taskService.getTaskList().snapshotChanges().subscribe(data=>{
