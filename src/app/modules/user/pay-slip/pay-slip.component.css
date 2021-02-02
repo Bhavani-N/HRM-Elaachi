@@ -110,6 +110,7 @@ button#dropdownMenuButton:focus{
 }
 .payslip select{
 	width: 35%;
+	margin-right: 0px;
 }
 label{
     padding-right:3px;

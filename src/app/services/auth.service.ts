@@ -24,15 +24,19 @@ export class AuthService {
     }
 
 
+    // public get userValue() {
+    //     const token = localStorage.getItem('userData')
+    //     return token;
+    // }
     public get userValue(): User {
         return this.userSubject.value;
     }
 
     login(logindata: any) {
         console.log(logindata);
-        return this.http.post<User>(`${environment.API_HOST}/api/v1/staffs/login`, logindata).pipe(map(userData => {
+        return this.http.post<User>(`${environment.API_HOST}/api/v1/staffs/login`, logindata).pipe(map((userData: any) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('userData', JSON.stringify(userData));
+            localStorage.setItem('userData', userData.result.token);
             this.userSubject.next(userData);
             return userData;
         }));
