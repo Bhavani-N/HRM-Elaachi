@@ -87,14 +87,12 @@
         
     </div>
 </div> -->
-<div class="float-right">
-        <button class="btn" (click)="onAddTask()">Add New Task</button>
+<div class="time-tracking">
+    <div class="d-flex px-3">
+        <button (click)="onAddTask()">Add project</button>
+        <button class="ml-auto" (click)="onAddTask()">Add New Task</button>
         <button (click)="onSave()">Save</button>
     </div>
-    <div class="float-left">
-        <button class="btn" (click)="onAddProject()">Add New Project</button>
-    </div>    
-<div class="time-tracking">
     <div class="col-md-12 row m-0 time-sheet py-2">
         <span>Timesheet For: <b>Dharani Gavvagi</b></span>
         <span>Project: <b>Baxter CoreFlex Services - Flex [PROJ003546R.</b></span>
@@ -148,9 +146,13 @@
                       <td>Baxter CoreFlex Services-Flex</td>
                       <td>Routed</td>
                 </tr>
-                <tr *ngFor="let task of taskListArray">
-                      <th scope="row">{{ task.key }}</th>
-                      <td>{{ task.name }}</td>
+                <!-- <tr *ngFor="let task of taskListArray"> -->
+                    <tr>
+                      <!-- <th scope="row">{{ task.key }}</th>
+                      <td>{{ task.name }}</td> -->
+                    <th scope="row">
+                    </th>
+                    <td></td>
                       <td>
                           <select>
                               <option>Open</option>

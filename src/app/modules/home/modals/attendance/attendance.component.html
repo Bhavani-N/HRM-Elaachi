@@ -1,83 +1,85 @@
-<div class="col-md-12 p-2 text-center attendance">
+<div class="col-md-12 p-2 mt-5 text-center attendance">
     <span>My Attendance</span>
 </div>
 
-<div class="col-md-12 row m-0 content-end attendance-report">
-    <button>Attendance Report (BETA)</button>
+<div class="col-md-12 row m-0  attendance-report">
+    <button>Go back</button>
+    <button class="ml-auto">Attendance Report (BETA)</button>
     <button class="ml-1">
         <i class="fa fa-question-circle" aria-hidden="true"></i>
         <small> Help</small>
     </button> 
 </div>
 
-<!---policies starts-->
-<div class="col-md-12 mt-3">
-    <h6>Policies</h6>
-    <dl>
-        <dd>
-            - Based on the swipe details the Total Time is calculated as the difference of Last Out Time with the First in Time.
-        </dd>
-        <dd>
-            - Calculation of total in time for a particular day is based on First swipe in after 6:30 am in the morning and the last out time before 6:29:59 am the next day. The 24 hours for a day is considered between 6:30 am today and 6:29:59 tommorrow on the swipe details the Total time is calculated as the difference of Last Out Time with the First in Time.
-        </dd>
-        <dd>
-            - Time entry retrieved from Timelog application has been converted to time format, meaning if the data entered in time log is 8.5 the same has been converted to 8:30 in the dashboard. 
-        </dd>
-    </dl>
-</div>
-<!---policies ends-->
-
-<div class="col-md-12 row m-0 content-end">
-    <div class="dropdown">
-        <small>Month</small>
-          <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            01
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">02</a>
-            <a class="dropdown-item" href="#">03</a>
-            <a class="dropdown-item" href="#">04</a>
-            <a class="dropdown-item" href="#">05</a>
-            <a class="dropdown-item" href="#">06</a>
-          </div>
+    <!---policies starts-->
+    <div class="col-md-12 mt-3">
+        <h6>Policies</h6>
+        <dl>
+            <dd>
+                - Based on the swipe details the Total Time is calculated as the difference of Last Out Time with the First in Time.
+            </dd>
+            <dd>
+                - Calculation of total in time for a particular day is based on First swipe in after 6:30 am in the morning and the last out time before 6:29:59 am the next day. The 24 hours for a day is considered between 6:30 am today and 6:29:59 tommorrow on the swipe details the Total time is calculated as the difference of Last Out Time with the First in Time.
+            </dd>
+            <dd>
+                - Time entry retrieved from Timelog application has been converted to time format, meaning if the data entered in time log is 8.5 the same has been converted to 8:30 in the dashboard. 
+            </dd>
+        </dl>
     </div>
-    <div class="dropdown pl-5">
-        <small>Year</small>
-          <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            2021
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">2020</a>
-            <a class="dropdown-item" href="#">2019</a>
-            <a class="dropdown-item" href="#">2018</a>
-            <a class="dropdown-item" href="#">2017</a>
-            <a class="dropdown-item" href="#">2016</a>
-          </div>
+    <!---policies ends-->
+
+    <div class="col-md-12 row m-0 content-end">
+        <div class="dropdown">
+            <small>Month</small>
+            <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                01
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">02</a>
+                <a class="dropdown-item" href="#">03</a>
+                <a class="dropdown-item" href="#">04</a>
+                <a class="dropdown-item" href="#">05</a>
+                <a class="dropdown-item" href="#">06</a>
+            </div>
+        </div>
+        <div class="dropdown pl-5">
+            <small>Year</small>
+            <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                2021
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">2020</a>
+                <a class="dropdown-item" href="#">2019</a>
+                <a class="dropdown-item" href="#">2018</a>
+                <a class="dropdown-item" href="#">2017</a>
+                <a class="dropdown-item" href="#">2016</a>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="col-md-12 row m-0 mt-3 content-end">
-    <div class="form-check-inline">
-        <label>
-            <input type="checkbox" class="form-check-input" checked>Day Type
-        </label>
-        <label>
-            <input type="checkbox" class="form-check-input" checked>Time Log
-        </label>
-        <label>
-            <input type="checkbox" class="form-check-input" checked>Total in Time
-        </label>
-        <label>
-            <input type="checkbox" class="form-check-input" checked>On Duty Time
-        </label>
+    <div class="col-md-12 row m-0 mt-3 content-end">
+        <div class="form-check-inline">
+            <label>
+                <input type="checkbox" class="form-check-input" checked>Day Type
+            </label>
+            <label>
+                <input type="checkbox" class="form-check-input" checked>Time Log
+            </label>
+            <label>
+                <input type="checkbox" class="form-check-input" checked>Total in Time
+            </label>
+            <label>
+                <input type="checkbox" class="form-check-input" checked>On Duty Time
+            </label>
+        </div>
     </div>
-</div>
 
-<div class="col-md-12 row m-0 average-swipe mt-3">
-    <span>Avg Swipe in - 00.00</span>
-    <span>Avg Swipe out - 00.00</span>
-    <span>Avg Total in - 09.00</span>
-    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-</div>
+    <div class="col-md-12 row m-0 average-swipe mt-3">
+        <span>Avg Swipe in - 00.00</span>
+        <span>Avg Swipe out - 00.00</span>
+        <span>Avg Total in - 09.00</span>
+        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+    </div>
 
-<div id="app-calendar" #appCalendar></div>
+    <div id="app-calendar" #appCalendar></div>
+</div>

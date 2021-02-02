@@ -20,9 +20,8 @@ button,.dropdown,.form-check-inline,.average-swipe span,.average-swipe .fa{
 	width:auto;
 }
 
-
-#header{
-	border:1px solid grey;
+.attendance-page{
+	padding:20px;
 }
 .attendance span{
 	border-bottom:2px solid black;
