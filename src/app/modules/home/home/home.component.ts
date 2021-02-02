@@ -30,4 +30,5 @@ export class HomeComponent implements OnInit {
     this.modalRef = this.modalService.show( AttendanceComponent, {class: 'modal-lg'}); 
  }
 
+
 }
