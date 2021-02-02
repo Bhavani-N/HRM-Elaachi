@@ -2,3 +2,10 @@
     background-color: #e9ecef;
     padding: 15px;
 }
+.signup button{
+    border: none;
+    outline: none;
+    background-color: grey;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
