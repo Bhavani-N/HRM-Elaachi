@@ -53,13 +53,13 @@
                       <td>24.00</td>
 
                 </tr>
-                <tr>
-                      <th scope="row">PROJ003546R.0034051...</th>
-                      <td>Baxter CoreFlex Services-Flex</td>
+                <tr *ngFor="let prj of projectList">
+                      <th scope="row">{{ prj.projectCode }}</th>
+                      <td>{{ prj.projectName }}</td>
                       <td>Routed</td>
                 </tr>
                 <!-- <tr *ngFor="let task of taskListArray"> -->
-                    <tr>
+                    <tr >
                       <!-- <th scope="row">{{ task.key }}</th>
                       <td>{{ task.name }}</td> -->
                     <th scope="row">

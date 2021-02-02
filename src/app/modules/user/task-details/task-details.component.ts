@@ -14,14 +14,13 @@ import { AddTaskComponent } from '../modals/add-task/add-task.component';
 export class TaskDetailsComponent implements OnInit {
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
-  taskList:any[]=[];
+  projectList:any;
   constructor(private modalService: BsModalService, private taskService:TaskService) {
 
   }
 
   ngOnInit() {
-    this.taskService.getDetails();
-    console.log(this.taskService.getDetails());
+    this.displayDetails();
   }
 
  
@@ -32,9 +31,19 @@ export class TaskDetailsComponent implements OnInit {
   onAddProject() {
     this.modalRef = this.modalService.show(AddProjectComponent, { class: 'modal-lg' });
   }
-//  displayDetails(){
-//    this.taskService.getDetails()
-//  }
+
+  async displayDetails(){
+    this.taskService.getDetails().subscribe(
+      (res: any) => {
+        console.log('::::::::::::::::::::::::>>>>>>>>>>>>>>>>>>>>>', res);
+        this.projectList = res.result;
+        console.log(this.projectList)
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 
   
 
