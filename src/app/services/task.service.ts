@@ -1,4 +1,8 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
+import { Subject } from "rxjs";
 // import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 
 @Injectable({
@@ -6,9 +10,22 @@ import { Injectable } from "@angular/core";
 })
 
 export class TaskService {
-  // taskList: AngularFireList<any>;
+  // private projectDetails = new Subject<any>();
+  constructor(private router: Router,
+    private http: HttpClient) { }
 
-  constructor() {}
+
+  addProject(projectData: any) {
+    return this.http.post(`${environment.API_HOST}/api/v1/projects`, projectData);
+  }
+  getDetails() {
+   return this.http.get(`${environment.API_HOST}/api/v1/projects`);
+  
+}
+
+}
+
+
 
   // getTaskList() {
   //   this.taskList = this.firebasedb.list('taskList');
@@ -29,4 +46,4 @@ export class TaskService {
   // removeTask(task: string) {
   //   this.taskList.remove(task);
   // }
-}
+

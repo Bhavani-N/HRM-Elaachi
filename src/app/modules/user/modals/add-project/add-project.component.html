@@ -1,17 +1,18 @@
 <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <form (ngSubmit)="onSubmit(project, userData)" #project="ngForm">
+        <form (ngSubmit)="onSubmit(projectForm)" #projectForm="ngForm">
           
             <div class="form-group">
-              <label for="username">ProjectName</label>
+              <label for="projectName">ProjectName</label>
               <input
                 type="text"
                 id="projectName"
                 class="form-control"
                 [(ngModel)]="userData.projectName" 
                 name="projectName"
-                required>
+                required
+               >
             </div>
             
             <div class="form-group">
@@ -23,16 +24,15 @@
                 [(ngModel)]="userData.projectCode"
                 name="projectCode"
                 required
-                projectCode
-                #projectCode="ngModel">
-              <span class="help-block" *ngIf="!projectCode.valid && projectCode.touched">Please enter a projectCode</span>
+               >
+              <p class="help" style="color: red;" >Please enter a projectCode</p>
             </div>
           
         
           <button
             class="btn btn-primary"
             type="submit"
-            [disabled]="!project.valid">Submit</button>
+            >Submit</button>
         </form>
       </div>
     </div>
