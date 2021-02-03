@@ -1,4 +1,3 @@
-
 <div class="time-tracking">
     <div class="d-flex">
         <button class="ml-4"(click)="onAddProject()">Go back</button>
@@ -16,8 +15,8 @@
     </div>
     <div class="container">
         <div class="table-responsive mt-3">
-              <table class="table">
-              <thead class="title">
+            <table class="table">
+                <thead class="title">
                     <tr>
                         <th class="text-center" rowspan="2">ID</th>
                         <th rowspan="2">Name</th>
@@ -34,68 +33,88 @@
                     <tr>
                         <th *ngFor="let dates of week">{{ dates }}</th>
                     </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <th scope="row">
-                          <select>
-                              <option></option>
-                          </select>
-                      </th>
-                      <td>Total</td>
-                      <td></td>
-                      <td>9.00</td>
-                      <td>9.00</td>
-                      <td>9.00</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>24.00</td>
-
-                </tr>
-                <tr *ngFor="let prj of projectList">
-                      <th scope="row">{{ prj.projectCode }}</th>
-                      <td>{{ prj.projectName }}</td>
-                      <td>Routed</td>
-                </tr>
-                <!-- <tr *ngFor="let task of taskListArray"> -->
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <select>
+                                <option></option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                        </th>
+                        <td>Total</td>
+                        <td></td>
+                        <td>9.00</td>
+                        <td>9.00</td>
+                        <td>9.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>24.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <select>
+                                <option>PROJ003546R.0034051...</option>
+                                <option>HRM PROJECT</option>
+                                <option>HOTEL PROJECT</option>
+                                <option>RESTAURANT PROJECT</option>
+                            </select>
+                        </th>
+                        <td class="space">Baxter CoreFlex Services - Flex</td>
+                        <td>Routed</td>
+                        <td>9.00</td>
+                        <td>9.00</td>
+                        <td>9.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>24.00</td>
+                    </tr>
+            <!-- <tr *ngFor="let prj of projectList">
+                    <th scope="row">{{ prj.projectCode }}</th>
+                    <td>{{ prj.projectName }}</td>
+                    <td>Routed</td>
+            </tr> -->
+            <!-- <tr *ngFor="let task of taskListArray"> -->
                     <tr >
-                      <!-- <th scope="row">{{ task.key }}</th>
-                      <td>{{ task.name }}</td> -->
-                    <th scope="row">
-                    </th>
-                    <td></td>
-                      <td>
-                          <select>
-                              <option>Open</option>
-                              <option>Completed</option>
-                          </select>
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input type="number" name="">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>
-                          <input class="bg-grey" type="number">
-                      </td>
-                      <td>0.00</td>
-                </tr>
-              </tbody>
+                    <!-- <th scope="row">{{ task.key }}</th>
+                    <td>{{ task.name }}</td> -->
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>
+                            <select>
+                                <option>Open</option>
+                                <option>Completed</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input class="bg-grey" type="number">
+                        </td>
+                        <td>
+                            <input class="bg-grey" type="number">
+                        </td>
+                        <td>0.00</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
