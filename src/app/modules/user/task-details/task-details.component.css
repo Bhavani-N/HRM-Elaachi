@@ -73,7 +73,10 @@ ul li a:hover{
     padding-right:8px;
     width:auto;
 }
-
+.space{
+    width:250px;
+    display:block;
+}
 .border-r{
     border-right:2px solid grey;
 }
@@ -95,9 +98,12 @@ ul li a:hover{
     border-bottom:2px solid grey;
 }
 .table td,.table th{
-    border-top:1px solid grey;
+
     vertical-align:middle;
 }
-
+option{
+    font-size: 14px;
+    margin:15px 0px;
+}
    
 

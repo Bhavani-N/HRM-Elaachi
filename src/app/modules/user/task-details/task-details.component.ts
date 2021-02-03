@@ -17,6 +17,7 @@ export class TaskDetailsComponent implements OnInit {
   modalRef2: BsModalRef;
   projectList:any;
   projectCode:any;
+  taskList: any;
   selectedObject :any;
   constructor(private modalService: BsModalService, private taskService:TaskService, private router:Router) {
 
@@ -24,6 +25,7 @@ export class TaskDetailsComponent implements OnInit {
 
   ngOnInit() {
      this.displayDetails();
+     this.displayTaskDetails();
   }
 
  
@@ -54,13 +56,26 @@ export class TaskDetailsComponent implements OnInit {
       }
     )
   }
+  async displayTaskDetails(){
+    this.taskService.getTaskDetails().subscribe(
+      (res: any) => {
+        console.log('::::::::::::::::::::::::>>>>>>>>>>>>>>>>>>>>>', res);
+        this.taskList = res.result;
+        
+        console.log(this.taskList)
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 
   goBack(){
     this.router.navigate(['/home']);
   }
-  handleChange(index) {
-    console.log(this.projectCode[index]);
-    this.selectedObject = this.projectCode[index];
-  }
+  // handleChange(projectCode) {
+  //   console.log(this.projectCode[projectCode]);
+  //   this.selectedObject = this.projectCode[index];
+  // }
 
  }

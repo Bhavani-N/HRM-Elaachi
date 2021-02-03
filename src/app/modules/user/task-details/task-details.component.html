@@ -39,6 +39,8 @@
                         <th scope="row">
                             <select>
                                 <option></option>
+                                <option>1</option>
+                                <option>2</option>
                             </select>
                         </th>
                         <td>Total</td>
@@ -51,38 +53,34 @@
                         <td></td>
                         <td></td>
                         <td>24.00</td>
-
                     </tr>
                     <tr>
-                        <!-- *ngFor="let prj of projectList"
-                      <th scope="row">{{ prj.projectCode }}</th>
-                      <td>{{ prj.projectName }}</td>
-                      <td>Routed</td> -->
-
-                        <td>
-                            <select name="cmbTipoTexto"
-                                class="form-control form-control-sm col-sm-7" id="cmbTipoTexto" [(ngModel)]="projectCode">
+                        <th scope="row">
+                            <select name="cmbTipoTexto" [(ngModel)]="projectCode">
                                 <option *ngFor="let prj of projectList" [value]="prj.projectName">{{ prj.projectCode }}
                                 </option>
                             </select>
-                        </td>
-
-                        <td >
-                     {{projectCode}}
-                        </td>
-
-                    </tr>
-                    <!-- <tr *ngFor="let task of taskListArray"> -->
-                    <tr>
-                        <!-- <th scope="row">{{ task.key }}</th>
-                      <td>{{ task.name }}</td> -->
-                        <th scope="row">
                         </th>
+                        <td class="space">4556 {{projectCode}}</td>
+                        <td>Routed</td>
+                        <td>9.00</td>
+                        <td>9.00</td>
+                        <td>9.00</td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>24.00</td>
+                    </tr>
+
+                    <tr *ngFor="let task of taskList">
+
+                        <th scope="row">{{ task.taskCode }}</th>
+                        <td>234{{task.taskName}}</td>
                         <td>
                             <select>
-                                <option>Open</option>
-                                <option>Completed</option>
+                                <option>{{task.status}}</option>
+                                <option>{{!task.status}}</option>
                             </select>
                         </td>
                         <td>
