@@ -22,6 +22,9 @@ export class TaskService {
    return this.http.get(`${environment.API_HOST}/api/v1/projects`);
   
 }
+  addTask(taskData:any){
+    return this.http.post(`${environment.API_HOST}/api/v1/tasks`, taskData);
+  }
 
 }
 

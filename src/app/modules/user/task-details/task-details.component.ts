@@ -20,16 +20,23 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.displayDetails();
+     this.displayDetails();
   }
 
  
   onAddTask() {
-    this.modalRef = this.modalService.show(AddTaskComponent, { class: 'modal-lg' });
+    const modalRef = this.modalService.show(AddTaskComponent, { class: 'modal-lg' });
+    // modalRef.content.onClose.subscribe((res) => {
+    //   console.log(res, 'fghjkl;')
+    // })
   }
 
   onAddProject() {
-    this.modalRef = this.modalService.show(AddProjectComponent, { class: 'modal-lg' });
+    const modalRef = this.modalService.show(AddProjectComponent, { class: 'modal-lg' });
+    modalRef.content.onClose.subscribe((res) => {
+      console.log(res, 'fghjkl;')
+      this.projectList.unshift(res);
+    })
   }
 
   async displayDetails(){
@@ -47,4 +54,4 @@ export class TaskDetailsComponent implements OnInit {
 
   
 
-}
+ }

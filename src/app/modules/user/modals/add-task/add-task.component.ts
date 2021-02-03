@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {  NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -7,9 +11,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTaskComponent implements OnInit {
 
-  constructor() { }
+  loading: boolean;
+  message: any;
+  userData: any;
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private modalService: BsModalService,
+    private modalRef: BsModalRef
+  ) { }
+  @ViewChild('taskForm', null) taskForm: NgForm;
 
   ngOnInit() {
+    this.userData = {
+      taskName: '',
+      taskCode: '',
+
+    };
   }
 
+  submitted = false;
+
+
+  onSubmit() {
+    console.log(this.taskForm.value);
+
+    if (this.taskForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    this.taskService.addTask(this.taskForm.value)
+
+      .subscribe(
+        data => {
+
+          console.log(data);
+          this.modalRef.hide();
+        },
+        error => {
+          this.message = error.error.message;
+          console.log(error.error.message);
+
+          this.loading = false;
+        });
+
+
+    // this.projectForm.reset();
+  }
 }
+

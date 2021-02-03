@@ -3,6 +3,7 @@ import {  NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { TaskService } from 'src/app/services/task.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-add-project',
@@ -12,6 +13,7 @@ import { TaskService } from 'src/app/services/task.service';
 export class AddProjectComponent implements OnInit {
 
   loading: boolean;
+  onClose: Subject<any>;
   message: any;
   userData: any;
   constructor(
@@ -29,6 +31,7 @@ export class AddProjectComponent implements OnInit {
       projectCode: '',
 
     };
+    this.onClose = new Subject();
   }
 
   submitted = false;
@@ -45,9 +48,10 @@ export class AddProjectComponent implements OnInit {
     this.taskService.addProject(this.projectForm.value)
 
       .subscribe(
-        data => {
+        (data: any) => {
 
           console.log(data);
+          this.onClose.next(data.result);
           this.modalRef.hide();
         },
         error => {
@@ -58,6 +62,6 @@ export class AddProjectComponent implements OnInit {
         });
 
 
-    this.projectForm.reset();
+    // this.projectForm.reset();
   }
 }
