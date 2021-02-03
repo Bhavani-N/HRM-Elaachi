@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { TaskService } from 'src/app/services/task.service';
@@ -15,25 +16,33 @@ import { AddTaskComponent } from '../modals/add-task/add-task.component';
 export class TaskDetailsComponent implements OnInit {
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
-  projectList:any;
-  projectCode:any;
+  projectList: any;
+  private projectDetails: any;
+  // projectCode:any;
   taskList: any;
-  selectedObject :any;
-  constructor(private modalService: BsModalService, private taskService:TaskService, private router:Router) {
+  taskStatus: any;
+  selectedObject: any;
+  projectForm: FormGroup;
+  projectName: any;
+  constructor(private modalService: BsModalService, private taskService: TaskService, private router: Router, private fb: FormBuilder) {
 
   }
 
   ngOnInit() {
-     this.displayDetails();
-     this.displayTaskDetails();
+    this.displayDetails();
+    this.displayTaskDetails();
+    this.projectForm = this.fb.group({
+      projectCode: ['']
+    });
   }
 
- 
+
   onAddTask() {
-    const modalRef = this.modalService.show(AddTaskComponent, { class: 'modal-lg' });
-    // modalRef.content.onClose.subscribe((res) => {
-    //   console.log(res, 'fghjkl;')
-    // })
+    console.log(this.projectDetails)
+    const modalRef = this.modalService.show(AddTaskComponent, { class: 'modal-lg', initialState: { projectData: this.projectDetails } });
+    modalRef.content.onClose.subscribe((res) => {
+      console.log(res, 'fghjkl;')
+    })
   }
 
   onAddProject() {
@@ -44,24 +53,50 @@ export class TaskDetailsComponent implements OnInit {
     })
   }
 
-  async displayDetails(){
+  async displayDetails() {
     this.taskService.getDetails().subscribe(
       (res: any) => {
         console.log('::::::::::::::::::::::::>>>>>>>>>>>>>>>>>>>>>', res);
         this.projectList = res.result;
         console.log(this.projectList)
+        this.projectDetails = res.result[0];
+        this.projectName = res.result[0].projectName;
+
       },
       error => {
         console.log(error);
       }
     )
+
   }
-  async displayTaskDetails(){
+   dummyArray :any= []
+
+  getData(data) {
+    console.log(data)
+    this.projectName = data.projectName;
+    this.projectDetails = data;
+    this.dummyArray=[]
+    console.log(this.projectDetails)
+    this.taskList.map(obj => {
+      console.log(obj._id)
+      if(obj.project){
+      if(data._id == obj.project._id){
+       this.dummyArray.push(obj)
+        console.log(this.dummyArray)
+      }
+    }
+    })
+
+    // this.projectDetails = dummyArray;
+    
+  }
+
+  async displayTaskDetails() {
     this.taskService.getTaskDetails().subscribe(
       (res: any) => {
         console.log('::::::::::::::::::::::::>>>>>>>>>>>>>>>>>>>>>', res);
         this.taskList = res.result;
-        
+
         console.log(this.taskList)
       },
       error => {
@@ -70,12 +105,9 @@ export class TaskDetailsComponent implements OnInit {
     )
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['/home']);
   }
-  // handleChange(projectCode) {
-  //   console.log(this.projectCode[projectCode]);
-  //   this.selectedObject = this.projectCode[index];
-  // }
 
- }
+
+}

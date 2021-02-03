@@ -7,7 +7,7 @@ import { ApplyLeaveComponent } from "./apply-leave/apply-leave.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 import { TaskDetailsComponent } from "./task-details/task-details.component";
 import { UserRoutingModule } from "./user-routing.module";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -32,7 +32,8 @@ import { AddProjectComponent } from './modals/add-project/add-project.component'
         UserRoutingModule,
         PdfViewerModule,
         SharedModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     entryComponents: [
         AddTaskComponent,
