@@ -1,0 +1,38 @@
+.project-details{
+    height: 80vh;
+}
+.project-details form{
+    border: 2px solid;
+    padding: 20px 30px;
+    border-radius: 15px;
+}
+.project-details input,.dropdown{
+    width: 80%;
+}
+.project-details button{
+    background-color: green;
+    color: white;
+    padding: 3px 7px;
+    font-size: 15px;
+}
+a#dropdownMenuLink:focus{
+    box-shadow: none;
+}
+::after {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+.btn{
+    padding:4px;
+}
+.dropdown{
+    padding:5px 0px;
+}
+.dropdown,input{
+    border:1px solid grey;
+    border-radius: 5px;
+}
+.dropdown-menu{
+    top:8px !important;
+}

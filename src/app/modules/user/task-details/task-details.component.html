@@ -1,92 +1,4 @@
-<!-- <div class="time-tracking">
-    <div class="col-md-12 row m-0 time-sheet py-2">
-        <span>Timesheet For: <b>Dharani Gavvagi</b></span>
-        <span>Project: <b>Baxter CoreFlex Services - Flex [PROJ003546R.</b></span>
-        <span>Work-Item Type: <b>All</b></span>
-        <span>Work-Item Status: <b>Multiple</b></span>
-        <span>TimeSheet Status: <b>All</b></span>
-        <span>Week: <b>04-Jan-2021</b></span>
-        <div class="float-right">
-            <button class="btn btn-success" (click)="onAddTask()">Add New Task</button>
-        </div>
-    </div>
-    <div class="container">
-        <div class="col-md-12 row m-0">
-            <div class="table-responsive">
-                <table class="table">
-                <thead class="title">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Planned Effort</th>
-                        <th>Logged Effort</th>
-                        <th>Rem Effort</th>
-                        <th>Mon 04/01</th>
-                        <th>Tue 05/01</th>
-                        <th>Wed 06/01</th>
-                        <th>Thu 07/01</th>
-                        <th>Fri 08/01</th>
-                        <th>Sat 09/01</th>
-                        <th>Sun 10/01</th>
-                        <th>Billing Hour</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">
-                            <select>
-                                <option></option>
-                            </select>
-                        </th>
-                        <td>Total</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td>
-    
-                    </tr>
-                    <tr>
-                        <th scope="row">PROJ003546R.0034051...</th>
-                        <td>Baxter CoreFlex Services-Flex</td>
-                        <td>Routed</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td>
-                    </tr>
-                <tr *ngFor="let task of taskListArray">
-                    <th scope="row">{{ task.key }}</th>
-                    <td>{{ task.name }}</td>
-                    <td>
-                        <select>
-                            <option>Open</option>
-                            <option>Completed</option>
-                        </select>
-                    </td>
-                </tr>
-                </tbody>
-                </table>
-            </div>
-        </div>
-        
-    </div>
-</div> -->
+
 <div class="time-tracking">
     <div class="d-flex">
         <button class="ml-4"(click)="onAddProject()">Go back</button>
@@ -142,13 +54,13 @@
                       <td>24.00</td>
 
                 </tr>
-                <tr>
-                      <th scope="row">PROJ003546R.0034051...</th>
-                      <td>Baxter CoreFlex Services-Flex</td>
+                <tr *ngFor="let prj of projectList">
+                      <th scope="row">{{ prj.projectCode }}</th>
+                      <td>{{ prj.projectName }}</td>
                       <td>Routed</td>
                 </tr>
                 <!-- <tr *ngFor="let task of taskListArray"> -->
-                    <tr>
+                    <tr >
                       <!-- <th scope="row">{{ task.key }}</th>
                       <td>{{ task.name }}</td> -->
                     <th scope="row">

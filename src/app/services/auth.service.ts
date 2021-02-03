@@ -18,7 +18,7 @@ export class AuthService {
         private router: Router,
         private http: HttpClient
     ) {
-        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('token')));
+        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('token' || null)));
         this.user = this.userSubject.asObservable();
         this.isloggedIn = false;
     }
@@ -44,7 +44,7 @@ export class AuthService {
 
     logout() {
         // remove user from local storage and set current user to null
-        localStorage.removeItem('user');
+        localStorage.removeItem('userData');
         this.userSubject.next(null);
         this.router.navigate(['login']);
     }
