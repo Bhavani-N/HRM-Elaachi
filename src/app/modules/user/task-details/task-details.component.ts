@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { TaskService } from 'src/app/services/task.service';
 import { AddProjectComponent } from '../modals/add-project/add-project.component';
@@ -15,7 +16,9 @@ export class TaskDetailsComponent implements OnInit {
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
   projectList:any;
-  constructor(private modalService: BsModalService, private taskService:TaskService) {
+  projectCode:any;
+  selectedObject :any;
+  constructor(private modalService: BsModalService, private taskService:TaskService, private router:Router) {
 
   }
 
@@ -52,6 +55,12 @@ export class TaskDetailsComponent implements OnInit {
     )
   }
 
-  
+  goBack(){
+    this.router.navigate(['/home']);
+  }
+  handleChange(index) {
+    console.log(this.projectCode[index]);
+    this.selectedObject = this.projectCode[index];
+  }
 
  }
