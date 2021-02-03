@@ -1,9 +1,10 @@
 <div class="time-tracking">
+    <form [formGroup]="taskForm" (ngSubmit)="onSave()">
     <div class="d-flex">
         <button class="ml-4"(click)="onAddProject()">Go back</button>
         <button class="ml-auto"(click)="onAddProject()">Add project</button>
         <button  (click)="onAddTask()">Add New Task</button>
-        <button (click)="onSave()">Save</button>
+        <button type="submit">Save</button>
     </div>
     <div class="col-md-12 row m-0 time-sheet py-2">
         <span>Timesheet For: <b>Dharani Gavvagi</b></span>
@@ -34,7 +35,7 @@
                         <th *ngFor="let dates of week">{{ dates }}</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr>
                         <th scope="row">
                             <select>
@@ -74,48 +75,49 @@
                         <td></td>
                         <td>24.00</td>
                     </tr>
-            <!-- <tr *ngFor="let prj of projectList">
-                    <th scope="row">{{ prj.projectCode }}</th>
-                    <td>{{ prj.projectName }}</td>
-                    <td>Routed</td>
-            </tr> -->
-            <!-- <tr *ngFor="let task of taskListArray"> -->
                     <tr >
-                    <!-- <th scope="row">{{ task.key }}</th>
-                    <td>{{ task.name }}</td> -->
-                        <th scope="row"></th>
-                        <td></td>
+                        <th scope="row">
+                        <input formControlName="taskName" class="form-control">
+                        </th>
                         <td>
-                            <select>
+                        	<input formControlName="taskCode" class="form-control">
+                        </td>
+                        <td>
+                            <select formControlName="status">
                                 <option>Open</option>
                                 <option>Completed</option>
                             </select>
                         </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="number">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="number">
-                        </td>
-                        <td>0.00</td>
+                        <ng-container formArrayName="columns">
+                            <td *ngFor="let col of taskForm.controls.columns.controls;
+                            let i=index; let l=last" [formGroupName]="i">
+                                <input formControlName="duration" class="form-control">
+                            </td>
+                            <!-- <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input class="bg-grey" type="number">
+                            </td>
+                            <td>
+                                <input class="bg-grey" type="number">
+                            </td> -->
+                            <td>0.00</td>
+                        </ng-container>
+                         <button type="button" (click)="addNewCoulmn()" class="btn btn-primary">Add columns</button>   
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    </form>
 </div>
