@@ -10,7 +10,6 @@ import { UserRoutingModule } from "./user-routing.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { HRApprovalComponent } from './hr-approval/hr-approval.component';
 import { AddTaskComponent } from "./modals/add-task/add-task.component";
@@ -24,8 +23,6 @@ import { AddProjectComponent } from './modals/add-project/add-project.component'
         AddTaskComponent,
         HRApprovalComponent,
         AddProjectComponent,
-      
-
     ],
     imports: [
         CommonModule,

@@ -26,101 +26,89 @@
 
             </td>
         </form>
-        <!-- <select id="project" formControlName="projectCode">
-            <option *ngFor="let prj of projectList" [value]="prj.projectName">{{prj.projectCode}}</option>
-        </select> -->
 
     </div>
 
     <div class="container">
         <div class="table-responsive mt-3">
-            <form [formGroup]="taskForm">
-                <table class="table">
-                    <thead class="title">
-                        <tr>
-                            <th class="text-center" rowspan="2">ID</th>
-                            <th rowspan="2">Name</th>
-                            <th class="border-r" rowspan="2">Status</th>
-                            <th>Mon</th>
-                            <th>Tue</th>
-                            <th>Wed</th>
-                            <th>Thu</th>
-                            <th>Fri</th>
-                            <th>Sat</th>
-                            <th>Sun</th>
-                            <th class="border-l" rowspan="2">Billing Hour</th>
-                        </tr>
-                        <tr>
-                            <th *ngFor="let dates of week">{{ dates }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+            <form [formGroup]="billingForm"> 
+            <table class="table">
+                <thead class="title">
+                    <tr>
+                        <th class="text-center" rowspan="2">ID</th>
+                        <th rowspan="2">Name</th>
+                        <th class="border-r" rowspan="2">Status</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                        <th class="border-l" rowspan="2">Billing Hour</th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let dates of week">{{ dates }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
 
-                            <td>Total</td>
-                            <td></td>
-                            <td>9.00</td>
-                            <td>9.00</td>
-                            <td>9.00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>24.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
+                        </th>
+                        <td>Total</td>
+                        <td></td>
+                        <td>9.00</td>
+                        <td>9.00</td>
+                        <td>9.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>24.00</td>
+                    </tr>
 
-                            </th>
-                            <form [formGroup]="projectForm">
-                                <td>
+                    <tr>
+                        <th scope="row">
 
-                                    <select formControlName="projectCode" name="projectCode">
-                                        <option *ngFor="let prj of projects" [ngValue]="projectCode">
-                                            {{ prj.projectCode }}
-                                        </option>
-                                    </select>
+                        </th>
 
-                                </td>
-                            </form>
-                        </tr>
+                    </tr>
+                    <tr *ngFor="let task of dummyArray">
 
-                        <tr *ngFor="let task of dummyArray">
-
-                            <th scope="row">{{ task.taskCode }}</th>
-                            <td>{{task.taskName}}</td>
-                            <td>
-                                <select [(ngModel)]="taskStatus" name="taskStatus">
-                                    <option>{{task.status}}</option>
-
-                                </select>
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input class="bg-grey" type="number">
-                            </td>
-                            <td>
-                                <input class="bg-grey" type="number">
-                            </td>
-                            <td>0.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
+                        <th scope="row">{{ task.taskCode }}</th>
+                        <td>{{task.taskName}}</td>
+                        <td>
+                            <select [ngModelOptions]="{standalone:true}" [(ngModel)]="taskStatus">
+                                <option>{{task.status}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="firstDay" formControlName="TimeTaken" >
+                        </td>
+                        <td>
+                            <input type="number" name="secondDay" formControlName="TimeTaken" >
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input class="bg-grey" type="number">
+                        </td>
+                        <td>
+                            <input class="bg-grey" type="number">
+                        </td>
+                        <td>0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
         </div>
     </div>
 </div>
