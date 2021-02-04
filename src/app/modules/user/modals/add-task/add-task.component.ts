@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import {  NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subject } from 'rxjs';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class AddTaskComponent implements OnInit {
   loading: boolean;
   message: any;
   userData: any;
-  projectData: any
+  projectData: any;
+  public onClose: Subject<any>;
   constructor(
     private taskService: TaskService,
     private router: Router,
@@ -30,8 +32,9 @@ export class AddTaskComponent implements OnInit {
       taskName: '',
       taskCode: '',
       project: this.projectData._id
-        
+     
     };
+    this.onClose = new Subject();
   }
 
   submitted = false;
