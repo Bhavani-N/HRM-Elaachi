@@ -24,19 +24,19 @@ export class TaskDetailsComponent implements OnInit {
   projectForm: FormGroup;
   projectName: any;
   submitted = false;
-  dummyArray: any = []
+  dummyArray :any= [];
   taskForm: FormGroup;
   userDetails: any;
   loading: boolean;
 
   constructor(private modalService: BsModalService,
-    private taskService: TaskService,
-    private router: Router,
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private route: ActivatedRoute
-  ) {
-    this.getCurrentWeek()
+     private taskService: TaskService, 
+     private router: Router, 
+     private fb: FormBuilder,
+     private authService:AuthService,
+     private route: ActivatedRoute
+     ) {
+    this.getCurrentWeek();
   }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class TaskDetailsComponent implements OnInit {
     this.taskForm = this.fb.group({
       TaskTiming: this.fb.array([this.initColumns()])
     })
-
+    this.addNewColumn();
     this.userDetails = JSON.parse(this.authService.getUserDetails);
   }
 
@@ -62,8 +62,12 @@ export class TaskDetailsComponent implements OnInit {
     })
   }
 
+
+
   addNewColumn() {
-    this.formArr.push(this.initColumns());
+    for (let i=1; i<7; i++) {
+      this.formArr.push(this.initColumns());
+    }
   }
 
   deleteColumn(index: number) {
@@ -74,31 +78,31 @@ export class TaskDetailsComponent implements OnInit {
     console.log(this.taskForm.value)
 
 
-    // this.submitted = true;
-    // console.log(this.taskForm.value);
+    this.submitted = true;
+    console.log(this.taskForm.value);
 
 
-    // // stop here if form is invalid
-    // if (this.taskForm.invalid) {
-    //   return;
-    // }
+    // stop here if form is invalid
+    if (this.taskForm.invalid) {
+      return;
+    }
 
-    // this.loading = true;
-    // this.taskForm.value['taskName']=this.taskList
-    // this.taskService.addTask(this.taskForm.value)
+    this.loading = true;
+    this.taskForm.value['taskName']=this.taskList
+    this.taskService.addTask(this.taskForm.value)
 
-    //   .subscribe(
-    //     data => {
+      .subscribe(
+        data => {
 
-    //       console.log(data);
-    //       this.router.navigate(['../home'], { relativeTo: this.route });
-    //     },
-    //     error => {
+          console.log(data);
+          this.router.navigate(['../home'], { relativeTo: this.route });
+        },
+        error => {
 
-    //       console.log(error.error.message);
+          console.log(error.error.message);
 
-    //       this.loading = false;
-    //     });
+          this.loading = false;
+        });
   }
 
 
@@ -138,7 +142,7 @@ export class TaskDetailsComponent implements OnInit {
 
 
   getData(data) {
-    console.log(data)
+    console.log(data);
     this.projectName = data.projectName;
     this.projectDetails = data;
     this.dummyArray = []
