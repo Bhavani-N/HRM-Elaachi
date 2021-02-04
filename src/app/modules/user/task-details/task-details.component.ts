@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormArray, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { TaskService } from 'src/app/services/task.service';
 import { AddProjectComponent } from '../modals/add-project/add-project.component';
 import { AddTaskComponent } from '../modals/add-task/add-task.component';
-
+import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-task-details',
   templateUrl: './task-details.component.html',
@@ -24,10 +24,18 @@ export class TaskDetailsComponent implements OnInit {
   projectForm: FormGroup;
   projectName: any;
   submitted = false;
-  dummyArray :any= []
+  dummyArray: any = []
   taskForm: FormGroup;
+  userDetails: any;
+  loading: boolean;
 
-  constructor(private modalService: BsModalService, private taskService: TaskService, private router: Router, private fb: FormBuilder) {
+  constructor(private modalService: BsModalService,
+    private taskService: TaskService,
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ) {
     this.getCurrentWeek()
   }
 
@@ -37,9 +45,11 @@ export class TaskDetailsComponent implements OnInit {
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
-    this.taskForm=this.fb.group({
+    this.taskForm = this.fb.group({
       TaskTiming: this.fb.array([this.initColumns()])
     })
+
+    this.userDetails = JSON.parse(this.authService.getUserDetails);
   }
 
   get formArr() {
@@ -62,7 +72,36 @@ export class TaskDetailsComponent implements OnInit {
 
   onSave() {
     console.log(this.taskForm.value)
+
+
+    // this.submitted = true;
+    // console.log(this.taskForm.value);
+
+
+    // // stop here if form is invalid
+    // if (this.taskForm.invalid) {
+    //   return;
+    // }
+
+    // this.loading = true;
+    // this.taskForm.value['taskName']=this.taskList
+    // this.taskService.addTask(this.taskForm.value)
+
+    //   .subscribe(
+    //     data => {
+
+    //       console.log(data);
+    //       this.router.navigate(['../home'], { relativeTo: this.route });
+    //     },
+    //     error => {
+
+    //       console.log(error.error.message);
+
+    //       this.loading = false;
+    //     });
   }
+
+
 
   onAddTask() {
     console.log(this.projectDetails)
@@ -96,26 +135,26 @@ export class TaskDetailsComponent implements OnInit {
     )
 
   }
-  
+
 
   getData(data) {
     console.log(data)
     this.projectName = data.projectName;
     this.projectDetails = data;
-    this.dummyArray=[]
+    this.dummyArray = []
     console.log(this.projectDetails)
     this.taskList.map(obj => {
       console.log(obj._id)
-      if(obj.project){
-      if(data._id == obj.project._id){
-       this.dummyArray.push(obj)
-        console.log(this.dummyArray)
+      if (obj.project) {
+        if (data._id == obj.project._id) {
+          this.dummyArray.push(obj)
+          console.log(this.dummyArray)
+        }
       }
-    }
     })
 
     // this.projectDetails = dummyArray;
-    
+
   }
 
   getCurrentWeek() {
