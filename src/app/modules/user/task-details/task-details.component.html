@@ -1,10 +1,10 @@
 <div class="time-tracking">
     <form [formGroup]="taskForm" (ngSubmit)="onSave()">
     <div class="d-flex">
-        <button class="ml-4"(click)="onAddProject()">Go back</button>
-        <button class="ml-auto"(click)="onAddProject()">Add project</button>
-        <button  (click)="onAddTask()">Add New Task</button>
-        <button type="submit">Save</button>
+        <button class="ml-4" (click)="goBack()">Go back</button>
+        <button class="ml-auto" (click)="onAddProject()">Add project</button>
+        <button (click)="onAddTask()">Add New Task</button>
+        <button (click)="onSave()">Save</button>
     </div>
     <div class="col-md-12 row m-0 time-sheet py-2">
         <span>Timesheet For: <b>Dharani Gavvagi</b></span>
@@ -14,6 +14,25 @@
         <span>TimeSheet Status: <b>All</b></span>
         <span>Week: <b>04-Jan-2021</b></span>
     </div>
+    <div>
+        <label for="project"><b>Project:</b></label>
+        <form [formGroup]="projectForm">
+            <td>
+
+                <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value.projectCode)">
+                    <option *ngFor="let prj of projectList" [ngValue]="prj">
+                        {{ prj.projectCode }}
+                    </option>
+                </select> ProjectName:<b> {{projectName}}</b>
+
+            </td>
+        </form>
+        <!-- <select id="project" formControlName="projectCode">
+            <option *ngFor="let prj of projectList" [value]="prj.projectName">{{prj.projectCode}}</option>
+        </select> -->
+
+    </div>
+
     <div class="container">
         <div class="table-responsive mt-3">
             <table class="table">
@@ -57,35 +76,27 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <select>
-                                <option>PROJ003546R.0034051...</option>
-                                <option>HRM PROJECT</option>
-                                <option>HOTEL PROJECT</option>
-                                <option>RESTAURANT PROJECT</option>
-                            </select>
+
                         </th>
-                        <td class="space">Baxter CoreFlex Services - Flex</td>
-                        <td>Routed</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td>
+                        <form [formGroup]="projectForm">
+                            <td>
+
+                                <select formControlName="projectCode">
+                                    <option *ngFor="let prj of projects" [ngValue]="projectCode">
+                                        {{ prj.projectCode }}
+                                    </option>
+                                </select>
+
+                            </td>
+                        </form>
                     </tr>
-                    <tr >
-                        <th scope="row">
-                        <input formControlName="taskName" class="form-control">
-                        </th>
+                    <tr *ngFor="let task of dummyArray">
+
+                        <th scope="row">{{ task.taskCode }}</th>
+                        <td>234{{task.taskName}}</td>
                         <td>
-                        	<input formControlName="taskCode" class="form-control">
-                        </td>
-                        <td>
-                            <select formControlName="status">
-                                <option>Open</option>
-                                <option>Completed</option>
+                            <select [(ngModel)]="taskStatus">
+                                <option>{{task.status}}</option>
                             </select>
                         </td>
                         <ng-container formArrayName="columns">

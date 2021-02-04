@@ -19,12 +19,17 @@ export class TaskService {
     return this.http.post(`${environment.API_HOST}/api/v1/projects`, projectData);
   }
   getDetails() {
-   return this.http.get(`${environment.API_HOST}/api/v1/projects`);
-  
-}
+    return this.http.get(`${environment.API_HOST}/api/v1/projects`);
 
+  }
+  addTask(taskData: any) {
+    return this.http.post(`${environment.API_HOST}/api/v1/tasks`, taskData);
+  }
+  getTaskDetails() {
+    return this.http.get(`${environment.API_HOST}/api/v1/tasks`);
+    
+  }
 }
-
 
 
   // getTaskList() {
