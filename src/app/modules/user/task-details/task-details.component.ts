@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder,FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { TaskService } from 'src/app/services/task.service';
@@ -25,7 +25,7 @@ export class TaskDetailsComponent implements OnInit {
   projectName: any;
   submitted = false;
   dummyArray :any= []
-  billingForm: FormGroup;
+  taskForm: FormGroup;
 
   constructor(private modalService: BsModalService, private taskService: TaskService, private router: Router, private fb: FormBuilder) {
     this.getCurrentWeek()
@@ -37,9 +37,31 @@ export class TaskDetailsComponent implements OnInit {
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
-    this.billingForm=this.fb.group({
-      TimeTaken:['']
+    this.taskForm=this.fb.group({
+      TaskTiming: this.fb.array([this.initColumns()])
     })
+  }
+
+  get formArr() {
+    return this.taskForm.get("TaskTiming") as FormArray;
+  }
+
+  initColumns() {
+    return this.fb.group({
+      TimeTaken: [""]
+    })
+  }
+
+  addNewColumn() {
+    this.formArr.push(this.initColumns());
+  }
+
+  deleteColumn(index: number) {
+    this.formArr.removeAt(index);
+  }
+
+  onSave() {
+    console.log(this.taskForm.value)
   }
 
   onAddTask() {
