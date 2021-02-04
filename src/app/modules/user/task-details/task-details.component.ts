@@ -25,6 +25,7 @@ export class TaskDetailsComponent implements OnInit {
   projectName: any;
   submitted = false;
   dummyArray :any= []
+  billingForm: FormGroup;
 
   constructor(private modalService: BsModalService, private taskService: TaskService, private router: Router, private fb: FormBuilder) {
     this.getCurrentWeek()
@@ -36,6 +37,9 @@ export class TaskDetailsComponent implements OnInit {
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
+    this.billingForm=this.fb.group({
+      TimeTaken:['']
+    })
   }
 
   onAddTask() {
