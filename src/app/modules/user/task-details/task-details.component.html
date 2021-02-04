@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-12 row m-0 time-sheet py-2">
         <span>Timesheet For: <b>Dharani Gavvagi</b></span>
-        <span>Project: <b>Baxter CoreFlex Services - Flex [PROJ003546R.</b></span>
+        <span>Project: <b>{{projectName}}</b></span>
         <span>Work-Item Type: <b>All</b></span>
         <span>Work-Item Status: <b>Multiple</b></span>
         <span>TimeSheet Status: <b>All</b></span>
@@ -34,97 +34,93 @@
 
     <div class="container">
         <div class="table-responsive mt-3">
-            <table class="table">
-                <thead class="title">
-                    <tr>
-                        <th class="text-center" rowspan="2">ID</th>
-                        <th rowspan="2">Name</th>
-                        <th class="border-r" rowspan="2">Status</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                        <th>Sun</th>
-                        <th class="border-l" rowspan="2">Billing Hour</th>
-                    </tr>
-                    <tr>
-                        <th *ngFor="let dates of week">{{ dates }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">
-                            <select>
-                                <option></option>
-                                <option>1</option>
-                                <option>2</option>
-                            </select>
-                        </th>
-                        <td>Total</td>
-                        <td></td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
+            <form>
+                <table class="table">
+                    <thead class="title">
+                        <tr>
+                            <th class="text-center" rowspan="2">ID</th>
+                            <th rowspan="2">Name</th>
+                            <th class="border-r" rowspan="2">Status</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
+                            <th class="border-l" rowspan="2">Billing Hour</th>
+                        </tr>
+                        <tr>
+                            <th *ngFor="let dates of week">{{ dates }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
 
-                        </th>
-                        <form [formGroup]="projectForm">
+                            <td>Total</td>
+                            <td></td>
+                            <td>9.00</td>
+                            <td>9.00</td>
+                            <td>9.00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>24.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+
+                            </th>
+                            <form [formGroup]="projectForm">
+                                <td>
+
+                                    <select formControlName="projectCode" name="projectCode">
+                                        <option *ngFor="let prj of projects" [ngValue]="projectCode">
+                                            {{ prj.projectCode }}
+                                        </option>
+                                    </select>
+
+                                </td>
+                            </form>
+                        </tr>
+
+                        <tr *ngFor="let task of dummyArray">
+
+                            <th scope="row">{{ task.taskCode }}</th>
+                            <td>{{task.taskName}}</td>
                             <td>
+                                <select [(ngModel)]="taskStatus" name="taskStatus">
+                                    <option>{{task.status}}</option>
 
-                                <select formControlName="projectCode">
-                                    <option *ngFor="let prj of projects" [ngValue]="projectCode">
-                                        {{ prj.projectCode }}
-                                    </option>
                                 </select>
-
                             </td>
-                        </form>
-                    </tr>
-
-                    <tr *ngFor="let task of dummyArray">
-
-                        <th scope="row">{{ task.taskCode }}</th>
-                        <td>234{{task.taskName}}</td>
-                        <td>
-                            <select [(ngModel)]="taskStatus">
-                                <option>{{task.status}}</option>
-
-                            </select>
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input type="number" name="">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="number">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="number">
-                        </td>
-                        <td>0.00</td>
-                    </tr>
-                </tbody>
-            </table>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input type="number" name="">
+                            </td>
+                            <td>
+                                <input class="bg-grey" type="number">
+                            </td>
+                            <td>
+                                <input class="bg-grey" type="number">
+                            </td>
+                            <td>0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </div>
 </div>
