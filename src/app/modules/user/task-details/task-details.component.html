@@ -1,5 +1,4 @@
 <div class="time-tracking">
-    <form [formGroup]="taskForm" (ngSubmit)="onSave()">
     <div class="d-flex">
         <button class="ml-4" (click)="goBack()">Go back</button>
         <button class="ml-auto" (click)="onAddProject()">Add project</button>
@@ -99,36 +98,31 @@
                                 <option>{{task.status}}</option>
                             </select>
                         </td>
-                        <ng-container formArrayName="columns">
-                            <td *ngFor="let col of taskForm.controls.columns.controls;
-                            let i=index; let l=last" [formGroupName]="i">
-                                <input formControlName="duration" class="form-control">
-                            </td>
-                            <!-- <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input type="number" name="">
-                            </td>
-                            <td>
-                                <input class="bg-grey" type="number">
-                            </td>
-                            <td>
-                                <input class="bg-grey" type="number">
-                            </td> -->
-                            <td>0.00</td>
-                        </ng-container>
-                         <button type="button" (click)="addNewCoulmn()" class="btn btn-primary">Add columns</button>   
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input type="number" name="">
+                        </td>
+                        <td>
+                            <input class="bg-grey" type="number">
+                        </td>
+                        <td>
+                            <input class="bg-grey" type="number">
+                        </td>
+                        <td>0.00</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    </form>
 </div>

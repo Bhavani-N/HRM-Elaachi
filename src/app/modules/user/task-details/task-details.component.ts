@@ -6,8 +6,6 @@ import { TaskService } from 'src/app/services/task.service';
 import { AddProjectComponent } from '../modals/add-project/add-project.component';
 import { AddTaskComponent } from '../modals/add-task/add-task.component';
 
-import { FormGroup, FormArray, FormBuilder, Validators } from "@angular/forms";
-
 @Component({
   selector: 'app-task-details',
   templateUrl: './task-details.component.html',
@@ -17,6 +15,7 @@ export class TaskDetailsComponent implements OnInit {
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
   projectList: any;
+  week: any = [];
   private projectDetails: any;
   // projectCode:any;
   taskList: any;
@@ -24,11 +23,11 @@ export class TaskDetailsComponent implements OnInit {
   selectedObject: any;
   projectForm: FormGroup;
   projectName: any;
-public taskForm: FormGroup;
   submitted = false;
+  dummyArray :any= []
 
   constructor(private modalService: BsModalService, private taskService: TaskService, private router: Router, private fb: FormBuilder) {
-
+    this.getCurrentWeek()
   }
 
   ngOnInit() {
@@ -71,7 +70,7 @@ public taskForm: FormGroup;
     )
 
   }
-   dummyArray :any= []
+  
 
   getData(data) {
     console.log(data)
@@ -93,10 +92,23 @@ public taskForm: FormGroup;
     
   }
 
+  getCurrentWeek() {
+    let curr = new Date();
+
+    for (let i = 1; i <= 7; i++) {
+      let first = curr.getDate() - curr.getDay() + i;
+      // let day = new Date(curr.setDate(first)).toISOString().slice(0, 10).split('-').reverse().join('/')
+      let day = new Date(curr.setDate(first)).toISOString().slice(5, 10).split('-').reverse().join('/')
+      this.week.push(day)
+    }
+
+    console.log(this.week)
+  }
+
   async displayTaskDetails() {
     this.taskService.getTaskDetails().subscribe(
       (res: any) => {
-        console.log('::::::::::::::::::::::::>>>>>>>>>>>>>>>>>>>>>', res);
+        console.log('>>>>>>>>>>', res);
         this.taskList = res.result;
 
         console.log(this.taskList)
