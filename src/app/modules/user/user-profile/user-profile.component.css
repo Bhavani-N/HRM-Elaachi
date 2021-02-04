@@ -2,7 +2,10 @@
     background-color: #0b090a;
     color: #ffffff;
 }
-
+a{
+    color:#7a331d;
+    font-weight: 700;
+}
 img {
     /* max-width: 100%; */
     width: 40%;

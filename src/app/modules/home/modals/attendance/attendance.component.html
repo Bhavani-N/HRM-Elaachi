@@ -1,37 +1,42 @@
-<div class="col-md-12 p-2 mt-5 text-center attendance">
+<div class="col-md-12 mt-4 text-center attendance">
     <span>My Attendance</span>
 </div>
-
-<div class="col-md-12 row m-0  attendance-report">
-    <button>Go back</button>
-    <button class="ml-auto">Attendance Report (BETA)</button>
-    <button class="ml-1">
-        <i class="fa fa-question-circle" aria-hidden="true"></i>
-        <small> Help</small>
-    </button> 
-</div>
+<div class="m-4 attendance-page">
+    <div class="col-md-12 row m-0 attendance-report">
+        <button class="ml-auto">Attendance Report (BETA)</button>
+        <button class="ml-1">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <small> Help</small>
+        </button>
+    </div>
 
     <!---policies starts-->
     <div class="col-md-12 mt-3">
         <h6>Policies</h6>
         <dl>
             <dd>
-                - Based on the swipe details the Total Time is calculated as the difference of Last Out Time with the First in Time.
+                - Based on the swipe details the Total Time is calculated as the difference of Last Out Time with the
+                First in Time.
             </dd>
             <dd>
-                - Calculation of total in time for a particular day is based on First swipe in after 6:30 am in the morning and the last out time before 6:29:59 am the next day. The 24 hours for a day is considered between 6:30 am today and 6:29:59 tommorrow on the swipe details the Total time is calculated as the difference of Last Out Time with the First in Time.
+                - Calculation of total in time for a particular day is based on First swipe in after 6:30 am in the
+                morning and the last out time before 6:29:59 am the next day. The 24 hours for a day is considered
+                between 6:30 am today and 6:29:59 tommorrow on the swipe details the Total time is calculated as the
+                difference of Last Out Time with the First in Time.
             </dd>
             <dd>
-                - Time entry retrieved from Timelog application has been converted to time format, meaning if the data entered in time log is 8.5 the same has been converted to 8:30 in the dashboard. 
+                - Time entry retrieved from Timelog application has been converted to time format, meaning if the data
+                entered in time log is 8.5 the same has been converted to 8:30 in the dashboard.
             </dd>
         </dl>
     </div>
     <!---policies ends-->
 
-    <div class="col-md-12 row m-0 content-end">
+    <div class="col-md-12 row m-0 mt-3 content-end">
         <div class="dropdown">
             <small>Month</small>
-            <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 01
             </button>
             <div class="dropdown-menu">
@@ -44,7 +49,8 @@
         </div>
         <div class="dropdown pl-5">
             <small>Year</small>
-            <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn dropdown-toggle d-block" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 2021
             </button>
             <div class="dropdown-menu">
@@ -57,7 +63,7 @@
         </div>
     </div>
 
-    <div class="col-md-12 row m-0 mt-3 content-end">
+    <div class="col-md-12 row m-0 mt-4 content-end">
         <div class="form-check-inline">
             <label>
                 <input type="checkbox" class="form-check-input" checked>Day Type
@@ -74,12 +80,329 @@
         </div>
     </div>
 
-    <div class="col-md-12 row m-0 average-swipe mt-3">
+    <div class="col-md-12 row m-0 average-swipe mt-4">
         <span>Avg Swipe in - 00.00</span>
         <span>Avg Swipe out - 00.00</span>
         <span>Avg Total in - 09.00</span>
         <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
     </div>
 
-    <!-- <div id="app-calendar" #appCalendar></div> -->
+    <div class="scroll mt-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">1</th>
+                    <th scope="col">2</th>
+                    <th scope="col">3</th>
+                    <th scope="col">4</th>
+                    <th scope="col">5</th>
+                    <th scope="col">6</th>
+                    <th scope="col">7</th>
+                    <th scope="col">8</th>
+                    <th scope="col">9</th>
+                    <th scope="col">10</th>
+                    <th scope="col">11</th>
+                    <th scope="col">12</th>
+                    <th scope="col">13</th>
+                    <th scope="col">14</th>
+                    <th scope="col">15</th>
+                    <th scope="col">16</th>
+                    <th scope="col">17</th>
+                    <th scope="col">18</th>
+                    <th scope="col">19</th>
+                    <th scope="col">20</th>
+                    <th scope="col">21</th>
+                    <th scope="col">22</th>
+                    <th scope="col">23</th>
+                    <th scope="col">24</th>
+                    <th scope="col">25</th>
+                    <th scope="col">26</th>
+                    <th scope="col">27</th>
+                    <th scope="col">28</th>
+                    <th scope="col">29</th>
+                    <th scope="col">30</th>
+                    <th scope="col">31</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Day</th>
+                    <td>FRI</td>
+                    <td>SAT</td>
+                    <td>SUN</td>
+                    <td>MON</td>
+                    <td>TUE</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td>SAT</td>
+                    <td>SUN</td>
+                    <td>MON</td>
+                    <td>TUE</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td>SAT</td>
+                    <td>SUN</td>
+                    <td>MON</td>
+                    <td>TUE</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td>SAT</td>
+                    <td>SUN</td>
+                    <td>MON</td>
+                    <td>TUE</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td>SAT</td>
+                    <td>SUN</td>
+                </tr>
+                <tr class="bg-color">
+                    <th class="bg-white" scope="row">Day Type</th>
+                    <td>HL</td>
+                    <td>WO</td>
+                    <td>WO</td>
+                    <td>PR</td>
+                    <td>PR</td>
+                    <td>PR</td>
+                    <td class="bg-danger">AN</td>
+                    <td></td>
+                    <td>WO</td>
+                    <td>WO</td>
+                    <td class="bg-primary">LV</td>
+                    <td class="bg-primary">LV</td>
+                    <td class="bg-primary">LV</td>
+                    <td>HL</td>
+                    <td class="bg-primary">LV</td>
+                    <td>WO</td>
+                    <td>WO</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>WO</td>
+                    <td>WO</td>
+                    <td></td>
+                    <td>HL</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>WO</td>
+                    <td>WO</td>
+                </tr>
+                <tr>
+                    <th scope="row">in Time</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Out Time</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Time Log</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Total in Time</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">On Duty Time</th>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>09.00</td>
+                    <td>09.00</td>
+                    <td>09.00</td>
+                    <td>0.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Swipe in + On Duty</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>09.00</td>
+                    <td>09.00</td>
+                    <td>09.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- <div id="app-calendar" #appCalendar></div> -->
 <!-- </div> -->

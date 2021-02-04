@@ -6,7 +6,7 @@ import { TaskService } from 'src/app/services/task.service';
 import { AddProjectComponent } from '../modals/add-project/add-project.component';
 import { AddTaskComponent } from '../modals/add-task/add-task.component';
 
-
+import { FormGroup, FormArray, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-task-details',
@@ -24,6 +24,9 @@ export class TaskDetailsComponent implements OnInit {
   selectedObject: any;
   projectForm: FormGroup;
   projectName: any;
+public taskForm: FormGroup;
+  submitted = false;
+
   constructor(private modalService: BsModalService, private taskService: TaskService, private router: Router, private fb: FormBuilder) {
 
   }
@@ -35,7 +38,6 @@ export class TaskDetailsComponent implements OnInit {
       projectCode: ['']
     });
   }
-
 
   onAddTask() {
     console.log(this.projectDetails)

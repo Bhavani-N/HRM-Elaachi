@@ -1,5 +1,17 @@
 .heading{
-    background-image: linear-gradient(to right,red,blue );
+    background-color: lightblue;
+    /* linear-gradient(to right,red,blue ); */
+}
+.assets-page{
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    margin:0px auto;
+}
+.heading th{
+    border-top:2px solid black;
+}
+h3{
+    color:#ac492b;
 }
 /* .assets select{
     width: 15%;
