@@ -24,11 +24,11 @@ export class TaskDetailsComponent implements OnInit {
   projectForm: FormGroup;
   projectName: any;
   submitted = false;
-  dummyArray :any= []
+  dummyArray :any= [];
   taskForm: FormGroup;
 
   constructor(private modalService: BsModalService, private taskService: TaskService, private router: Router, private fb: FormBuilder) {
-    this.getCurrentWeek()
+    this.getCurrentWeek();
   }
 
   ngOnInit() {
@@ -40,6 +40,7 @@ export class TaskDetailsComponent implements OnInit {
     this.taskForm=this.fb.group({
       TaskTiming: this.fb.array([this.initColumns()])
     })
+    this.addNewColumn();
   }
 
   get formArr() {
@@ -52,8 +53,12 @@ export class TaskDetailsComponent implements OnInit {
     })
   }
 
+
+
   addNewColumn() {
-    this.formArr.push(this.initColumns());
+    for (let i=1; i<7; i++) {
+      this.formArr.push(this.initColumns());
+    }
   }
 
   deleteColumn(index: number) {
@@ -99,7 +104,7 @@ export class TaskDetailsComponent implements OnInit {
   
 
   getData(data) {
-    console.log(data)
+    console.log(data);
     this.projectName = data.projectName;
     this.projectDetails = data;
     this.dummyArray=[]

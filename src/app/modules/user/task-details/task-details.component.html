@@ -18,12 +18,13 @@
         <form [formGroup]="projectForm">
             <td>
 
-                <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value.projectCode)">
-                    <option *ngFor="let prj of projectList" [ngValue]="prj">
-                        {{ prj.projectCode }}
+                <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value.projectCode)" >
+                    <option>Select Project</option>
+                    <option *ngFor="let prj of projectList" [ngValue]="prj" >
+                    
+                         {{ prj.projectCode }}
                     </option>
                 </select> ProjectName:<b> {{projectName}}</b>
-
             </td>
         </form>
 
@@ -89,8 +90,8 @@
                                     <input type="number" formControlName="TimeTaken">
                                 </td>
                             </ng-container>
-                            <button *ngIf="taskForm.controls.TaskTiming.controls.length > 1" (click)="deleteColumn(i)"
-                                type="button">Delete</button>
+                            <!-- <button *ngIf="taskForm.controls.TaskTiming.controls.length > 1" (click)="deleteColumn(i)"
+                                type="button">Delete</button> -->
 
                             <!-- <td>
                                 <input type="number" name="firstDay" formControlName="TimeTaken" >
@@ -119,7 +120,7 @@
                 </table>
                 <button type="submit">Save</button>
             </form>
-            <button type="button" (click)="addNewColumn()">Add new Column</button> 
+            <!-- <button type="button" (click)="addNewColumn()">Add new Column</button>  -->
         </div>
     </div>
 </div>
