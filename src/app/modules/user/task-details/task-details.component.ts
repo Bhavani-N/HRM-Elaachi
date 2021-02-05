@@ -24,18 +24,20 @@ export class TaskDetailsComponent implements OnInit {
   projectForm: FormGroup;
   projectName: any;
   submitted = false;
-  dummyArray :any= [];
+  dummyArray: any = [];
   taskForm: FormGroup;
   userDetails: any;
   loading: boolean;
+  billableHours: any;
 
-  constructor(private modalService: BsModalService,
-     private taskService: TaskService, 
-     private router: Router, 
-     private fb: FormBuilder,
-     private authService:AuthService,
-     private route: ActivatedRoute
-     ) {
+  constructor(
+    private modalService: BsModalService,
+    private taskService: TaskService,
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ) {
     this.getCurrentWeek();
   }
 
@@ -45,11 +47,53 @@ export class TaskDetailsComponent implements OnInit {
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
-    this.taskForm = this.fb.group({
-      TaskTiming: this.fb.array([this.initColumns()])
-    })
+    this.initTaskArrayForm();
     this.addNewColumn();
     this.userDetails = JSON.parse(this.authService.getUserDetails);
+
+  }
+  // this.fb.array([this.initColumns()])
+  private initTaskArrayForm(data: any = {}) {
+    this.taskForm = new FormGroup({
+      taskList: new FormArray([])
+    })
+  }
+
+  private initTaskForm(data: any = {}) {
+    const taskData = this.fb.group({
+      TaskTiming: new FormGroup({
+        duration: new FormArray((data.TaskTiming.duration.length > 0) ? this.initTimeTakingDurationForm(data.TaskTiming.duration) : []),
+      }),
+      BillableHrs: new FormControl(data.BillableHrs || null),
+      _id: new FormControl(data._id || null),
+      status: new FormControl(data.status || null),
+      taskCode: new FormControl(data.taskCode || null),
+      taskName: new FormControl(data.taskName || null),
+      createdAt: new FormControl(data.createdAt || null)
+    })
+    return taskData;
+  }
+
+  private initTimeTakingDurationForm(data) {
+    // return new FormGroup({
+    //   TimeTaken: new FormControl(data.TimeTaken || null),
+    //   dates: new FormControl(data.dates || null),
+    //   _id: new FormControl(data._id || null)
+    // })
+    const dummyTimings = [];
+    data.map((timingData) => {
+      dummyTimings.push(new FormGroup({
+        TimeTaken: new FormControl(timingData.TimeTaken || null),
+        dates: new FormControl(timingData.dates || null),
+        _id: new FormControl(timingData._id || null)
+      }));
+    })
+    return dummyTimings;
+    // if(data.TaskTiming.duration.length > 0) {
+    //   data.TaskTiming.duration.map((timingData) => {
+    //     dummyTimings.push(this.initTimeTakingDurationForm(timingData));
+    //   })
+    // }
   }
 
   get formArr() {
@@ -65,7 +109,7 @@ export class TaskDetailsComponent implements OnInit {
 
 
   addNewColumn() {
-    for (let i=1; i<7; i++) {
+    for (let i = 1; i < 7; i++) {
       this.formArr.push(this.initColumns());
     }
   }
@@ -88,21 +132,22 @@ export class TaskDetailsComponent implements OnInit {
     }
 
     this.loading = true;
-    this.taskForm.value['taskName']=this.taskList
-    this.taskService.addTask(this.taskForm.value)
+    this.taskForm.value['_id'] = this.taskList
+    console.log(this.taskForm.value)
+    // this.taskService.updateTaskDetails(this.taskForm.value)
 
-      .subscribe(
-        data => {
+    //   .subscribe(
+    //     data => {
 
-          console.log(data);
-          this.router.navigate(['../home'], { relativeTo: this.route });
-        },
-        error => {
+    //       console.log(data);
+    //       this.router.navigate(['../home'], { relativeTo: this.route });
+    //     },
+    //     error => {
 
-          console.log(error.error.message);
+    //       console.log(error.error.message);
 
-          this.loading = false;
-        });
+    //       this.loading = false;
+    //     });
   }
 
 
@@ -180,7 +225,13 @@ export class TaskDetailsComponent implements OnInit {
         console.log('>>>>>>>>>>', res);
         this.taskList = res.result;
 
-        console.log(this.taskList)
+        this.taskList.map((data: any) => {
+
+          const taskFormData = <FormArray>this.taskForm.get('taskList');
+          taskFormData.push(this.initTaskForm(data));
+          console.log(taskFormData)
+
+        })
       },
       error => {
         console.log(error);
