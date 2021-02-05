@@ -4,6 +4,7 @@ img{
 select{
     border:none;
     cursor: pointer;
+    width: 100%;
 }
 select,input,.time-tracking{
     background-color: #e7d2b7;
@@ -42,7 +43,7 @@ ul li a:hover{
     color:white;
 }
 .bg-grey{
-    background-color: grey;
+    background-color: lightgray;
 }
 
 
@@ -68,6 +69,10 @@ ul li a:hover{
     padding-left: 10px;
     font-size: 18px;
 }
+.time-sheet{
+    background-color: #e9d4b7;
+    padding: 20px;
+}
 .time-sheet span{
     font-size: 11px;
     padding-right:8px;
@@ -87,19 +92,31 @@ ul li a:hover{
     text-align: center;
 }
 .table-responsive{
-    border:1px solid black;
+    /* border:1px solid black; */
     /* height: 400px; */
 }
 .title th{
     text-align: left;
 }
+.title th span{
+    display: block;
+    padding-top: 10px;
+}
 .table thead th{
     vertical-align: middle;
-    border-bottom:2px solid grey;
+    /* border-bottom:2px solid grey; */
+    line-height: 10px;
+    background-color: #e9d4b7;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
 }
+
 .table td,.table th{
 
     vertical-align:middle;
+}
+.table>tbody{
+    background-color: #e3cfb4;
 }
 option{
     font-size: 14px;
