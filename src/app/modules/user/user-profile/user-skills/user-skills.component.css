@@ -3,7 +3,8 @@ button{
     outline: none;
     background-color:darkgrey;
     padding: 3px 9px;
-    margin:18px 0px 15px 20px;
+    margin:10px 0px 15px 20px;
+    border-radius: 5px;
 }
 input{
     width: 91%;
@@ -11,10 +12,12 @@ input{
     outline: none;
     border: 1px solid grey;
     padding: 4px;
-    margin:20px 0px 0px 20px;
+    margin:10px 0px 5px 20px;
 }
 .skills{
     margin:0px auto;
     padding:25px;
-    background-color: #e9ecef;;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    border:1px solid grey;
 }

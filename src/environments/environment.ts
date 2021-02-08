@@ -1,7 +1,8 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const API_HOST = `https://elaachi-hrm.herokuapp.com`;
+ const API_HOST = `https://elaachi-hrm.herokuapp.com`;
+// const API_HOST = 'https://70ad0a3d8a3d.ngrok.io';
 export const environment = {
   production: false,
   // firebase: {

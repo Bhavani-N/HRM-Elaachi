@@ -18,7 +18,7 @@ export class AuthService {
         private router: Router,
         private http: HttpClient
     ) {
-        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('token' || null)));
+        this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('' || null)));
         this.user = this.userSubject.asObservable();
         this.isloggedIn = false;
     }
@@ -29,13 +29,19 @@ export class AuthService {
         console.log(token);
         return token;
     }
+
+    public get getUserDetails() {
+        const token =  localStorage.getItem('userData');
+        const tokenData = window.atob(token.split('.')[1]);
+        return tokenData;
+    }
   
     login(logindata: any) {
         console.log(logindata);
         return this.http.post<User>(`${environment.API_HOST}/api/v1/auth/login`, logindata).pipe(map((userData:any) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             console.log(userData)
-            localStorage.setItem('userData', JSON.stringify(userData.result.token));
+            localStorage.setItem('userData', userData.result.token);
             this.userSubject.next(userData);
             return userData;
         }));

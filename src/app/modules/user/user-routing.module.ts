@@ -11,16 +11,16 @@ import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 
 const routes: Routes = [
   { path: 'paySlip', component: PaySlipComponent },
- { path: 'applyLeave', component: ApplyLeaveComponent },
- { path: 'taskDetails', component: TaskDetailsComponent },
- 
- { path: 'hr-approve', component: HRApprovalComponent },
- { path: '', loadChildren: () => import('./user-profile/userProfile.module').then(m => m.UserProfileModule) }
+  { path: 'applyLeave', component: ApplyLeaveComponent },
+  { path: 'taskDetails', component: TaskDetailsComponent },
+
+  { path: 'hr-approve', component: HRApprovalComponent },
+  { path: '', loadChildren: () => import('./user-profile/userProfile.module').then(m => m.UserProfileModule) }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 
-export class UserRoutingModule {}
+export class UserRoutingModule { }
