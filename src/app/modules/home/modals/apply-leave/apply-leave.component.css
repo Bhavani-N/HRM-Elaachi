@@ -18,19 +18,19 @@ body{
     border-radius: 5px;
 }
 .check-boxes .form-check{
-	padding-left: 20px !important;
-    margin-right: 0px !important;
-    font-size: 12px;
+	padding-right: 20px !important;
+  font-size: 12px;
+  margin-top:5px;
 }
 .approver span{
 	margin: 10px 0px;
 }
 .approver input{
-	width: 50%;
+	width: 100%;
 }
 .approver textarea{
-	width: 50%;
-	height: 100px;
+	width: 100%;
+	height: 95px;
 }
 .remind-user{
 	background-color: black;
@@ -40,7 +40,9 @@ body{
 .remind-user button{
 	color: white;
 }
-
+#app-calendar{
+  height:80% !important;
+}
 /* calendar */
 
   
@@ -76,7 +78,6 @@ body{
     grid-template-rows: repeat(5, 1fr);
     height: 100%;
 }
-
 #app-calendar.day {
     border-bottom: 1px solid light-gray;
     border-right: 1px solid light-gray;
@@ -86,16 +87,33 @@ body{
     cursor: pointer;
     transition: background-color 200ms, color 200ms;
 }
-
 .name {
     padding-bottom: 5px;
 }
-
 .weekend {
   color: lightblue;
 }
-
+.check-boxes{
+  height:65vh;
+}
 .selected {
   background-color: var(--light-blue);
   color: white;
+}
+
+
+@media (min-width: 546px) and (max-width: 768px){
+  #app-calendar{
+    height:65% !important;
+  }
+  /* .modal-content{
+    width:605px;
+  }
+  .calender{
+    width:553px;
+  }
+  label.custom-file-label{
+    font-size: 12px;
+    width: 168px;
+  } */
 }

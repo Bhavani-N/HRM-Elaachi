@@ -73,7 +73,7 @@ button#dropdownMenuButton:focus{
 .menu{
 	border-right: 1px solid;
     height: 91vh;
-    width: 23%;
+    width: 25%;
 }
 .menu button{
 	background-color: transparent;
@@ -91,6 +91,7 @@ button#dropdownMenuButton:focus{
 }
 .menu .dropdown-menu {
 	border:none;
+	left:29px !important;
 }
 .menu .dropdown-item{
 	padding: .25rem 0.5rem;
@@ -106,14 +107,14 @@ button#dropdownMenuButton:focus{
     padding: 10px;
 }
 .Payslip-Period{
-	width: 77%;
+	width: 75%;
 }
 .payslip select{
 	width: 35%;
 	margin-right: 0px;
 }
 label{
-    padding-right:3px;
+    padding-right:5px;
 }
 select{
     margin-right:15px;
@@ -125,25 +126,11 @@ button{
     outline: none;
     border-radius:4px;
 }
-/* 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 546px) and (max-width: 768px){
 	.payslip{
-		width: 60%;
+		width:74% !important;
 	}
-	.menu{
-		width: 25%;;
-	}
-	.Payslip-Period {
-    	width: 75%;
+	.menu .dropdown-menu {
+		left:0px !important;
 	}
 }
-@media (min-width: 613px) and (max-width: 768px){
-	.menu{
-		width: 30%;;
-	}
-	.payslip{
-		width: 85%;
-	}
-	.Payslip-Period {
-    width: 70%;
-} */
