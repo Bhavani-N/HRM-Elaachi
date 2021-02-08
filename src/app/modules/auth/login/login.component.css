@@ -26,7 +26,7 @@ button,.create-account button{
 	width:67%;
 	border-radius: 15px;
 	margin: 0px auto;
-	padding:7px 20px;
+	padding:5px 20px;
 	outline: none;
 }
 strong{
@@ -55,3 +55,8 @@ strong{
 	font-size: 13px;
 } */
 
+@media (min-width: 546px) and (max-width:768px){
+	.create-account button{
+		width:93% !important;
+	}
+}
