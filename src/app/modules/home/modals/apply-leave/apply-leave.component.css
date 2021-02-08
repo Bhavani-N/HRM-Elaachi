@@ -92,10 +92,11 @@ body{
 }
 
 .weekend {
-  color: lightblue;
+  background-color: lightgray;
+  color: lightcoral;
 }
 
 .selected {
-  background-color: var(--light-blue);
-  color: white;
+  background-color: lightblue;
+  color: red;
 }
