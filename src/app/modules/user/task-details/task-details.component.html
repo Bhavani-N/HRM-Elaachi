@@ -1,124 +1,5 @@
 <div class="time-tracking">
     <div class="d-flex">
-<<<<<<< HEAD
-        <button class="ml-4"(click)="onAddProject()">Go back</button>
-        <button class="ml-auto"(click)="onAddProject()">Add project</button>
-        <button  (click)="onAddTask()">Add New Task</button>
-        <button (click)="onSave()">Save</button>
-    </div>
-    
-    <div class="time-sheet">
-        <div class="col-md-12 row m-0  p-0">
-            <span>Timesheet For: <b>Dharani Gavvagi</b></span>
-            <span>Project: <b>Baxter CoreFlex Services - Flex [PROJ003546R.</b></span>
-            <span>Work-Item Type: <b>All</b></span>
-            <span>Work-Item Status: <b>Multiple</b></span>
-            <span>TimeSheet Status: <b>All</b></span>
-            <span>Week: <b>04-Jan-2021</b></span>
-        </div>
-        <div class="table-responsive mt-3">
-            <table class="table">
-                <thead class="title">
-                    <tr>
-                        <th class="text-center" rowspan="2">ID</th>
-                        <th rowspan="2">Name</th>
-                        <th rowspan="2">Status</th>
-                        <th>Mon <span>04/21</span></th>
-                        <th>Tue<span>04/21</span></th>
-                        <th>Wed<span>04/21</span></th>
-                        <th>Thu<span>04/21</span></th>
-                        <th>Fri<span>04/21</span></th>
-                        <th>Sat<span>04/21</span></th>
-                        <th>Sun<span>04/21</span></th>
-                        <th rowspan="2">Billing Hour</th>
-                    </tr>
-                    <tr>
-                        <th *ngFor="let dates of week">{{ dates }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">
-                            <select>
-                                <option></option>
-                                <option>1</option>
-                                <option>2</option>
-                            </select>
-                        </th>
-                        <td>Total</td>
-                        <td></td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <select>
-                                <option>PROJ003546R.0034051...</option>
-                                <option>HRM PROJECT</option>
-                                <option>HOTEL PROJECT</option>
-                                <option>RESTAURANT PROJECT</option>
-                            </select>
-                        </th>
-                        <td>Baxter CoreFlex Services - Flex</td>
-                        <td>Routed</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td>9.00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>24.00</td>
-                    </tr>
-            <!-- <tr *ngFor="let prj of projectList">
-                    <th scope="row">{{ prj.projectCode }}</th>
-                    <td>{{ prj.projectName }}</td>
-                    <td>Routed</td>
-            </tr> -->
-            <!-- <tr *ngFor="let task of taskListArray"> -->
-                    <tr >
-                    <!-- <th scope="row">{{ task.key }}</th>
-                    <td>{{ task.name }}</td> -->
-                        <th scope="row"></th>
-                        <td></td>
-                        <td>
-                            <select>
-                                <option>Open</option>
-                                <option>Completed</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="text" name="">
-                        </td>
-                        <td>
-                            <input type="text" name="">
-                        </td>
-                        <td>
-                            <input type="text" name="">
-                        </td>
-                        <td>
-                            <input type="text" name="">
-                        </td>
-                        <td>
-                            <input type="text" name="">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="text">
-                        </td>
-                        <td>
-                            <input class="bg-grey" type="text">
-                        </td>
-                        <td>0.00</td>
-                    </tr>
-                </tbody>
-            </table>
-=======
         <button class="ml-4" (click)="goBack()">Go back</button>
         <button class="ml-auto" (click)="onAddProject()">Add project</button>
         <button (click)="onAddTask()">Add New Task</button>
@@ -152,73 +33,71 @@
     <div class="container">
         <div class="table-responsive mt-3">
             <form [formGroup]="taskForm" (ngSubmit)="onSave()">
-                <ng-container formArrayName="taskList">
-                    <table class="table">
-                        <thead class="title">
-                            <tr>
-                                <th class="text-center" rowspan="2">ID</th>
-                                <th rowspan="2">Name</th>
-                                <th class="border-r" rowspan="2">Status</th>
-                                <th>Mon</th>
-                                <th>Tue</th>
-                                <th>Wed</th>
-                                <th>Thu</th>
-                                <th>Fri</th>
-                                <th>Sat</th>
-                                <th>Sun</th>
-                                <th class="border-l" rowspan="2">Billing Hour</th>
-                            </tr>
-                            <tr>
-                                <th *ngFor="let dates of week">{{ dates }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-    
-                                </th>
-                                <td>Total</td>
-                                <td></td>
-                                <td>9.00</td>
-                                <td>9.00</td>
-                                <td>9.00</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>24.00</td>
-                            </tr>
-    
-                            <tr>
-                                <th scope="row">
-    
-                                </th>
-    
-                            </tr>
-                            <!-- <tr> -->
-                            <tr *ngFor="let task of dummyArray">
-    
-                                <th scope="row">{{ task.taskCode }}</th>
-                                <td>{{task.taskName}}</td>
-                                <!-- <td>
+
+                <table class="table">
+                    <thead class="title">
+                        <tr>
+                            <th class="text-center" rowspan="2">ID</th>
+                            <th rowspan="2">Name</th>
+                            <th class="border-r" rowspan="2">Status</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
+                            <th class="border-l" rowspan="2">Billing Hour</th>
+                        </tr>
+                        <tr>
+                            <th *ngFor="let dates of week">{{ dates }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr>
+                            <th scope="row">
+
+                            </th>
+
+                        </tr>
+                        <!-- <tr> -->
+                        <tr *ngFor="let task of dummyArray">
+
+                            <th scope="row">{{ task.taskCode }}</th>
+                            <td>{{task.taskName}}</td>
+                            <td>
+                                <div formArrayName="aliases">
+                                    <button (click)="addAlias()">Add Alias</button>
+
+
+                                    <div *ngFor="let alias of aliases.controls; let i=index">
+                                        <!-- The repeated alias template -->
+
+                                        <input type="text" [formControlName]="i">
+
+                                    </div>
+                                </div>
+                            </td>
+
+                            <!-- <td>
                                     <select formGroupName="status">
                                         <option>pending</option>
                                     </select>
                                 </td> -->
-                                <!-- <ng-container formGroupName="TaskTiming">
-                                    <ng-container formArrayName="duration">
-                                        <ng-container *ngFor="let item of duration.controls; let i=index;let l=last">
-                                            <td [formGroupName]="item">
+                            <!-- <ng-container formArrayName="TaskTiming">
+                                   
+                                        <td *ngFor="let item of taskForm.controls.TaskTiming.controls; let i=index;let l=last"
+                                             [formGroupName]="i">
                                                 <input type="number" formControlName="TimeTaken">
-                                            </td>
-                                        </ng-container>
-                                    </ng-container>
+                                        </td>
                                 </ng-container> -->
-                               
-                                <!-- <td>
-                                    <input type="number" name="firstDay" formControlName="TimeTaken" >
-                                </td>
-                                <td>
+
+                            <!-- <td>
+                                    <input type="number" name="firstDay"  >
+                                </td> -->
+                            <!-- <td>
                                     <input type="number" name="secondDay" formControlName="TimeTaken" >
                                 </td>
                                 <td>
@@ -235,16 +114,15 @@
                                 </td>
                                 <td>
                                     <input class="bg-grey" type="number">
-                                </td> -->
-                                <td>0.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </ng-container>
+                                </td> 
+                                <td>0.00</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
                 <button type="submit">Save</button>
             </form>
             <!-- <button type="button" (click)="addNewColumn()">Add new Column</button>  -->
->>>>>>> 6b7d015c0289b12f996608ded7506643dc55f3ad
         </div>
     </div>
 </div>

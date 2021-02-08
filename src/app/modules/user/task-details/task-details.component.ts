@@ -30,6 +30,7 @@ export class TaskDetailsComponent implements OnInit {
   loading: boolean;
   billableHours: any;
 
+
   constructor(
     private modalService: BsModalService,
     private taskService: TaskService,
@@ -44,20 +45,28 @@ export class TaskDetailsComponent implements OnInit {
   ngOnInit() {
     this.displayDetails();
     this.displayTaskDetails();
+
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
     this.initTaskArrayForm();
-    this.addNewColumn();
     this.userDetails = JSON.parse(this.authService.getUserDetails);
-
+    
+    this.taskForm = this.fb.group({
+      taskName: [''],
+      taskCode: [''],
+      aliases: this.fb.array([
+        
+      ])
+    });
   }
-  // this.fb.array([this.initColumns()])
   private initTaskArrayForm(data: any = {}) {
     this.taskForm = new FormGroup({
       taskList: new FormArray([])
     })
   }
+
+
 
   private initTaskForm(data: any = {}) {
     const taskData = this.fb.group({
@@ -75,11 +84,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   private initTimeTakingDurationForm(data) {
-    // return new FormGroup({
-    //   TimeTaken: new FormControl(data.TimeTaken || null),
-    //   dates: new FormControl(data.dates || null),
-    //   _id: new FormControl(data._id || null)
-    // })
+
     const dummyTimings = [];
     data.map((timingData) => {
       dummyTimings.push(new FormGroup({
@@ -89,34 +94,12 @@ export class TaskDetailsComponent implements OnInit {
       }));
     })
     return dummyTimings;
-    // if(data.TaskTiming.duration.length > 0) {
-    //   data.TaskTiming.duration.map((timingData) => {
-    //     dummyTimings.push(this.initTimeTakingDurationForm(timingData));
-    //   })
-    // }
   }
 
   get formArr() {
     return this.taskForm.get("TaskTiming") as FormArray;
   }
 
-  initColumns() {
-    return this.fb.group({
-      TimeTaken: [""]
-    })
-  }
-
-
-
-  addNewColumn() {
-    for (let i = 1; i < 7; i++) {
-      this.formArr.push(this.initColumns());
-    }
-  }
-
-  deleteColumn(index: number) {
-    this.formArr.removeAt(index);
-  }
 
   onSave() {
     console.log(this.taskForm.value)
@@ -243,5 +226,10 @@ export class TaskDetailsComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-
+  get aliases() {
+    return this.taskForm.get('aliases') as FormArray;
+  }
+  addAlias() {
+    this.aliases.push(this.fb.control(''));
+  }
 }
