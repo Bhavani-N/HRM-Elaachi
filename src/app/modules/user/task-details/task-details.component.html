@@ -1,5 +1,6 @@
 <div class="time-tracking">
     <div class="d-flex">
+<<<<<<< HEAD
         <button class="ml-4"(click)="onAddProject()">Go back</button>
         <button class="ml-auto"(click)="onAddProject()">Add project</button>
         <button  (click)="onAddTask()">Add New Task</button>
@@ -117,6 +118,133 @@
                     </tr>
                 </tbody>
             </table>
+=======
+        <button class="ml-4" (click)="goBack()">Go back</button>
+        <button class="ml-auto" (click)="onAddProject()">Add project</button>
+        <button (click)="onAddTask()">Add New Task</button>
+
+    </div>
+    <div class="col-md-12 row m-0 time-sheet py-2">
+        <span>Timesheet For: <b>{{userDetails?.firstName}}</b></span>
+        <span>Project: <b>{{projectName}}</b></span>
+        <span>Work-Item Type: <b>All</b></span>
+        <span>Work-Item Status: <b>Multiple</b></span>
+        <span>TimeSheet Status: <b>All</b></span>
+        <span>Week: <b>04-Jan-2021</b></span>
+    </div>
+    <div>
+        <label for="project"><b>Project:</b></label>
+        <form [formGroup]="projectForm">
+            <td>
+
+                <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value.projectCode)">
+                    <option>Select Project</option>
+                    <option *ngFor="let prj of projectList" [ngValue]="prj">
+
+                        {{ prj.projectCode }}
+                    </option>
+                </select> ProjectName:<b> {{projectName}}</b>
+            </td>
+        </form>
+
+    </div>
+
+    <div class="container">
+        <div class="table-responsive mt-3">
+            <form [formGroup]="taskForm" (ngSubmit)="onSave()">
+                <ng-container formArrayName="taskList">
+                    <table class="table">
+                        <thead class="title">
+                            <tr>
+                                <th class="text-center" rowspan="2">ID</th>
+                                <th rowspan="2">Name</th>
+                                <th class="border-r" rowspan="2">Status</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                                <th>Sun</th>
+                                <th class="border-l" rowspan="2">Billing Hour</th>
+                            </tr>
+                            <tr>
+                                <th *ngFor="let dates of week">{{ dates }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+    
+                                </th>
+                                <td>Total</td>
+                                <td></td>
+                                <td>9.00</td>
+                                <td>9.00</td>
+                                <td>9.00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>24.00</td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">
+    
+                                </th>
+    
+                            </tr>
+                            <!-- <tr> -->
+                            <tr *ngFor="let task of dummyArray">
+    
+                                <th scope="row">{{ task.taskCode }}</th>
+                                <td>{{task.taskName}}</td>
+                                <!-- <td>
+                                    <select formGroupName="status">
+                                        <option>pending</option>
+                                    </select>
+                                </td> -->
+                                <!-- <ng-container formGroupName="TaskTiming">
+                                    <ng-container formArrayName="duration">
+                                        <ng-container *ngFor="let item of duration.controls; let i=index;let l=last">
+                                            <td [formGroupName]="item">
+                                                <input type="number" formControlName="TimeTaken">
+                                            </td>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container> -->
+                               
+                                <!-- <td>
+                                    <input type="number" name="firstDay" formControlName="TimeTaken" >
+                                </td>
+                                <td>
+                                    <input type="number" name="secondDay" formControlName="TimeTaken" >
+                                </td>
+                                <td>
+                                    <input type="number" name="">
+                                </td>
+                                <td>
+                                    <input type="number" name="">
+                                </td>
+                                <td>
+                                    <input type="number" name="">
+                                </td>
+                                <td>
+                                    <input class="bg-grey" type="number">
+                                </td>
+                                <td>
+                                    <input class="bg-grey" type="number">
+                                </td> -->
+                                <td>0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-container>
+                <button type="submit">Save</button>
+            </form>
+            <!-- <button type="button" (click)="addNewColumn()">Add new Column</button>  -->
+>>>>>>> 6b7d015c0289b12f996608ded7506643dc55f3ad
         </div>
     </div>
 </div>

@@ -112,7 +112,6 @@ ul li a:hover{
 }
 
 .table td,.table th{
-
     vertical-align:middle;
 }
 .table>tbody{
@@ -120,7 +119,6 @@ ul li a:hover{
 }
 option{
     font-size: 14px;
-    margin:15px 0px;
 }
    
 
