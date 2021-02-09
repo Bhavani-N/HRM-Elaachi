@@ -60,6 +60,11 @@ export class AuthService {
         return this.http.post(`${environment.API_HOST}/api/v1/auth/signup`, user);
     }
 
+    
+  forgotPassword(email: string) {
+    return this.http.post(`${environment.API_HOST}/api/v1/auth/forgot-password`, { email });
+  }
+
     getAll() {
         return this.http.get<User[]>(`${environment.API_HOST}/users`);
     }
