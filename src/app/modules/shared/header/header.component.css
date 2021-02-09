@@ -24,9 +24,11 @@ h5:after {
    margin-left: 40px;
 }
 .elaachi-logo input {
-   width: 30%!important;
+   width: 36%!important;
    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
    border-radius: 10px;
+   height: 35px !important;
+   font-size: 10px !important;
 }
 .fonts{
    display: flex;
@@ -45,7 +47,11 @@ h5:after {
 .font-icons i{
   margin: 0px 10px;
 }
-
+.fonts button{
+   background-color: #832023;
+   margin-right: 40px;
+   border-radius: 5px;
+}
 .icons .fa {
    margin: 0px 10px;
 }
