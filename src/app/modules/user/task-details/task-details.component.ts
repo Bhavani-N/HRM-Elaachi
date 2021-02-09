@@ -43,24 +43,24 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initTaskArrayForm();
     this.displayDetails();
     this.displayTaskDetails();
 
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
-    this.initTaskArrayForm();
     this.userDetails = JSON.parse(this.authService.getUserDetails);
-    
-    this.taskForm = this.fb.group({
-      taskName: [''],
-      taskCode: [''],
-      aliases: this.fb.array([
-        
-      ])
-    });
+
+    // this.taskForm = this.fb.group({
+    //   taskName: [''],
+    //   taskCode: [''],
+    //   aliases: this.fb.array([
+
+    //   ])
+    // });
   }
-  private initTaskArrayForm(data: any = {}) {
+  private initTaskArrayForm() {
     this.taskForm = new FormGroup({
       taskList: new FormArray([])
     })
@@ -70,10 +70,8 @@ export class TaskDetailsComponent implements OnInit {
 
   private initTaskForm(data: any = {}) {
     const taskData = this.fb.group({
-      TaskTiming: new FormGroup({
-        duration: new FormArray((data.TaskTiming.duration.length > 0) ? this.initTimeTakingDurationForm(data.TaskTiming.duration) : []),
-      }),
-      BillableHrs: new FormControl(data.BillableHrs || null),
+      duration: new FormArray((data.duration.length > 0) ? this.initTimeTakingDurationForm(data.duration) : []),
+      billableHrs: new FormControl(data.billableHours || null),
       _id: new FormControl(data._id || null),
       status: new FormControl(data.status || null),
       taskCode: new FormControl(data.taskCode || null),
@@ -87,7 +85,7 @@ export class TaskDetailsComponent implements OnInit {
 
     const dummyTimings = [];
     data.map((timingData) => {
-      dummyTimings.push(new FormGroup({
+      dummyTimings.push(this.fb.group({
         TimeTaken: new FormControl(timingData.TimeTaken || null),
         dates: new FormControl(timingData.dates || null),
         _id: new FormControl(timingData._id || null)
@@ -103,34 +101,35 @@ export class TaskDetailsComponent implements OnInit {
 
   onSave() {
     console.log(this.taskForm.value)
-
+    this.taskForm.value['project']=this.projectDetails._id
 
     this.submitted = true;
     console.log(this.taskForm.value);
 
 
-    // stop here if form is invalid
+    //  stop here if form is invalid
     if (this.taskForm.invalid) {
       return;
     }
 
     this.loading = true;
-    this.taskForm.value['_id'] = this.taskList
-    console.log(this.taskForm.value)
-    // this.taskService.updateTaskDetails(this.taskForm.value)
+    // this.taskForm.value['_id'] = this.taskList
+    // console.log(this.taskForm.value)
+    this.taskService.updateTaskDetails(this.taskForm.value)
 
-    //   .subscribe(
-    //     data => {
+      .subscribe(
+        data => {
 
-    //       console.log(data);
-    //       this.router.navigate(['../home'], { relativeTo: this.route });
-    //     },
-    //     error => {
+          console.log(data);
+          alert('inserted successfully');
+          // this.router.navigate(['../home'], { relativeTo: this.route });
+        },
+        error => {
 
-    //       console.log(error.error.message);
+          console.log(error.error.message);
 
-    //       this.loading = false;
-    //     });
+          this.loading = false;
+        });
   }
 
 
@@ -158,6 +157,7 @@ export class TaskDetailsComponent implements OnInit {
         this.projectList = res.result;
         console.log(this.projectList)
         this.projectDetails = res.result[0];
+        console.log(this.projectDetails)
         this.projectName = res.result[0].projectName;
 
       },
@@ -210,11 +210,14 @@ export class TaskDetailsComponent implements OnInit {
 
         this.taskList.map((data: any) => {
 
-          const taskFormData = <FormArray>this.taskForm.get('taskList');
-          taskFormData.push(this.initTaskForm(data));
-          console.log(taskFormData)
+          if (data) {
+            console.log(data)
+            const taskFormData = <FormArray>this.taskForm.controls['taskList'];
+            taskFormData.push(this.initTaskForm(data));
+          }
 
         })
+        console.log(this.taskForm)
       },
       error => {
         console.log(error);
