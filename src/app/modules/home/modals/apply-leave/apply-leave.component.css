@@ -43,6 +43,7 @@ body{
 #app-calendar{
   height:80% !important;
 }
+
 /* calendar */
 
   
@@ -107,6 +108,9 @@ body{
   #app-calendar{
     height:65% !important;
   }
+  label.custom-file-label {
+  font-size: 11px;
+  } 
   /* .modal-content{
     width:605px;
   }

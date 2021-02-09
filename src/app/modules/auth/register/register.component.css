@@ -44,3 +44,11 @@ button{
 	border:1px solid grey;
     
 }
+@media (min-width: 546px) and (max-width: 768px){
+	.register{
+		width:38%;
+		top:30px;
+		padding:20px;
+		margin-top:0px !important;
+	}
+}
