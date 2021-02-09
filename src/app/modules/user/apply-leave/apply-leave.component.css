@@ -12,16 +12,16 @@ body{
 	display: block;
 	margin: 0px auto;
 	font-size: 12px;
-    padding: 5px 0px;
+  padding: 5px 0px;
 }
 .calender{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
+  border-radius: 5px;
 }
 .check-boxes .form-check{
 	padding-left: 20px !important;
-    margin-right: 0px !important;
-    font-size: 12px;
+  margin-right: 0px !important;
+  font-size: 12px;
 }
 .approver span{
 	margin: 10px 0px;
@@ -35,8 +35,8 @@ body{
 }
 .remind-user{
 	background-color: black;
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 .remind-user button{
 	color: white;
@@ -69,6 +69,12 @@ body{
     font-size:12px;
     color: #777;
   }
+  #app-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: none !important;
+    height: 70% !important;
+}
 
 
 /* #app-calendar {
