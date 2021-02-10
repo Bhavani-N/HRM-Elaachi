@@ -25,20 +25,20 @@ export class AuthService {
 
 
     public get userValue() {
-        const token =  localStorage.getItem('userData');
+        const token = localStorage.getItem('userData');
         console.log(token);
         return token;
     }
 
     public get getUserDetails() {
-        const token =  localStorage.getItem('userData');
+        const token = localStorage.getItem('userData');
         const tokenData = window.atob(token.split('.')[1]);
         return tokenData;
     }
-  
+
     login(logindata: any) {
         console.log(logindata);
-        return this.http.post<User>(`${environment.API_HOST}/api/v1/auth/login`, logindata).pipe(map((userData:any) => {
+        return this.http.post<User>(`${environment.API_HOST}/api/v1/auth/login`, logindata).pipe(map((userData: any) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             console.log(userData)
             localStorage.setItem('userData', userData.result.token);
@@ -60,10 +60,16 @@ export class AuthService {
         return this.http.post(`${environment.API_HOST}/api/v1/auth/signup`, user);
     }
 
-    
-  forgotPassword(email: string) {
-    return this.http.post(`${environment.API_HOST}/api/v1/auth/forgot-password`, { email });
-  }
+
+    forgotPassword(email: string) {
+        return this.http.post(`${environment.API_HOST}/api/v1/auth/forgot-password`, { email });
+    }
+
+    resetPassword(otp, password) {
+        const payLoad = { otp, password };
+        console.log(payLoad)
+        return this.http.post(`${environment.API_HOST}/api/v1/auth/reset-password`, payLoad);
+    }
 
     getAll() {
         return this.http.get<User[]>(`${environment.API_HOST}/users`);
