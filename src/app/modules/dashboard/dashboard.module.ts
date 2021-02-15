@@ -1,6 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
+import { CoreModule } from "../core/core.module";
+import { ReactiveFormsModule } from "@angular/forms";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 
 import { EmployeeDetailsComponent } from "./employee-contents/employee-details/employee-details.component";
@@ -17,6 +19,7 @@ import { LeavetypeDetailsComponent } from "./leavetype-contents/leavetype-detail
 import { LeavetypeListComponent } from "./leavetype-contents/leavetype-list/leavetype-list.component";
 import { LeavetypeMainComponent } from "./leavetype-contents/leavetype-main/leavetype-main.component";
 import { LeavetypeManageComponent } from "./leavetype-contents/leavetype-manage/leavetype-manage.component";
+import { MaterialModule } from "../shared/material/material.module";
 
 @NgModule({
     declarations: [
@@ -37,7 +40,10 @@ import { LeavetypeManageComponent } from "./leavetype-contents/leavetype-manage/
     ],
     imports: [
         CommonModule,
+        CoreModule,
         SharedModule,
+        MaterialModule,
+        ReactiveFormsModule,
         DashboardRoutingModule
     ]
 })
