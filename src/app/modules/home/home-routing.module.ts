@@ -5,8 +5,8 @@ import { CompanyInfoComponent } from "./company-info/company-info.component";
 import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthguardGuard] },
-    { path: 'compInfo', component: CompanyInfoComponent  }
+    { path: '', component: HomeComponent , canActivate: [AuthguardGuard] },
+    { path: 'companyInfo', component: CompanyInfoComponent }
 ];
 
 @NgModule({
