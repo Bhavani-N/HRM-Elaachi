@@ -10,13 +10,15 @@ import { AuthService } from '../services/auth.service';
 export class InterceptorService implements HttpInterceptor{
 
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { 
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       // add auth header with jwt if user is logged in and request is to the api url
       const authToken = this.authService.userValue;
       const isLoggedIn = authToken ;
       const isApiUrl = request.url.startsWith(environment.API_HOST);
+      
       if (isLoggedIn && isApiUrl) {
           request = request.clone({
               setHeaders: {
