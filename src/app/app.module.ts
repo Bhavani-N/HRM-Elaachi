@@ -6,9 +6,6 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
-import {RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
-
-
 
 
 @NgModule({
@@ -20,7 +17,6 @@ import {RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    RxReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

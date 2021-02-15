@@ -1,26 +1,10 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-=======
-import { Component, ElementRef, OnInit, AfterViewInit } from '@angular/core';
->>>>>>> 66b5e38a2a40cb2f228741164c392bb50f7d300b
+import { Component, ElementRef, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-company-info',
   templateUrl: './company-info.component.html',
   styleUrls: ['./company-info.component.css']
 })
-<<<<<<< HEAD
-export class CompanyInfoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  
-
-}
-=======
 export class CompanyInfoComponent implements OnInit, AfterViewInit {
   tbl: any;
   currMonth: any;
@@ -29,11 +13,12 @@ export class CompanyInfoComponent implements OnInit, AfterViewInit {
   selectMonth: any;
   monthAndYear: any;
   currDate: any;
+  cellText: any;
   cell: any;
-  cellText;
-  months= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  public months= ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  constructor(private elRef: ElementRef) {
+  constructor(private elRef: ElementRef, private renderer:Renderer2) {
     console.log(elRef)
   }
 
@@ -79,6 +64,11 @@ export class CompanyInfoComponent implements OnInit, AfterViewInit {
   }
 
   showCalendar(month, year) {
+    const isWeekend = date1 => {
+      let dt = new Date(date1);
+      console.log(dt.getDay())
+      return dt.getDay() == 6 || dt.getDay() == 0;
+    }
     let firstDay = (new Date(year, month)).getDay();
     this.tbl = this.elRef.nativeElement.querySelector('#calendar-body');
     this.tbl.innerHTML = "";
@@ -91,9 +81,11 @@ export class CompanyInfoComponent implements OnInit, AfterViewInit {
        //creating individual cells, filing them up with data.
        for (let j = 0; j < 7; j++) {
         if (i === 0 && j < firstDay) {
-            this.cell = document.createElement("td");
-            this.cellText = document.createTextNode("");
-            this.cell.appendChild(this.cellText);
+            this.cell = this.renderer.createElement('td')
+            this.cellText = this.renderer.createText('');
+            console.log(this.cell)
+            // this.cell.appendChild(this.cellText);
+            this.renderer.appendChild(this.cell, this.cellText);
             row.appendChild(this.cell);
         }
         else if (date > this.daysInMonth(month, year)) {
@@ -101,16 +93,21 @@ export class CompanyInfoComponent implements OnInit, AfterViewInit {
         }
 
         else {
-            this.cell = document.createElement("td");
-            this.cellText = document.createTextNode(date);
+            this.cell = this.renderer.createElement('td')
+            this.cellText = this.renderer.createText(date);
+            // this.cell = this.elRef.nativeElement.createElement = "td";
+            // this.cellText = this.elRef.nativeElement.createTextNode = date;
+            console.log(this.cellText)
             if (date === this.currDate.getDate() && year === this.currDate.getFullYear() && month === this.currDate.getMonth()) {
                 this.cell.classList.add("bg-info");
             } // color today's date
-            this.cell.appendChild(this.cellText);
+            this.renderer.appendChild(this.cell, this.cellText);
             row.appendChild(this.cell);
             date++;
         }
+        
     }
+    console.log(date)
 
     this.tbl.appendChild(row); // appending each row into calendar body.
     }
@@ -122,4 +119,3 @@ export class CompanyInfoComponent implements OnInit, AfterViewInit {
 
 }
 
->>>>>>> 66b5e38a2a40cb2f228741164c392bb50f7d300b
