@@ -9,6 +9,14 @@ import { EmployeeMainComponent } from "./employee-contents/employee-main/employe
 import { EmployeeManageComponent } from "./employee-contents/employee-manage/employee-manage.component";
 import { MainLayoutComponent } from "./main-layout/main-layout.component";
 import { DashHomeComponent } from './dash-home/dash-home.component';
+import { LeaverequestListComponent } from "./leaverequest-contents/leaverequest-list/leaverequest-list.component";
+import { LeaverequestMainComponent } from "./leaverequest-contents/leaverequest-main/leaverequest-main.component";
+import { LeaverequestManageComponent } from "./leaverequest-contents/leaverequest-manage/leaverequest-manage.component";
+import { LeaverequestDetailsComponent } from "./leaverequest-contents/leaverequest-details/leaverequest-details.component";
+import { LeavetypeDetailsComponent } from "./leavetype-contents/leavetype-details/leavetype-details.component";
+import { LeavetypeListComponent } from "./leavetype-contents/leavetype-list/leavetype-list.component";
+import { LeavetypeMainComponent } from "./leavetype-contents/leavetype-main/leavetype-main.component";
+import { LeavetypeManageComponent } from "./leavetype-contents/leavetype-manage/leavetype-manage.component";
 
 @NgModule({
     declarations: [
@@ -18,6 +26,14 @@ import { DashHomeComponent } from './dash-home/dash-home.component';
         EmployeeManageComponent,
         MainLayoutComponent,
         DashHomeComponent,
+        LeaverequestDetailsComponent,
+        LeaverequestListComponent,
+        LeaverequestMainComponent,
+        LeaverequestManageComponent,
+        LeavetypeDetailsComponent,
+        LeavetypeListComponent,
+        LeavetypeMainComponent,
+        LeavetypeManageComponent
     ],
     imports: [
         CommonModule,
