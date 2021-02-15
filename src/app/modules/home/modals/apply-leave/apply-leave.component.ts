@@ -53,22 +53,23 @@ export class ApplyLeaveComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     console.log(this.appCalendar)
-    const isWeekend = day => {
-      return day % 7 === 6 || day % 7 === 0;
-    }
     let d = new Date();
     console.log(d, d.getMonth())
     console.log(d.getMonth(), d.getFullYear())
     var getTot = this.daysInMonth(d.getMonth(), d.getFullYear());
     console.log(getTot)
-    for (let day = 1; day <= getTot; day++) {
-      let newDate = new Date(d.getFullYear(), d.getMonth(), day)
-      if (newDate.getDay() == 0) {   //if Sunday
-        this.sun.push(day);
-      }
-      if (newDate.getDay() == 6) {   //if Saturday
-        this.sat.push(day);
-      }
+    for(let day= 1; day <= getTot; day++) {
+      const isWeekend = day => {
+        let newDate= new Date(d.getFullYear(),d.getMonth(),day)
+        console.log(newDate)
+        if(newDate.getDay()==0){   //if Sunday
+          this.sun.push(day);
+        }
+        if(newDate.getDay()==6){   //if Saturday
+          this.sat.push(day);
+        }
+        return newDate.getDay() == 6  || newDate.getDay() == 0;
+      } 
       console.log(this.sat);
       console.log(this.sun);
 
@@ -100,7 +101,7 @@ export class ApplyLeaveComponent implements OnInit, AfterViewInit {
     const curr = new Date();
     const getYear = curr.getFullYear();
     const getMonth = curr.getMonth();
-    const date = new Date(Date.UTC(getYear, getMonth, day));
+    const date = new Date(Date.UTC(getYear, 3, day));
     console.log(date);
     return new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(date);
   }

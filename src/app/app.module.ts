@@ -6,10 +6,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
-import {RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 import { InterceptorService } from './services/interceptor.service';
-
-
 
 
 @NgModule({
@@ -21,7 +18,6 @@ import { InterceptorService } from './services/interceptor.service';
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    RxReactiveFormsModule
   ],
   providers: [
     {
