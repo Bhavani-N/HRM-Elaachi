@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon'
 export class EmployeeListComponent implements OnInit {
   employees;
   errorMsg;
+  id;
 
   loading = true;
   currentPage = 1;
@@ -49,12 +50,20 @@ export class EmployeeListComponent implements OnInit {
   }
 
   getAllEmployees() {
-    this._employeeService.getAllEmployees(this.currentPage - 1, this.size, this.sortKey)
+    this._employeeService.getAllEmployees()
       .subscribe(
         data => {
           console.log(data);
-          this.employees = data.content;
+          this.employees = data.result;
+          console.log(this.employees);
+          this.employees.map(res=>{
+            console.log(res)
+            this.id = res._id
+            console.log(this.id)
+          })
+          console.log(this.employees);
           this.totalElements = data.totalElements;
+      
           this.size = data.size;
           this.numberOfElements = data.numberOfElements;
           this.loading = false;

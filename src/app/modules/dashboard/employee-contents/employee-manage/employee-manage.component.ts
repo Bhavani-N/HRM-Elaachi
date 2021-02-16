@@ -35,7 +35,7 @@ export class EmployeeManageComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       phoneNumber: ['', [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
       email: ['',[Validators.required]],
-      // employeeRole: [],
+       role: ['',[Validators.required]],
       status: ['ACTIVE', Validators.required]
     });
 

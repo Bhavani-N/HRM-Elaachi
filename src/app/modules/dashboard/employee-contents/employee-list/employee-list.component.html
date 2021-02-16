@@ -25,22 +25,22 @@
     <table class="table table-hover">
       <thead>
         <th>S.N </th>
-        <th (click)="sort('firstName')">Name <mat-icon>swap_vert</mat-icon>
+        <th (click)="sort('firstName')">Name
         </th>
-        <th (click)="sort('phoneNumber')">Phone Number <mat-icon>swap_vert</mat-icon>
+        <th (click)="sort('phoneNumber')">Phone Number 
         </th>
-        <th (click)="sort('email')">Email <mat-icon>swap_vert</mat-icon>
+        <th (click)="sort('email')">Email 
         </th>
-        <th (click)="sort('supervisor.firstName')">Supervisor <mat-icon>swap_vert</mat-icon>
+        <!-- <th (click)="sort('supervisor.firstName')">Supervisor <mat-icon>swap_vert</mat-icon> -->
+        <!-- </th> -->
+        <th (click)="sort('role')">Role 
         </th>
-        <th (click)="sort('role')">Role <mat-icon>swap_vert</mat-icon>
-        </th>
-        <th (click)="sort('status')">Status <mat-icon>swap_vert</mat-icon>
+        <th (click)="sort('status')">Status 
         </th>
         <th>Options</th>
       </thead>
       <tbody *ngIf="employees">
-        <tr *ngFor="let employee of employees  let i = index">
+        <tr *ngFor="let employee of employees;  let i = index">
           <td>{{i+1}}</td>
           <td>{{employee.firstName}}</td>
           <td>{{employee.phoneNumber > 0 ? employee.phoneNumber : ''}}</td>
@@ -50,9 +50,9 @@
               </a></td> -->
           <td>{{employee.role}}</td>
           <td [ngClass]="(employee.status=='ACTIVE')?'text-success':'text-danger'">{{employee.status}}</td>
-          <!-- <td><a routerLink="/home/employees/details/{{employee.employeeId}}">
+          <td><a routerLink="/dashboard/employees/details/{{id}}">
                 <button mat-raised-button>View</button>
-              </a></td> -->
+              </a></td>
         </tr>
       </tbody>
     </table>
