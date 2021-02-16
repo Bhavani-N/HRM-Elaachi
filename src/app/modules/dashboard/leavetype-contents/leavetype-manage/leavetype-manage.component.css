@@ -20,7 +20,7 @@
 .btn:focus{
     border:2px solid grey
 }
-.form-control:focus,.btn:focus,.form-check-input:focus{
+.form-control:focus,.btn:focus{
     box-shadow: none;
 }
 .form-control:focus{
