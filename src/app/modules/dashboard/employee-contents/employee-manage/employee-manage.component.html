@@ -76,15 +76,16 @@
         </div>
       </div>
   
-      <!-- <div class="form-group row">
-        <label for="supervisor" class="col-sm-3 col-form-label"> EmployeeRole&nbsp;<span class="text-danger">
+       <div class="form-group row">
+        <label for="role" class="col-sm-3 col-form-label"> EmployeeRole&nbsp;<span class="text-danger">
           </span></label>
         <div class="col-sm-9">
-          <ng-select [items]="supervisorEmployees | async" formControlName="employeeRole" bindLabel="firstName"
+          <input type="text" id="role" formControlName="role" class="form-control" placeholder="role" />
+          <!-- <ng-select [items]="supervisorEmployees | async" formControlName="employeeRole" bindLabel="firstName"
             [hideSelected]="true" [loading]="isSelectLoading" [typeahead]="employeeinput$" placeholder="Select EmployeeRole">
-          </ng-select>
+          </ng-select> -->
         </div>
-      </div> -->
+      </div> 
   
       <div class="form-group row">
         <label for="status" class="col-sm-3 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
