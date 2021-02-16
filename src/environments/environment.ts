@@ -15,7 +15,7 @@ export const environment = {
   //   appId: "1:687665848911:web:958b18524361032488803a",
   //   measurementId: "G-C807FD9582"
   // }
-  BASE_API_URL: `${API_HOST}/api/v1`,
+  BASE_API_URL: `${API_HOST}api/v1`,
   API_HOST
  
 };
