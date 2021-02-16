@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
-import {RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
-
-
+import { CoreModule } from './modules/core/core.module';
+import { InterceptorService } from './services/interceptor.service';
 
 
 @NgModule({
@@ -16,13 +16,19 @@ import {RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
     AppComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     SharedModule,
+    CoreModule,
     AppRoutingModule,
-    RxReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
