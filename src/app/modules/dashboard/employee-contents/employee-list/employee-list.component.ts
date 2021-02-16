@@ -59,8 +59,9 @@ export class EmployeeListComponent implements OnInit {
           this.employees.map(res=>{
             console.log(res)
             this.id = res._id
-            console.log(this.id)
+            // console.log(this.id)
           })
+          console.log(this.id)
           console.log(this.employees);
           this.totalElements = data.totalElements;
       

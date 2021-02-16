@@ -50,7 +50,7 @@
               </a></td> -->
           <td>{{employee.role}}</td>
           <td [ngClass]="(employee.status=='ACTIVE')?'text-success':'text-danger'">{{employee.status}}</td>
-          <td><a routerLink="/dashboard/employees/details/{{id}}">
+          <td><a routerLink="/dashboard/employees/details/{{employee._id}}">
                 <button mat-raised-button>View</button>
               </a></td>
         </tr>

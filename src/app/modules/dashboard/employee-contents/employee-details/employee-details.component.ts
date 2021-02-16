@@ -83,10 +83,11 @@ export class EmployeeDetailsComponent implements OnInit {
       this._employeeService.getEmployeeById(id)
         .subscribe(
           data => {
-
+            console.log(data);
             this.selectedEmployee = data;
+            
             this.selectedEmployee = this.selectedEmployee.result;
-            console.log(this.selectedEmployee.firstName)
+            console.log(this.selectedEmployee._id)
             this.isEmployeeSelected = true;
             // this.employeesUnderSupervision = null;
              console.log("selectedEmployee data: ", data);
@@ -128,11 +129,12 @@ export class EmployeeDetailsComponent implements OnInit {
       return;
     }
     // console.log("success ", this.employeeEditForm.value);
-    this._employeeService.updateEmployee(this.employeeEditForm.value).subscribe(res => {
+    this._employeeService.updateEmployee(this.employeeEditForm.value , this.selectedEmployee._id).subscribe(res => {
       console.log(res)
       this.has_error = false;
       this.update_employee_msg = 'Update Successful';
       this.selectedEmployee = res;
+      this.selectedEmployee = this.selectedEmployee.result
       this.employeeEditForm.reset();
       this.submitted = false;
     }, error => {
