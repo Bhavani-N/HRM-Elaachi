@@ -18,20 +18,25 @@ export class EmployeeService {
     return throwError(error);
   }
 
-  getAllEmployees(page, size, sort): Observable<any> {
-    return this.http.get<Employee[]>(Constant.API_ENDPOINT + 'api/v1/staffs',
-      {
-        params: {
-          page: page,
-          size: size,
-          sort: sort
-        }
-      })
+  // getAllEmployees(page, size, sort): Observable<any> {
+  //   return this.http.get<Employee[]>(Constant.API_ENDPOINT + 'api/v1/staffs',
+  //     {
+  //       params: {
+  //         page: page,
+  //         size: size,
+  //         sort: sort
+  //       }
+  //     })
+  //     .pipe(catchError(this.errorHandler));
+  // }
+
+  getAllEmployees(): Observable<any> {
+    return this.http.get<Employee[]>(Constant.API_ENDPOINT + 'api/v1/staffs')
       .pipe(catchError(this.errorHandler));
   }
 
   getEmployeeById(id): Observable<Employee[]> {
-    return this.http.get<Employee[]>(Constant.API_ENDPOINT + 'api/v1/staffs' + id)
+    return this.http.get<Employee[]>(Constant.API_ENDPOINT + 'api/v1/staffs/' + id)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -40,8 +45,8 @@ export class EmployeeService {
       .pipe(catchError(this.errorHandler));
   }
 
-  updateEmployee(EmployeeData): Observable<Employee[]> {
-    return this.http.put<any>(Constant.API_ENDPOINT + 'api/v1/staffs', EmployeeData)
+  updateEmployee(EmployeeData , id): Observable<Employee[]> {
+    return this.http.put<any>(Constant.API_ENDPOINT + 'api/v1/staffs/' + id , EmployeeData )
       .pipe(catchError(this.errorHandler));
   }
 
