@@ -1,9 +1,10 @@
 import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
 import { CoreModule } from "../core/core.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
+
 
 import { EmployeeDetailsComponent } from "./employee-contents/employee-details/employee-details.component";
 import { EmployeeListComponent } from "./employee-contents/employee-list/employee-list.component";
@@ -19,7 +20,9 @@ import { LeavetypeDetailsComponent } from "./leavetype-contents/leavetype-detail
 import { LeavetypeListComponent } from "./leavetype-contents/leavetype-list/leavetype-list.component";
 import { LeavetypeMainComponent } from "./leavetype-contents/leavetype-main/leavetype-main.component";
 import { LeavetypeManageComponent } from "./leavetype-contents/leavetype-manage/leavetype-manage.component";
-import { MaterialModule } from "../shared/material/material.module";
+import { MaterialModule } from "../shared/material/materail.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
     declarations: [
@@ -36,16 +39,23 @@ import { MaterialModule } from "../shared/material/material.module";
         LeavetypeDetailsComponent,
         LeavetypeListComponent,
         LeavetypeMainComponent,
-        LeavetypeManageComponent
+        LeavetypeManageComponent,
+
     ],
     imports: [
         CommonModule,
         CoreModule,
         SharedModule,
+        DashboardRoutingModule,
         MaterialModule,
+        FormsModule,
         ReactiveFormsModule,
-        DashboardRoutingModule
-    ]
+        NgxPaginationModule 
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
+     ]
 })
 
 export class DashboardModule {}

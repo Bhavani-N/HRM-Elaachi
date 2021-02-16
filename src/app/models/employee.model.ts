@@ -1,8 +1,14 @@
-// export class User {
-//     id: string;
-//     username: string;
-//     password: string;
-//     firstName: string;
-//     lastName: string;
-//     token: string;
-// }
+export class Employee {
+
+    employeeId: number;
+    fullName: string;
+    username: string;
+    password: string;
+    role: string;
+    status: number;
+    employeeSupervisor: Employee;
+
+    constructor(id) {
+       this.employeeId = id;
+    }
+}

@@ -7,6 +7,7 @@ import { HomeComponent } from "./home/home.component";
 import { ApplyLeaveComponent } from './modals/apply-leave/apply-leave.component';
 import { AttendanceComponent } from "./modals/attendance/attendance.component";
 import { CompanyInfoComponent } from './company-info/company-info.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { CompanyInfoComponent } from './company-info/company-info.component';
     imports: [
         CommonModule,
         SharedModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        ReactiveFormsModule
     ],
     entryComponents: [
         ApplyLeaveComponent,
