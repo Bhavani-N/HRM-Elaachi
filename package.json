@@ -34,6 +34,7 @@
     "cors": "^2.8.5",
     "date-fns": "^2.16.1",
     "firebase": "^8.2.2",
+    "hammerjs": "^2.0.8",
     "jqwidgets-framework": "^11.0.1",
     "jqwidgets-ng": "^11.0.1",
     "jqwidgets-scripts": "^11.0.1",

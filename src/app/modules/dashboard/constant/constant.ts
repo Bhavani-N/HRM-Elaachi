@@ -1,5 +1,5 @@
-import { environment } from '../../../../environments/environment'
-export class Constant {
+import { environment } from '../../../../environments/environment';
 
-    public static API_ENDPOINT = environment.API_HOST;
+export class Constant {
+    public static API_ENDPOINT = environment.BASE_API_URL;
 }

@@ -1,6 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
+import { CoreModule } from "../core/core.module";
+import { ReactiveFormsModule } from "@angular/forms";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 
 
@@ -42,6 +44,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ],
     imports: [
         CommonModule,
+        CoreModule,
         SharedModule,
         DashboardRoutingModule,
         MaterialModule,
@@ -52,7 +55,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA
-      ]
+     ]
 })
 
 export class DashboardModule {}
