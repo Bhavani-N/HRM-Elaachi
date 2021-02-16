@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LeaveTypeService } from 'src/app/services/leaveType.service';
 
 @Component({
   selector: 'app-leavetype-manage',
@@ -14,7 +15,7 @@ export class LeavetypeManageComponent implements OnInit {
   submitted = false;
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private leaveTypeService: LeaveTypeService) { }
 
   ngOnInit() {
     this.initLeaveTypeForm();
@@ -34,8 +35,21 @@ export class LeavetypeManageComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.leaveTypeForm.invalid) {
+      console.log('invalid')
       return;
     }
+    console.log('valid')
+    this.leaveTypeService.createLeaveType(this.leaveTypeForm.value).subscribe(res => {
+      this.has_error = false;
+      console.log(this.leaveTypeForm.value)
+      this.leaveType_req_msg = 'Leave Type Successfully Created';
+      this.leaveTypeForm.reset();
+      this.submitted = false;
+    }, error => {
+      console.log('failed')
+      this.has_error = true;
+      this.leaveType_req_msg = error.message();
+    });
   }
 
 }
