@@ -5,6 +5,7 @@ import { NgxModule } from './ngx/ngx.module';
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { AlertComponent } from './alert/alert.component';
+import { MaterialModule } from "./material/materail.module";
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { AlertComponent } from './alert/alert.component';
     ],
     imports: [
         CommonModule,
-        NgxModule
+        NgxModule,
+        MaterialModule
     ],
     exports: [
         HeaderComponent,
