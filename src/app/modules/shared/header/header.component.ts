@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
     console.log('routing...........')
     this.router.navigate(['./home'])
   }
+
+  dashboard() {
+    this.router.navigate(['./dashboard'])
+  }
   logout(){
    
       this.authService.logout();

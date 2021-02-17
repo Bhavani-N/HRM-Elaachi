@@ -24,11 +24,11 @@
 
   <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-      <a class="leave-management" href="#">Leave Management</a>
-      <a href="#">Employee</a>
-      <a href="#">Leave Request</a>
-      <a href="#">Leave Type</a>
-      <a href="#">Event</a>
+      <a class="leave-management" >Leave Management</a>
+      <a routerLink="/dashboard/employees" routerLinkActive="active">Employee</a>
+      <a routerLink="/dashboard/leaverequests" routerLinkActive="active">Leave Request</a>
+      <a routerLink="/dashboard/leavetypes" routerLinkActive="active">Leave Type</a>
+      <!-- <a routerLink="/dashboard/employees" routerLinkActive="active">Event</a> -->
   </div>
     
   <div id="main p-0">
