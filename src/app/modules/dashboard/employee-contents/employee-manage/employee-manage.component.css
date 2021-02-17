@@ -1,0 +1,28 @@
+.form-box{
+    background-color: #f7f7f7;
+    box-shadow: 0 0 12px #dadada;
+    border: 1px solid #dadada;
+    padding: 25px;
+    border-radius: 5px;
+}
+.form-title{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+.name{
+    width: 100%;
+    height: 100%;
+    color: #495057;
+    background-color: #fff;
+    padding: .375rem 0.5rem;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.name:focus{
+    outline: none;
+}
+.form-title{
+    color: #3f51b5;
+}
