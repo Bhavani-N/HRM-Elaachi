@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap, catchError } from 'rxjs/operators';
 import { Observable, concat, of, Subject } from 'rxjs';
 import { EmployeeService } from '../../../../services/employee.service';
-import { Employee } from '../../../../models/employee.model';
+import { Employee } from '../../../../models/employee';
 
 @Component({
   selector: 'app-employee-manage',

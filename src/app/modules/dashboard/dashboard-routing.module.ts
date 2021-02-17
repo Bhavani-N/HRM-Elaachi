@@ -15,6 +15,15 @@ import { LeavetypeMainComponent } from './leavetype-contents/leavetype-main/leav
 import { LeavetypeListComponent } from './leavetype-contents/leavetype-list/leavetype-list.component';
 import { LeavetypeDetailsComponent } from './leavetype-contents/leavetype-details/leavetype-details.component';
 import { LeavetypeManageComponent } from './leavetype-contents/leavetype-manage/leavetype-manage.component';
+import { TaskMainComponent } from './task-contents/task-main/task-main.component';
+import { TaskListComponent } from './task-contents/task-list/task-list.component';
+import { TaskDetailsComponent } from './task-contents/task-details/task-details.component';
+import { TaskManageComponent } from './task-contents/task-manage/task-manage.component';
+import { ProjectMainComponent } from './project-contents/project-main/project-main.component';
+import { ProjectListComponent } from './project-contents/project-list/project-list.component';
+import { ProjectDetailsComponent } from './project-contents/project-details/project-details.component';
+import { ProjectManageComponent } from './project-contents/project-manage/project-manage.component';
+import { MyProfileComponent } from './profile-contents/my-profile/my-profile.component';
 
 const routes: Routes = [
     {
@@ -51,7 +60,28 @@ const routes: Routes = [
                 {path: 'details/:id', component: LeavetypeDetailsComponent},
                 {path: 'new', component: LeavetypeManageComponent}
               ]
-            }
+            },
+            {
+              path: 'tasks',
+              component: TaskMainComponent,
+              children: [
+                {path: '', redirectTo: 'details', pathMatch: 'full'},
+                {path: 'details', component: TaskListComponent},
+                {path: 'details/:id', component: TaskDetailsComponent},
+                {path: 'new', component: TaskManageComponent}
+              ]
+            },
+            {
+              path: 'projects',
+              component: ProjectMainComponent,
+              children: [
+                {path: '', redirectTo: 'details', pathMatch: 'full'},
+                {path: 'details', component: ProjectListComponent},
+                {path: 'details/:id', component: ProjectDetailsComponent},
+                {path: 'new', component: ProjectManageComponent}
+              ]
+            },
+            { path: 'profile', component: MyProfileComponent },
         ]
     }
 ];
