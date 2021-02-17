@@ -1,12 +1,24 @@
-<div class="content-box">
+<!-- <div class="content-box">
 
     <div mat-tab-nav-bar class="custom-tab">
       <a mat-tab-link class="nav-link" routerLink="/dashboard/employees/details" routerLinkActive="active">
-        <mat-icon>assignment_ind</mat-icon>&nbsp;All Employees</a>
+        <mat-icon>assignment_ind</mat-icon>&nbsp;</a>
       <a mat-tab-link class="nav-link" routerLink="/dashboard/employees/new" routerLinkActive="active">
         <mat-icon>person_add</mat-icon>&nbsp;New Employee
       </a>
     </div>
   
     <router-outlet></router-outlet>
-  </div>
+  </div> -->
+<div class="container employees">
+  <a routerLink="/dashboard/employees/details">
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <span class="pr-4">All Employees</span>
+  </a>
+  <a routerLink="/dashboard/employees/new">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    <span>New Employee</span>
+  </a>
+</div>
+<router-outlet></router-outlet>
+  
