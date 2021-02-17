@@ -15,7 +15,7 @@ export class LeaverequestManageComponent implements OnInit {
   create_leave_req_msg: string;
   public has_error = false;
 
-  leaveTypes: Observable<any>;
+  leaveTypes: any;
   selectedLeaveType: LeaveType = null;
   leaveForm: FormGroup;
   minDate: Date;
@@ -27,7 +27,13 @@ export class LeaverequestManageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.leaveTypes = this.leaveTypeService.getAllLeaveTypes();
+    this.leaveTypeService.getAllLeaveTypes().subscribe(res => {
+      console.log(res);
+      this.leaveTypes = res;
+      this.leaveTypes = this.leaveTypes.result;
+      console.log(this.leaveTypes);
+    });
+    console.log(this.leaveTypes);
 
     this.leaveForm = this.formBuilder.group({
       leaveType: [, Validators.required],
@@ -42,18 +48,20 @@ export class LeaverequestManageComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.submitted = true;
-    // if (this.leaveForm.invalid) {
-    //   return;
-    // }
-    // const submissionData = { ...this.leaveForm.value, 'leaveTypeDTO': { 'leaveTypeId': this.leaveForm.value.leaveType } };
-    // this.empLeaveService.createEmployeeLeave(submissionData).subscribe(res => {
-    //   this.has_error = false;
-    //   this.create_leave_req_msg = 'Leave Request successfully submitted';
-    //   this.leaveForm.reset();
-    // }, error => {
-
-    // });
+    this.submitted = true;
+    if (this.leaveForm.invalid) {
+      return;
+    }
+    const submissionData = { ...this.leaveForm.value, 'leaveTypeDTO': { 'leaveTypeId': this.leaveForm.value.leaveType } };
+    this.empLeaveService.createEmployeeLeave(submissionData).subscribe(res => {
+      this.has_error = false;
+      this.create_leave_req_msg = 'Leave Request successfully submitted';
+      this.leaveForm.reset();
+      this.submitted = false;
+    }, error => {
+      this.has_error = true;
+      this.create_leave_req_msg = error.error.message;
+    });
   }
 
 }
