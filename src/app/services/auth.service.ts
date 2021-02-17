@@ -60,6 +60,9 @@ export class AuthService {
         return this.http.post(`${environment.API_HOST}/api/v1/auth/signup`, user);
     }
 
+    isAdmin() {
+        return localStorage.getItem('role') === 'admin';
+    }
 
     forgotPassword(email: string) {
         return this.http.post(`${environment.API_HOST}/api/v1/auth/forgot-password`, { email });
