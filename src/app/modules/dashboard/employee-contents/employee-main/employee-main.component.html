@@ -1,20 +1,10 @@
-<div class="content-box">
-    <div class="employee-types">
-        <div class="employees">
-           <a routerLink="/dashboard/employees/details" routerLinkActive="active"> <i class="fa fa-id-badge" aria-hidden="true"></i>
-            <span class="mr-3">All Employees</span></a>
-        </div>
-        <div class="employees">
-            <a  routerLink="/dashboard/employees/new" routerLinkActive="active"><i class="fa fa-user-plus" aria-hidden="true"></i>
-            <span>New Employees</span></a>
-        </div>
-    </div>
+<!-- <div class="content-box">
 
     <router-outlet></router-outlet>
 </div>
     <!-- <div mat-tab-nav-bar class="custom-tab">
       <a mat-tab-link class="nav-link" routerLink="/dashboard/employees/details" routerLinkActive="active">
-        <mat-icon>assignment_ind</mat-icon>&nbsp;All Employees</a>
+        <mat-icon>assignment_ind</mat-icon>&nbsp;</a>
       <a mat-tab-link class="nav-link" routerLink="/dashboard/employees/new" routerLinkActive="active">
         <mat-icon>person_add</mat-icon>&nbsp;New Employee
       </a>
@@ -22,3 +12,15 @@
   
     <router-outlet></router-outlet>
   </div> -->
+<div class="container employees">
+  <a routerLink="/dashboard/employees/details">
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <span class="pr-4">All Employees</span>
+  </a>
+  <a routerLink="/dashboard/employees/new">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    <span>New Employee</span>
+  </a>
+</div>
+<router-outlet></router-outlet>
+  

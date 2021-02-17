@@ -1,17 +1,13 @@
-.employee-types{
-    display: flex;
-    padding:15px;
-    color: #3f51b5;
-    border-bottom: 1px solid #ccc;
+.employees .fa{
+    font-size: 20px;
+    padding-right: 6px;
 }
-.employee-types i{
-    padding-right: 8px;
-}
-.employee-types a{
-    text-decoration:none;
-    color:none;
+.employees {
+    border-bottom:1px solid grey;
+    padding:10px 0px;
+    text-align: center;
 }
 .employees a{
-    color: #3f51b5;
+    color:#3f51b5;
+    text-decoration: none;
 }
-

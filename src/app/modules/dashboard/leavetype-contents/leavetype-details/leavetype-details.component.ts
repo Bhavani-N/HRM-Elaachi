@@ -74,7 +74,8 @@ export class LeavetypeDetailsComponent implements OnInit {
     if (this.leaveTypeUpdateForm.invalid) {
       return;
     }
-    this.leaveTypeService.updateLeaveTypeById(this.leaveTypeUpdateForm.value, this.selectedleaveType._id).subscribe(res => {
+    console.log(this.selectedleaveType._id)
+    this.leaveTypeService.updateLeaveTypeById(this.selectedleaveType._id, this.leaveTypeUpdateForm.value).subscribe(res => {
       this.has_error = false;
       this.selectedleaveType = res;
       // this.selectedleaveType = this.selectedleaveType.result;

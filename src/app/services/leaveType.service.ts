@@ -38,8 +38,8 @@ export class LeaveTypeService {
             .pipe(catchError(this.errorHandler));
     }
 
-    updateLeaveTypeById(leaveData, id): Observable<LeaveType[]> {
-        return this.http.put<any>(Constant.API_ENDPOINT + 'api/v1/staffs/' + id , leaveData )
+    updateLeaveTypeById(id, leaveData): Observable<LeaveType[]> {
+        return this.http.put<any>(Constant.API_ENDPOINT + 'api/v1/leaveType/' + id , leaveData )
             .pipe(catchError(this.errorHandler));
     }
 

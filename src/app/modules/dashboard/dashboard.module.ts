@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
 import { CoreModule } from "../core/core.module";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 
 
@@ -20,8 +19,9 @@ import { LeavetypeDetailsComponent } from "./leavetype-contents/leavetype-detail
 import { LeavetypeListComponent } from "./leavetype-contents/leavetype-list/leavetype-list.component";
 import { LeavetypeMainComponent } from "./leavetype-contents/leavetype-main/leavetype-main.component";
 import { LeavetypeManageComponent } from "./leavetype-contents/leavetype-manage/leavetype-manage.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
-import { MaterialModule } from "../shared/material/material.module";
+import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
     declarations: [
