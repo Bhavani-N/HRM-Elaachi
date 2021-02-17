@@ -1,5 +1,5 @@
-<form [formGroup]="leaveTypeForm" (ngSubmit)="onSubmit()" class="mt-5 col-md-4 offset-md-4 form-box">
-<div *ngIf="!!leaveType_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{leaveType_req_msg}}</div>
+<form [formGroup]="leaveTypeForm" (ngSubmit)="onSubmit()" class="mt-5 col-md-4 offset-md-5 form-box">
+    <div *ngIf="!!leaveType_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{leaveType_req_msg}}</div>
     <h4 class="form-title">Create Leave Type</h4>
     <div class="form-group row m-0 mt-4">
         <label for="typeName" class="col-sm-3 col-form-label pl-0 py-0">Type Name&nbsp;<span class="text-danger">*</span></label>
