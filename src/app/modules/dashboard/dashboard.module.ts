@@ -33,6 +33,8 @@ import { ProjectListComponent } from './project-contents/project-list/project-li
 import { ProjectMainComponent } from './project-contents/project-main/project-main.component';
 import { ProjectManageComponent } from './project-contents/project-manage/project-manage.component';
 import { MyProfileComponent } from './profile-contents/my-profile/my-profile.component';
+import { BsDatepickerModule } from "ngx-bootstrap";
+
 
 @NgModule({
     declarations: [
@@ -69,7 +71,8 @@ import { MyProfileComponent } from './profile-contents/my-profile/my-profile.com
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,
-        NgxPaginationModule 
+        NgxPaginationModule ,
+        BsDatepickerModule.forRoot(),
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
