@@ -1,0 +1,34 @@
+.form-title {
+    color: #3f51b5;
+    padding: 1% 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom:7px;
+}
+.form-box {
+    border: 1px solid #dadada;
+    background-color: #f7f7f7;
+    box-shadow: 0 0 12px #dadada;
+}
+.btn,.form-check-input:checked{
+    background-color: #3f51b5;
+}
+.btn{
+    color:white;
+    padding:3px;
+    margin-top: 25px;
+}
+.btn:focus{
+    border:2px solid grey
+}
+.form-control:focus,.btn:focus{
+    box-shadow: none;
+}
+.form-control:focus{
+    border:1px solid grey;
+}
+.form-box{
+    padding:25px;
+}
+.form-check-input:checked{
+    border-color: #3f51b5;
+}
