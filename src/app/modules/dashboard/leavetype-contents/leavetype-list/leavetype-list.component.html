@@ -1,4 +1,4 @@
-<div class="content-box">
+<div class="content-box col-md-6 mx-auto">
     
         <!-- <form (ngSubmit)="searchLeaveType(searchForm)" #searchForm="ngForm">
             <div class="row mb-2">
@@ -25,6 +25,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let leavetype of leaveTypes; let i = index">
+          
             <td>{{i+1}}</td>
             <td>{{leavetype.name}}</td>
             <td><a routerLink="/dashboard/leavetypes/details/{{leavetype._id}}">

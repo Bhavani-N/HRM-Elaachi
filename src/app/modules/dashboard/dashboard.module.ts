@@ -37,7 +37,7 @@ import { MyProfileComponent } from './profile-contents/my-profile/my-profile.com
 import { BsDatepickerModule } from "ngx-bootstrap";
 
 
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+// import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 
 
 @NgModule({
