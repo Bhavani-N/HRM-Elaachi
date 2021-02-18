@@ -37,13 +37,6 @@
     text-decoration: none;
     background: #7386d5;
   }
-  .sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
   .sidebar .closebtn{
     position: absolute;
     top: -15px;
@@ -52,6 +45,7 @@
   }
   .top-nav{
     background-color: #4170ab;
+    width:100%;
   }
   button{
     color: #fff;
