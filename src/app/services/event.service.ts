@@ -48,14 +48,41 @@ export class EventService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getLeaveAndEventsBetweenDate(startDate, endDate): Observable<any> {
-    return this.http.get<Event[]>(Constant.API_ENDPOINT + '/rest/events/byDate',
-    {
-      params: {
-        date1: startDate,
-        date2: endDate
-      }
-    })
+  getAllProjects(): Observable<any> {
+    return this.http.get<Event[]>(Constant.API_ENDPOINT + '/projects')
       .pipe(catchError(this.errorHandler));
   }
+
+  getProjectById(id): Observable<Event[]> {
+    return this.http.get<Event[]>(Constant.API_ENDPOINT + '/projects/' + id)
+      .pipe(catchError(this.errorHandler));
+  }
+
+
+  createProject(ProjectData): Observable<Event[]> {
+    return this.http.post<any>(Constant.API_ENDPOINT + '/projects', ProjectData)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  updateProject(ProjectData, id): Observable<Event[]> {
+    return this.http.put<any>(Constant.API_ENDPOINT + '/projects/' + id, ProjectData)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  
+
+
+
+
+
+  // getLeaveAndEventsBetweenDate(startDate, endDate): Observable<any> {
+  //   return this.http.get<Event[]>(Constant.API_ENDPOINT + '/rest/events/byDate',
+  //   {
+  //     params: {
+  //       date1: startDate,
+  //       date2: endDate
+  //     }
+  //   })
+  //     .pipe(catchError(this.errorHandler));
+  // }
 }
