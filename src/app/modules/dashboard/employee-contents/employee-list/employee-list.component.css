@@ -1,0 +1,11 @@
+.search{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.input-group{
+    justify-content: flex-end;
+    height: 100% ;
+}
