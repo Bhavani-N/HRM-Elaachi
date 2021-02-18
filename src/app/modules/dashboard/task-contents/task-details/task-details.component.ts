@@ -46,6 +46,7 @@ export class TaskDetailsComponent implements OnInit {
       endDate: [this.selectedEvent.endDate, Validators.required]
     });
   }
+ 
 
   toggleEdit() {
     this.isEdit = !this.isEdit;
@@ -99,5 +100,6 @@ export class TaskDetailsComponent implements OnInit {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+
 
 }
