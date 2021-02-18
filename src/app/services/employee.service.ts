@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Constant } from '../modules/dashboard/constant/constant';
-import { Employee } from '../models/employee.model';
+import { Employee } from '../models/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -31,22 +31,22 @@ export class EmployeeService {
   // }
 
   getAllEmployees(): Observable<any> {
-    return this.http.get<Employee[]>(Constant.API_ENDPOINT + 'api/v1/staffs')
+    return this.http.get<Employee[]>(Constant.API_ENDPOINT + '/staffs')
       .pipe(catchError(this.errorHandler));
   }
 
   getEmployeeById(id): Observable<Employee[]> {
-    return this.http.get<Employee[]>(Constant.API_ENDPOINT + 'api/v1/staffs/' + id)
+    return this.http.get<Employee[]>(Constant.API_ENDPOINT + '/staffs/' + id)
       .pipe(catchError(this.errorHandler));
   }
 
   createEmployee(EmployeeData): Observable<Employee[]> {
-    return this.http.post<any>(Constant.API_ENDPOINT + 'api/v1/staffs', EmployeeData)
+    return this.http.post<any>(Constant.API_ENDPOINT + '/staffs', EmployeeData)
       .pipe(catchError(this.errorHandler));
   }
 
   updateEmployee(EmployeeData , id): Observable<Employee[]> {
-    return this.http.put<any>(Constant.API_ENDPOINT + 'api/v1/staffs/' + id , EmployeeData )
+    return this.http.put<any>(Constant.API_ENDPOINT + '/staffs/' + id , EmployeeData )
       .pipe(catchError(this.errorHandler));
   }
 
@@ -56,7 +56,7 @@ export class EmployeeService {
   // }
 
   getEmployeeByFullName(inputvalue): Observable<Employee> {
-    return this.http.get<Employee>(Constant.API_ENDPOINT + 'api/v1/staffs',
+    return this.http.get<Employee>(Constant.API_ENDPOINT + '/staffs',
       {
         params: {
           fullname: inputvalue
@@ -75,7 +75,7 @@ export class EmployeeService {
   // }
 
   getCurrentEmployee(): Observable<Employee> {
-    return this.http.get<Employee>(Constant.API_ENDPOINT + 'api/v1/staffs')
+    return this.http.get<Employee>(Constant.API_ENDPOINT + '/staffs')
       .pipe(catchError(this.errorHandler));
   }
 

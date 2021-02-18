@@ -18,33 +18,33 @@ export class LeaveTypeService {
     }
 
     getAllLeaveTypes(): Observable<LeaveType[]> {
-        return this.http.get<any>(Constant.API_ENDPOINT + 'api/v1/leaveType/')
+        return this.http.get<any>(Constant.API_ENDPOINT + '/leaveType/')
             .pipe(catchError(this.errorHandler));
     }
 
     getLeaveTypeById(id): Observable<LeaveType[]> {
-        return this.http.get<LeaveType[]>(Constant.API_ENDPOINT + 'api/v1/leaveType/' + id)
+        return this.http.get<LeaveType[]>(Constant.API_ENDPOINT + '/leaveType/' + id)
             .pipe(catchError(this.errorHandler));
     }
 
     createLeaveType(LeaveTypeData): Observable<LeaveType[]> {
         console.log(LeaveTypeData)
-        return this.http.post<any>(Constant.API_ENDPOINT + 'api/v1/leaveType/', LeaveTypeData)
+        return this.http.post<any>(Constant.API_ENDPOINT + '/leaveType/', LeaveTypeData)
             .pipe(catchError(this.errorHandler));
     }
 
     updateLeaveType(LeaveTypeData): Observable<LeaveType[]> {
-        return this.http.put<any>(Constant.API_ENDPOINT + 'api/v1/leaveType/', LeaveTypeData)
+        return this.http.put<any>(Constant.API_ENDPOINT + '/leaveType/', LeaveTypeData)
             .pipe(catchError(this.errorHandler));
     }
 
     updateLeaveTypeById(id, leaveData): Observable<LeaveType[]> {
-        return this.http.put<any>(Constant.API_ENDPOINT + 'api/v1/leaveType/' + id , leaveData )
+        return this.http.put<any>(Constant.API_ENDPOINT + '/leaveType/' + id , leaveData )
             .pipe(catchError(this.errorHandler));
     }
 
     deleteLeaveType(id): Observable<LeaveType[]> {
-        return this.http.delete<any>(Constant.API_ENDPOINT + 'api/v1/leaveType/' + id)
+        return this.http.delete<any>(Constant.API_ENDPOINT + '/leaveType/' + id)
           .pipe(catchError(this.errorHandler));
     }
 
