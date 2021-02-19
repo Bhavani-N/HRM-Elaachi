@@ -1,6 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NgSelectModule, NgSelectConfig, ɵs } from '@ng-select/ng-select';
+
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
 import { MaterialModule } from '../shared/material/material.module';
@@ -75,7 +77,7 @@ import { BsDatepickerModule } from "ngx-bootstrap";
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,
-
+        NgSelectModule,
         NgxPaginationModule,
 
         BsDatepickerModule.forRoot(),
@@ -83,7 +85,8 @@ import { BsDatepickerModule } from "ngx-bootstrap";
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA
-     ]
+     ],
+     providers: [NgSelectConfig]
 })
 
 export class DashboardModule {}
