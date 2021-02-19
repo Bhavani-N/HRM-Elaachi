@@ -3,13 +3,16 @@
   <div *ngIf="!isEdit">
     <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> -->
     <form [formGroup]="projectForm">
-      <select  formControlName="projectCode"
-        (ngModelChange)="getData(projectForm.value)">
-        <option>Select Project</option>
-        <option *ngFor="let prj of projectDetails" [ngValue]="prj">
-          {{ prj.projectCode }}
-        </option>
-      </select>ProjectName:<b> {{projectName}}</b>
+      <div class="py-4 pl-5">
+        <select  formControlName="projectCode"
+          (ngModelChange)="getData(projectForm.value)">
+          <option>Select Project</option>
+          <option *ngFor="let prj of projectDetails" [ngValue]="prj">
+            {{ prj.projectCode }}
+          </option>
+        </select>
+        <span class="pl-3">ProjectName :<b> {{projectName}}</b></span>
+      </div>
     </form>
     <table class="table table-hover">
       <thead>
