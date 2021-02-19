@@ -81,7 +81,7 @@ const routes: Routes = [
                 {path: 'new', component: ProjectManageComponent}
               ]
             },
-            { path: 'profile', component: MyProfileComponent },
+            { path: 'profile/:id', component: MyProfileComponent },
         ]
     }
 ];

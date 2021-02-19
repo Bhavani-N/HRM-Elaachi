@@ -1,5 +1,5 @@
-<div class="row content-box">
-    <div class="col-md-12">
+<div class="col-md-10 mx-auto">
+    
         <!-- <form (ngSubmit)="searchLeaveType(searchForm)" #searchForm="ngForm">
             <div class="row mb-2">
 
@@ -17,20 +17,21 @@
               </div>
         </form> -->
 
-        <table class="table table-hover">
-            <thead>
-              <th>S.N</th>
-              <th>Leave Type </th>
-              <th>Options</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let leavetype of leaveTypes; let i = index">
-                <td>{{i+1}}</td>
-                <td>{{leavetype.name}}</td>
-                <td><a routerLink="/dashboard/leavetypes/details/{{leavetype._id}}">
-                    <button mat-raised-button>View</button></a></td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
+    <table class="table table-hover">
+        <thead>
+          <th>S.N</th>
+          <th>Leave Type </th>
+          <th>Options</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leavetype of leaveTypes; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{leavetype.name}}</td>
+            <td>
+              <a routerLink="/dashboard/leavetypes/details/{{leavetype._id}}">
+                <button>View</button></a>
+            </td>
+          </tr>
+        </tbody>
+    </table>
 </div>

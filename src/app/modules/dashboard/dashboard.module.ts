@@ -1,6 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NgSelectModule, NgSelectConfig, ɵs } from '@ng-select/ng-select';
+
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
 import { MaterialModule } from '../shared/material/material.module';
@@ -33,7 +35,12 @@ import { ProjectListComponent } from './project-contents/project-list/project-li
 import { ProjectMainComponent } from './project-contents/project-main/project-main.component';
 import { ProjectManageComponent } from './project-contents/project-manage/project-manage.component';
 import { MyProfileComponent } from './profile-contents/my-profile/my-profile.component';
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+
+import { BsDatepickerModule } from "ngx-bootstrap";
+
+
+// import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+
 
 @NgModule({
     declarations: [
@@ -70,13 +77,16 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,
+        NgSelectModule,
         NgxPaginationModule,
+
         BsDatepickerModule.forRoot(),
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA
-     ]
+     ],
+     providers: [NgSelectConfig]
 })
 
 export class DashboardModule {}

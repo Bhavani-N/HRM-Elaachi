@@ -21,27 +21,33 @@
     </div>
   
   </nav> -->
+<!-- <nav class="navbar fixed-top custom-nav"> -->
 
   <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-      <a class="leave-management" >Leave Management</a>
-      <a routerLink="/dashboard/employees" routerLinkActive="active">Employee</a>
-      <a routerLink="/dashboard/leaverequests" routerLinkActive="active">Leave Request</a>
-      <a routerLink="/dashboard/leavetypes" routerLinkActive="active">Leave Type</a>
+      <!-- <a class="leave-management" >Leave Management</a> -->
+      <a routerLink="/dashboard/employees" routerLinkActive="active">Employee List</a>
+      <a routerLink="/dashboard/leaverequests" routerLinkActive="active">Leave-Request List</a>
+      <a routerLink="/dashboard/leavetypes" routerLinkActive="active">Leave-Type List</a>
+      <a routerLink="/dashboard/tasks" routerLinkActive="active">Task List</a>
+      <a routerLink="/dashboard/projects" routerLinkActive="active">Project List</a>
       <!-- <a routerLink="/dashboard/employees" routerLinkActive="active">Event</a> -->
   </div>
     
-  <div id="main p-0">
-    <div class="d-flex p-3 top-nav">
-        <div class="d-flex">
-            <button (click)="openNav()">&#9776;</button>
-            <h5 class="text-white pl-2">Dashboard</h5>
-        </div>
-        <div class="user-name">
-          <a href="#">
-            <i class="fa fa-user-circle" aria-hidden="true"></i>
-            <span class="pl-2">username</span>
-          </a>
-        </div>
-    </div>
-  </div>
+  <!-- <div id="main p-0"> -->
+    <!-- <nav class="navbar fixed-top custom-nav p-0"> -->
+      <div class="d-flex p-3 top-nav">
+          <div class="d-flex">
+              <button (click)="openNav()">&#9776;</button>
+              <h5 class="text-white pl-2">Dashboard</h5>
+          </div>
+          <div class="user-name">
+            <a routerLink="/dashboard/profile/{{staffId}}">
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              <span class="pl-2">username</span>
+            </a>
+          </div>
+      </div>
+    <!-- </nav> -->
+  <!-- </div> -->
+<!-- </nav> -->

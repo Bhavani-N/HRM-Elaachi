@@ -17,8 +17,8 @@ export class LeaveService {
     return throwError(error);
   }
 
-  getAllEmployeeLeaves(): Observable<any> {
-    return this.http.get<EmployeeLeave[]>(Constant.API_ENDPOINT + '/userLeave/')
+  getAllEmployeeLeaves(page): Observable<any> {
+    return this.http.get<EmployeeLeave[]>(Constant.API_ENDPOINT + '/userLeave?page='+page)
     .pipe(catchError(this.errorHandler));
   }
 

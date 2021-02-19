@@ -1,0 +1,13 @@
+.tasks .fa{
+    font-size: 20px;
+    padding-right: 6px;
+}
+.tasks {
+    border-bottom:1px solid grey;
+    padding:10px 0px;
+    text-align: center;
+}
+.tasks a{
+    color: #832023;
+    text-decoration: none;
+}

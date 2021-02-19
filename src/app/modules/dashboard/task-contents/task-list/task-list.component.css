@@ -1,0 +1,31 @@
+button{
+    border:none;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    min-width: 64px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0,0,0,.87);
+    background-color: #fff;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    transform: translate3d(0,0,0);
+}
+thead,tbody{
+    text-align: center;
+}
+th{
+    border-bottom: 1px solid black !important;
+    color:#832023
+}
+table{
+    width:97%;
+    margin:0px auto;
+    border:1px solid #dee2e6;
+}
+.table td, .table th{
+    vertical-align: middle !important;
+}
+table{
+    border: 2px solid lightgray;
+}
