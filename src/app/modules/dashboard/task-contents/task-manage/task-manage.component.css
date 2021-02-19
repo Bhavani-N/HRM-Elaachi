@@ -1,0 +1,22 @@
+.form-box{
+    border: 1px solid lightgray;
+    padding: 25px;
+    border-radius: 10px;
+    /* box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%); */
+}
+button{
+    background-color: #832023;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 18%;
+    margin: 0px auto;
+    padding: 4px;
+    font-size: 15px;
+}
+.project-names{
+    padding:35px 0px;
+}
+h3{
+    color:#832023;
+}
