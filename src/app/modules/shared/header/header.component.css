@@ -47,14 +47,18 @@ h5:after {
 .font-icons i{
   margin: 0px 10px;
 }
+.font-icons button{
+   padding:0px 10px !important;
+   margin: 0px 12px !important;
+}
 .fonts button{
    background-color: #832023;
-    margin-right: 40px;
-    border-radius: 5px;
-    color: white;
-    border: none;
-    padding: 3px 8px;
+   margin-right: 40px;
+   border-radius: 5px;
+   color: white;
+   border: none;
+   padding: 2px 9px;
 }
-.icons .fa {
+/* .icons .fa {
    margin: 0px 10px;
-}
+} */
