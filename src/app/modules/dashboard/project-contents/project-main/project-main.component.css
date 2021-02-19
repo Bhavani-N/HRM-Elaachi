@@ -1,0 +1,13 @@
+.projects .fa{
+    font-size: 20px;
+    padding-right: 6px;
+}
+.projects {
+    border-bottom:1px solid grey;
+    padding:10px 0px;
+    text-align: center;
+}
+.projects a{
+    color: #832023;
+    text-decoration: none;
+}

@@ -15,7 +15,8 @@ export class LeaverequestListComponent implements OnInit {
   loading = true;
   currentPage = 1;
   totalElements;
-  numberOfElements;
+  leavetypes: any = [];
+  LeaveNames: any = [];
   size = 10;
   sortKey = 'fromDate';
   reverse = false;
@@ -50,11 +51,17 @@ export class LeaverequestListComponent implements OnInit {
         this.leaveRequests = data;
         this.leaveRequests = data.data;
         console.log(this.leaveRequests)
-        console.log(data)
+        this.leaveRequests.map(leaveData => {
+          leaveData.leaveTypeId.map(res => {
+            // this.LeaveNames.push(res)
+            for (let i=0; i < leaveData.length; i++) {
+              console.log(res.name, i)
+            }
+          })
+          console.log(this.LeaveNames)
+          // console.log(this.LeaveNames)
+        })
         this.totalElements = data.result;
-        console.log(this.totalElements)
-        // this.size = data.size;
-        this.numberOfElements = data.numberOfElements;
         this.loading = false;
       },
       error => this.errorMsg = error

@@ -1,5 +1,6 @@
 <div class="row content-box">
     <div class="col-md-12">
+
   
       <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar>
   
@@ -21,21 +22,21 @@
         <tbody *ngIf="leaveRequests">
           <tr *ngFor="let leaverequest of leaveRequests | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
             <td>{{i+1}}</td>
-            <td><a routerLink="/home/employees/details/{{leaverequest.employeeDTO.employeeId}}">
-                {{leaverequest.employeeDTO.firstName}} {{leaverequest.employeeDTO.middleName}}
-                {{leaverequest.employeeDTO.lastName}}
+            <td *ngFor="let leaveid of leaverequest.staffId"><a routerLink="/dashboard/employees/details/{{leaveid._id}}">
+                {{ leaveid.firstName }}
               </a></td>
-            <td>{{leaverequest.leaveTypeDTO.typeName}}</td>
-            <td>{{leaverequest.fromDate}}</td>
-            <td>{{leaverequest.toDate}}</td>
+            <td *ngFor="let leave of leaverequest.leaveTypeId">{{leave.name}}</td>
+            <!-- <td *ngFor="let leaveid of leaverequest.staffId">{{ leaveid._id }}</td> -->
+            <td>{{leaverequest.dateFrom}}</td>
+            <td>{{leaverequest.dateTo}}</td>
             <td [ngClass]="(leaverequest.status=='APPROVED')?'text-success':'text-danger'">{{leaverequest.status}}</td>
-            <td><a routerLink="/home/leaverequests/details/{{leaverequest.leaveId}}">
+            <td><a routerLink="/dashboard/leaverequests/details/{{leaverequest._id}}">
                 <button mat-raised-button>View</button></a></td>
           </tr>
         </tbody>
       </table>
   
-      <div class="row col-md-12 mt-4">
+      <!-- <div class="row col-md-12 mt-4">
         <div class="col-md-auto">
           <span *ngIf="leaveRequests" class="table-details">Showing {{(currentPage-1) * size +1}} to {{(currentPage-1) *
             size
@@ -45,6 +46,6 @@
           <pagination-controls class="float-right" (pageChange)="getPage($event)"></pagination-controls>
         </div>
       </div>
-  
+   -->
     </div>
   </div>
