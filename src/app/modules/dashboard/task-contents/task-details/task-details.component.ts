@@ -28,6 +28,7 @@ export class TaskDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.routeId();
+  
   }
 
   routeId() {
@@ -43,7 +44,8 @@ export class TaskDetailsComponent implements OnInit {
       taskCode: [this.selectedEvent.taskCode],      
       taskName: [this.selectedEvent.taskName, [Validators.required, Validators.minLength(3)]],
       startDate: [this.selectedEvent.startDate, Validators.required],
-      endDate: [this.selectedEvent.endDate, Validators.required]
+      endDate: [this.selectedEvent.endDate, Validators.required],
+      status:  [this.selectedEvent.status, Validators.required]
     });
   }
  
@@ -73,6 +75,8 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   get f() { return this.eventUpdateForm.controls; }
+
+ 
 
   onSubmit() {
     this.submitted = true;

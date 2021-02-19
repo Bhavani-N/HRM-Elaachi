@@ -48,7 +48,7 @@ export class TaskDetailsComponent implements OnInit {
     this.displayTaskDetails();
 
     this.projectForm = this.fb.group({
-      projectCode: ['']
+      projectCode: [''],
     });
     this.userDetails = JSON.parse(this.authService.getUserDetails);
 
