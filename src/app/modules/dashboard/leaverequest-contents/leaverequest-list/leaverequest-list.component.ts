@@ -45,12 +45,14 @@ export class LeaverequestListComponent implements OnInit {
   }
 
   getAllEmployeeLeaves() {
-    this.empLeaveService.getAllEmployeeLeaves().subscribe(
+    this.empLeaveService.getAllEmployeeLeaves(this.currentPage).subscribe(
       data => {
         this.leaveRequests = data;
         this.leaveRequests = data.data;
         console.log(this.leaveRequests)
-        this.totalElements = data.totalElements;
+        console.log(data)
+        this.totalElements = data.result;
+        console.log(this.totalElements)
         // this.size = data.size;
         this.numberOfElements = data.numberOfElements;
         this.loading = false;
