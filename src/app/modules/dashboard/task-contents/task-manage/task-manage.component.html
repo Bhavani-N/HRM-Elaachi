@@ -1,17 +1,20 @@
-<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-6 offset-md-4 form-box">
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="mx-auto mt-5 col-md-7 form-box">
 
     <div *ngIf="!!create_event_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_event_msg}}</div>
   
-    <h4 class="mb-3 form-title"> Create New Event </h4>
+    <h3 class="form-title">Create New Event</h3>
 
     <!-- <form [formGroup]="projectForm"> -->
-      <select  formControlName="projectCode"
-        (ngModelChange)="getData(eventForm.value)">
-        <option>Select Project</option>
-        <option *ngFor="let prj of projectDetails" [ngValue]="prj">
-          {{ prj.projectCode }}
-        </option>
-      </select>ProjectName:<b> {{projectName}}</b>
+      <div class="project-names">
+        <select  formControlName="projectCode"
+          (ngModelChange)="getData(eventForm.value)">
+          <option>Select Project</option>
+          <option *ngFor="let prj of projectDetails" [ngValue]="prj">
+            {{ prj.projectCode }}
+          </option>
+        </select>
+        <span class="pl-4">ProjectName :<b> {{projectName}}</b></span>
+      </div>
       <div *ngIf="submitted && f.projectCode.errors" class="invalid-feedback">
         <div *ngIf="f.projectCode.errors.required">TaskCode is required</div>
       </div>
@@ -61,6 +64,6 @@
       </div>
     </div>
   
-    <button mat-raised-button color="primary" class="mt-3 btn-block" type="submit">Submit </button>
+    <button class="mt-4 btn-block" type="submit">Submit</button>
   
   </form>
