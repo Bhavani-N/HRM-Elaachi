@@ -2,7 +2,7 @@
     <div class="col-md-12">
   
       <div *ngIf="!isEdit">
-        <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar>
+        <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> -->
   
         <table class="table table-hover">
           <thead>
@@ -15,7 +15,7 @@
             </th>
             <th (click)="sort('endDate')">End Date 
             </th>
-            <th (click)="sort('status')">SStatus
+            <th (click)="sort('status')">Status
             </th>
             <th>Options</th>
           </thead>
@@ -27,8 +27,10 @@
               <td>{{event.startDate}}</td>
               <td>{{event.endDate}}</td>
               <td>{{event.status}}</td>
-              <td><a routerLink="/dashboard/projects/details/{{event._id}}">
-                <button mat-raised-button>View</button></a></td>
+              <td>
+                <a routerLink="/dashboard/projects/details/{{event._id}}">
+                <button>View</button></a>
+              </td>
               <!-- <td><button (click)="selectEvent(event)" mat-raised-button>Edit</button></td> -->
             </tr>
           </tbody>

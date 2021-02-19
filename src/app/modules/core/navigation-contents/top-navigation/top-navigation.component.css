@@ -3,23 +3,13 @@
     padding: 20px;
 } */
 .sidebar {
-    /* height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111; 
-    overflow-x: hidden; 
-    padding-top: 60px; 
-    transition: 0.5s; */
-    width: 0;
-    position: fixed;
-    top: 63px;
+    top: 66px;
     left: 0;
     height: 100vh;
     z-index:1;
-    background: #5c6588;
+    background: black;
     color: #fff;
     overflow-x: hidden; 
     transition: 0.5s;
@@ -33,9 +23,9 @@
     transition: 0.3s;
   }
   .sidebar a:hover {
-    color: #fff;
+    color:black;
     text-decoration: none;
-    background: #7386d5;
+    background: lightgray;
   }
   .sidebar .closebtn{
     position: absolute;
@@ -44,16 +34,14 @@
     font-size: 34px;
   }
   .top-nav{
-    background-color: #4170ab;
+    background-color: #832023;
     width:100%;
   }
   button{
-    color: #fff;
-    background-color: #17a2b8;
+    background-color: #fff;
     border: none;
     font-size: 23px;
     padding: 0px 15px;
-    outline-color: #17a2b8;
     border-radius: 4px;
   }
   .user-name{
