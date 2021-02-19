@@ -95,7 +95,7 @@ export class MyProfileComponent implements OnInit {
             // this.getEmployeeUnderSupervision();
           },
           error => {
-            console.log('not working')
+          
             this.errorMsg = error;
             this.selected_employee_msg = 'Oops ! Can\'t load selected employee';
           });
@@ -125,6 +125,7 @@ export class MyProfileComponent implements OnInit {
     console.log(this.employeeEditForm.value)
     // stop here if form is invalid
     if (this.employeeEditForm.invalid) {
+      alert('err')
       return;
     }
     // console.log("success ", this.employeeEditForm.value);
@@ -133,11 +134,11 @@ export class MyProfileComponent implements OnInit {
       this.has_error = false;
       this.update_employee_msg = 'Update Successful';
       this.selectedEmployee = res;
-      this.selectedEmployee = this.selectedEmployee.result
+       this.selectedEmployee = this.selectedEmployee.result
       this.employeeEditForm.reset();
       this.submitted = false;
     }, error => {
-      // console.log("ee ", error);
+      alert('not working')
       this.has_error = true;
       this.update_employee_msg = error.error.message;
     });
