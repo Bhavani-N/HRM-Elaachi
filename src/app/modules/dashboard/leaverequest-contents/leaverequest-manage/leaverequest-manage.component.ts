@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { LeaveTypeService } from '../../../../services/leaveType.service';
-import {NgSelectModule, NgOption} from '@ng-select/ng-select';
+// import {NgSelectModule, NgOption} from '@ng-select/ng-select';
 
 import { LeaveType } from '../../../../models/leaveType';
 import { LeaveService } from '../../../../services/leave.service';
