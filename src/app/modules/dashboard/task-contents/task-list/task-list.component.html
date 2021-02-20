@@ -16,13 +16,31 @@
     </form>
     <table class="table table-hover">
       <thead>
-        <th>S.N</th>
-        <th (click)="sort('taskName')">TaskName </th>
-        <th (click)="sort('taskCode')">TaskCode </th>
-        <th (click)="sort('startDate')">Start Date </th>
-        <th (click)="sort('endDate')">End Date </th>
-        <th (click)="sort('status')">Status</th>
-        <th>Options</th>
+        <tr>
+          <th rowspan="2">S.N</th>
+          <th rowspan="2" (click)="sort('taskName')">TaskName </th>
+          <th rowspan="2" (click)="sort('taskCode')">TaskCode </th>
+          <th rowspan="2" (click)="sort('startDate')">Start Date </th>
+          <th class="date" rowspan="2" (click)="sort('endDate')">End Date </th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th class="date">Sun</th>
+          <th rowspan="2" (click)="sort('status')">Status</th>
+          <th rowspan="2">Options</th>
+        </tr>
+        <tr>
+            <th>18/01</th>
+            <th>19/01</th>
+            <th>20/01</th>
+            <th>21/01</th>
+            <th>22/01</th>
+            <th>23/01</th>
+            <th>24/01</th>
+          </tr>
       </thead>
       <tbody *ngIf="events">
         <tr
