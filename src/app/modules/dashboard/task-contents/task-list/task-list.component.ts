@@ -26,7 +26,10 @@ export class TaskListComponent implements OnInit {
   projectForm: FormGroup;
   taskId: any;
   dArray: any = [];
-  constructor(private _eventService: EventService , private fb:FormBuilder) { }
+  week: any = [];
+  constructor(private _eventService: EventService , private fb:FormBuilder) {
+    this.getCurrentWeek();
+  }
 
   ngOnInit() {
     this.isEdit = false;
@@ -54,6 +57,18 @@ export class TaskListComponent implements OnInit {
     this.getAllEvents();
   }
 
+  getCurrentWeek() {
+    let curr = new Date();
+
+    for (let i = 1; i <= 7; i++) {
+      let first = curr.getDate() - curr.getDay() + i;
+      // let day = new Date(curr.setDate(first)).toISOString().slice(0, 10).split('-').reverse().join('/')
+      let day = new Date(curr.setDate(first)).toISOString().slice(5, 10).split('-').reverse().join('/')
+      this.week.push(day)
+    }
+
+    console.log(this.week)
+  }
 
   getAllProjectDetails(){
     this._eventService.getAllProjects().subscribe(

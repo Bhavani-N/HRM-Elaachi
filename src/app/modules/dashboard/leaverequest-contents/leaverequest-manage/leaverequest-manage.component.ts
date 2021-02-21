@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { LeaveTypeService } from '../../../../services/leaveType.service';
-import {NgSelectModule, NgOption} from '@ng-select/ng-select';
 
 import { LeaveType } from '../../../../models/leaveType';
 import { LeaveService } from '../../../../services/leave.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-leaverequest-manage',
@@ -22,33 +22,35 @@ export class LeaverequestManageComponent implements OnInit {
   minDate: Date;
   submitted = false;
   selectedCity: any;
-  cities = [
-    {id: 1, name: 'Vilnius'},
-    {id: 2, name: 'Kaunas'},
-    {id: 3, name: 'Pavilnys', disabled: true},
-    {id: 4, name: 'Pabradė'},
-    {id: 5, name: 'Klaipėda'}
-  ];
+  leaveId: any;
+  sId: any;
+  staffName: any;
+  userDetails: any;
 
   constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService,
-    private leaveTypeService: LeaveTypeService) {
+    private leaveTypeService: LeaveTypeService, private auth: AuthService) {
       this.minDate = new Date();
   }
 
   ngOnInit() {
+    // decrypting token details
+    this.userDetails = JSON.parse(this.auth.getUserDetails);
+    this.sId=this.userDetails.staffId;
+    this.staffName = this.userDetails.firstName;
+
+    // fetching leave types
     this.leaveTypeService.getAllLeaveTypes().subscribe(res => {
-      console.log(res);
       this.leaveTypes = res;
       this.leaveTypes = this.leaveTypes.result;
-      console.log(this.leaveTypes);
     });
     console.log(this.leaveTypes);
 
     this.leaveForm = this.formBuilder.group({
-      leaveType: [, Validators.required],
+      leaveTypeId: [, Validators.required],
+      staffId: [this.sId, Validators.required],
       leaveReason: ['', [Validators.required, Validators.minLength(3)]],
-      fromDate: ['',  Validators.required],
-      toDate: ['',  Validators.required],
+      dateFrom: ['',  Validators.required],
+      dateTo: ['',  Validators.required],
     });
   }
 
@@ -56,17 +58,20 @@ export class LeaverequestManageComponent implements OnInit {
     return this.leaveForm.controls;
   }
 
+  getData(data) {
+    console.log(data);
+  }
+
   onSubmit() {
     this.submitted = true;
     console.log('working')
     if (this.leaveForm.invalid) {
+      console.log('invalid')
       return;
     }
-    const submissionData = { ...this.leaveForm.value, 'leaveTypeDTO': { 'leaveTypeId': this.leaveForm.value.leaveType } };
-      console.log(submissionData);
-      console.log('notworking')
-      this.empLeaveService.createEmployeeLeave(submissionData).subscribe(res => {
+    this.empLeaveService.createEmployeeLeave(this.leaveForm.value).subscribe(res => {
       this.has_error = false;
+      console.log(res)
       this.create_leave_req_msg = 'Leave Request successfully submitted';
       this.leaveForm.reset();
       this.submitted = false;
