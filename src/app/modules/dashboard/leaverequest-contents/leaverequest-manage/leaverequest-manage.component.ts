@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { LeaveTypeService } from '../../../../services/leaveType.service';
-// import {NgSelectModule, NgOption} from '@ng-select/ng-select';
 
 import { LeaveType } from '../../../../models/leaveType';
 import { LeaveService } from '../../../../services/leave.service';
@@ -41,10 +40,8 @@ export class LeaverequestManageComponent implements OnInit {
 
     // fetching leave types
     this.leaveTypeService.getAllLeaveTypes().subscribe(res => {
-      console.log(res);
       this.leaveTypes = res;
       this.leaveTypes = this.leaveTypes.result;
-      console.log(this.leaveTypes);
     });
     console.log(this.leaveTypes);
 
@@ -63,9 +60,6 @@ export class LeaverequestManageComponent implements OnInit {
 
   getData(data) {
     console.log(data);
-    // this.staffName = data.staffId.firstName;
-    // this.sId = data.staffId._id
-    // console.log(this.sId);
   }
 
   onSubmit() {
@@ -76,7 +70,6 @@ export class LeaverequestManageComponent implements OnInit {
       console.log('invalid')
       return;
     } 
-    // const submissionData = { ...this.leaveForm.value, 'leaveTypeDTO': { 'leaveTypeId': this.leaveForm.value.leaveType } };
     this.empLeaveService.createEmployeeLeave(this.leaveForm.value).subscribe(res => {
       this.has_error = false;
       console.log(res)

@@ -19,8 +19,8 @@
               </a></td>
             <td *ngFor="let leave of leaverequest.leaveTypeId">{{leave.name}}</td>
             <!-- <td *ngFor="let leaveid of leaverequest.staffId">{{ leaveid._id }}</td> -->
-            <td>{{leaverequest.dateFrom}}</td>
-            <td>{{leaverequest.dateTo}}</td>
+            <td>{{leaverequest.dateFrom | date:'mediumDate'}}</td>
+            <td>{{leaverequest.dateTo | date:'mediumDate'}}</td>
             <td [ngClass]="(leaverequest.status=='APPROVED')?'text-success':'text-danger'">{{leaverequest.status}}</td>
             <td><a routerLink="/dashboard/leaverequests/details/{{leaverequest._id}}">
                 <button mat-raised-button>View</button></a></td>
