@@ -3,6 +3,7 @@ import { AuthService } from '../../../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { isTuesday } from 'date-fns';
 
 @Component({
   selector: 'app-task-details',
@@ -45,7 +46,18 @@ export class TaskDetailsComponent implements OnInit {
       taskName: [this.selectedEvent.taskName, [Validators.required, Validators.minLength(3)]],
       startDate: [this.selectedEvent.startDate, Validators.required],
       endDate: [this.selectedEvent.endDate, Validators.required],
-      status:  [this.selectedEvent.status, Validators.required]
+      status:  [this.selectedEvent.status, Validators.required],
+      duration:[this.formBuilder.array([
+        this.formBuilder.group({
+       monday:[],
+       Tuesday:[],
+       wednesday:[],
+       thursday:[],
+       friday:[],
+       saturday:[],
+       sunday:[]
+        })
+      ])]
     });
   }
  
