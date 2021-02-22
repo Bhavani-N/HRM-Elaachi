@@ -2,9 +2,10 @@ button{
     border-radius: 5px;
     background-color:#ac492b;
     color:#fff;
+    border: none;
+    padding:5px;
 }
 .update{
-    border: none;
     margin: 0px auto;
     display: block;
     padding: 3px 10px;

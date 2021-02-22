@@ -2,7 +2,7 @@
 
     <!-- Show Employee Details -->
     <div *ngIf="isEmployeeSelected">
-      <button  class="btn float-right" (click)="toggleEdit()">
+      <button  class="float-right" (click)="toggleEdit()">
         {{isEdit ? "View Profile" : "Edit Profile"}}
       </button>
       <div *ngIf="!isEdit" class="row">
@@ -170,8 +170,6 @@
                         </div>
                     </div>
                   </div> -->
-    
-    
                 <button class="update" type="submit">Update</button>
               </form>
             </div>

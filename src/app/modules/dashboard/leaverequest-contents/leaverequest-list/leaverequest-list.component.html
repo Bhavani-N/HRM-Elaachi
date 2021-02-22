@@ -1,22 +1,14 @@
-<div class="row content-box">
-    <div class="col-md-12">
-
-  
-      <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar>
-  
+<div class="row m-0 mt-5 content-box">
+    <div class="col-md-12 p-0">
+      <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> -->
       <table class="table table-hover">
         <thead>
           <th>S.N</th>
-          <th (click)="sort('employee.firstName')">Employee 
-          </th>
-          <th (click)="sort('leaveType.typeName')">Leave typeName
-          </th>
-          <th (click)="sort('fromDate')">From Date 
-          </th>
-          <th (click)="sort('toDate')">To Date 
-          </th>
-          <th (click)="sort('status')">Status 
-          </th>
+          <th (click)="sort('employee.firstName')">Employee</th>
+          <th (click)="sort('leaveType.typeName')">Leave typeName</th>
+          <th (click)="sort('fromDate')">From Date</th>
+          <th (click)="sort('toDate')">To Date</th>
+          <th (click)="sort('status')">Status</th>
           <th>Options</th>
         </thead>
         <tbody *ngIf="leaveRequests">
