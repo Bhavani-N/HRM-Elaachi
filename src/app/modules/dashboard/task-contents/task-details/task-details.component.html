@@ -4,7 +4,7 @@
 
     <div class="col-md-8 offset-md-2">
       <div class="col-md-12">
-        <button class="btn btn-info float-right" (click)="toggleEdit()">
+        <button  class="btn btn-info float-right" (click)="toggleEdit()">
           {{isEdit ? "View Details" : "Edit"}}
         </button>
       </div>
@@ -29,12 +29,10 @@
         <div *ngIf="isEdit" class="col-md-6">
           <form [formGroup]="eventUpdateForm" (ngSubmit)="onSubmit()" class="mt-2">
 
-            <div *ngIf="!!event_update_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">
-              {{event_update_msg}}</div>
+            <div *ngIf="!!event_update_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{event_update_msg}}</div>
 
             <div class="form-group row">
-              <label for="taskCode" class="col-sm-3 col-form-label">TaskCode &nbsp;<span
-                  class="text-danger">*</span></label>
+              <label for="taskCode" class="col-sm-3 col-form-label">TaskCode &nbsp;<span class="text-danger">*</span></label>
               <div class="col-sm-9">
                 <input type="text" id="taskCode" formControlName="taskCode" class="form-control" placeholder="taskCode"
                   [ngClass]="{ 'is-invalid': submitted && f.taskCode.errors }" />
@@ -46,8 +44,7 @@
             </div>
 
             <div class="form-group row">
-              <label for="taskName" class="col-sm-3 col-form-label">TaskName &nbsp;<span
-                  class="text-danger">*</span></label>
+              <label for="taskName" class="col-sm-3 col-form-label">TaskName &nbsp;<span class="text-danger">*</span></label>
               <div class="col-sm-9">
                 <input type="text" id="taskName" formControlName="taskName" class="form-control" placeholder="taskName"
                   [ngClass]="{ 'is-invalid': submitted && f.taskName.errors }" />
@@ -59,12 +56,11 @@
             </div>
 
             <div class="form-group row">
-              <label for="startDate" class="col-sm-3 col-form-label">Start Date&nbsp;<span
-                  class="text-danger">*</span></label>
+              <label for="startDate" class="col-sm-3 col-form-label">Start Date&nbsp;<span class="text-danger">*</span></label>
               <div class="col-sm-9">
                 <input type="text" id="startDate" formControlName="startDate" class="form-control" bsDatepicker
-                  [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }"
-                  placeholder="Date From" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+                  [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date From"
+                  [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
                 <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
                   <div *ngIf="f.startDate.errors.required">Start Date is required</div>
                 </div>
@@ -72,69 +68,70 @@
             </div>
 
             <div class="form-group row">
-              <label for="endDate" class="col-sm-3 col-form-label">End Date &nbsp;<span
-                  class="text-danger">*</span></label>
+              <label for="endDate" class="col-sm-3 col-form-label">End Date &nbsp;<span class="text-danger">*</span></label>
               <div class="col-sm-9">
-                <input type="text" id="endDate" formControlName="endDate" class="form-control" bsDatepicker
-                  [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }"
-                  placeholder="Date To" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
+                <input type="text" id="endDate" formControlName="endDate" class="form-control" bsDatepicker [minDate]="minDate"
+                  [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date To" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
                 <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
                   <div *ngIf="f.endDate.errors.required">End Date is required</div>
                 </div>
               </div>
             </div>
-            <div formArrayName="items">
-              <div *ngFor="let duration of eventUpdateForm.controls.duration['controls'],let i=index" [formGroupName]="i">
-                <label>hours</label>
-                <input type="number" formControlName="monday">
-              </div>
-            </div>
+
             <div class="form-group row">
+              <label for="noDays" class="col-sm-3 col-form-label">Number of Days &nbsp;<span class="text-danger">*</span></label>
+                <select formControlName="numberOfDays" class="form-control" (change)="onChangeDays($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfDays.errors }">
+                  <option value=""></option>
+                  <option *ngFor="let i of [1,2,3,4,5,6,7]">{{i}}</option>
+                </select>
+                <div *ngIf="submitted && f.numberOfDays.errors" class="invalid-feedback">
+                  <div *ngIf="f.numberOfDays.errors.required">Number of Days is required</div>
+                </div>
+            </div>
 
-              <label for="status" class="col-sm-3 col-form-label">Status &nbsp;<span class="text-danger">*
-                </span></label>
-
-              <div class="col-sm-9">
-
-                <mat-radio-group formControlName="status" class="custom-ngSelect"
-                  [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-
-              <div class="form-group row">
-                <label for="noDays" class="col-sm-3 col-form-label">Number of Days &nbsp;<span class="text-danger">*</span></label>
-                  <select formControlName="numberOfDays" class="form-control" (change)="onChangeDays($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfDays.errors }">
-                    <option value=""></option>
-                    <option *ngFor="let i of [1,2,3,4,5,6,7]">{{i}}</option>
-                  </select>
-                  <div *ngIf="submitted && f.numberOfDays.errors" class="invalid-feedback">
-                    <div *ngIf="f.numberOfDays.errors.required">Number of Days is required</div>
+            <div *ngFor="let hour of t.controls; let i = index" class="list-group list-group-flush">
+              <div class="list-group-item">
+                <div [formGroup]="hour" class="form-row">
+                  <div class="form-group col-6" >
+                    <label for="hours">Date &nbsp;<span class="text-danger">*</span></label>
+                      <h5 >Day {{i + 1}}</h5>
+                      <input type="text" id="hours" formControlName="dates" class="form-control" bsDatepicker [minDate]="minDate"
+                      [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date"
+                      [ngClass]="{ 'is-invalid': submitted && hour.controls.dates.errors }" />
+                      <div *ngIf="submitted && hour.controls.dates.errors" class="invalid-feedback">
+                        <div *ngIf="hour.controls.dates.errors.required">Date is required</div>
+                      </div>
                   </div>
-              </div>
-
-              <div *ngFor="let hour of t.controls; let i = index" class="list-group list-group-flush">
-                <div class="list-group-item">
-                  <div [formGroup]="hour" class="form-row">
-                    <div class="form-group col-6" >
-                      <label for="hours">Date &nbsp;<span class="text-danger">*</span></label>
-                        <h5 >Day {{i + 1}}</h5>
-                        <input type="text" id="hours" formControlName="dates" class="form-control" bsDatepicker [minDate]="minDate"
-                        [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date"
-                        [ngClass]="{ 'is-invalid': submitted && hour.controls.dates.errors }" />
-                        <div *ngIf="submitted && hour.controls.dates.errors" class="invalid-feedback">
-                          <div *ngIf="hour.controls.dates.errors.required">Date is required</div>
-                        </div>
-                    </div>
-    
-                    <div class="form-group col-6" >
-                      <label for="hrs">Time Taken &nbsp;<span class="text-danger">*</span></label>
-                        <input type="text" id="hrs" formControlName="timeTaken" class="form-control" placeholder="timeTaken"
-                        [ngClass]="{ 'is-invalid': submitted && hour.controls.timeTaken.errors }" />
-                        <div *ngIf="submitted && hour.controls.timeTaken.errors" class="invalid-feedback">
-                          <div *ngIf="hour.controls.timeTaken.errors.required">timeTaken is required</div>
-                        </div>
-                    </div>
+  
+                  <div class="form-group col-6" >
+                    <label for="hrs">Time Taken &nbsp;<span class="text-danger">*</span></label>
+                      <input type="text" id="hrs" formControlName="timeTaken" class="form-control" placeholder="timeTaken"
+                      [ngClass]="{ 'is-invalid': submitted && hour.controls.timeTaken.errors }" />
+                      <div *ngIf="submitted && hour.controls.timeTaken.errors" class="invalid-feedback">
+                        <div *ngIf="hour.controls.timeTaken.errors.required">timeTaken is required</div>
+                      </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div class="form-group row">
+
+              <label for="status" class="col-sm-3 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
+
+              <div class="col-sm-9">
+
+                <mat-radio-group formControlName="status" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+
+                  <mat-radio-button value="PENDING">PENDING</mat-radio-button>
+
+                  <mat-radio-button class="pl-2" value="COMPLETED">COMPLETED</mat-radio-button>
+
+                </mat-radio-group>
+
+                <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+
+                  <div *ngIf="f.status.errors.required">Status is required</div>
 
                 </div>
 

@@ -1,9 +1,8 @@
 import { EventService } from '../../../../services/event.service';
 import { AuthService } from '../../../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { isTuesday } from 'date-fns';
 
 @Component({
   selector: 'app-task-details',
@@ -29,7 +28,7 @@ export class TaskDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.routeId();
-    this.initEventUpdateForm();
+  
   }
 
   routeId() {
@@ -46,31 +45,10 @@ export class TaskDetailsComponent implements OnInit {
       taskName: [this.selectedEvent.taskName, [Validators.required, Validators.minLength(3)]],
       startDate: [this.selectedEvent.startDate, Validators.required],
       endDate: [this.selectedEvent.endDate, Validators.required],
-      status:  [this.selectedEvent.status, Validators.required],
-      numberOfDays: ['', Validators.required],
-      duration: new FormArray([])
+      status:  [this.selectedEvent.status, Validators.required]
     });
   }
  
-  get f() { return this.eventUpdateForm.controls; }
-
-  get t() { return this.f.duration as FormArray; }
-
-  onChangeDays(e) {
-    const numberOfDays = e.target.value || 0;
-    if (this.t.length < numberOfDays) {
-      for (let i = this.t.length; i < numberOfDays; i++) {
-        this.t.push(this.formBuilder.group({
-          dates: ['', Validators.required],
-          timeTaken: ['', Validators.required],
-        }));
-      }
-    } else {
-      for (let i = this.t.length; i>= numberOfDays; i++) {
-        this.t.removeAt(i);
-      }
-    }
-  }
 
   toggleEdit() {
     this.isEdit = !this.isEdit;
@@ -96,6 +74,10 @@ export class TaskDetailsComponent implements OnInit {
     }
   }
 
+  get f() { return this.eventUpdateForm.controls; }
+
+ 
+
   onSubmit() {
     this.submitted = true;
 
@@ -103,7 +85,6 @@ export class TaskDetailsComponent implements OnInit {
     if (this.eventUpdateForm.invalid) {
       return;
     }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.eventUpdateForm.value, null, 4));
     // console.log("success ", this.leaveTypeUpdateForm.value);
     this._eventService.updateEvent(this.eventUpdateForm.value, this.id).subscribe(res => {
       console.log(res);

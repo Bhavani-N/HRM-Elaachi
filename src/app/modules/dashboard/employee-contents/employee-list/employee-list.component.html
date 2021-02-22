@@ -4,25 +4,23 @@
 
     <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> -->
 
-    <form (ngSubmit)="searchEmployee()" #searchForm="ngForm" >
+    <form (ngSubmit)="searchEmployee(searchForm)" #searchForm="ngForm">
 
-      <div class="row mb-2">
+      <div class="row m-0 ml-2 justify-content-end">
 
-        <div class="form-group col-6">
+        <div class="form-group col-6 p-0">
           <div class="input-group">
             <input type="text" name="q" class="form-control col-4" ngModel placeholder="Search" />
-            <div class="input-group-btn">
-              <button class="col-2" type="submit" mat-raised-button>
+            <!-- <div class="input-group-btn w-50"> -->
+              <button class="col-2 p-0 search" type="submit">search</button>
+              <!-- <button class="col-2" type="submit" mat-raised-button>
                 <mat-icon>search</mat-icon>
-              </button>
-            </div>
+              </button> -->
+            <!-- </div> -->
           </div>
         </div>
-
       </div>
-
     </form>
-    
     <table class="table table-hover">
       <thead>
         <th>S.N </th>
@@ -68,15 +66,3 @@
     </div>
   </div>
 </div>
-<input class="form-control" [(ngModel)]="model" (ngModelChange)="changed($event)" placeholder="Search..." />
-
-	<ng-container *ngIf="model">
-		<ul *ngIf="(searchResult$ as results; else loadingTmpl" class="search-result">
-			<li *ngFor="let result of results">
-				{{ result.Name }} - {{ result.Server }}
-			</li>
-			<li *ngIf="!results.length">
-				No result
-			</li>
-		</ul>
-	</ng-container>
