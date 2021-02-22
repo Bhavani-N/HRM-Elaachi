@@ -78,6 +78,42 @@
                 </div>
               </div>
 
+              <div class="form-group row">
+                <label for="noDays" class="col-sm-3 col-form-label">Number of Days &nbsp;<span class="text-danger">*</span></label>
+                  <select formControlName="numberOfDays" class="form-control" (change)="onChangeDays($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfDays.errors }">
+                    <option value=""></option>
+                    <option *ngFor="let i of [1,2,3,4,5,6,7]">{{i}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.numberOfDays.errors" class="invalid-feedback">
+                    <div *ngIf="f.numberOfDays.errors.required">Number of Days is required</div>
+                  </div>
+              </div>
+
+              <div *ngFor="let hour of t.controls; let i = index" class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div [formGroup]="hour" class="form-row">
+                    <div class="form-group col-6" >
+                      <label for="hours">Date &nbsp;<span class="text-danger">*</span></label>
+                        <h5 >Day {{i + 1}}</h5>
+                        <input type="text" id="hours" formControlName="dates" class="form-control" bsDatepicker [minDate]="minDate"
+                        [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date"
+                        [ngClass]="{ 'is-invalid': submitted && hour.controls.dates.errors }" />
+                        <div *ngIf="submitted && hour.controls.dates.errors" class="invalid-feedback">
+                          <div *ngIf="hour.controls.dates.errors.required">Date is required</div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group col-6" >
+                      <label for="hrs">Time Taken &nbsp;<span class="text-danger">*</span></label>
+                        <input type="text" id="hrs" formControlName="timeTaken" class="form-control" placeholder="timeTaken"
+                        [ngClass]="{ 'is-invalid': submitted && hour.controls.timeTaken.errors }" />
+                        <div *ngIf="submitted && hour.controls.timeTaken.errors" class="invalid-feedback">
+                          <div *ngIf="hour.controls.timeTaken.errors.required">timeTaken is required</div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div class="form-group row">
 
