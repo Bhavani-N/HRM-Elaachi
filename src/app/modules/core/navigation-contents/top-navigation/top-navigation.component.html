@@ -23,7 +23,7 @@
   </nav> -->
 <!-- <nav class="navbar fixed-top custom-nav"> -->
 
-  <div id="mySidebar" class="sidebar">
+  <div id="mySidebar" class="sidebar" [ngClass]="isOpen ? 'active' : ''">
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
       <!-- <a class="leave-management" >Leave Management</a> -->
       <a routerLink="/dashboard/employees" routerLinkActive="active">Employee List</a>

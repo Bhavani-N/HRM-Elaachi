@@ -16,13 +16,25 @@
     </form>
     <table class="table table-hover">
       <thead>
-        <th>S.N</th>
-        <th (click)="sort('taskName')">TaskName </th>
-        <th (click)="sort('taskCode')">TaskCode </th>
-        <th (click)="sort('startDate')">Start Date </th>
-        <th (click)="sort('endDate')">End Date </th>
-        <th (click)="sort('status')">Status</th>
-        <th>Options</th>
+        <tr>
+          <th rowspan="2">S.N</th>
+          <th rowspan="2" (click)="sort('taskName')">TaskName </th>
+          <th rowspan="2" (click)="sort('taskCode')">TaskCode </th>
+          <th rowspan="2" (click)="sort('startDate')">Start Date </th>
+          <th class="date" rowspan="2" (click)="sort('endDate')">End Date </th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th class="date">Sun</th>
+          <th rowspan="2" (click)="sort('status')">Status</th>
+          <th rowspan="2">Options</th>
+        </tr>
+        <tr >
+          <th *ngFor="let tDate of week">{{ tDate }}</th>
+        </tr>
       </thead>
       <tbody *ngIf="events">
         <tr
@@ -32,6 +44,8 @@
           <td>{{event.taskCode}}</td>
           <td>{{event.startDate | date:'mediumDate' }}</td>
           <td>{{event.endDate | date:'mediumDate'}}</td>
+          <td ></td>
+          
           <td>{{event.status}}</td>
           <td><a routerLink="/dashboard/tasks/details/{{event._id}}">
               <button>View</button></a></td>

@@ -9,8 +9,8 @@ import {EmployeeService} from '../../../../services/employee.service';
 })
 export class TopNavigationComponent implements OnInit {
   // isLoggedIn: boolean = this._auth.login();
-userDetails;
-staffId;
+  userDetails;
+  staffId;
   constructor(private _sideBarService: SidebarService, public _auth: AuthService, private employeeService:EmployeeService) { }
 
   toggleSidebar() {
