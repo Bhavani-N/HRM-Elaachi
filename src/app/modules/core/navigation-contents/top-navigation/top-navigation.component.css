@@ -34,15 +34,17 @@
     font-size: 34px;
   }
   .top-nav{
-    background-color: #832023;
+    background:url(../../../../../assets/icons/images/bgg-1.jpg);
     width:100%;
   }
   button{
-    background-color: #fff;
+    background-color: transparent;
     border: none;
     font-size: 23px;
-    padding: 0px 15px;
+    padding: 0px 10px;
     border-radius: 4px;
+    outline: none;
+    color: white;
   }
   .user-name{
     border: 1px solid grey;
@@ -60,8 +62,9 @@
   .fa-user-circle{
       font-size:22px;
   }
-
-
+  /* #mySidebar{
+    width:200px;
+  } */
 
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}

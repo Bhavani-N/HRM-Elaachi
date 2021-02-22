@@ -23,6 +23,10 @@
 .name:focus{
     outline: none;
 }
-.form-title{
-    color: #3f51b5;
+button{
+    border-radius: 5px;
+    background-color: #ac492b;
+    color: #fff;
+    border: none;
+    padding: 5px 12px;
 }
