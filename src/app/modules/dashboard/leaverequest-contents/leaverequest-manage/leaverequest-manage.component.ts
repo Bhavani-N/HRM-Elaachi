@@ -64,6 +64,8 @@ export class LeaverequestManageComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    // this.leaveForm.value['staffId'] = this.sId;
+    // console.log(this.leaveForm.value)
     if (this.leaveForm.invalid) {
       console.log('invalid')
       return;
