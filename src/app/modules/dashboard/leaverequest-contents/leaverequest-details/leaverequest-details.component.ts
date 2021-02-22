@@ -17,7 +17,8 @@ export class LeaverequestDetailsComponent implements OnInit {
   isRequestEdit = false;
 
   isLeaveRequestSelected = false;
-  selectedLeaveRequest: EmployeeLeave
+  selectedLeaveRequest: any;
+  selectedStaff: any;
   selected_leave_msg: String;
   requestApproveForm: FormGroup;
   has_error = false;
@@ -76,7 +77,12 @@ export class LeaverequestDetailsComponent implements OnInit {
     if (id) {
       this.employeeLeaveService.getEmployeeLeaveById(id).subscribe(
         data => {
+          console.log(data)
           this.selectedLeaveRequest = data;
+          this.selectedLeaveRequest = this.selectedLeaveRequest.result;
+          this.selectedStaff = this.selectedLeaveRequest.staffId;
+          console.log(this.selectedStaff);
+          console.log(this.selectedLeaveRequest);
           this.isLeaveRequestSelected = true;
           console.log()
         }, error => {
