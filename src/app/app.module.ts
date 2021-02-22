@@ -9,13 +9,13 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { CoreModule } from './modules/core/core.module';
 import { InterceptorService } from './services/interceptor.service';
-import { TestComponent } from './test/test.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
+  
   ],
   imports: [
     BrowserAnimationsModule,

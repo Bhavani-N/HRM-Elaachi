@@ -3,7 +3,9 @@ import { EmployeeService } from '../../../../services/employee.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon'
+import { Observable, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
@@ -13,6 +15,10 @@ export class EmployeeListComponent implements OnInit {
   employees;
   errorMsg;
   id;
+  model: string;
+  modelChanged = new Subject<string>();
+  searchResult$: Observable<any>;
+
 
   loading = true;
   currentPage = 1;
@@ -22,7 +28,23 @@ export class EmployeeListComponent implements OnInit {
   sortKey = 'firstName';
   reverse = false;
 
-  constructor(private _employeeService: EmployeeService) { }
+  constructor(private _employeeService: EmployeeService) {
+    this.modelChanged.pipe(debounceTime(300)).subscribe(() => {
+      this._employeeService.getEmployeeByFullName(this.model).subscribe((res: any) => {
+        // this.searchResult$=res;
+        console.log(res)
+        this.searchResult$ = res.result;
+      });
+    });
+
+  }
+  changed() {
+    this.modelChanged.next();
+  }
+
+  ngDoCheck() {
+    console.log("check");
+  }
 
   ngOnInit() {
     this.getAllEmployees();
@@ -56,7 +78,7 @@ export class EmployeeListComponent implements OnInit {
           console.log(data);
           this.employees = data.result;
           console.log(this.employees);
-          this.employees.map(res=>{
+          this.employees.map(res => {
             console.log(res)
             this.id = res._id
             // console.log(this.id)
@@ -64,11 +86,11 @@ export class EmployeeListComponent implements OnInit {
           console.log(this.id)
           console.log(this.employees);
           this.totalElements = data.totalElements;
-      
+
           this.size = data.size;
           this.numberOfElements = data.numberOfElements;
           this.loading = false;
-           console.log('employees data: ', data);
+          console.log('employees data: ', data);
         },
         error => this.errorMsg = error);
   }
