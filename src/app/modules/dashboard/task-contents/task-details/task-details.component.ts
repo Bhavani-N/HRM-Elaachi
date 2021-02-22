@@ -28,7 +28,7 @@ export class TaskDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.routeId();
-    this.initEventUpdateForm();
+    // this.initEventUpdateForm();
   }
 
   routeId() {

@@ -94,7 +94,6 @@
                   <div [formGroup]="hour" class="form-row">
                     <div class="form-group col-6" >
                       <label for="hours">Date &nbsp;<span class="text-danger">*</span></label>
-                        <h5 >Day {{i + 1}}</h5>
                         <input type="text" id="hours" formControlName="dates" class="form-control" bsDatepicker [minDate]="minDate"
                         [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date"
                         [ngClass]="{ 'is-invalid': submitted && hour.controls.dates.errors }" />
