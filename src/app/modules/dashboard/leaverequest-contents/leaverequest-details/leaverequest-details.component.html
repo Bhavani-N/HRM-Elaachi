@@ -16,12 +16,12 @@
       <div class="col-md-8">
         <div class="profile-head">
           <h5><span class="font-weight-bold text-success">
-              <a routerLink="/dashboard/employees/details/{{selectedLeaveRequest.staffId._id}}">
-                {{selectedLeaveRequest.staffId.firstName}}
-                {{selectedLeaveRequest.staffId.lastName}}</a>
+              <a routerLink="/dashboard/employees/details/{{selectedStaff?._id}}">
+                {{selectedStaff?.firstName}}
+                {{selectedStaff?.lastName}}</a>
             </span>
           </h5>        
-          <h6>{{selectedLeaveRequest.leaveTypeId.name}}</h6>
+          <h6>{{selectedLeave.name}}</h6>
           <p>Submitted On : <span>{{selectedLeaveRequest.createdAt | date :'medium'}}</span></p>
         </div>
 
@@ -32,17 +32,17 @@
         <div class="row font-italic mt-3">
           <div class="col-md-6 border-right">
             <p>LeaveRequest Id: {{selectedLeaveRequest._id}}</p>
-            <p>Employee Name: {{selectedStaff.firstName}}
-              {{selectedStaff.lastName}}</p>
+            <p>Employee Name: {{selectedStaff?.firstName}}
+              {{selectedStaff?.lastName}}</p>
             <p>Reason : {{selectedLeaveRequest.leaveReason}}</p>
-            <p>Leave Type: {{selectedLeaveRequest.leaveTypeId.name}}</p>
-            <p>From: {{selectedLeaveRequest.dateFrom}}</p>
-            <p>To: {{selectedLeaveRequest.dateTo}}</p>
+            <p>Leave Type: {{selectedLeave?.name}}</p>
+            <p>From: {{selectedLeaveRequest.dateFrom | date:'mediumDate'}}</p>
+            <p>To: {{selectedLeaveRequest.dateTo | date:'mediumDate'}}</p>
             <p>Status: {{selectedLeaveRequest.status}}</p>
           </div>
 
           <div *ngIf="selectedLeaveRequest.reviewedBy && !isRequestEdit" class="col-md-6">
-            <p>Reviewed By: <a routerLink="/home/employees/details/{{selectedLeaveRequest.reviewedBy.employeeId}}">
+            <p>Reviewed By: <a routerLink="/dashboard/employees/details/{{selectedLeaveRequest.reviewedBy.employeeId}}">
                 {{selectedLeaveRequest.reviewedBy.firstName}} {{selectedLeaveRequest.reviewedBy.middleName}}
                 {{selectedLeaveRequest.reviewedBy.lastName}}
               </a></p>

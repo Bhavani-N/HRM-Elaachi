@@ -71,7 +71,7 @@
 <input class="form-control" [(ngModel)]="model" (ngModelChange)="changed($event)" placeholder="Search..." />
 
 	<ng-container *ngIf="model">
-		<ul *ngIf="searchResult$ as results; else loadingTmpl" class="search-result">
+		<ul *ngIf="(searchResult$ as results; else loadingTmpl" class="search-result">
 			<li *ngFor="let result of results">
 				{{ result.Name }} - {{ result.Server }}
 			</li>
