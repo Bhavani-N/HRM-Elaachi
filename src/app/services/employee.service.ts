@@ -56,12 +56,7 @@ export class EmployeeService {
   // }
 
   getEmployeeByFullName(inputvalue): Observable<Employee> {
-    return this.http.get<Employee>(Constant.API_ENDPOINT + '/staffs',
-      {
-        params: {
-          fullname: inputvalue
-        }
-      }
+    return this.http.get<Employee>(Constant.API_ENDPOINT + `/staffs/list?firstName=${inputvalue}`
     )
       .pipe(catchError(this.errorHandler));
   }

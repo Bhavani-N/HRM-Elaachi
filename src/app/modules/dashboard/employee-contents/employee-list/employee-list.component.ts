@@ -12,7 +12,7 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-  employees;
+  employees: any;
   errorMsg;
   id;
   model: string;
@@ -97,8 +97,12 @@ export class EmployeeListComponent implements OnInit {
 
   searchEmployee(form) {
     this.loading = true;
-    this._employeeService.getEmployeeByFullName(form.value.q).subscribe(data => {
-      this.employees = data;
+    console.log(form.value.q)
+    this._employeeService.getEmployeeByFullName(form.value.q).subscribe(res => {
+      console.log(res);
+      this.employees = res;
+      this.employees = this.employees.data;
+      console.log(this.employees)
       this.loading = false;
     }, error => {
       this.errorMsg = error;

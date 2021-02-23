@@ -9,8 +9,8 @@ import {EmployeeService} from '../../../../services/employee.service';
 })
 export class TopNavigationComponent implements OnInit {
   // isLoggedIn: boolean = this._auth.login();
-userDetails;
-staffId;
+  userDetails;
+  staffId;
   constructor(private _sideBarService: SidebarService, public _auth: AuthService, private employeeService:EmployeeService) { }
 
   toggleSidebar() {
@@ -24,11 +24,11 @@ staffId;
   }
   openNav() {
     document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("main").style.width = "250px";
   }
   closeNav() {
     document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("main").style.width = "0";
   }
 
   // getEmployeeById(){

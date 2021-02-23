@@ -129,15 +129,3 @@
       <button type="button" class="btn btn-primary float-right">Submit</button>
     </form>
   </div>
-  <input class="form-control" [(ngModel)]="model" (ngModelChange)="changed($event)" placeholder="Search..." />
-
-	<ng-container *ngIf="model">
-		<ul *ngIf="(searchResult$ | async) as results; else loadingTmpl" class="search-result">
-			<li *ngFor="let result of results">
-				{{ result.Name }} - {{ result.Server }}
-			</li>
-			<li *ngIf="!results.length">
-				No result
-			</li>
-		</ul>
-	</ng-container>
