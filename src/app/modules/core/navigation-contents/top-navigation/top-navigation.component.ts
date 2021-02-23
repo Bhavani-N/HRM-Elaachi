@@ -31,6 +31,7 @@ export class TopNavigationComponent implements OnInit {
     document.getElementById("main").style.marginLeft = "0";
   }
 
+  
   // getEmployeeById(){
   //   this.employeeService.getCurrentEmployee().subscribe(data=>{
   //     this.employeeId=data;
