@@ -22,19 +22,19 @@
           <th rowspan="2" (click)="sort('taskCode')">TaskCode </th>
           <th rowspan="2" (click)="sort('startDate')">Start Date </th>
           <th class="date" rowspan="2" (click)="sort('endDate')">End Date </th>
-          <th>Mon</th>
+          <!-- <th>Mon</th>
           <th>Tue</th>
           <th>Wed</th>
           <th>Thu</th>
           <th>Fri</th>
           <th>Sat</th>
-          <th class="date">Sun</th>
+          <th class="date">Sun</th> -->
           <th rowspan="2" (click)="sort('status')">Status</th>
           <th rowspan="2">Options</th>
         </tr>
-        <tr >
+        <!-- <tr >
           <th *ngFor="let tDate of week">{{ tDate }}</th>
-        </tr>
+        </tr> -->
       </thead>
       <tbody *ngIf="events">
         <tr

@@ -11,9 +11,11 @@ import { CoreModule } from './modules/core/core.module';
 import { InterceptorService } from './services/interceptor.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
+  
   ],
   imports: [
     BrowserAnimationsModule,

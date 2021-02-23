@@ -1,14 +1,18 @@
 
 <div class="row m-0 mt-3 content-box">
   <div class="col-md-12 p-0">
+
     <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> -->
+
     <form (ngSubmit)="searchEmployee(searchForm)" #searchForm="ngForm">
+
       <div class="row m-0 ml-2 justify-content-end">
-        <div class="form-group col-6">
-          <div class="input-group pr-2">
+
+        <div class="form-group col-6 p-0">
+          <div class="input-group">
             <input type="text" name="q" class="form-control col-4" ngModel placeholder="Search" />
             <!-- <div class="input-group-btn w-50"> -->
-              <button class="col-2 search" type="submit">search</button>
+              <button class="col-2 p-0 search" type="submit">search</button>
               <!-- <button class="col-2" type="submit" mat-raised-button>
                 <mat-icon>search</mat-icon>
               </button> -->
@@ -17,17 +21,21 @@
         </div>
       </div>
     </form>
-
     <table class="table table-hover">
       <thead>
-        <th>S.N</th>
-        <th (click)="sort('firstName')">Name</th>
-        <th (click)="sort('phoneNumber')">Phone Number</th>
-        <th (click)="sort('email')">Email</th>
+        <th>S.N </th>
+        <th (click)="sort('firstName')">Name
+        </th>
+        <th (click)="sort('phoneNumber')">Phone Number 
+        </th>
+        <th (click)="sort('email')">Email 
+        </th>
         <!-- <th (click)="sort('supervisor.firstName')">Supervisor <mat-icon>swap_vert</mat-icon> -->
         <!-- </th> -->
-        <th (click)="sort('role')">Role</th>
-        <th (click)="sort('status')">Status</th>
+        <th (click)="sort('role')">Role 
+        </th>
+        <th (click)="sort('status')">Status 
+        </th>
         <th>Options</th>
       </thead>
       <tbody *ngIf="employees">
