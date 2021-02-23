@@ -1,7 +1,7 @@
 <div class="row m-0">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-7 form-box my-5">
       <div *ngIf="!!create_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_employee_msg}}</div>
-      <h4 class="mb-3 form-title">Employee Registration </h4>
+      <h4 class="pb-2 form-title">Employee Registration </h4>
 
       <div class="form-group row m-0 my-4">
         <label for="firstName" class="col-sm-4 col-form-label">Name&nbsp;<span class="text-danger">* </span></label>
