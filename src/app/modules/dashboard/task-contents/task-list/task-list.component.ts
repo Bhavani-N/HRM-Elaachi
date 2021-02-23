@@ -26,6 +26,7 @@ export class TaskListComponent implements OnInit {
   projectForm: FormGroup;
   taskId: any;
   dArray: any = [];
+  durationArray: any = [];
   week: any = [];
   duration;
   time: any;
@@ -101,11 +102,15 @@ export class TaskListComponent implements OnInit {
            })
          })
       }
+      this.durationArray = this.dArray;
+      this.durationArray.map(res => {
+        console.log(res.duration)
+        this.durationArray = res.duration;
+      })
+      console.log(this.durationArray)
     })
-
-
-    // if(this.projectId==thi)
   }
+
   getAllEvents() {
     this._eventService.getAllEvents()
       .subscribe(

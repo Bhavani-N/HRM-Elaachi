@@ -27,9 +27,11 @@
               <td>{{event.startDate | date:'mediumDate' }}</td>
               <td>{{event.endDate | date:'mediumDate' }}</td>
               <td>{{event.status}}</td>
-              <td>
+              <td class="edit-btn">
                 <a routerLink="/dashboard/projects/details/{{event._id}}">
-                <button>View</button></a>
+                  <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button>
+                  <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </a>
               </td>
               <!-- <td><button (click)="selectEvent(event)" mat-raised-button>Edit</button></td> -->
             </tr>
