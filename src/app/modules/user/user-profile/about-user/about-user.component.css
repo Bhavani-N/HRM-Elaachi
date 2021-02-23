@@ -1,37 +1,71 @@
-.user-details,.card,.card-header{
-	background-color: #e9ecef;
-}
-h6{
-	color:#8f624b;
-	padding:20px 0px 12px;
-}
-.about-user,button{
-	width: auto;
-}
-button{
-	margin-left: auto;
-}
-.about-user span{
-	margin-top:15px;
-}
-.card{
-	border:none;
-	border-bottom: 1px solid rgba(0,0,0,.125);
-	border-radius:0px;
-}
-.card-header{
-	border-bottom: none;
-	padding-bottom: 0px;
-}
-button.btn.btn-link{
-	color:black;
-	text-decoration: none;
-	font-size: 18px;
-}
-.btn:focus{
-	box-shadow: none;
-}
-.card-body{
-	padding-left: 32px;
-}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+  }
+  
+ 
+  /* .column {
+	float: left;
+	width: 25%;
+	padding: 0 10px;
+  } */
+  
+   /* Remove extra left and right margins, due to padding  */
+   .row {margin: 0 -5px;} 
+  
+  /* / Clear floats after the columns / */
+  .row:after {
+	content: "";
+	display: table;
+	clear: both;
+  }
+  
+  /* / Responsive columns / */
+  @media screen and (max-width: 600px) {
+	.column {
+	  width: 100%;
+	  display: block;
+	  margin-bottom: 20px;
+	}
+  }
+/*   
+  / Style the counter cards / */
+  .card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	padding: 17px;
+	/* / text-align: center; / */
+	background-color: #f1f1f1;
+	width: 550px;
 
+	/* / display: inline-flexbox; / */
+  }
+  .card1{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	padding: 17px;
+	/* / text-align: center; / */
+	background-color: #f1f1f1;
+	width: 550px;
+	height: 110%;
+  }
+  .item{
+	  color: blue;
+  }
+
+   .column {
+	float: left;
+	width: 50%;
+	padding: 10px;
+	height:200px; 
+	/* / Should be removed. Only for demonstration / */
+   } 
+  
+  /* / Clear floats after the columns / */
+   .row:after {
+	content: "";
+	display: table;
+	clear: both;
+
+  }
+  .header{
+	margin-right: 150px;
+  }
+   

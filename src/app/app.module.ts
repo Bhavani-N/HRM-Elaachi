@@ -9,13 +9,11 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { CoreModule } from './modules/core/core.module';
 import { InterceptorService } from './services/interceptor.service';
-import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadPayslipComponent,
   ],
   imports: [
     BrowserAnimationsModule,

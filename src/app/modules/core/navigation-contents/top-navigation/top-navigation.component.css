@@ -28,10 +28,11 @@
     background: lightgray;
   }
   .sidebar .closebtn{
-    position: absolute;
-    top: -15px;
-    right: 0px;
-    font-size: 34px;
+      position: absolute;
+      top: -15px;
+      right: 0px;
+      font-size: 34px;
+      padding: 10px 20px;
   }
   .top-nav{
     background:url(../../../../../assets/icons/images/bgg-1.jpg);
