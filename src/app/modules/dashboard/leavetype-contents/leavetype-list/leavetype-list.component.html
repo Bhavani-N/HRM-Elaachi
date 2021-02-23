@@ -25,9 +25,11 @@
           <tr *ngFor="let leavetype of leaveTypes; let i = index">
             <td>{{i+1}}</td>
             <td>{{leavetype.name}}</td>
-            <td>
+            <td class="edit-btn">
               <a routerLink="/dashboard/leavetypes/details/{{leavetype._id}}">
-                <button>View</button></a>
+                <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button>
+                <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+              </a>
             </td>
           </tr>
         </tbody>
