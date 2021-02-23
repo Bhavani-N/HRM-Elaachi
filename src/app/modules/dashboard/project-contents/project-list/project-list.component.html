@@ -11,12 +11,12 @@
             </th>
             <th (click)="sort('projectCode')">ProjectCode 
             </th>
-            <th (click)="sort('startDate')">Start Date 
+            <!-- <th (click)="sort('startDate')">Start Date 
             </th>
             <th (click)="sort('endDate')">End Date 
-            </th>
-            <th (click)="sort('status')">Status
-            </th>
+            </th> -->
+            <!-- <th (click)="sort('status')">Status
+            </th> -->
             <th>Options</th>
           </thead>
           <tbody *ngIf="events">
@@ -24,9 +24,9 @@
               <td>{{i+1}}</td>
               <td>{{event.projectName}}</td>
               <td>{{event.projectCode}}</td>
-              <td>{{event.startDate | date:'mediumDate' }}</td>
-              <td>{{event.endDate | date:'mediumDate' }}</td>
-              <td>{{event.status}}</td>
+              <!-- <td>{{event.startDate | date:'mediumDate' }}</td>
+              <td>{{event.endDate | date:'mediumDate' }}</td> -->
+              <!-- <td>{{event.status}}</td> -->
               <td class="edit-btn">
                 <a routerLink="/dashboard/projects/details/{{event._id}}">
                   <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button>
@@ -38,7 +38,7 @@
           </tbody>
         </table>
   
-        <div *ngIf="events" class="row col-md-12 mt-4">
+        <!-- <div *ngIf="events" class="row col-md-12 mt-4">
           <div class="col-md-auto">
             <span class="table-details">Showing {{(currentPage-1) * size +1}} to {{(currentPage-1) *
               size
@@ -48,7 +48,7 @@
             <pagination-controls class="float-right" (pageChange)="getPage($event)"></pagination-controls>
           </div>
         </div>
-  
+   -->
       </div>
   
       <app-events-manage *ngIf="isEdit"></app-events-manage>
