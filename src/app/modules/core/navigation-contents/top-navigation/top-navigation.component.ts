@@ -23,8 +23,8 @@ export class TopNavigationComponent implements OnInit {
     console.log(this.staffId);
   }
   openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mySidebar").style.width = "210px";
+    document.getElementById("main").style.marginLeft = "200px";
   }
   closeNav() {
     document.getElementById("mySidebar").style.width = "0";
