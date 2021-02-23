@@ -22,8 +22,10 @@
             <td>{{leaverequest.dateFrom | date:'mediumDate'}}</td>
             <td>{{leaverequest.dateTo | date:'mediumDate'}}</td>
             <td [ngClass]="(leaverequest.status=='APPROVED')?'text-success':'text-danger'">{{leaverequest.status}}</td>
-            <td><a routerLink="/dashboard/leaverequests/details/{{leaverequest._id}}">
-                <button mat-raised-button>View</button></a></td>
+            <td class="edit-btn"><a routerLink="/dashboard/leaverequests/details/{{leaverequest._id}}">
+                <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button></a>
+                <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </td>
           </tr>
         </tbody>
       </table>

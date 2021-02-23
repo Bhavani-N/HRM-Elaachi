@@ -23,6 +23,7 @@ export class LeaverequestManageComponent implements OnInit {
   submitted = false;
   selectedCity: any;
   leaveId: any;
+  fileToUpload: File = null;
   sId: any;
   staffName: any;
   userDetails: any;
@@ -51,6 +52,7 @@ export class LeaverequestManageComponent implements OnInit {
       leaveReason: ['', [Validators.required, Validators.minLength(3)]],
       dateFrom: ['',  Validators.required],
       dateTo: ['',  Validators.required],
+      fileChosen: [this.fileToUpload]
     });
   }
 
@@ -60,6 +62,10 @@ export class LeaverequestManageComponent implements OnInit {
 
   getData(data) {
     console.log(data);
+  }
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
   }
 
   onSubmit() {
