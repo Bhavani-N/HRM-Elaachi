@@ -27,6 +27,8 @@ export class TaskListComponent implements OnInit {
   taskId: any;
   dArray: any = [];
   week: any = [];
+  duration;
+  time: any;
   constructor(private _eventService: EventService , private fb:FormBuilder) {
     this.getCurrentWeek();
   }
@@ -89,6 +91,15 @@ export class TaskListComponent implements OnInit {
       if(this.projectId==obj.project){
          this.dArray.push(obj)
          console.log(this.dArray)
+         this.dArray.map(res=>{
+           console.log(res);
+           this.duration=res.duration;
+           console.log(this.duration);
+          this.duration.map(res=>{
+            this.time=res;
+            console.log(this.time);
+           })
+         })
       }
     })
 
