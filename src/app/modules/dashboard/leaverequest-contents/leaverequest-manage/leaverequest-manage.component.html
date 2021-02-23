@@ -2,11 +2,11 @@
 
     <div *ngIf="!!create_leave_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_leave_req_msg}}</div>
   
-    <h4 class="mb-3 form-title">Request For Leave</h4>
+    <h4 class="pb-3 form-title">Request For Leave</h4>
   
     <div class="form-group row">
       <label for="leaveType" class="col-sm-4 col-form-label">Leave Type&nbsp;<span class="text-danger">* </span></label>
-      <div class="col-sm-7">
+      <div class="col-sm-7 pt-2">
         <!-- <ng-select [items]="leaveTypes | async" formControlName="leaveType" bindLabel="typeName" bindValue="leaveTypeId"
           placeholder="Select Leave Type" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.leaveType.errors }">
         </ng-select> -->
