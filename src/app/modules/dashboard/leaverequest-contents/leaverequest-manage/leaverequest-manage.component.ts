@@ -54,7 +54,7 @@ export class LeaverequestManageComponent implements OnInit {
       leaveReason: ['', [Validators.required, Validators.minLength(3)]],
       dateFrom: ['',  Validators.required],
       dateTo: ['',  Validators.required],
-      fileChosen: [this.fileToUpload]
+      fileChosen: ['']
     });
   }
 
