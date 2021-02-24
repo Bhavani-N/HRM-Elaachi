@@ -38,7 +38,6 @@ import { MyProfileComponent } from './profile-contents/my-profile/my-profile.com
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
 
-import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -78,7 +77,6 @@ import { FileUploadModule } from 'ng2-file-upload';
         FormsModule,
         ReactiveFormsModule,
         NgxPaginationModule,
-        FileUploadModule,
         BsDatepickerModule.forRoot(),
     ],
     schemas: [

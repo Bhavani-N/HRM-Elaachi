@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FileUploader } from 'ng2-file-upload';
 import { LeaveTypeService } from '../../../../services/leaveType.service';
 
 import { LeaveType } from '../../../../models/leaveType';
 import { LeaveService } from '../../../../services/leave.service';
 import { AuthService } from '../../../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-leaverequest-manage',
@@ -15,7 +15,7 @@ import { AuthService } from '../../../../services/auth.service';
 export class LeaverequestManageComponent implements OnInit {
   create_leave_req_msg: string;
   public has_error = false;
-  uploader: FileUploader;
+  uploadSuccess: boolean;
 
   leaveTypes: any;
   selectedLeaveType: LeaveType = null;
@@ -30,13 +30,8 @@ export class LeaverequestManageComponent implements OnInit {
   userDetails: any;
 
   constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService, 
-    private leaveTypeService: LeaveTypeService, private auth: AuthService) {
+    private leaveTypeService: LeaveTypeService, private auth: AuthService, private http: HttpClient) {
       this.minDate = new Date();
-      // uploader: FileUploader = new FileUploader({ 
-      //   url: "api/your_upload", 
-      //   removeAfterUpload: false, 
-      //   autoUpload: true 
-      // });
   }
 
   ngOnInit() {
@@ -74,6 +69,8 @@ export class LeaverequestManageComponent implements OnInit {
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
   }
+
+  upload
 
   onSubmit() {
     this.submitted = true;
