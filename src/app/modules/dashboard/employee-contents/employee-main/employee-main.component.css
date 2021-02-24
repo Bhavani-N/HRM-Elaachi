@@ -2,10 +2,11 @@
     font-size: 20px;
     padding-right: 6px;
 }
-.employees {
+.employees{
     border-bottom:1px solid grey;
     padding:10px 0px;
     text-align: center;
+    margin-top:80px;
 }
 .employees a{
     color: #832023;
