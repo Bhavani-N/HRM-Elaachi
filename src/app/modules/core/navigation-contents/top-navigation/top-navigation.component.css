@@ -36,6 +36,8 @@
   .top-nav{
     background:url(../../../../../assets/icons/images/bgg-1.jpg);
     width:100%;
+    position:fixed;
+    z-index:1;
   }
   button{
     background-color: transparent;
