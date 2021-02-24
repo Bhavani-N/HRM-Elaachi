@@ -40,6 +40,7 @@
     "jqwidgets-ng": "^11.0.1",
     "jqwidgets-scripts": "^11.0.1",
     "mat-icon-import": "^0.1.1",
+    "ng2-file-upload": "^1.4.0",
     "ng2-pdf-viewer": "^6.3.2",
     "ngx-bootstrap": "^4.3.0",
     "ngx-bootstrap-modal": "^2.0.1",

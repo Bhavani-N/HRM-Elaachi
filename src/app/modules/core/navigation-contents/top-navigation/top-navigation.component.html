@@ -33,26 +33,26 @@
       <a routerLink="/dashboard/tasks" routerLinkActive="active">Task List</a>
       <a routerLink="/dashboard/projects" routerLinkActive="active">Project List</a> -->
 
-      <a href="#">Home</a>
-      <a href="#">Employee</a>
-      <a href="#">
+      <a routerLink="/dashboard">Home</a>
+      <a routerLink="/dashboard/employees" routerLinkActive="active">Employee</a>
+      <a >
         <div class="dropdown">
           <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Leaves
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Leave Request</a>
-            <a class="dropdown-item" href="#">Leave Type</a>
+            <a class="dropdown-item" routerLink="/dashboard/leaverequests" routerLinkActive="active">Leave Request</a>
+            <a class="dropdown-item" routerLink="/dashboard/leavetypes" routerLinkActive="active">Leave Type</a>
           </div>
         </div>
       </a>
-      <a href="#">
+      <a  routerLink="/dashboard/projects" routerLinkActive="active">
         <div class="dropdown">
           <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Project
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Task</a>
+            <a class="dropdown-item" routerLink="/dashboard/tasks" routerLinkActive="active">Task</a>
           </div>
         </div>
       </a>

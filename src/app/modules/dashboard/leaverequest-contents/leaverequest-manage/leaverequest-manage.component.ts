@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { FileUploader } from 'ng2-file-upload';
 import { LeaveTypeService } from '../../../../services/leaveType.service';
 
 import { LeaveType } from '../../../../models/leaveType';
@@ -15,6 +15,7 @@ import { AuthService } from '../../../../services/auth.service';
 export class LeaverequestManageComponent implements OnInit {
   create_leave_req_msg: string;
   public has_error = false;
+  uploader: FileUploader;
 
   leaveTypes: any;
   selectedLeaveType: LeaveType = null;
@@ -31,6 +32,11 @@ export class LeaverequestManageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService, 
     private leaveTypeService: LeaveTypeService, private auth: AuthService) {
       this.minDate = new Date();
+      // uploader: FileUploader = new FileUploader({ 
+      //   url: "api/your_upload", 
+      //   removeAfterUpload: false, 
+      //   autoUpload: true 
+      // });
   }
 
   ngOnInit() {
@@ -55,6 +61,7 @@ export class LeaverequestManageComponent implements OnInit {
       fileChosen: [this.fileToUpload]
     });
   }
+
 
   get f() {
     return this.leaveForm.controls;
