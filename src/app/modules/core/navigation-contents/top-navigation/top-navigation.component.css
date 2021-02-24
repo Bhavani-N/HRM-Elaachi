@@ -38,6 +38,7 @@
     background:url(../../../../../assets/icons/images/bgg-1.jpg);
     width:100%;
     position:fixed;
+    top: 0;
     z-index:1;
   }
   .top-nav button{
