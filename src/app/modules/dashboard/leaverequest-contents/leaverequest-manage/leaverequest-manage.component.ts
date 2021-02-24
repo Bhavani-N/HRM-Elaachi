@@ -27,6 +27,7 @@ export class LeaverequestManageComponent implements OnInit {
   fileToUpload: File = null;
   sId: any;
   staffName: any;
+  percentDone: number;
   userDetails: any;
 
   constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService, 
@@ -70,7 +71,16 @@ export class LeaverequestManageComponent implements OnInit {
     this.fileToUpload = files.item(0);
   }
 
-  upload
+  upload(files: File[]) {
+    this.uploadAndProgress(files);
+  }
+
+  uploadAndProgress(files: File[]){
+    console.log(files);
+    let formData = new FormData();
+    Array.from(files).forEach(f => formData.append('file', f))
+    console.log(formData)
+  }
 
   onSubmit() {
     this.submitted = true;
