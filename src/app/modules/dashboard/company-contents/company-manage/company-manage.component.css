@@ -1,0 +1,12 @@
+input{
+    display: block;
+    width: 20%;
+}
+label{
+    margin-top: 15px;
+}
+button{
+    background-color: orange;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
