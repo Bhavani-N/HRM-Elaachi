@@ -23,3 +23,11 @@ a:hover{
 .dashboard-page{
     margin-top:100px;
 }
+
+
+@media (min-width:546px) and (max-width:768px){
+    span{
+        font-size: 10px;
+        font-weight: bold;
+    }
+}

@@ -37,6 +37,11 @@ import { MyProfileComponent } from './profile-contents/my-profile/my-profile.com
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
+import { LeaverequestperiodComponent } from './dash-contents/report-contents/leaverequestperiod/leaverequestperiod.component';
+import { MainReportComponent } from './dash-contents/report-contents/main-report/main-report.component';
+import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
+import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
+import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
 
 
 
@@ -66,7 +71,11 @@ import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload
         ProjectManageComponent,
         MyProfileComponent,
         UploadPayslipComponent,
-
+        LeaverequestperiodComponent,
+        MainReportComponent,
+        CompanyManageComponent,
+        CompanyDetailsComponent,
+        CompanyMainComponent,
     ],
     imports: [
         CommonModule,
