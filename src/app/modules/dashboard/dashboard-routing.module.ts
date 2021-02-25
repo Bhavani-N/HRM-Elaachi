@@ -24,6 +24,9 @@ import { ProjectListComponent } from './project-contents/project-list/project-li
 import { ProjectDetailsComponent } from './project-contents/project-details/project-details.component';
 import { ProjectManageComponent } from './project-contents/project-manage/project-manage.component';
 import { MyProfileComponent } from './profile-contents/my-profile/my-profile.component';
+import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
+import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
+import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
 
 const routes: Routes = [
     {
@@ -40,6 +43,16 @@ const routes: Routes = [
                   {path: 'details/:id', component: EmployeeDetailsComponent},
                   {path: 'new', component: EmployeeManageComponent}
                 ]
+            },
+            {
+              path: 'company',
+              component: CompanyMainComponent,
+              children: [
+                {path: '', redirectTo: 'details', pathMatch: 'full'},
+                {path: 'details', component: CompanyDetailsComponent},
+                {path: 'details/:id', component:CompanyDetailsComponent},
+                {path: 'new', component: CompanyManageComponent}
+              ]
             },
             {
                 path: 'leaverequests',
