@@ -39,8 +39,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
 
 
-// import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
-
 
 @NgModule({
     declarations: [
@@ -79,7 +77,6 @@ import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload
         FormsModule,
         ReactiveFormsModule,
         NgxPaginationModule,
-
         BsDatepickerModule.forRoot(),
     ],
     schemas: [
