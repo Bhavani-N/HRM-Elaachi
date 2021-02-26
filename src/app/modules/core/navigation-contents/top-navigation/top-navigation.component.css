@@ -97,7 +97,10 @@
     color:black;
   }
   .dropdown-toggle::after{
-    margin-left:70px;
+    margin-left:78px;
+  }
+  .system-setting::after{
+    margin-left:15px;
   }
   /* #mySidebar{
     width:200px;
