@@ -1,6 +1,7 @@
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { EmployeeMainComponent } from './employee-contents/employee-main/employee-main.component';
 import { EmployeeListComponent } from './employee-contents/employee-list/employee-list.component';
@@ -27,6 +28,7 @@ import { MyProfileComponent } from './profile-contents/my-profile/my-profile.com
 import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
 import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
 import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
+import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
 
 const routes: Routes = [
     {
@@ -95,6 +97,7 @@ const routes: Routes = [
               ]
             },
             { path: 'profile/:id', component: MyProfileComponent },
+            { path: 'payslip', component: UploadPayslipComponent },
         ]
     }
 ];

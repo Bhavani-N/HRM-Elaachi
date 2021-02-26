@@ -43,7 +43,7 @@ import { CompanyManageComponent } from './company-contents/company-manage/compan
 import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
 import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
 
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
     declarations: [
@@ -84,6 +84,7 @@ import { CompanyMainComponent } from './company-contents/company-main/company-ma
         DashboardRoutingModule,
         MaterialModule,
         FormsModule,
+        PdfViewerModule,
         ReactiveFormsModule,
         NgxPaginationModule,
         BsDatepickerModule.forRoot(),
