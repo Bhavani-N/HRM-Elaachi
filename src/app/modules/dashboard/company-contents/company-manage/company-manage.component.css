@@ -1,0 +1,26 @@
+.system-setting{
+   display: flex;
+   margin-top:100px;
+}
+.location input{
+    width: 74%;
+}
+.form-check-input{
+    width: 16px;
+}
+.user-input{
+    display: flex;
+    justify-content: space-between;
+}
+/* input{
+    display: block;
+    width: 100%;
+} */
+label{
+    margin-top: 15px;
+}
+button{
+    background-color: orange;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
