@@ -27,6 +27,7 @@ import { MyProfileComponent } from './profile-contents/my-profile/my-profile.com
 import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
 import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
 import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
+import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
 
 const routes: Routes = [
     {
@@ -95,6 +96,7 @@ const routes: Routes = [
               ]
             },
             { path: 'profile/:id', component: MyProfileComponent },
+            { path: 'payslip', component: UploadPayslipComponent },
         ]
     }
 ];
