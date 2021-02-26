@@ -10,3 +10,24 @@
     [show-all]="false"
     style="display: block;"
 ></pdf-viewer>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+
+
+<div style="text-align: center;">
+  <h1>
+    {{ title }}
+  </h1>
+
+  <form id="gSearch" method="GET" #gSearch action="https://www.google.com/search"></form>
+  <div id="voicesearch">
+    <input #searchKey name="q" type="hidden">
+    <div (click)="voiceSearch()" id="icon-mic">
+      <p>mic</p>
+    </div>
+  </div>
+</div>

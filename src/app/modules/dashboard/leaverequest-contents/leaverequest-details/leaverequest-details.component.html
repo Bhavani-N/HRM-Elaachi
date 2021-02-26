@@ -1,10 +1,10 @@
-<div class="col-md-12 mt-4 px-5">
+<div class="col-md-12 px-5">
   <div *ngIf="isLeaveRequestSelected">
     <!-- <div class="row col-md-12"> -->
       <!-- <div class="col-md-12"> -->
-    <button class="float-right" (click)="toggleEdit()">
-      {{isRequestEdit ? "View Request" : "Approve Request"}}
-    </button>
+      <button class="float-right mt-3" (click)="toggleEdit()">
+        {{isRequestEdit ? "View Request" : "Approve Request"}}
+      </button>
       <!-- </div> -->
 
       <!-- <div class="col-md-12 row m-0">
@@ -23,33 +23,33 @@
             </div>
         </div>
       </div> -->
-    <div class="col-md-12 row m-0">
-      <div class="col-md-8 mx-auto d-flex">
-        <div class="col-md-3 text-center">
-            <img src="../../../../assets/icons/images/placeholder.png" alt="profile image" width="80%">
-        </div>
-        <div class="col-md-9 profile-head">
-          <!-- <div class="profile-head"> -->
-          <h5><span>
-              <a routerLink="/dashboard/employees/details/{{selectedStaff?._id}}">
-                {{selectedStaff?.firstName}}
-                {{selectedStaff?.lastName}}</a>
-            </span>
-          </h5>        
-          <h6>{{selectedLeave.name}}</h6>
-          <p>Submitted On : <span>{{selectedLeaveRequest.createdAt | date :'medium'}}</span></p>
-          <!-- </div> -->
+      <div class="col-md-12 row m-0">
+        <div class="col-md-8 mx-auto d-flex">
+          <div class="col-md-3 text-center">
+              <img src="../../../../assets/icons/images/placeholder.png" alt="profile image" width="80%">
+          </div>
+          <div class="col-md-9 profile-head">
+            <!-- <div class="profile-head"> -->
+            <h5><span>
+                <a routerLink="/dashboard/employees/details/{{selectedStaff?._id}}">
+                  {{selectedStaff?.firstName}}
+                  {{selectedStaff?.lastName}}</a>
+              </span>
+            </h5>        
+            <h6>{{selectedLeave.name}}</h6>
+            <p>Submitted On : <span>{{selectedLeaveRequest.createdAt | date :'medium'}}</span></p>
+            <!-- </div> -->
+          </div>
         </div>
       </div>
-    </div>
 
 
           <!-- <div mat-tab-nav-bar class="custom-tab">
             <a mat-tab-link class="nav-link active">Info</a>
           </div> -->
-          <div class="col-md-12 row m-0 mt-3">
+          <div class="col-md-12 row m-0">
             <strong class="text-center">Info</strong>
-            <div class="col-md-11 row m-0 mx-auto my-4 card-body">
+            <div class="col-md-11 pb-0 row m-0 mx-auto my-3 card-body">
               <div class="col-md-6 border-right">
                 <p>LeaveRequest Id: {{selectedLeaveRequest._id}}</p>
                 <p>Employee Name: {{selectedStaff?.firstName}}

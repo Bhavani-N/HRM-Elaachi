@@ -1,4 +1,4 @@
-<div class="col-md-12 mt-5 px-5">
+<div class="col-md-12 profile px-5">
 
 <!-- Show Employee Details -->
     <div *ngIf="isEmployeeSelected">
@@ -46,7 +46,7 @@
             <img src="../../../../assets/icons/images/placeholder.png" alt="profile image" width="50%">
         </div>
         <div class="col-md-7 p-0">
-            <div class="profile-head">
+            <div class="profile-head user-profile py-4">
 
                 <form [formGroup]="employeeEditForm" (ngSubmit)="onSubmit()">
                     <div *ngIf="!!update_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">
