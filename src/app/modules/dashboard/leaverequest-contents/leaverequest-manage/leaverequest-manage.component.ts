@@ -30,7 +30,7 @@ export class LeaverequestManageComponent implements OnInit {
   percentDone: number;
   userDetails: any;
 
-  constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService, 
+  constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService,
     private leaveTypeService: LeaveTypeService, private auth: AuthService, private http: HttpClient) {
       this.minDate = new Date();
   }
@@ -89,15 +89,17 @@ export class LeaverequestManageComponent implements OnInit {
     if (this.leaveForm.invalid) {
       console.log('invalid')
       return;
-    } 
+    }
     this.empLeaveService.createEmployeeLeave(this.leaveForm.value).subscribe(res => {
       this.has_error = false;
       console.log(res)
       this.create_leave_req_msg = 'Leave Request successfully submitted';
       this.leaveForm.reset();
       this.submitted = false;
+      console.log('notworking.........')
     }, error => {
       this.has_error = true;
+      console.log('working........')
       this.create_leave_req_msg = error.error.message;
     });
   }
