@@ -5,7 +5,6 @@ import { LeaveTypeService } from '../../../../services/leaveType.service';
 import { LeaveType } from '../../../../models/leaveType';
 import { LeaveService } from '../../../../services/leave.service';
 import { AuthService } from '../../../../services/auth.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-leaverequest-manage',
@@ -31,7 +30,7 @@ export class LeaverequestManageComponent implements OnInit {
   userDetails: any;
 
   constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService,
-    private leaveTypeService: LeaveTypeService, private auth: AuthService, private http: HttpClient) {
+    private leaveTypeService: LeaveTypeService, private auth: AuthService) {
       this.minDate = new Date();
   }
 
@@ -87,7 +86,6 @@ export class LeaverequestManageComponent implements OnInit {
     // this.leaveForm.value['staffId'] = this.sId;
     // console.log(this.leaveForm.value)
     if (this.leaveForm.invalid) {
-      console.log('invalid')
       return;
     }
     this.empLeaveService.createEmployeeLeave(this.leaveForm.value).subscribe(res => {
@@ -96,10 +94,8 @@ export class LeaverequestManageComponent implements OnInit {
       this.create_leave_req_msg = 'Leave Request successfully submitted';
       this.leaveForm.reset();
       this.submitted = false;
-      console.log('notworking.........')
     }, error => {
       this.has_error = true;
-      console.log('working........')
       this.create_leave_req_msg = error.error.message;
     });
   }

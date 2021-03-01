@@ -34,7 +34,7 @@ export class LeaverequestListComponent implements OnInit {
 
   getPage(page: number) {
     this.loading = true;
-    this.currentPage = page;
+    this.currentPage = page; 
     this.getAllEmployeeLeaves();
   }
 
