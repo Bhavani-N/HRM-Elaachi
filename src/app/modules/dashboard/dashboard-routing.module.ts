@@ -29,6 +29,9 @@ import { CompanyMainComponent } from './company-contents/company-main/company-ma
 import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
 import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
 import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
+import { PayslipMainComponent } from './payslip-contents/payslip-main/payslip-main.component';
+import { PayslipDetailsComponent } from './payslip-contents/payslip-details/payslip-details.component';
+import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-list.component';
 
 const routes: Routes = [
     {
@@ -97,7 +100,16 @@ const routes: Routes = [
               ]
             },
             { path: 'profile/:id', component: MyProfileComponent },
-            { path: 'payslip', component: UploadPayslipComponent },
+            {
+              path: 'payslips',
+              component: PayslipMainComponent,
+              children: [
+                {path: '', redirectTo: 'details', pathMatch: 'full'},
+                {path: 'details', component: PayslipListComponent},
+                {path: 'details/:id', component: PayslipDetailsComponent},
+                {path: 'new', component: UploadPayslipComponent}
+              ]
+            },
         ]
     }
 ];

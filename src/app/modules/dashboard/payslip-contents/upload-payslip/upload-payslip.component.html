@@ -1,4 +1,4 @@
-<h1>Upload PaySlip</h1>
+<!-- <h1>Upload PaySlip</h1>
 <div>
     <label>Pdf src</label>
     <input (change)="onFileSelected()" type="file" id="file">
@@ -9,27 +9,7 @@
     [page]="page"
     [show-all]="false"
     style="display: block;"
-></pdf-viewer>
-<p>1</p>
-<p>1</p>
-<p>1</p>
-<p>1</p>
-<p>1</p>
-
-<div style="text-align: center;">
-  <h1>
-    {{ title }}
-  </h1>
-
-  <form id="gSearch" method="GET" #gSearch action="https://www.google.com/search"></form>
-  <div id="voicesearch">
-    <input #searchKey name="q" type="hidden">
-    <div (click)="voiceSearch()" id="icon-mic">
-      <p>mic</p>
-    </div>
-  </div>
-</div> -->
-
+></pdf-viewer> -->
 
 <!-- <form class="mx-auto col-md-6 mb-4 payslip">
     <h4 class="form-title">Payslip</h4>
@@ -63,8 +43,7 @@
 </form> -->
 
 
-
-<div class="payslip-table">
+<!-- <div class="payslip-table">
   <table class="table table-hover">
     <thead>
         <th>S.N</th>
@@ -99,4 +78,44 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
+
+<form [formGroup]="payslipForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-7 my-4 form-box">
+
+  <div *ngIf="!!create_payslip_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_payslip_req_msg}}</div>
+
+  <h4 class="pb-3 form-title">Upload Payslip</h4>
+
+  <div class="form-group row">
+    <label for="staffs" class="col-sm-4 col-form-label">Staff&nbsp;<span class="text-danger">* </span></label>
+    <div class="col-sm-7 pt-2">
+      <select formControlName="staffId" (ngModelChange)="getData(payslipForm.value)">
+          <option>Select Staff</option>
+          <option *ngFor="let staff of staffList" [ngValue]="staff">
+              {{ staff.firstName }}
+          </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="dateissued" class="col-sm-4 col-form-label">Date&nbsp;<span class="text-danger">*</span></label>
+    <div class="col-sm-7">
+      <input type="text" id="dateissued" formControlName="dateIssued" class="form-control" bsDatepicker [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date"
+        [ngClass]="{ 'is-invalid': submitted && f.dateIssued.errors }" />
+      <div *ngIf="submitted && f.dateIssued.errors" class="invalid-feedback">
+        <div *ngIf="f.dateIssued.errors.required">Date is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <label for="file" class="col-sm-4 col-form-label">Choose File</label>
+    <div class="col-sm-7">
+      <input type="file" id="file" formControlName="fileChosen" (change)="upload($event.target.files)" class="form-control" />
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+
+</form>

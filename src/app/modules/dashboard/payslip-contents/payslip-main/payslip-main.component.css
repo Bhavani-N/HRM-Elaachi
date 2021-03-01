@@ -1,0 +1,16 @@
+.pay-slip .fa{
+    font-size: 20px;
+    padding-right: 6px;
+}
+.pay-slip{
+    border-bottom:1px solid grey;
+    padding:10px 0px;
+    text-align: center;
+    margin-top:71px;
+}
+.pay-slip a{
+    color:#832023;
+    text-decoration: none;
+    padding:0px 30px;
+    
+}

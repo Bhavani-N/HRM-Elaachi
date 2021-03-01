@@ -44,6 +44,9 @@ import { CompanyDetailsComponent } from './company-contents/company-details/comp
 import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PayslipMainComponent } from './payslip-contents/payslip-main/payslip-main.component';
+import { PayslipDetailsComponent } from './payslip-contents/payslip-details/payslip-details.component';
+import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-list.component';
 
 @NgModule({
     declarations: [
@@ -76,6 +79,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         CompanyManageComponent,
         CompanyDetailsComponent,
         CompanyMainComponent,
+        PayslipMainComponent,
+        PayslipDetailsComponent,
+        PayslipListComponent,
     ],
     imports: [
         CommonModule,
