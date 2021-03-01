@@ -2,11 +2,21 @@
    display: flex;
    margin-top:100px;
 }
-.location input{
-    width: 74%;
+.system-setting img{
+    margin: 0px auto;
+    display: block;
+    border-radius: 50px;
+}
+.setting{
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    padding: 20px 100px;
+    border-radius: 10px;
 }
 .form-check-input{
     width: 16px;
+}
+.form-control{
+    margin-left:30px ;
 }
 .user-input{
     display: flex;
@@ -16,11 +26,12 @@
     display: block;
     width: 100%;
 } */
-label{
-    margin-top: 15px;
+.location{
+    width: 60%;
+    display: inline;
 }
 button{
     background-color: orange;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    width: 30%;
+    margin-bottom: 6px;
 }
