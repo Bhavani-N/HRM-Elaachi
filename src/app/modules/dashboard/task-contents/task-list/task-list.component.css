@@ -26,6 +26,9 @@ table{
 .table td, .table th{
     vertical-align: middle !important;
 }
+th{
+    vertical-align: middle;
+}
 table{
     border: 2px solid lightgray;
 }
