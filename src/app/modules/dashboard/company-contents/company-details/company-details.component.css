@@ -33,3 +33,6 @@ thead{
 .table td, .table th {
     vertical-align: middle;
 }
+.checkbox{
+    font-size: 14px;
+}

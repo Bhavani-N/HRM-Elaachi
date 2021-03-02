@@ -1,6 +1,7 @@
 .form-box {
     border: 1px solid #dadada;
     box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    border-radius: 10px;
 }
 .btn,.form-check-input:checked{
     background-color: #ac492b;
@@ -31,6 +32,8 @@ button{
     color: #fff;
     border: none;
     padding: 3px 10px;
-    margin: 20px auto 0px;
+    /* margin: 20px auto 0px; */
     display: block;
+    margin-left: auto;
+    margin-top: 20px;
 }

@@ -2,7 +2,7 @@
 
     <div *ngIf="!!create_event_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_event_msg}}</div>
   
-    <h4 class="form-title">Create New Event</h4>
+    <h4 class="form-title text-center">Create New Event</h4>
 
     <!-- <form [formGroup]="projectForm"> -->
       <div class="project-names">
@@ -20,9 +20,9 @@
       </div>
     <!-- </form> -->
    
-    <div class="form-group row">
-      <label for="title" class="col-sm-3 col-form-label">TaskName&nbsp;<span class="text-danger">*</span></label>
-      <div class="col-sm-9">
+    <div class="form-group row m-0">
+      <label for="title" class="col-sm-3 col-form-label p-0">TaskName&nbsp;<span class="text-danger">*</span></label>
+      <div class="col-sm-9 p-0 pb-3">
         <input type="text" id="taskName" formControlName="taskName" class="form-control" placeholder="TaskName"
           [ngClass]="{ 'is-invalid': submitted && f.taskName.errors }" />
         <div *ngIf="submitted && f.taskName.errors" class="invalid-feedback">
@@ -31,9 +31,9 @@
       </div>
     </div>
 
-    <div class="form-group row">
-        <label for="title" class="col-sm-3 col-form-label">TaskCode&nbsp;<span class="text-danger">*</span></label>
-        <div class="col-sm-9">
+    <div class="form-group row m-0">
+        <label for="title" class="col-sm-3 col-form-label p-0">TaskCode&nbsp;<span class="text-danger">*</span></label>
+        <div class="col-sm-9 p-0 pb-3">
           <input type="text" id="taskCode" formControlName="taskCode" class="form-control" placeholder="TaskCode"
             [ngClass]="{ 'is-invalid': submitted && f.taskCode.errors }" />
           <div *ngIf="submitted && f.taskCode.errors" class="invalid-feedback">
@@ -42,9 +42,9 @@
         </div>
       </div>
   
-    <div class="form-group row">
-      <label for="startDate" class="col-sm-3 col-form-label">Start Date&nbsp;<span class="text-danger">*</span></label>
-      <div class="col-sm-9">
+    <div class="form-group row m-0">
+      <label for="startDate" class="col-sm-3 col-form-label p-0">Start Date&nbsp;<span class="text-danger">*</span></label>
+      <div class="col-sm-9 p-0 pb-3">
         <input type="text" id="startDate" formControlName="startDate" class="form-control" bsDatepicker [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue' }" placeholder="Date From"
           [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
         <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
@@ -53,9 +53,9 @@
       </div>
     </div>
   
-    <div class="form-group row">
-      <label for="endDate" class="col-sm-3 pr-0 col-form-label">End Date &nbsp;<span class="text-danger">*</span></label>
-      <div class="col-sm-9">
+    <div class="form-group row m-0">
+      <label for="endDate" class="col-sm-3 pr-0 col-form-label p-0">End Date &nbsp;<span class="text-danger">*</span></label>
+      <div class="col-sm-9 p-0">
         <input type="text" id="endDate" formControlName="endDate" class="form-control" bsDatepicker [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue' }" placeholder="Date To"
           [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
         <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
