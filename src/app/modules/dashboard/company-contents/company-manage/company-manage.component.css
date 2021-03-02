@@ -1,4 +1,4 @@
-.system-setting{
+ .system-setting{
    display: flex;
    margin-top:100px;
 }
@@ -9,29 +9,32 @@
 }
 .setting{
     box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-    padding: 20px 100px;
+    padding: 30px;
     border-radius: 10px;
+    width: 40%;
+}
+#company{
+    width:60%;
 }
 .form-check-input{
     width: 16px;
-}
-.form-control{
-    margin-left:30px ;
-}
+} 
 .user-input{
     display: flex;
     justify-content: space-between;
 }
-/* input{
-    display: block;
-    width: 100%;
-} */
-.location{
-    width: 60%;
-    display: inline;
+.loation{
+    position: relative;
 }
 button{
     background-color: orange;
-    width: 30%;
-    margin-bottom: 6px;
-}
+    position: absolute;
+    top:0px;
+    right: 0px;
+} 
+/* .setting{
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    border: 1px solid #dadada;
+    padding: 25px;
+    border-radius: 5px;
+} */

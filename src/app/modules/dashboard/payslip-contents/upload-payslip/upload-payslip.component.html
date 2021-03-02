@@ -88,7 +88,7 @@
 
   <div class="form-group row">
     <label for="staffs" class="col-sm-4 col-form-label">Staff&nbsp;<span class="text-danger">* </span></label>
-    <div class="col-sm-7 pt-2">
+    <div class="col-sm-7 pt-2 staff">
       <select formControlName="staffId" (ngModelChange)="getData(payslipForm.value)">
           <option>Select Staff</option>
           <option *ngFor="let staff of staffList" [ngValue]="staff">
