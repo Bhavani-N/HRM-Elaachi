@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Constant } from '../modules/dashboard/constant/constant';
 import { Event } from '../models/event';
+import {
+  isSameMonth,
+  isSameDay,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  startOfDay,
+  endOfDay,
+  format,
+  getDay
+} from 'date-fns';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -69,20 +82,29 @@ export class EventService {
       .pipe(catchError(this.errorHandler));
   }
 
-  
-
-
-
-
-
-  // getLeaveAndEventsBetweenDate(startDate, endDate): Observable<any> {
-  //   return this.http.get<Event[]>(Constant.API_ENDPOINT + '/rest/events/byDate',
-  //   {
-  //     params: {
-  //       date1: startDate,
-  //       date2: endDate
-  //     }
-  //   })
-  //     .pipe(catchError(this.errorHandler));
-  // }
+  getLeaveAndEventsBetweenDate(startDate, endDate): Observable<any> {
+    return this.http.get<Event[]>(Constant.API_ENDPOINT + '/userLeave/',
+      {
+        params: {
+          date1: startDate,
+          date2: endDate
+        }
+      })
+      .pipe(
+        map((results: any) => {
+          return results.data.map((event: Event) => {
+            return {
+              title: event.title,
+              start: startOfDay(new Date(event.startDate)),
+              end: endOfDay(new Date(event.endDate)),
+              allDay: true,
+              color: event.eventType === 'leave' ? { primary: '#2f79ef' } : { primary: '#e21841' },
+              meta: {
+                event
+              }
+            };
+          });
+        }),
+        catchError(this.errorHandler));
+  }
 }

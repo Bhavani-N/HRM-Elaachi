@@ -47,7 +47,7 @@
           <ng-container *ngIf="durationArray.length != 0">
             <td *ngFor="let task of durationArray">{{ task.timeTaken }}</td>
           </ng-container>
-          <ng-container *ngIf="durationArray.length == 0">
+          <ng-container >
             <td ><input type="text" value="0" class="form-control form-control-sm" id='monday'></td>
             <td ><input type="text" value="0" class="form-control form-control-sm" id='tuesday'></td>
             <td ><input type="text" value="0" class="form-control form-control-sm" id='wednesday'></td>

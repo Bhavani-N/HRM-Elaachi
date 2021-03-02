@@ -124,7 +124,7 @@ export class TaskListComponent implements OnInit {
          console.log(this.dArray)
          this.dArray.map(res=>{
            console.log(res);
-           this.duration=res.duration;
+          //  this.duration=res.duration;
            console.log(this.duration);
           this.duration.map(res=>{
             this.time=res;
