@@ -90,7 +90,7 @@ export class LeaverequestDetailsComponent implements OnInit {
     if (id) {
       this.employeeLeaveService.getEmployeeLeaveById(id).subscribe(
         data => {
-          console.log(data)
+          console.log(data) 
           this.selectedLeaveRequest = data;
           this.selectedLeaveRequest = this.selectedLeaveRequest.result;
           this.leaveRequestId = this.selectedLeaveRequest._id;

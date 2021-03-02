@@ -12,6 +12,7 @@ export class PayslipDetailsComponent implements OnInit {
   private id: number;
   private sub: any;
   selectedPay: any;
+  selectedStaff: any;
   isPayslipSelected= false;
 
   minDate;
@@ -39,10 +40,9 @@ export class PayslipDetailsComponent implements OnInit {
   initPayUpdateForm() {
     this.minDate = new Date();
     this.payUpdateForm = this.formBuilder.group({
-      projectCode: [this.selectedPay.projectCode],      
-      projectName: [this.selectedPay.projectName, [Validators.required, Validators.minLength(3)]],
-      startDate: [this.selectedPay.startDate],
-      endDate: [this.selectedPay.endDate]
+      staffId: [this.selectedPay._id],      
+      dateIssued: [this.selectedPay.dateIssued],
+      fileChosen: [this.selectedPay.fileChosen],
     });
   }
 
@@ -60,7 +60,13 @@ export class PayslipDetailsComponent implements OnInit {
           data => {
             console.log(data)
             this.selectedPay = data;
-            this.selectedPay=this.selectedPay.result
+            this.selectedPay=this.selectedPay.result;
+            this.selectedStaff = this.selectedPay.staffId;
+            this.selectedStaff.map(res => {
+              console.log(res)
+              this.selectedStaff = res
+            })
+            console.log(this.selectedStaff);
             this.isPayslipSelected = true;
             // console.log("Selected Leave Type data: ", data);
           },
@@ -71,5 +77,31 @@ export class PayslipDetailsComponent implements OnInit {
   }
 
   get f() { return this.payUpdateForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.payUpdateForm.invalid) {
+      return;
+    }
+    this.payslipService.updatePayslip(this.payUpdateForm.value, this.id).subscribe(res => {
+      console.log(res);
+      this.has_error = false;
+      this.selectedPay = res;
+      this.selectedPay=this.selectedPay.result;
+      this.pay_update_msg = 'Update Successful';
+      this.payUpdateForm.reset();
+      this.submitted = false;
+    }, error => {
+      this.has_error = true;
+      this.pay_update_msg = error.error.message;
+    });
+
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
 }
