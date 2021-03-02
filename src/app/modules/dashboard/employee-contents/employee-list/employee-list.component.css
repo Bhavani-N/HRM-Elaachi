@@ -17,6 +17,7 @@ table{
 .table thead th{
     border-bottom:2px solid;
     border-top:2px solid;
+    vertical-align: middle;
 }
 tbody,thead{
     text-align:center;

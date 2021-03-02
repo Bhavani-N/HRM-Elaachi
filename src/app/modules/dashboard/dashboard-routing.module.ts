@@ -1,6 +1,7 @@
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { EmployeeMainComponent } from './employee-contents/employee-main/employee-main.component';
 import { EmployeeListComponent } from './employee-contents/employee-list/employee-list.component';
@@ -24,6 +25,13 @@ import { ProjectListComponent } from './project-contents/project-list/project-li
 import { ProjectDetailsComponent } from './project-contents/project-details/project-details.component';
 import { ProjectManageComponent } from './project-contents/project-manage/project-manage.component';
 import { MyProfileComponent } from './profile-contents/my-profile/my-profile.component';
+import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
+import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
+import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
+import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
+import { PayslipMainComponent } from './payslip-contents/payslip-main/payslip-main.component';
+import { PayslipDetailsComponent } from './payslip-contents/payslip-details/payslip-details.component';
+import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-list.component';
 
 const routes: Routes = [
     {
@@ -40,6 +48,16 @@ const routes: Routes = [
                   {path: 'details/:id', component: EmployeeDetailsComponent},
                   {path: 'new', component: EmployeeManageComponent}
                 ]
+            },
+            {
+              path: 'company',
+              component: CompanyMainComponent,
+              children: [
+                {path: '', redirectTo: 'details', pathMatch: 'full'},
+                {path: 'details', component: CompanyDetailsComponent},
+                {path: 'details/:id', component:CompanyDetailsComponent},
+                {path: 'new', component: CompanyManageComponent}
+              ]
             },
             {
                 path: 'leaverequests',
@@ -82,6 +100,16 @@ const routes: Routes = [
               ]
             },
             { path: 'profile/:id', component: MyProfileComponent },
+            {
+              path: 'payslips',
+              component: PayslipMainComponent,
+              children: [
+                {path: '', redirectTo: 'details', pathMatch: 'full'},
+                {path: 'details', component: PayslipListComponent},
+                {path: 'details/:id', component: PayslipDetailsComponent},
+                {path: 'new', component: UploadPayslipComponent}
+              ]
+            },
         ]
     }
 ];

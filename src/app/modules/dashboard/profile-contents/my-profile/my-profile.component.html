@@ -1,12 +1,13 @@
-<div class="col-md-12 mt-5 px-5">
+<div class="col-md-12 profile px-5">
 
 <!-- Show Employee Details -->
     <div *ngIf="isEmployeeSelected">
         <button class="float-right" (click)="toggleEdit()">
             {{isEdit ? "View Profile" : "Edit Profile"}}
         </button>
-        <div *ngIf="!isEdit" class="row">
-        
+        <!-- <a href="#" class="float-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> -->
+
+        <div *ngIf="!isEdit" class="row m-0">
         <div class="col-md-12 row m-0">
             <div class="col-md-8 mx-auto d-flex">
                 <div class="col-md-3 text-center">
@@ -23,7 +24,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-8 mx-auto row m-0 mt-3">
             <strong class="text-center">About</strong>
             <div class="col-md-9 mx-auto my-3">
@@ -46,7 +46,7 @@
             <img src="../../../../assets/icons/images/placeholder.png" alt="profile image" width="50%">
         </div>
         <div class="col-md-7 p-0">
-            <div class="profile-head">
+            <div class="profile-head user-profile py-4">
 
                 <form [formGroup]="employeeEditForm" (ngSubmit)="onSubmit()">
                     <div *ngIf="!!update_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">

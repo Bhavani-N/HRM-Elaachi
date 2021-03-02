@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -11,14 +11,13 @@ import { CoreModule } from './modules/core/core.module';
 import { InterceptorService } from './services/interceptor.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
-  
   ],
   imports: [
     BrowserAnimationsModule,
+    BrowserTransferStateModule,
     BrowserModule,
     HttpClientModule,
     SharedModule,

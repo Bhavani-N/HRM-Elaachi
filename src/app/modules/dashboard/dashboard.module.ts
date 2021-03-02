@@ -36,10 +36,17 @@ import { ProjectManageComponent } from './project-contents/project-manage/projec
 import { MyProfileComponent } from './profile-contents/my-profile/my-profile.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
+import { LeaverequestperiodComponent } from './dash-contents/report-contents/leaverequestperiod/leaverequestperiod.component';
+import { MainReportComponent } from './dash-contents/report-contents/main-report/main-report.component';
+import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
+import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
+import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
 
-
-// import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PayslipMainComponent } from './payslip-contents/payslip-main/payslip-main.component';
+import { PayslipDetailsComponent } from './payslip-contents/payslip-details/payslip-details.component';
+import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-list.component';
 
 @NgModule({
     declarations: [
@@ -66,7 +73,15 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
         ProjectMainComponent,
         ProjectManageComponent,
         MyProfileComponent,
-
+        UploadPayslipComponent,
+        LeaverequestperiodComponent,
+        MainReportComponent,
+        CompanyManageComponent,
+        CompanyDetailsComponent,
+        CompanyMainComponent,
+        PayslipMainComponent,
+        PayslipDetailsComponent,
+        PayslipListComponent,
     ],
     imports: [
         CommonModule,
@@ -75,9 +90,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
         DashboardRoutingModule,
         MaterialModule,
         FormsModule,
+        PdfViewerModule,
         ReactiveFormsModule,
         NgxPaginationModule,
-
         BsDatepickerModule.forRoot(),
     ],
     schemas: [
