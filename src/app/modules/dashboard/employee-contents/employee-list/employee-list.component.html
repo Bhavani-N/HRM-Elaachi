@@ -21,6 +21,11 @@
         </div>
       </div>
     </form>
+    <input
+  [(ngModel)]="model"
+  (ngModelChange)="changed($event)"
+  placeholder="Search..."
+/>
     <table class="table table-hover">
       <thead>
         <th>S.N </th>
@@ -39,17 +44,17 @@
         <th>Options</th>
       </thead>
       <tbody *ngIf="employees">
-        <tr *ngFor="let employee of employees;  let i = index">
+        <tr *ngFor="let result of searchResult;  let i = index">
           <td>{{i+1}}</td>
-          <td>{{employee.firstName}}</td>
-          <td>{{employee.phoneNumber > 0 ? employee.phoneNumber : ''}}</td>
-          <td>{{employee.email}}</td>
+          <td>{{result.firstName}}</td>
+          <td>{{result.phoneNumber > 0 ? result.phoneNumber : ''}}</td>
+          <td>{{result.email}}</td>
           <!-- <td><a *ngIf="employee.supervisor" routerLink="/home/employees/details/{{employee.supervisor.employeeId}}">
                 {{employee.supervisor.firstName}} {{employee.supervisor.middleName}} {{employee.supervisor.lastName}}
               </a></td> -->
-          <td>{{employee.role}}</td>
-          <td [ngClass]="(employee.status=='ACTIVE')?'text-success':'text-danger'">{{employee.status}}</td>
-          <td class="edit-btn"><a routerLink="/dashboard/employees/details/{{employee._id}}">
+          <td>{{result.role}}</td>
+          <td [ngClass]="(result.status=='ACTIVE')?'text-success':'text-danger'">{{result.status}}</td>
+          <td class="edit-btn"><a routerLink="/dashboard/employees/details/{{result._id}}">
                 <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button>
                 <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
               </a>
@@ -68,3 +73,15 @@
     </div>
   </div>
 </div>
+
+
+<!-- <ng-container *ngIf="model">
+<ul>
+    <li *ngFor="let result of searchResult">
+      {{ result|json}}
+    </li>
+    <li *ngIf="!results.length">
+      No result
+    </li>
+  </ul>
+</ng-container> -->

@@ -48,13 +48,19 @@
             <td *ngFor="let task of durationArray">{{ task.timeTaken }}</td>
           </ng-container>
           <ng-container *ngIf="durationArray.length == 0">
+            <td ><input type="text" value="0" class="form-control form-control-sm" id='monday'></td>
+            <td ><input type="text" value="0" class="form-control form-control-sm" id='tuesday'></td>
+            <td ><input type="text" value="0" class="form-control form-control-sm" id='wednesday'></td>
+            <td ><input type="text" value="0" class="form-control form-control-sm" id='thursday'></td>
+            <td ><input type="text" value="0" class="form-control form-control-sm" id='friday'></td>
+            <td ><input type="text" value="0" class="form-control form-control-sm" id='saturday'></td>
+            <td ><input type="text" value="0" class="form-control form-control-sm" id='sunday'></td>
+            <!-- <td >0</td>
             <td >0</td>
             <td >0</td>
             <td >0</td>
             <td >0</td>
-            <td >0</td>
-            <td >0</td>
-            <td >0</td>
+            <td >0</td> -->
           </ng-container>
           <td>{{event.status}}</td>
           <td><a routerLink="/dashboard/tasks/details/{{event._id}}">
@@ -63,7 +69,7 @@
         </tr>
       </tbody>
     </table>
-
+<!-- 
     <div *ngIf="events" class="row col-md-12 mt-4">
       <div class="col-md-auto">
         <span class="table-details">Showing {{(currentPage-1) * size +1}} to {{(currentPage-1) *
@@ -73,7 +79,7 @@
       <div class="col">
         <pagination-controls class="float-right" (pageChange)="getPage($event)"></pagination-controls>
       </div>
-    </div>
+    </div> -->
 
   </div>
   <app-events-manage *ngIf="isEdit"></app-events-manage>
