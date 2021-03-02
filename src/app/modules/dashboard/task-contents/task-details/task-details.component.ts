@@ -54,21 +54,21 @@ export class TaskDetailsComponent implements OnInit {
 
   get t() { return this.f.duration as FormArray; }
 
-  onChangeDays(e) {
-    const numberOfDays = e.target.value || 0;
-    if (this.t.length < numberOfDays) {
-      for (let i = this.t.length; i < numberOfDays; i++) {
-        this.t.push(this.formBuilder.group({
-          dates: ['', Validators.required],
-          timeTaken: ['', Validators.required],
-        }));
-      }
-    } else {
-      for (let i = this.t.length; i>= numberOfDays; i++) {
-        this.t.removeAt(i);
-      }
-    }
-  }
+  // onChangeDays(e) {
+  //   const numberOfDays = e.target.value || 0;
+  //   if (this.t.length < numberOfDays) {
+  //     for (let i = this.t.length; i < numberOfDays; i++) {
+  //       this.t.push(this.formBuilder.group({
+  //         dates: ['', Validators.required],
+  //         timeTaken: ['', Validators.required],
+  //       }));
+  //     }
+  //   } else {
+  //     for (let i = this.t.length; i>= numberOfDays; i++) {
+  //       this.t.removeAt(i);
+  //     }
+  //   }
+  // }
 
   toggleEdit() {
     this.isEdit = !this.isEdit;
@@ -112,6 +112,7 @@ export class TaskDetailsComponent implements OnInit {
       this.eventUpdateForm.reset();
       this.submitted = false;
     }, error => {
+      alert('not working')
       this.has_error = true;
       this.event_update_msg = error.error.message;
     });

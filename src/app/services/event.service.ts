@@ -52,6 +52,7 @@ export class EventService {
 
 
   createEvent(TaskData): Observable<Event[]> {
+    console.log(TaskData);
     return this.http.post<any>(Constant.API_ENDPOINT + '/tasks', TaskData)
       .pipe(catchError(this.errorHandler));
   }

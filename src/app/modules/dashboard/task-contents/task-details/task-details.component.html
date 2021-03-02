@@ -82,7 +82,7 @@
             </div>
           </div>
 
-          <div class="form-group row m-0">
+          <!-- <div class="form-group row m-0">
             <label for="noDays" class="col-sm-5 col-form-label">Number of Days &nbsp;<span class="text-danger">*</span></label>
             <select formControlName="numberOfDays" class="col-sm-7 p-0 mt-2 form-control" (change)="onChangeDays($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfDays.errors }">
               <option value=""></option>
@@ -91,9 +91,9 @@
             <div *ngIf="submitted && f.numberOfDays.errors" class="invalid-feedback">
               <div *ngIf="f.numberOfDays.errors.required">Number of Days is required</div>
             </div>
-          </div>
+          </div> -->
 
-          <div *ngFor="let hour of t.controls; let i = index" class="list-group list-group-flush">
+          <!-- <div *ngFor="let hour of t.controls; let i = index" class="list-group list-group-flush">
             <div class="list-group-item">
               <div [formGroup]="hour" class="form-row">
                 <div class="form-group col-6" >
@@ -116,20 +116,20 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="form-group row m-0 my-3">
             <label for="status" class="col-sm-5 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
             <div class="col-sm-7 p-0 d-flex status my-2">
 
-              <!-- <mat-radio-group formControlName="status" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+              <mat-radio-group formControlName="status" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
 
                 <mat-radio-button value="PENDING">PENDING</mat-radio-button>
 
                 <mat-radio-button class="pl-2" value="COMPLETED">COMPLETED</mat-radio-button>
 
-              </mat-radio-group> -->
-              <div class="form-check px-4">
+              </mat-radio-group>
+              <!-- <div class="form-check px-4">
                   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                   <label class="form-check-label" for="exampleRadios1">PENDING</label>
                 </div>
@@ -141,7 +141,7 @@
                 <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
 
                 <div *ngIf="f.status.errors.required">Status is required</div>
-              </div>
+              </div> -->
             </div>
           </div>
 
