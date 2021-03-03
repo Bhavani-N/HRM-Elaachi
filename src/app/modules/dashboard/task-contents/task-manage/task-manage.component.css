@@ -10,10 +10,20 @@ button{
     color: #fff;
     border: none;
     width: 15%;
-    margin: 0px auto;
+    /* margin: 0px auto; */
     padding: 4px;
     font-size: 15px;
+    margin-left: auto;
 }
 .project-names{
     padding:20px 0px 33px;
+}
+select{
+    display: inline;
+    width: 30%;
+    padding: 3px;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
