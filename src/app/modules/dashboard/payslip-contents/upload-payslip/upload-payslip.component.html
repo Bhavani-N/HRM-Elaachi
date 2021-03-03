@@ -112,7 +112,7 @@
   <div class="form-group row mb-4">
     <label for="file" class="col-sm-4 col-form-label">Choose File</label>
     <div class="col-sm-7">
-      <input type="file" id="file" formControlName="fileChosen" (change)="upload($event.target.files)" class="form-control" />
+      <input type="file" id="file" formControlName="fileChosen" (change)="handleFileInput($event.target.files)" class="form-control" />
     </div>
   </div>
 

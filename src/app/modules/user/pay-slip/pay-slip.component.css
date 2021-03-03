@@ -119,6 +119,12 @@ label{
 select{
     margin-right:15px;
 }
+pdf-viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(5px 5px 5px #222222);
+}
 button{
     background-color: grey;
     border: none;
