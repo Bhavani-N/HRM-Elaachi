@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TaskListResponse } from 'src/app/models/task-list-response';
 import { EventService } from '../../../../services/event.service';
 @Component({
@@ -74,27 +74,47 @@ export class TaskListComponent implements OnInit {
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
-    this.taskFormGroup = new FormGroup({
-      taskName: new FormControl(''),
-      taskCode: new FormControl(''),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-      status: new FormControl(''),
+    // this.taskFormGroup = new FormGroup({
+    //   taskName: new FormControl(''),
+    //   taskCode: new FormControl(''),
+    //   startDate: new FormControl(''),
+    //   endDate: new FormControl(''),
+    //   status: new FormControl(''),
+    //   duration: new FormArray([])
+    //   // mondayValue: new FormControl(''),
+    //   // tuesdayValue: new FormControl(''),
+    //   // wednesdayValue: new FormControl(''),
+    //   // thursdayValue: new FormControl(''),
+    //   // fridayValue: new FormControl(''),
+    //   // saturdayValue: new FormControl(''),
+    //   // sundayValue: new FormControl('')
+    // })
+    this.taskFormGroup = this.fb.group({
+      taskName: ['', Validators.required],
+      taskCode: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate:  ['', Validators.required],
+      status:  ['', Validators.required],
       duration: new FormArray([])
-      // mondayValue: new FormControl(''),
-      // tuesdayValue: new FormControl(''),
-      // wednesdayValue: new FormControl(''),
-      // thursdayValue: new FormControl(''),
-      // fridayValue: new FormControl(''),
-      // saturdayValue: new FormControl(''),
-      // sundayValue: new FormControl('')
-    })
+    });
     this.durationArray = <FormArray>this.taskFormGroup.get('duration');
     this.getCurrentWeek();
   }
 
- 
+  get f() { return this.taskFormGroup.controls; }
 
+  get t() { return this.f.duration as FormArray; }
+
+  onChangeEvents(e) {
+    if (this.t.length < 7) {
+      for (let i = this.t.length; i < 7; i++) {
+        this.t.push(this.fb.group({
+            dates: [''],
+            timeTaken: ['']
+        }));
+      }
+    }
+  }
 
   selectEvent(event) {
     this.isEdit = true;

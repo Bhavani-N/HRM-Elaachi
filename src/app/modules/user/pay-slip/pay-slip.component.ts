@@ -12,7 +12,7 @@ import * as XLSX from 'xlsx';
 })
 export class PaySlipComponent implements OnInit {
   data: [][];
-  source = "https://vadimdez.github.io/ng2-pdf-viewer/assets/JAN_Geethika_Payslip.pdf";
+  source = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
   selectedPay: any;
   selectedStaff: any;
   errorMsg;
@@ -55,6 +55,15 @@ export class PaySlipComponent implements OnInit {
     reader.readAsBinaryString(target.files[0]);
   }
 
+  saveAFile(): void {
+    const dlink: HTMLAnchorElement = document.createElement('a');
+    dlink.download = this.source; // the file name
+    const myFileContent: string = 'I am a text file!';
+    dlink.href = 'data:text/plain;charset=utf-16,' + myFileContent;
+    dlink.click(); // this will trigger the dialog window
+    dlink.remove();
+  }
+
   getPayslipById(id) {
     if(id) {
       this.payslipService.getPayslipByStaff(id)
@@ -79,5 +88,6 @@ export class PaySlipComponent implements OnInit {
       this.isPayslipSelected = false;
     }
   }
+
 
 }
