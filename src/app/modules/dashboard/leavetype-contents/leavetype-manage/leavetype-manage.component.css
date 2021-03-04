@@ -37,3 +37,6 @@ button{
     margin-left: auto;
     margin-top: 20px;
 }
+.form-check-label{
+    font-size: 14px;
+}

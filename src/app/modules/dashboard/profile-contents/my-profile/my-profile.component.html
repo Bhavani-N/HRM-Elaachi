@@ -45,14 +45,14 @@
         <div class="col-md-3 text-center">
             <img src="../../../../assets/icons/images/placeholder.png" alt="profile image" width="50%">
         </div>
-        <div class="col-md-7 p-0">
-            <div class="profile-head user-profile py-4">
+        <div class="col-md-7 p-4">
+            <div class="profile-head user-profile p-4">
 
                 <form [formGroup]="employeeEditForm" (ngSubmit)="onSubmit()">
                     <div *ngIf="!!update_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">
                         {{update_employee_msg}}</div>
 
-                    <div class="form-group row m-0">
+                    <div class="form-group row m-0 mt-2">
                         <label for="firstName" class="col-sm-4 col-form-label">Name&nbsp;<span class="text-danger">*
                             </span></label>
                         <div class="col-sm-4 pl-0">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4 pl-0">
+                        <div class="col-sm-4 p-0">
                             <input type="text" id="lastName" formControlName="lastName" class="form-control"
                                 placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                             <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
@@ -78,7 +78,7 @@
                     <div class="form-group row m-0 my-4">
                         <label for="username" class="col-sm-4 col-form-label">Username&nbsp;<span
                                 class="text-danger">*</span></label>
-                        <div class="col-sm-8 pl-0">
+                        <div class="col-sm-8 p-0">
                             <input type="text" id="username" formControlName="username" class="form-control"
                                 placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -91,7 +91,7 @@
                     <div class="form-group row m-0 my-4">
                         <label for="phoneNumber" class="col-sm-4 col-form-label">Phone No.&nbsp;<span
                                 class="text-danger">*</span></label>
-                        <div class="col-sm-8 pl-0">
+                        <div class="col-sm-8 p-0">
                             <input type="number" id="phoneNumber" formControlName="phoneNumber" class="form-control"
                                 placeholder="Phone Number"
                                 [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
@@ -105,17 +105,17 @@
                     <div class="form-group row m-0 my-4">
                         <label for="email" class="col-sm-4 col-form-label">Email&nbsp;<span
                                 class="text-danger"></span></label>
-                        <div class="col-sm-8 pl-0">
+                        <div class="col-sm-8 p-0">
                             <input type="email" id="email" formControlName="email" class="form-control"
                                 placeholder="Email" />
                         </div>
                     </div>
                     <div class="form-group row m-0 my-4">
                         <label for="status" class="col-sm-4 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
-                        <div class="col-sm-8 pl-0 pt-2">
+                        <div class="col-sm-8 p-0 pt-2">
                           <mat-radio-group formControlName="status" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-                            <mat-radio-button value="ACTIVE">ACTIVE</mat-radio-button>
-                            <mat-radio-button class="pl-2" value="INACTIVE">INACTIVE</mat-radio-button>
+                            <mat-radio-button class="pr-4" value="ACTIVE">ACTIVE</mat-radio-button>
+                            <mat-radio-button value="INACTIVE">INACTIVE</mat-radio-button>
                           </mat-radio-group>
                           <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
                             <div *ngIf="f.status.errors.required">Status is required</div>

@@ -12,3 +12,6 @@
     color: #832023;
     text-decoration: none;
 }
+.tasks a:active{
+    color:green;
+}

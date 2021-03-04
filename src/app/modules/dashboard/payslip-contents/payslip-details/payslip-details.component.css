@@ -1,0 +1,20 @@
+button{
+    border-radius: 5px;
+    background-color:#ac492b;
+    color:#fff;
+    border: none;
+    padding:5px 7px;
+}
+button:hover{
+    color:#fff;
+}
+.payslip{
+    border:1px solid lightgrey;
+    border-radius:8px;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+.submit{
+    margin-left: auto;
+    display: block;
+    padding: 3px 10px;
+}

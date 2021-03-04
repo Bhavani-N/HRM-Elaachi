@@ -14,6 +14,9 @@ button{
     display: block;
     padding: 3px 13px;
 }
+.custom-ngSelect{
+    font-size: 14px;
+}
 button:hover{
     color:#fff;
 }

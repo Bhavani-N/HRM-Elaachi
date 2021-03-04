@@ -11,9 +11,9 @@
       
       <div class="col-md-12 mx-auto row m-0 mt-3">
         <strong class="text-center">Info</strong>
-        <div class="col-md-8 mx-auto my-3">
-          <div *ngIf="!isEdit" class="leave-type p-4">
-            <div class="col-md-10">
+        <div *ngIf="!isEdit" class="col-md-7 mx-auto my-4">
+          <div class="leave-type p-4">
+            <div>
               <p>LeaveType Id: {{selectedleaveType._id}}</p>
               <p>Type Name: {{selectedleaveType.name}}</p>
               <p>Status: {{selectedleaveType.status}}</p>
@@ -23,14 +23,14 @@
       </div>
     </div>
 
-    <div *ngIf="isEdit" class="col-md-6 leave-type p-4 mx-auto">
+    <div *ngIf="isEdit" class="col-md-6 leave-type p-4 mt-4 mx-auto">
       <form [formGroup]="leaveTypeUpdateForm" (ngSubmit)="onSubmit()">
 
         <div *ngIf="!!leaveType_update_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{leaveType_update_msg}}</div>
 
-        <div class="form-group row m-0">
+        <div class="form-group row m-0 mt-2">
           <label for="name" class="col-sm-4 col-form-label">Type Name&nbsp;<span class="text-danger">*</span></label>
-          <div class="col-sm-7 p-0">
+          <div class="col-sm-8 p-0">
             <input type="text" id="name" formControlName="name" class="form-control" placeholder="Leave Type Name"
               [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
             <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
@@ -42,7 +42,7 @@
 
         <div class="form-group row m-0 my-4">
           <label for="status" class="col-sm-4 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
-          <div class="col-sm-7 p-0 d-flex">
+          <div class="col-sm-8 p-0 d-flex">
             <div class="form-check px-4">
               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
               <label class="form-check-label" for="exampleRadios1">ACTIVE</label>

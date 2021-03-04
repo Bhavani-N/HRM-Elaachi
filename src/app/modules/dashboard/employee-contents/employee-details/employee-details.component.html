@@ -68,13 +68,13 @@
               <img src="../../../../assets/icons/images/placeholder.png" alt="profile image" width="50%">
           </div>
           <div class="col-md-7 p-0">
-            <div class="profile-head employee-details py-3">
+            <div class="profile-head employee-details p-4">
     
               <form [formGroup]="employeeEditForm" (ngSubmit)="onSubmit()">
                 <div *ngIf="!!update_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{update_employee_msg}}</div>
     
                 <div class="form-group row m-0 my-3">
-                  <label for="firstName" class="col-sm-4 col-form-label">Name&nbsp;<span class="text-danger">* </span></label>
+                  <label for="firstName" class="col-sm-4 pl-0 col-form-label">Name&nbsp;<span class="text-danger">* </span></label>
                   <div class="col-sm-4 pl-0">
                     <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name"
                       [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
@@ -89,7 +89,7 @@
                       class="form-control" />
                   </div>
                   -->
-                  <div class="col-sm-4 pl-0">
+                  <div class="col-sm-4 p-0">
                     <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Last Name"
                       [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                     <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
@@ -100,8 +100,8 @@
                 </div>
     
                 <div class="form-group row m-0 my-3">
-                  <label for="username" class="col-sm-4 col-form-label">Username&nbsp;<span class="text-danger">*</span></label>
-                  <div class="col-sm-8 pl-0">
+                  <label for="username" class="col-sm-4 pl-0 col-form-label">Username&nbsp;<span class="text-danger">*</span></label>
+                  <div class="col-sm-8 p-0">
                     <input type="text" id="username" formControlName="username" class="form-control" placeholder="Username"
                       [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -112,8 +112,8 @@
                 </div>
     
                 <div class="form-group row m-0 my-3">
-                  <label for="phoneNumber" class="col-sm-4 col-form-label">Phone No.&nbsp;<span class="text-danger">*</span></label>
-                  <div class="col-sm-8 pl-0">
+                  <label for="phoneNumber" class="col-sm-4 pl-0 col-form-label">Phone No.&nbsp;<span class="text-danger">*</span></label>
+                  <div class="col-sm-8 p-0">
                     <input type="number" id="phoneNumber" formControlName="phoneNumber" class="form-control" placeholder="Phone Number"
                       [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
                     <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
@@ -125,8 +125,8 @@
                 </div>
     
                 <div class="form-group row m-0 my-3">
-                  <label for="email" class="col-sm-4 col-form-label">Email&nbsp;<span class="text-danger"></span></label>
-                  <div class="col-sm-8 pl-0">
+                  <label for="email" class="col-sm-4 pl-0 col-form-label">Email&nbsp;<span class="text-danger"></span></label>
+                  <div class="col-sm-8 p-0">
                     <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email" />
                   </div>
                 </div>
@@ -144,11 +144,11 @@
                 
     
                 <div class="form-group row m-0 my-4">
-                  <label for="status" class="col-sm-4 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
-                  <div class="col-sm-8 mt-2 pl-0">
+                  <label for="status" class="col-sm-4 pl-0 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
+                  <div class="col-sm-8 mt-2 p-0">
                     <mat-radio-group formControlName="status" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-                      <mat-radio-button value="ACTIVE">ACTIVE</mat-radio-button>
-                      <mat-radio-button class="pl-2" value="INACTIVE">INACTIVE</mat-radio-button>
+                      <mat-radio-button class="pr-5" value="ACTIVE">ACTIVE</mat-radio-button>
+                      <mat-radio-button value="INACTIVE">INACTIVE</mat-radio-button>
                     </mat-radio-group>
                     <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
                       <div *ngIf="f.status.errors.required">Status is required</div>
