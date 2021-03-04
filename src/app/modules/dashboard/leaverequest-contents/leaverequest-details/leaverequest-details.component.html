@@ -78,8 +78,8 @@
                     <label for="status" class="col-sm-4 col-form-label pr-0">Status &nbsp;<span class="text-danger">* </span></label>
                     <div class="col-sm-8 p-0 mt-2">
                       <mat-radio-group id="status" formControlName="status" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-                        <mat-radio-button value="APPROVED">APPROVED</mat-radio-button>
-                        <mat-radio-button class="pl-2" value="DENIED">DENIED</mat-radio-button>
+                        <mat-radio-button class="pr-3" value="APPROVED">APPROVED</mat-radio-button>
+                        <mat-radio-button value="DENIED">DENIED</mat-radio-button>
                       </mat-radio-group>
                       <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
                         <div *ngIf="f.status.errors.required">Status is required</div>

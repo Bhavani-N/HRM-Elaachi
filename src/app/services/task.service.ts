@@ -29,7 +29,7 @@ export class TaskService {
     return this.http.get(`${environment.API_HOST}/api/v1/tasks`);
     
   }
-  updateTaskDetails( data){
+  updateTaskDetails(data){
     return this.http.put(`${environment.API_HOST}/api/v1/tasks/id=${data._id}`,data);
   }
 
