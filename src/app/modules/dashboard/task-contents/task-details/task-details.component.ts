@@ -1,7 +1,7 @@
 import { EventService } from '../../../../services/event.service';
 import { AuthService } from '../../../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -45,9 +45,14 @@ export class TaskDetailsComponent implements OnInit {
       startDate: [this.selectedEvent.startDate, Validators.required],
       endDate: [this.selectedEvent.endDate, Validators.required],
       status:  [this.selectedEvent.status, Validators.required],
-      numberOfDays: ['', Validators.required],
-      duration: new FormArray([])
-    });
+        // mondayValue: new FormControl(''),
+        // tuesdayValue: new FormControl(''),
+        // wednesdayValue: new FormControl(''),
+        // thursdayValue: new FormControl(''),
+        // fridayValue: new FormControl(''),
+        // saturdayValue: new FormControl(''),
+        // sundayValue: new FormControl('')
+      })
   }
  
   get f() { return this.eventUpdateForm.controls; }

@@ -69,12 +69,10 @@ export class TaskManageComponent implements OnInit {
     if (this.eventForm.invalid) {
       return;
     }
-
-
-
     this._eventService.createEvent(this.eventForm.value).subscribe(res => {
       this.has_error = false;
-      this.create_event_msg = 'Event succesfully Created';
+      console.log(res)
+      this.create_event_msg = 'Task succesfully Created';
       this.eventForm.reset();
       this.submitted = false;
     }, error => {

@@ -62,6 +62,7 @@ export class EventService {
       .pipe(catchError(this.errorHandler));
   }
 
+
   getAllProjects(): Observable<any> {
     return this.http.get<Event[]>(Constant.API_ENDPOINT + '/projects')
       .pipe(catchError(this.errorHandler));

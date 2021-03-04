@@ -4,16 +4,18 @@
     <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> -->
     <form [formGroup]="projectForm">
       <div class="py-4 pl-5">
-        <select  formControlName="projectCode"
-          (ngModelChange)="getData(projectForm.value)">
+        <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value)">
           <option>Select Project</option>
           <option *ngFor="let prj of projectDetails" [ngValue]="prj">
             {{ prj.projectCode }}
           </option>
-        </select> 
+        </select>
         <span class="pl-3">ProjectName :<b> {{projectName}}</b></span>
       </div>
     </form>
+
+    <form [formGroup]="taskFormGroup" class="w-100" (ngSubmit)="onSubmit(taskFormGroup)">
+
     <table class="table table-hover">
       <thead>
         <tr>
@@ -22,19 +24,19 @@
           <th rowspan="2" (click)="sort('taskCode')">TaskCode </th>
           <th rowspan="2" (click)="sort('startDate')">Start Date </th>
           <th class="date" rowspan="2" (click)="sort('endDate')">End Date </th>
-          <!-- <th>Mon</th>
+          <th>Mon</th>
           <th>Tue</th>
           <th>Wed</th>
           <th>Thu</th>
           <th>Fri</th>
           <th>Sat</th>
-          <th class="date">Sun</th> -->
+          <th class="date">Sun</th>
           <th rowspan="2" (click)="sort('status')">Status</th>
           <th rowspan="2">Options</th>
         </tr>
-        <!-- <tr >
+        <tr>
           <th *ngFor="let tDate of week">{{ tDate }}</th>
-        </tr> -->
+        </tr>
       </thead>
       <tbody *ngIf="events">
         <tr
@@ -44,40 +46,41 @@
           <td>{{event.taskCode}}</td>
           <td>{{event.startDate | date:'mediumDate' }}</td>
           <td>{{event.endDate | date:'mediumDate'}}</td>
-          <!-- <ng-container *ngIf="durationArray.length != 0">
-            <td *ngFor="let task of durationArray">{{ task.timeTaken }}</td>
-          </ng-container> -->
-          <!-- <ng-container >
-            <td ><input type="text" value="0" class="form-control form-control-sm" id='monday'></td>
-            <td ><input type="text" value="0" class="form-control form-control-sm" id='tuesday'></td>
-            <td ><input type="text" value="0" class="form-control form-control-sm" id='wednesday'></td>
-            <td ><input type="text" value="0" class="form-control form-control-sm" id='thursday'></td>
-            <td ><input type="text" value="0" class="form-control form-control-sm" id='friday'></td>
-            <td ><input type="text" value="0" class="form-control form-control-sm" id='saturday'></td>
-            <td ><input type="text" value="0" class="form-control form-control-sm" id='sunday'></td>
+          
+
+            <td><input type="text" value="0" class="form-control form-control-sm" formControlName="mondayValue"></td>
+            <td><input type="text" value="0" class="form-control form-control-sm" formControlName="tuesdayValue"></td>
+            <td><input type="text" value="0" class="form-control form-control-sm" formControlName="wednesdayValue">
+            </td>
+            <td><input type="text" value="0" class="form-control form-control-sm" formControlName="thursdayValue">
+            </td>
+            <td><input type="text" value="0" class="form-control form-control-sm" formControlName="fridayValue"></td>
+            <td><input type="text" value="0" class="form-control form-control-sm " formControlName="saturdayValue">
+            </td>
+            <td><input type="text" value="0" class="form-control form-control-sm" formControlName="sundayValue"></td>
         
-          </ng-container> -->
+  
+          <!-- <td *ngFor="let task of durationArray">{{ task.timeTaken }}</td> -->
+
           <td>{{event.status}}</td>
           <td><a routerLink="/dashboard/tasks/details/{{event._id}}">
-              <button>View</button></a></td>
+              <button type="button">View</button></a></td>
+              <td>
+                <button type="submit" [disabled]="taskFormGroup.invalid">Update</button>
+              </td>
+          
           <!-- <td><button (click)="selectEvent(event)" mat-raised-button>Edit</button></td> -->
         </tr>
+       
+        
       </tbody>
     </table>
-<!-- 
-    <div *ngIf="events" class="row col-md-12 mt-4">
-      <div class="col-md-auto">
-        <span class="table-details">Showing {{(currentPage-1) * size +1}} to {{(currentPage-1) *
-          size
-          + numberOfElements }} of {{totalElements}}</span>
-      </div>
-      <div class="col">
-        <pagination-controls class="float-right" (pageChange)="getPage($event)"></pagination-controls>
-      </div>
-    </div> -->
+  </form>
+  
+   
 
   </div>
   <app-events-manage *ngIf="isEdit"></app-events-manage>
-  <!-- </div> -->
+
 
 </div>
