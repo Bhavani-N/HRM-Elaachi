@@ -112,7 +112,11 @@
   <div class="form-group row m-0 mb-4">
     <label for="file" class="col-sm-4 col-form-label p-0">Choose File</label>
     <div class="col-sm-8 p-0">
-      <input type="file" id="file" formControlName="fileChosen" (change)="upload($event.target.files)" class="form-control" />
+      <!-- <input type="file" id="file" formControlName="fileChosen" (change)="upload($event.target.files)" class="form-control" /> -->
+      <input type="file" id="file" formControlName="fileChosen" (change)="onFileChange($event)" class="form-control" />
+      <div *ngIf="submitted && f.fileChosen.errors" class="invalid-feedback">
+        <div *ngIf="f.fileChosen.errors.required">File is required</div>
+      </div>
     </div>
   </div>
 

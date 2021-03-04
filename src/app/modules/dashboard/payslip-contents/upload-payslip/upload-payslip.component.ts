@@ -19,6 +19,7 @@ export class UploadPayslipComponent implements OnInit {
   fileToUpload: File = null;
   staffList:any;
   submitted = false;
+  fileInfo;
   payslipForm: FormGroup;
 
   constructor(private pdfService: PdfService, private empService: EmployeeService,
@@ -35,7 +36,8 @@ export class UploadPayslipComponent implements OnInit {
     this.payslipForm = this.formBuilder.group({
       staffId: [, Validators.required],
       dateIssued: ['',  Validators.required],
-      fileChosen: ['']
+      fileChosen: ['', [Validators.required]],
+      fileSource: ['', [Validators.required]],
     })
 
   } 
@@ -63,12 +65,33 @@ export class UploadPayslipComponent implements OnInit {
     console.log(formData)
   }
 
+  async saveFile(files) {
+    if(files != undefined && files.length > 0 && !!files[0].name != undefined) {
+      // let result: any = await this.roomServ.uploadMenuImage("profileImage", files[0])
+      //   this.fileInfo = result.DATA.data.Location;
+      //   this.formUser['logo'] = this.fileInfo
+      //   console.log(this.imageInfo)
+    }
+  }
+
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const fileChosen = event.target.files[0];
+      this.payslipForm.patchValue({
+        fileSource: fileChosen
+      });
+    }
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.payslipForm.invalid) {
       console.log('invalid')
       return;
     }
+    const formData = new FormData();
+    formData.append('file', this.payslipForm.get('fileSource').value);
+    console.log(formData)
     this.payslipService.createPayslip(this.payslipForm.value).subscribe(res => {
       this.has_error = false;
       console.log(res);
@@ -81,16 +104,5 @@ export class UploadPayslipComponent implements OnInit {
     });
   }
 
-  onFileSelected() {
-    let img: any = document.querySelector("#file");
-
-    if(typeof (FileReader) !== 'undefined') {
-      let reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.pdfSrc = e.target.result;
-      }
-      reader.readAsArrayBuffer(img.files[0]);
-    }
-  }
 
 }
