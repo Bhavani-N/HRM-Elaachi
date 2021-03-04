@@ -24,5 +24,13 @@ button{
     color: #fff;
     border: none;
     padding: 5px 12px;
-    margin-right: 45px;
+    margin-left: auto;
+    display: block;
 }
+.custom-ngSelect{
+    font-size: 14px;
+}
+/* .form-check-input:checked {
+    background-color: #832023;
+    border-color: #832023;
+} */

@@ -1,7 +1,7 @@
-<div class="col-md-12 mt-5 px-5">
+<div class="col-md-12 mt-4 px-4">
 
     <div *ngIf="isPayslipSelected" class="row">
-      <div class="col-md-8 offset-md-2">
+      <div class="col-md-10 mx-auto">
           <button  class="float-right" (click)="toggleEdit()">
             {{isEdit ? "View Details" : "Edit"}}
           </button>
@@ -11,25 +11,24 @@
           <p>Created Date : <span class="font-weight-bold">{{selectedPay.createdAt | date :'medium'}}</span></p>
         </div>
         
-        <div class="col-md-10 mx-auto row m-0">
+        <div class="col-md-12 mx-auto row m-0 mt-3">
           <strong class="text-center">Info</strong>
-          <div *ngIf="!isEdit" class="col-md-7 mx-auto my-4">
-            <div  class="card-body pr-0">
-              <div class="col-md-12 p-0">
-                <p>Staff Id: {{selectedStaff?._id}}</p>
-                <p>Staff Name: {{selectedStaff?.firstName}}</p>
-                <p>Date Issued: {{selectedPay.dateIssued}}</p>
-                <p>File Chosen: {{selectedPay.fileChosen}}</p>
-              </div>
+          <div *ngIf="!isEdit" class="col-md-8 mx-auto my-4">
+            <div  class="payslip p-4">
+              <p>Staff Id : {{selectedStaff?._id}}</p>
+              <p>Staff Name : {{selectedStaff?.firstName}}</p>
+              <p>Date Issued : {{selectedPay.dateIssued}}</p>
+              <p>File Chosen : {{selectedPay.fileChosen}}</p>
             </div>
           </div>
         </div>
-        <div *ngIf="isEdit" class="col-md-11 card-body mx-auto mt-3 p-4">
+
+        <div *ngIf="isEdit" class="col-md-8 payslip p-4 mt-4 mx-auto">
           <form [formGroup]="payUpdateForm" (ngSubmit)="onSubmit()">
             <div *ngIf="!!pay_update_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{pay_update_msg}}</div>
-            <div class="form-group row">
-              <label for="staff" class="col-sm-4 pr-0 col-form-label">StaffId &nbsp;<span class="text-danger">*</span></label>
-              <div class="col-sm-8">
+            <div class="form-group row m-0 mb-4 mt-2">
+              <label for="staff" class="col-sm-4 pr-0 col-form-label">Staff Id &nbsp;<span class="text-danger">*</span></label>
+              <div class="col-sm-8 p-0">
                 <input type="text" id="staff" formControlName="staffId" class="form-control" placeholder="Staff ID"
                   [ngClass]="{ 'is-invalid': submitted && f.staffId.errors }" />
                 <div *ngIf="submitted && f.staffId.errors" class="invalid-feedback">
@@ -38,9 +37,9 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row m-0 my-4">
               <label for="dateIssued" class="col-sm-4 pr-0 col-form-label">Date Issued &nbsp;<span class="text-danger">*</span></label>
-              <div class="col-sm-8">
+              <div class="col-sm-8 p-0">
                 <input type="text" id="dateIssued" formControlName="dateIssued" class="form-control" placeholder="Date Issued"
                   [ngClass]="{ 'is-invalid': submitted && f.dateIssued.errors }" />
                 <div *ngIf="submitted && f.dateIssued.errors" class="invalid-feedback">
@@ -49,9 +48,9 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row m-0 my-4">
               <label for="dateIssued" class="col-sm-4 pr-0 col-form-label">Date Issued &nbsp;<span class="text-danger">*</span></label>
-              <div class="col-sm-8">
+              <div class="col-sm-8 p-0">
                 <input type="text" id="dateIssued" formControlName="dateIssued" class="form-control" placeholder="Date Issued"
                   [ngClass]="{ 'is-invalid': submitted && f.dateIssued.errors }" />
                 <div *ngIf="submitted && f.dateIssued.errors" class="invalid-feedback">
@@ -60,9 +59,9 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row m-0 my-4">
               <label for="fileChosen" class="col-sm-4 pr-0 col-form-label">Date Issued &nbsp;<span class="text-danger">*</span></label>
-              <div class="col-sm-8">
+              <div class="col-sm-8 p-0">
                 <input type="file" id="fileChosen" formControlName="fileChosen" class="form-control" (change)="upload($event.target.files)"
                   [ngClass]="{ 'is-invalid': submitted && f.dateIssued.errors }" />
                 <div *ngIf="submitted && f.fileChosen.errors" class="invalid-feedback">

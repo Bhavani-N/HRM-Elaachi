@@ -1,10 +1,10 @@
 <div class="row m-0">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-7 form-box my-5">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-6 form-box my-5 p-4">
     <div *ngIf="!!create_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_employee_msg}}</div>
-    <h4 class="py-4 form-title text-center">Employee Registration </h4>
+    <h4 class="pb-3 pt-1 form-title text-center">Employee Registration </h4>
 
     <div class="form-group row m-0 my-4">
-      <label for="firstName" class="col-sm-4 col-form-label">Name&nbsp;<span class="text-danger">* </span></label>
+      <label for="firstName" class="col-sm-4 col-form-label pl-0">Name&nbsp;<span class="text-danger">* </span></label>
       <div class="col-sm-4 p-0 pr-2">
         <input type="text" id="firstName" formControlName="firstName" class="form-control" class="form-control"
           placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
@@ -13,7 +13,7 @@
           <div *ngIf="f.firstName.errors.minlength">First Name must be at least 2 characters</div>
         </div>
       </div>
-      <div class="col-sm-3 p-0">
+      <div class="col-sm-4 p-0">
         <input type="text" id="lastName" formControlName="lastName" class="form-control" class="form-control"
           placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
@@ -24,8 +24,8 @@
     </div>
 
     <div class="form-group row m-0 my-3">
-      <label for="username" class="col-sm-4 col-form-label">Username &nbsp;<span class="text-danger">*</span></label>
-      <div class="col-sm-7 p-0">
+      <label for="username" class="col-sm-4 pl-0 col-form-label">Username &nbsp;<span class="text-danger">*</span></label>
+      <div class="col-sm-8 p-0">
         <input type="text" id="username" formControlName="username" class="form-control" placeholder="Username"
           [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -36,8 +36,8 @@
     </div>
 
     <div class="form-group row m-0 my-3">
-      <label for="password" class="col-sm-4 col-form-label">Password&nbsp;<span class="text-danger">*</span></label>
-      <div class="col-sm-7 p-0">
+      <label for="password" class="col-sm-4 pl-0 col-form-label">Password&nbsp;<span class="text-danger">*</span></label>
+      <div class="col-sm-8 p-0">
         <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password"
           [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -48,8 +48,8 @@
     </div>
 
     <div class="form-group row m-0 my-3">
-      <label for="phoneNumber" class="col-sm-4 col-form-label">Phone No.&nbsp;<span class="text-danger">*</span></label>
-      <div class="col-sm-7 p-0">
+      <label for="phoneNumber" class="col-sm-4 pl-0 col-form-label">Phone No.&nbsp;<span class="text-danger">*</span></label>
+      <div class="col-sm-8 p-0">
         <input type="number" id="phoneNumber" formControlName="phoneNumber" class="form-control" placeholder="Phone Number"
           [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
         <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
@@ -61,8 +61,8 @@
     </div>
 
     <div class="form-group row m-0 my-3">
-      <label for="email" class="col-sm-4 col-form-label">Email&nbsp;<span class="text-danger"></span></label>
-      <div class="col-sm-7 p-0">
+      <label for="email" class="col-sm-4 pl-0 col-form-label">Email&nbsp;<span class="text-danger"></span></label>
+      <div class="col-sm-8 p-0">
         <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email" />
       </div>
     </div>
@@ -78,9 +78,9 @@
     </div> -->
 
      <div class="form-group row m-0">
-      <label for="role" class="col-sm-4 col-form-label">EmployeeRole&nbsp;<span class="text-danger">
+      <label for="role" class="col-sm-4 pl-0 col-form-label">EmployeeRole&nbsp;<span class="text-danger">
         </span></label>
-      <div class="col-sm-7 p-0">
+      <div class="col-sm-8 p-0">
         <input type="text" id="role" formControlName="role" class="form-control" placeholder="role" />
         <!-- <ng-select [items]="supervisorEmployees | async" formControlName="employeeRole" bindLabel="firstName"
           [hideSelected]="true" [loading]="isSelectLoading" [typeahead]="employeeinput$" placeholder="Select EmployeeRole">
@@ -89,11 +89,11 @@
     </div>
 
     <div class="form-group row m-0 my-3">
-      <label for="status" class="col-sm-4 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
-      <div class="col-sm-7 p-0 row m-0 mt-2">
-        <mat-radio-group formControlName="status" class="custom-ngSelect" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-          <mat-radio-button value="ACTIVE">ACTIVE</mat-radio-button>
-          <mat-radio-button class="pl-2" value="INACTIVE">INACTIVE</mat-radio-button>
+      <label for="status" class="col-sm-4 pl-0 col-form-label">Status &nbsp;<span class="text-danger">* </span></label>
+      <div class="col-sm-8 p-0 row m-0 mt-2">
+        <mat-radio-group formControlName="status" class="custom-ngSelect p-0" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+          <mat-radio-button class="pr-4" value="ACTIVE">ACTIVE</mat-radio-button>
+          <mat-radio-button value="INACTIVE">INACTIVE</mat-radio-button>
         </mat-radio-group>
         <!-- <div class="form-check w-50">
           <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -108,6 +108,6 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="float-right">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 </div>

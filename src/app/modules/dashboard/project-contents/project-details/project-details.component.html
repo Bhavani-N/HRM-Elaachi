@@ -38,7 +38,7 @@
             <p>End Date: {{selectedEvent.endDate}}</p>
             <p>Status:{{selectedEvent.status}}</p>
           </div> -->
-        <div *ngIf="isEdit" class="col-md-11 card-body mx-auto mt-3 p-4">
+        <div *ngIf="isEdit" class="col-md-11 card-body mx-auto my-4 p-4">
           <form [formGroup]="eventUpdateForm" (ngSubmit)="onSubmit()">
             <div *ngIf="!!event_update_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{event_update_msg}}</div>
             <div class="form-group row">
