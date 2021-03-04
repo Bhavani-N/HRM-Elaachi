@@ -17,7 +17,7 @@ export class EmployeeListComponent implements OnInit {
   id;
   model: string;
   modelChanged = new Subject<string>();
-  searchResult$: Observable<any>;
+  searchResult
 
 
   loading = true;
@@ -27,15 +27,23 @@ export class EmployeeListComponent implements OnInit {
   size = 10;
   sortKey = 'firstName';
   reverse = false;
+  searchResults: any;
 
   constructor(private _employeeService: EmployeeService) {
-    this.modelChanged.pipe(debounceTime(300)).subscribe(() => {
-      this._employeeService.getEmployeeByFullName(this.model).subscribe((res: any) => {
-        // this.searchResult$=res;
-        console.log(res)
-        this.searchResult$ = res.result;
-      });
-    });
+
+    this.modelChanged
+      .pipe(
+        debounceTime(300))
+      .subscribe(() => {
+        console.log('test')
+         this._employeeService.getEmployeeByFullName(this.model)
+        .subscribe((data: any) => {
+          console.log(data)
+          this.searchResult = data.data;
+          console.log(this.searchResult );
+        })
+      })
+      
 
   }
   changed() {
