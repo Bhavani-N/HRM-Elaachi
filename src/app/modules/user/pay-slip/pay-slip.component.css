@@ -8,7 +8,7 @@
 .fa,h6{
     width:auto;
 }
-.elaachi-logo{
+/* .elaachi-logo{
 	display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,8 +65,8 @@ button#dropdownMenuButton:focus{
     justify-content: center;
     margin-left: 5px;
     height: 100%;
-}
-.client-bills{
+} */
+/* .client-bills{
 	float: left;
     width: 100%;
 }
@@ -95,32 +95,48 @@ button#dropdownMenuButton:focus{
 }
 .menu .dropdown-item{
 	padding: .25rem 0.5rem;
-}
-.main-menu{
+} */
+/* .main-menu{
 	height: 91vh; 
-}
+} */
 .payslip{
 	border: 1px solid;
-	border-top: 5px solid;
-    width: 60%;
-    margin: 20px auto;
+	border-top: 5px solid #832023;
+    width: 40%;
+    margin: 0px auto;
     padding: 10px;
+    margin-top:100px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
-.Payslip-Period{
+/* .Payslip-Period{
 	width: 75%;
-}
+} */
 .payslip select{
 	width: 35%;
-	margin-right: 0px;
+	border-radius: 3px;
+}
+.payslip i{
+    border-radius: 4px;
+    color: #832023;
+    border: 1px solid;
+    height: 14px;
+    width: 14px;
+    text-align: center;
 }
 label{
     padding-right:5px;
 }
-select{
-    margin-right:15px;
+.pdf-viewer{
+    display: block;
+    margin:0px auto;
 }
+/* select{
+    margin-right:15px;
+} */
 button{
-    background-color: grey;
+    background-color: #832023;
+    color: white;
     border: none;
     padding: 2px 10px;
     outline: none;

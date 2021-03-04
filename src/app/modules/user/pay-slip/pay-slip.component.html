@@ -1,5 +1,6 @@
+<app-header></app-header>
 <div class="wrapper">
-    <header>
+    <!-- <header>
         <nav class="navbar navbar-expand-md navbar-light headline p-0">
             <div class="col-md-12 p-0 row m-0 h-100">
                 <div class="col-md-10 p-0 elaachi-logo">
@@ -34,11 +35,11 @@
                 </div>
             </div>
         </nav>	
-    </header>
-    <div class="client-bills">
+    </header> -->
+    <!-- <div class="client-bills"> -->
         <div class="col-md-12 p-0">
-            <div class="row m-0">
-                <div class="menu">
+            <!-- <div class="row m-0"> -->
+                <!-- <div class="menu">
                     <div class="main-menu">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle pt-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,8 +51,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="Payslip-Period mt-3">
+                </div> -->
+                <!-- <div class="Payslip-Period"> -->
                     <div class="payslip">
                         <div class="row m-0 justify-content-between py-2">
                             <h6 class="p-0">My Payslip</h6>
@@ -77,15 +78,17 @@
                             <button class="ml-4 fs-12">Share</button>
                         </div>
                     </div>
-                </div>
-            </div>
+                <!-- </div> -->
+            <!-- </div> -->
         </div>
+        <div class="col-md-4 p-0 pdf-viewer">
         <pdf-viewer [src]="src" [render-text]="true" style="display: block;"    
         [original-size]="false" 
         ></pdf-viewer>
-    </div>
+        </div>
+    <!-- </div> -->
 </div>
-
+    
 <!-- <div class="container">
     <div class="card">
         <div class="card-body">
