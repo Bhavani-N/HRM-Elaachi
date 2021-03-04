@@ -63,8 +63,8 @@ export class TaskListComponent implements OnInit {
   week: any = [];
   duration;
   time: any;
+  public weeksData: any = [];
   constructor(private _eventService: EventService , private fb:FormBuilder) {
-    this.getCurrentWeek();
   }
 
   ngOnInit() {
@@ -80,14 +80,17 @@ export class TaskListComponent implements OnInit {
       startDate: new FormControl(''),
       endDate: new FormControl(''),
       status: new FormControl(''),
-      mondayValue: new FormControl(''),
-      tuesdayValue: new FormControl(''),
-      wednesdayValue: new FormControl(''),
-      thursdayValue: new FormControl(''),
-      fridayValue: new FormControl(''),
-      saturdayValue: new FormControl(''),
-      sundayValue: new FormControl('')
+      duration: new FormArray([])
+      // mondayValue: new FormControl(''),
+      // tuesdayValue: new FormControl(''),
+      // wednesdayValue: new FormControl(''),
+      // thursdayValue: new FormControl(''),
+      // fridayValue: new FormControl(''),
+      // saturdayValue: new FormControl(''),
+      // sundayValue: new FormControl('')
     })
+    this.durationArray = <FormArray>this.taskFormGroup.get('duration');
+    this.getCurrentWeek();
   }
 
  
@@ -117,10 +120,16 @@ export class TaskListComponent implements OnInit {
       let first = curr.getDate() - curr.getDay() + i;
       // let day = new Date(curr.setDate(first)).toISOString().slice(0, 10).split('-').reverse().join('/')
       let day = new Date(curr.setDate(first)).toISOString().slice(5, 10).split('-').reverse().join('/')
+      const actualDate = new Date(curr.setDate(first));
+      this.weeksData.push({
+        [`${actualDate}`]: null
+      });
+      this.durationArray.push(this.fb.group({
+        [`${actualDate}`]: new FormControl(null)
+      }))
       this.week.push(day)
     }
-
-    console.log(this.week)
+    console.log(this.week, this.weeksData, this.durationArray)
   }
 
   getAllProjectDetails(){
