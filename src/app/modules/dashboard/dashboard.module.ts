@@ -15,6 +15,9 @@ import { EmployeeManageComponent } from "./employee-contents/employee-manage/emp
 import { MainLayoutComponent } from "./main-layout/main-layout.component";
 import { DashHomeComponent } from './dash-home/dash-home.component';
 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 import { LeaverequestListComponent } from "./leaverequest-contents/leaverequest-list/leaverequest-list.component";
 import { LeaverequestMainComponent } from "./leaverequest-contents/leaverequest-main/leaverequest-main.component";
 import { LeaverequestManageComponent } from "./leaverequest-contents/leaverequest-manage/leaverequest-manage.component";
@@ -47,6 +50,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { PayslipMainComponent } from './payslip-contents/payslip-main/payslip-main.component';
 import { PayslipDetailsComponent } from './payslip-contents/payslip-details/payslip-details.component';
 import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-list.component';
+import { CalendarHeaderComponent } from './dash-contents/calendar-contents/calendar-header/calendar-header.component';
+import { DashCalendarComponent } from './dash-contents/calendar-contents/dash-calendar/dash-calendar.component';
 
 @NgModule({
     declarations: [
@@ -82,6 +87,8 @@ import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-li
         PayslipMainComponent,
         PayslipDetailsComponent,
         PayslipListComponent,
+        CalendarHeaderComponent,
+        DashCalendarComponent,
     ],
     imports: [
         CommonModule,
@@ -94,6 +101,10 @@ import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-li
         ReactiveFormsModule,
         NgxPaginationModule,
         BsDatepickerModule.forRoot(),
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory
+          })
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
