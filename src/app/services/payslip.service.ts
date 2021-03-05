@@ -32,6 +32,11 @@ export class PaySlipService {
       .pipe(catchError(this.errorHandler));
   }
 
+  uploadFile(fileData): Observable<any> {
+    return this.http.post<any>(Constant.API_ENDPOINT + '/payslip/file', fileData)
+      .pipe(catchError(this.errorHandler));
+  }
+
   updatePayslip(payslipData, id): Observable<Payslip> {
     return this.http.put<Payslip>(Constant.API_ENDPOINT + '/payslip/' + id, payslipData)
       .pipe(catchError(this.errorHandler));
@@ -39,6 +44,11 @@ export class PaySlipService {
 
   getPayslipByStaff(data): Observable<Payslip> {
     return this.http.get<Payslip>(Constant.API_ENDPOINT + '/payslip/list?staffId=' +data)
+    .pipe(catchError(this.errorHandler));
+  }
+
+  deletePayslip(payslipData, id): Observable<any> {
+    return this.http.delete<Payslip>(Constant.API_ENDPOINT + '/payslip/' + id)
     .pipe(catchError(this.errorHandler));
   }
 

@@ -18,7 +18,7 @@
             <td>{{ pay.fileChosen }}</td>
             <td class="edit-btn"><a routerLink="/dashboard/payslips/details/{{pay._id}}">
                 <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button></a>
-                <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button (click)="onDelete()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </td>
           </tr>
         </tbody>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../../../services/employee.service';
@@ -21,9 +22,10 @@ export class UploadPayslipComponent implements OnInit {
   submitted = false;
   fileInfo;
   payslipForm: FormGroup;
+  images: any;
 
   constructor(private pdfService: PdfService, private empService: EmployeeService,
-     private formBuilder: FormBuilder, private payslipService: PaySlipService) { }
+     private formBuilder: FormBuilder, private payslipService: PaySlipService, private http: HttpClient) { }
 
   ngOnInit() {
     this.pdfSrc = this.pdfService.getPDF();
@@ -36,7 +38,7 @@ export class UploadPayslipComponent implements OnInit {
     this.payslipForm = this.formBuilder.group({
       staffId: [, Validators.required],
       dateIssued: ['',  Validators.required],
-      fileChosen: ['', [Validators.required]],
+      file: ['', [Validators.required]],
       fileSource: ['', [Validators.required]],
     })
 
@@ -76,9 +78,20 @@ export class UploadPayslipComponent implements OnInit {
 
   onFileChange(event) {
     if (event.target.files.length > 0) {
-      const fileChosen = event.target.files[0];
+      const file = event.target.files[0];
+      // this.payslipForm.patchValue({
+      //   fileSource: file
+      // });
+      this.images = file;
+    }
+  }
+
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      // this.images = file;
       this.payslipForm.patchValue({
-        fileSource: fileChosen
+        fileSource: file
       });
     }
   }
@@ -91,17 +104,25 @@ export class UploadPayslipComponent implements OnInit {
     }
     const formData = new FormData();
     formData.append('file', this.payslipForm.get('fileSource').value);
-    console.log(formData)
-    this.payslipService.createPayslip(this.payslipForm.value).subscribe(res => {
-      this.has_error = false;
-      console.log(res);
-      this.create_payslip_req_msg = 'Payslip successfully submitted';
-      this.payslipForm.reset();
-      this.submitted = false;
-    }, error => {
-      this.has_error = true;
-      this.create_payslip_req_msg = error.error.message;
-    });
+    // formData.append('file', this.images); 
+    this.http.post<any>('http://localhost:3000/file', formData).subscribe(
+         (res) => console.log(res),
+         (err) => console.log(err)
+    );
+    // this.payslipService.uploadFile(formData).subscribe(
+    //    (res) => console.log(res),
+    //    (err) => console.log(err)
+    // );
+    // this.payslipService.createPayslip(this.payslipForm.value).subscribe(res => {
+    //   this.has_error = false;
+    //   console.log(res);
+    //   this.create_payslip_req_msg = 'Payslip successfully submitted';
+    //   this.payslipForm.reset();
+    //   this.submitted = false;
+    // }, error => {
+    //   this.has_error = true;
+    //   this.create_payslip_req_msg = error.error.message;
+    // });
   }
 
 
