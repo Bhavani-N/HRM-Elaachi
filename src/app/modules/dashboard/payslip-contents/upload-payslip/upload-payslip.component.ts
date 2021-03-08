@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../../../services/employee.service';
 import { PaySlipService } from '../../../../services/payslip.service';
 import { PdfService } from '../../../../services/pdf.service';
@@ -38,8 +38,9 @@ export class UploadPayslipComponent implements OnInit {
     this.payslipForm = this.formBuilder.group({
       staffId: [, Validators.required],
       dateIssued: ['',  Validators.required],
-      file: ['', [Validators.required]],
-      fileSource: ['', [Validators.required]],
+      // file: ['', [Validators.required]],
+      // fileSource: ['', [Validators.required]],
+      fileSource: new FormArray([])
     })
 
   } 
@@ -67,15 +68,6 @@ export class UploadPayslipComponent implements OnInit {
     console.log(formData)
   }
 
-  async saveFile(files) {
-    if(files != undefined && files.length > 0 && !!files[0].name != undefined) {
-      // let result: any = await this.roomServ.uploadMenuImage("profileImage", files[0])
-      //   this.fileInfo = result.DATA.data.Location;
-      //   this.formUser['logo'] = this.fileInfo
-      //   console.log(this.imageInfo)
-    }
-  }
-
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -83,6 +75,22 @@ export class UploadPayslipComponent implements OnInit {
       //   fileSource: file
       // });
       this.images = file;
+    }
+  }
+
+  async savePDF(files: any) {
+    if (
+      files != undefined &&
+      files.length > 0 &&
+      !!files[0].name != undefined
+    ) {
+      // for (let index = 0; index < files.length; index++) {
+      //   let result: any = await this.payslipService.uploadPdf("PDF", files[index])
+      //   const customizationArray = <FormArray>this.itemForm.controls['image'];
+      //   customizationArray.push(this.fb.group({
+      //     image: result.DATA.data.Location,
+      //   }));
+      // }
     }
   }
 

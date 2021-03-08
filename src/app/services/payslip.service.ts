@@ -37,6 +37,13 @@ export class PaySlipService {
       .pipe(catchError(this.errorHandler));
   }
 
+  uploadPdf(fileType: string, file: File) {
+    let formData = new FormData();
+    formData.append("file", file, file.name);
+    return this.http.post(Constant.API_ENDPOINT +  + "/upload/addPdfFile", formData)
+      .pipe(catchError(this.errorHandler));
+  }
+
   updatePayslip(payslipData, id): Observable<Payslip> {
     return this.http.put<Payslip>(Constant.API_ENDPOINT + '/payslip/' + id, payslipData)
       .pipe(catchError(this.errorHandler));
