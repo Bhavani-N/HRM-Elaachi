@@ -12,7 +12,8 @@ export class TaskListComponent implements OnInit {
   taskListFormGroup: FormGroup = new FormGroup({
     listOfTasks: new FormArray([])
   })
-  taskFormGroup: FormGroup;
+  taskFormGroup: FormArray;
+  public taskArray: any;
 
   get tasksFormArray(): FormArray {
     return this.taskListFormGroup.get('listOfTasks') as FormArray
@@ -64,7 +65,7 @@ export class TaskListComponent implements OnInit {
   duration;
   time: any;
   public weeksData: any = [];
-  constructor(private _eventService: EventService , private fb:FormBuilder) {
+  constructor(private _eventService: EventService, private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -74,27 +75,41 @@ export class TaskListComponent implements OnInit {
     this.projectForm = this.fb.group({
       projectCode: ['']
     });
-    this.taskFormGroup = new FormGroup({
-      taskName: new FormControl(''),
-      taskCode: new FormControl(''),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-      status: new FormControl(''),
+    this.taskFormGroup = new FormArray([])
+    this.taskArray = <FormArray>this.taskFormGroup;
+    this.getCurrentWeek();
+  }
+
+  public updateTaskForm(data: any = {}) {
+    const newFormGroup = this.fb.group({
+      taskName: new FormControl(data.taskName || null),
+      taskCode: new FormControl(data.taskCode|| null),
+      startDate: new FormControl(data.startDate|| null),
+      endDate: new FormControl(data.endDate|| null),
+      status: new FormControl(data.status|| null),
       duration: new FormArray([])
       // mondayValue: new FormControl(''),
       // tuesdayValue: new FormControl(''),
       // wednesdayValue: new FormControl(''),
       // thursdayValue: new FormControl(''),
       // fridayValue: new FormControl(''),
-      // saturdayValue: new FormControl(''),
+      // saturdayValue: new FormControl(''),      
       // sundayValue: new FormControl('')
-    })
-    this.durationArray = <FormArray>this.taskFormGroup.get('duration');
-    this.getCurrentWeek();
+    });
+    const durationArray = <FormArray>newFormGroup.get('duration');
+    let curr = new Date();
+    for (let i = 1; i <= 7; i++) {
+      let first = curr.getDate() - curr.getDay() + i;
+      let day = new Date(curr.setDate(first)).toISOString().slice(5, 10).split('-').reverse().join('/')
+      const actualDate = new Date(curr.setDate(first));
+      durationArray.push(this.fb.group({
+        [`${actualDate}`]: new FormControl(null)
+      }))
+    }
+    this.taskArray.push(newFormGroup);
+    console.log(newFormGroup, 'lkh')
+    // return newFormGroup;
   }
-
- 
-
 
   selectEvent(event) {
     this.isEdit = true;
@@ -124,46 +139,47 @@ export class TaskListComponent implements OnInit {
       this.weeksData.push({
         [`${actualDate}`]: null
       });
-      this.durationArray.push(this.fb.group({
-        [`${actualDate}`]: new FormControl(null)
-      }))
+      // this.durationArray.push(this.fb.group({
+      //   [`${actualDate}`]: new FormControl(null)
+      // }))
       this.week.push(day)
     }
     console.log(this.week, this.weeksData, this.durationArray)
   }
 
-  getAllProjectDetails(){
+  getAllProjectDetails() {
     this._eventService.getAllProjects().subscribe(
-      data=>{
-      console.log(data);
-      this.projectDetails=data.result
+      data => {
+        console.log(data);
+        this.projectDetails = data.result
       }
     )
   }
   getData(data) {
     console.log(data);
     this.projectName = data.projectCode.projectName;
-    this.projectId=data.projectCode._id;
-    this.dArray=[];
+    this.projectId = data.projectCode._id;
+    this.dArray = [];
     console.log(this.projectId)
-    this.events.map(obj=>{
+    this.events.map(obj => {
+      this.updateTaskForm(obj);
       console.log(obj.project)
-      if(this.projectId==obj.project){
-         this.dArray.push(obj)
-         console.log(this.dArray)
-         this.dArray.map(res=>{
-           console.log(res);
-           this.duration=res;
-           this.duration=this.duration.duration;
-           console.log(this.duration)
+      if (this.projectId == obj.project) {
+        this.dArray.push(obj)
+        console.log(this.dArray)
+        this.dArray.map(res => {
+          console.log(res);
+          this.duration = res;
+          this.duration = this.duration.duration;
+          console.log(this.duration)
           //  console.log(res.duration)
           //    this.duration=res.duration;
           //  console.log(this.duration);
-          this.duration.map(res=>{
-            this.time=res;
+          this.duration.map(res => {
+            this.time = res;
             console.log(this.time);
-           })
-         })
+          })
+        })
       }
       console.log(this.dArray)
       this.durationArray = this.dArray;
@@ -171,7 +187,7 @@ export class TaskListComponent implements OnInit {
         console.log(res.duration)
         this.durationArray = res.duration;
       })
-      console.log(this.durationArray)
+      console.log(this.taskFormGroup)
     })
   }
 
@@ -183,8 +199,8 @@ export class TaskListComponent implements OnInit {
 
           this.events = data.data;
           console.log(this.events)
-         this.taskId=this.events.project;
-         console.log(this.taskId)
+          this.taskId = this.events.project;
+          console.log(this.taskId)
           this.totalElements = data.totalElements;
           this.size = data.size;
           this.numberOfElements = data.numberOfElements;
@@ -192,9 +208,9 @@ export class TaskListComponent implements OnInit {
           this.isEdit = false;
           // console.log('Events data: ', data);
         },
-        
+
         error => this.errorMsg = error);
-      
+
   }
 
 

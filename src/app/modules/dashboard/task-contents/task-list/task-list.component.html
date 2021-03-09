@@ -38,12 +38,12 @@
         </thead>
         <tbody >
           <tr
-            *ngFor="let event of dArray | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
+            *ngFor="let event of taskFormGroup?.controls| paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
             <td>{{i+1}}</td>
-            <td>{{event.taskName}}</td>
-            <td>{{event.taskCode}}</td>
-            <td>{{event.startDate | date:'mediumDate' }}</td>
-            <td>{{event.endDate | date:'mediumDate'}}</td>
+            <td>{{event.value.taskName}}</td>
+            <td>{{event.value.taskCode}}</td>
+            <td>{{event.value.startDate | date:'mediumDate'  }}</td>
+            <td>{{event.value.endDate | date:'mediumDate' }}</td>
             <ng-container formArrayName="duration">
               <ng-container *ngFor="let values of duration">
                 {{values | json}}
