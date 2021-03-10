@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PaySlipService } from 'src/app/services/payslip.service';
@@ -14,6 +14,7 @@ export class PayslipDetailsComponent implements OnInit {
   selectedPay: any;
   selectedStaff: any;
   isPayslipSelected= false;
+  @Input() fileUpload: string;
 
   minDate;
   isEdit = false;

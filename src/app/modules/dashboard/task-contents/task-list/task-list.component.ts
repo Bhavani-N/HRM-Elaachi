@@ -140,6 +140,7 @@ export class TaskListComponent implements OnInit {
       let first = curr.getDate() - curr.getDay() + i;
       // let day = new Date(curr.setDate(first)).toISOString().slice(0, 10).split('-').reverse().join('/')
       let day = new Date(curr.setDate(first)).toISOString().slice(5, 10).split('-').reverse().join('/')
+      console.log(new Date(curr.setDate(first)).toISOString())
       const actualDate = new Date(curr.setDate(first));
       this.weeksData.push({
         [`${actualDate}`]: null

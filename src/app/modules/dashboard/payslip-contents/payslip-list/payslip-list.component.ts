@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UploadFileService } from '../../../../services/upload-file.service';
 import { EmployeeService } from '../../../../services/employee.service';
 import { PaySlipService } from '../../../../services/payslip.service';
 
@@ -17,7 +19,10 @@ export class PayslipListComponent implements OnInit {
   reverse = false;
   totalElements;
 
-  constructor( private payslipService: PaySlipService) { }
+  showFile = false;
+  fileUploads: Observable<string[]>;
+
+  constructor( private payslipService: PaySlipService, private uploadService: UploadFileService) { }
 
   ngOnInit() {
     this.getAllEmployees();
@@ -34,6 +39,14 @@ export class PayslipListComponent implements OnInit {
     this.sortKey = key + ','.concat(this.reverse ? 'DESC' : 'ASC');
     this.reverse = !this.reverse;
     this.getAllEmployees();
+  }
+
+  showFiles(enable: boolean) {
+    this.showFile = enable;
+
+    if (enable) {
+      this.fileUploads = this.uploadService.getFiles();
+    }
   }
 
   getAllEmployees() {

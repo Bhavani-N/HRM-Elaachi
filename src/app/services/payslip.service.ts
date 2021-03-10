@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Constant } from '../modules/dashboard/constant/constant';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Payslip } from '../models/payslip';
@@ -42,6 +42,10 @@ export class PaySlipService {
     formData.append("file", file, file.name);
     return this.http.post(Constant.API_ENDPOINT +  + "/upload/addPdfFile", formData)
       .pipe(catchError(this.errorHandler));
+  }
+
+  fileUpload(file: FormData) {
+    return this.http.post(Constant.API_ENDPOINT + "/upload/addPdfFile", file);
   }
 
   updatePayslip(payslipData, id): Observable<Payslip> {
