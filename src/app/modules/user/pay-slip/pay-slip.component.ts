@@ -20,18 +20,19 @@ export class PaySlipComponent implements OnInit {
   sId: any;
   staffName: any;
   userDetails: any;
+  startYear: any;
   src;
-  // source = "JAN_Geethika_Payslip.pdf"
 
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, 
     private payslipService: PaySlipService, private auth: AuthService) { }
 
   ngOnInit() {
+    this.getYears();
     this.userDetails = JSON.parse(this.auth.getUserDetails);
     this.sId=this.userDetails.staffId;
     console.log(this.sId, this.staffName)
     this.staffName = this.userDetails.firstName;
-    this.getPayslipById(this.sId)
+    this.getPayslipById(this.sId);
   }
  
   onFileChange(event: any) {
@@ -53,6 +54,16 @@ export class PaySlipComponent implements OnInit {
       console.log(this.data);
     };
     reader.readAsBinaryString(target.files[0]);
+  }
+
+  getYears() {
+    const currentYear = new Date().getFullYear(), years = [];
+    this.startYear = this.startYear || 2000;  
+    while (this.startYear <= currentYear ) {
+        years.push(this.startYear++);
+    }   
+    console.log(years);
+    return years;
   }
 
   saveAFile(): void {
@@ -81,7 +92,6 @@ export class PaySlipComponent implements OnInit {
               this.selectedStaff = res
             })
             console.log(this.selectedStaff);
-            // console.log("Selected Leave Type data: ", data);
           },
           error => this.errorMsg = error);
     } else {

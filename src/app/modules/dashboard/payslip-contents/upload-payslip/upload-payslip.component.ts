@@ -24,9 +24,12 @@ export class UploadPayslipComponent implements OnInit {
   fileInfo;
   payslipForm: FormGroup;
   images: any;
-  fileObj: File;
+  startYear: any;
   fileUrl: string;
   errorMsg: boolean;
+  years = [];
+  monthNames = [ "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December" ];
 
   selectedFiles: FileList;
   currentFileUpload: File;
@@ -38,8 +41,8 @@ export class UploadPayslipComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getYears();
     this.pdfSrc = this.pdfService.getPDF();
-
     this.empService.getAllEmployees().subscribe(res => {
       this.staffList = res;
       this.staffList = this.staffList.result;
@@ -47,9 +50,8 @@ export class UploadPayslipComponent implements OnInit {
     });
     this.payslipForm = this.formBuilder.group({
       staffId: [, Validators.required],
-      dateIssued: ['',  Validators.required],
-      // file: ['', [Validators.required]],
-      // fileSource: ['', [Validators.required]],
+      month: ['',  Validators.required],
+      year: ['', Validators.required],
       file: new FormArray([])
     })
   } 
@@ -62,13 +64,19 @@ export class UploadPayslipComponent implements OnInit {
     this.progress.percentage = 0;
 
     this.currentFileUpload = this.selectedFiles.item(0);
+    const customizationArray = <FormArray>this.payslipForm.controls['file'];
+    customizationArray.push(this.formBuilder.group({
+      file: this.currentFileUpload.name
+    }));
+    console.log(this.payslipForm.value);
+    // console.log(this.currentFileUpload.name)
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         console.log('File is completely uploaded!');
       }
-    });
+    })
 
     this.selectedFiles = undefined;
   }
@@ -77,85 +85,46 @@ export class UploadPayslipComponent implements OnInit {
     return this.payslipForm.controls;
   }
 
+  getYears() {
+    const currentYear = new Date().getFullYear();
+    this.startYear = this.startYear || 2000;  
+    while (this.startYear <= currentYear ) {
+        this.years.push(this.startYear++);
+    }   
+    console.log(this.years);
+    return this.years;
+  }
+
   getData(data) {
     console.log(data);
   }
 
-  onFilePicked(event: Event): void {
-    this.errorMsg = false
-    console.log(event);
-    const FILE = (event.target as HTMLInputElement).files[0];
-    this.fileObj = FILE;
-    console.log(this.fileObj);
+  getYearData(data) {
+    console.log(data);
   }
 
-  onFileUpload() {
-    if (!this.fileObj) {
-      this.errorMsg = true
-      return
-    }
-    const fileForm = new FormData();
-    fileForm.append('file', this.fileObj);
-    this.payslipService.fileUpload(fileForm).subscribe(res => {
-      this.fileUrl = res['image'];
-    });
-  }
-
-  async savePDF(files: any) {
-    if (
-      files != undefined &&
-      files.length > 0 &&
-      !!files[0].name != undefined
-    ) {
-      for (let index = 0; index < files.length; index++) {
-        let result: any = await this.payslipService.uploadPdf("PDF", files[index])
-        const customizationArray = <FormArray>this.payslipForm.controls['file'];
-        console.log(customizationArray)
-        console.log(result.DATA.data.Location);
-        customizationArray.push(this.formBuilder.group({
-          file: result.DATA.data.Location,
-        }));
-      }
-    }
-  }
-
-  selectImage(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      // this.images = file;
-      this.payslipForm.patchValue({
-        fileSource: file
-      });
-    }
+  getMonthData(data) {
+    console.log(data);
   }
 
   onSubmit() {
-    this.submitted = true;
     if (this.payslipForm.invalid) {
       console.log('invalid')
       return;
     }
-    const formData = new FormData();
-    formData.append('file', this.payslipForm.get('fileSource').value);
-    // formData.append('file', this.images); 
-    this.http.post<any>('http://localhost:3000/file', formData).subscribe(
-         (res) => console.log(res),
-         (err) => console.log(err)
-    );
-    // this.payslipService.uploadFile(formData).subscribe(
-    //    (res) => console.log(res),
-    //    (err) => console.log(err)
-    // );
-    // this.payslipService.createPayslip(this.payslipForm.value).subscribe(res => {
-    //   this.has_error = false;
-    //   console.log(res);
-    //   this.create_payslip_req_msg = 'Payslip successfully submitted';
-    //   this.payslipForm.reset();
-    //   this.submitted = false;
-    // }, error => {
-    //   this.has_error = true;
-    //   this.create_payslip_req_msg = error.error.message;
-    // });
+    this.submitted = true;
+    console.log(this.payslipForm.value);
+    this.upload();
+    this.payslipService.createPayslip(this.payslipForm.value).subscribe(res => {
+      this.has_error = false;
+      console.log(res);
+      this.create_payslip_req_msg = 'Payslip successfully submitted';
+      this.payslipForm.reset();
+      this.submitted = false;
+    }, error => {
+      this.has_error = true;
+      this.create_payslip_req_msg = error.error.message;
+    });
   }
 
 

@@ -1,5 +1,4 @@
-<!-- <h1>Upload PaySlip</h1>
-<div>
+<!-- <div>
     <label>Pdf src</label>
     <input (change)="onFileSelected()" type="file" id="file">
     <input [(ngModel)]="page" type="text" id="page">
@@ -11,83 +10,19 @@
     style="display: block;"
 ></pdf-viewer> -->
 
-<!-- <form class="mx-auto col-md-6 mb-4 payslip">
-    <h4 class="form-title">Payslip</h4>
-  
-    <div class="form-group row m-0 my-4">
-      <label for="employee" class="col-sm-4 col-form-label">Employee :</label>
-      <div class="col-sm-7 pt-2 p-0">
-        <select>
-            <option>Select Staff</option>
-            <option>Bhavani</option>
-            <option>Revanth</option>
-            <option>Kishore</option>
-        </select>
-      </div>
-    </div>
 
-    <div class="form-group row m-0 my-4">
-      <label for="date" class="col-sm-4 col-form-label">Date :</label>
-      <div class="col-sm-7 p-0 mt-1">
-        <input type="text" id="date" formControlName="date" class="form-control" placeholder="Date"/>
-      </div>
-    </div>
-
-    <div class="form-group row m-0 my-4">
-      <label for="file" class="col-sm-4 col-form-label pr-0">Choose File :</label>
-      <div class="col-sm-7 mt-1 p-0">
-        <input type="file" id="file" formControlName="fileChosen" (change)="upload($event.target.files)" class="form-control"/>
-      </div>
-    </div>
-    <button type="submit">Submit</button>
-</form> -->
-
-
-<!-- <div class="payslip-table">
-  <table class="table table-hover">
-    <thead>
-        <th>S.N</th>
-        <th>Name</th>
-        <th>Phone Number</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Status</th>
-        <th>Options</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Bhavani</td>
-        <td>1234567890</td>
-        <td>bhavani@gmail.com</td>
-        <td>Employee</td>
-        <td>
-            <div class="form-check px-4">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">ACTIVE</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">INACTIVE</label>
-            </div>
-        </td>
-        <td class="edit-btn">
-            <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button>
-            <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
-
-<!-- <form [formGroup]="payslipForm" (ngSubmit)="onSubmit()" class="mx-auto px-4 col-md-6 mt-4 form-box">
+<form [formGroup]="payslipForm" (ngSubmit)="onSubmit()" class="mx-auto px-4 col-md-6 mt-4 form-box">
 
   <div *ngIf="!!create_payslip_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_payslip_req_msg}}</div>
-
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+      aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%</div>
+  </div>
   <h4 class="pt-3 form-title text-center">Upload Payslip</h4>
 
   <div class="form-group row m-0 mt-4">
-    <label for="staffs" class="col-sm-4 col-form-label p-0">Staff&nbsp;<span class="text-danger">* </span></label>
+    <label for="staffs" class="col-sm-4 col-form-label p-0">Select Staff&nbsp;<span class="text-danger">* </span></label>
     <div class="col-sm-8 p-0 pb-4 staff">
       <select formControlName="staffId" (ngModelChange)="getData(payslipForm.value)">
           <option>Select Staff</option>
@@ -98,7 +33,7 @@
     </div>
   </div>
 
-  <div class="form-group row m-0">
+  <!-- <div class="form-group row m-0">
     <label for="dateissued" class="col-sm-4 col-form-label p-0">Date&nbsp;<span class="text-danger">*</span></label>
     <div class="col-sm-8 p-0 pb-4">
       <input type="text" id="dateissued" formControlName="dateIssued" class="form-control" bsDatepicker [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date"
@@ -107,22 +42,45 @@
         <div *ngIf="f.dateIssued.errors.required">Date is required</div>
       </div>
     </div>
+  </div> -->
+  <div class="form-group row m-0 mt-4">
+    <label for="mon" class="col-sm-4 col-form-label p-0">Select Month&nbsp;<span class="text-danger">* </span></label>
+    <div class="col-sm-8 p-0 pb-4 staff">
+      <select formControlName="month" (ngModelChange)="getMonthData(payslipForm.value)">
+          <option>Select Month</option>
+          <option *ngFor="let month of monthNames" [ngValue]="month">
+              {{ month }}
+          </option>
+      </select>
+    </div>
   </div>
-
-  <div class="form-group row m-0 mb-4">
-    <label for="file" class="col-sm-4 col-form-label p-0">Choose File</label>
-    <div class="col-sm-8 p-0">
-      <input type="file" id="file" formControlName="file" (change)="savePDF($event.target.files)" class="form-control" />
-      <div *ngIf="submitted && f.file.errors" class="invalid-feedback">
-        <div *ngIf="f.file.errors.required">File is required</div>
+  <div class="form-group row m-0 mt-4">
+    <label for="mon" class="col-sm-4 col-form-label p-0">Select Year&nbsp;<span class="text-danger">* </span></label>
+    <div class="col-sm-8 p-0 pb-4 staff">
+      <select formControlName="year" (ngModelChange)="getYearData(payslipForm.value)">
+          <option>Select Year</option>
+          <option *ngFor="let year of years" [ngValue]="year">
+              {{ year }}
+          </option>
+      </select>
+    </div>
+  </div>
+  <div formArrayName="file">
+    <div class="form-group row m-0 mb-4">
+      <label for="file" class="col-sm-4 col-form-label p-0">Select File</label>
+      <div class="col-sm-8 p-0">
+        <input type="file" id="file" formControlName="file" (change)="selectFile($event)" class="form-control">
+        <div *ngIf="submitted && f.file.errors" class="invalid-feedback">
+          <div *ngIf="f.file.errors.required">File is required</div>
+        </div>
       </div>
     </div>
   </div>
   <button type="submit">Submit</button>
 
-</form> -->
+</form>
 
-<div *ngIf="currentFileUpload" class="progress">
+<!-- <div *ngIf="currentFileUpload" class="progress">
   <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
     aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
     {{progress.percentage}}%</div>
@@ -132,4 +90,4 @@
   <input type="file" (change)="selectFile($event)">
 </label>
 
-<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button> -->
