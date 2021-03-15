@@ -30,7 +30,7 @@ export class PayslipListComponent implements OnInit {
 
   getPage(page: number) {
     this.loading = true;
-    this.currentPage = page; 
+    this.currentPage = page;
     this.getAllEmployees();
   }
 
@@ -57,9 +57,7 @@ export class PayslipListComponent implements OnInit {
         console.log(this.payList)
         this.payList.map(staffData => {
           console.log(staffData)
-          staffData.staffId.map(res => {
-            console.log(res);
-          })
+          console.log(staffData.staffId.firstName)
         })
         this.totalElements = data.result;
         this.loading = false;

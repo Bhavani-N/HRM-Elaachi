@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
   public userDetails: any;
+  staffId;
+
   constructor(
     private modalService: BsModalService,
     private authServ: AuthService
@@ -23,6 +25,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.userDetails = JSON.parse(this.authServ.getUserDetails);
+    this.staffId=this.userDetails.staffId;
+    console.log(this.staffId);
   }
 
   getUrl() {

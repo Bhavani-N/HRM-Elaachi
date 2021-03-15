@@ -36,7 +36,7 @@ export class UploadPayslipComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
 
   constructor(private pdfService: PdfService, private empService: EmployeeService, private uploadService: UploadFileService,
-    private formBuilder: FormBuilder, private payslipService: PaySlipService, private http: HttpClient) { 
+    private formBuilder: FormBuilder, private payslipService: PaySlipService, private http: HttpClient) {
       this.errorMsg = false;
   }
 
@@ -54,7 +54,7 @@ export class UploadPayslipComponent implements OnInit {
       year: ['', Validators.required],
       file: new FormArray([])
     })
-  } 
+  }
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
@@ -87,10 +87,10 @@ export class UploadPayslipComponent implements OnInit {
 
   getYears() {
     const currentYear = new Date().getFullYear();
-    this.startYear = this.startYear || 2000;  
+    this.startYear = this.startYear || 2000;
     while (this.startYear <= currentYear ) {
         this.years.push(this.startYear++);
-    }   
+    }
     console.log(this.years);
     return this.years;
   }

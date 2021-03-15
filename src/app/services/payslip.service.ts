@@ -27,6 +27,11 @@ export class PaySlipService {
     .pipe(catchError(this.errorHandler));
   }
 
+  getPayslipByStaffId(id): Observable<any> {
+    return this.http.get<Payslip>(Constant.API_ENDPOINT + '/payslip?staffId=' +id)
+    .pipe(catchError(this.errorHandler));
+  }
+
   createPayslip(payslipData): Observable<Payslip> {
     return this.http.post<Payslip>(Constant.API_ENDPOINT + '/payslip/', payslipData)
       .pipe(catchError(this.errorHandler));
@@ -51,7 +56,7 @@ export class PaySlipService {
   updatePayslip(payslipData, id): Observable<Payslip> {
     return this.http.put<Payslip>(Constant.API_ENDPOINT + '/payslip/' + id, payslipData)
       .pipe(catchError(this.errorHandler));
-  } 
+  }
 
   getPayslipByStaff(data): Observable<Payslip> {
     return this.http.get<Payslip>(Constant.API_ENDPOINT + '/payslip/list?staffId=' +data)

@@ -22,7 +22,7 @@ export class TopNavigationComponent implements OnInit {
     this.userDetails = JSON.parse(this._auth.getUserDetails);
     this.staffId=this.userDetails.staffId;
     console.log(this.staffId);
-  } 
+  }
   openNav() {
     document.getElementById("mySidebar").style.width = "215px";
     document.getElementById("main").style.marginLeft = "200px";
@@ -32,7 +32,7 @@ export class TopNavigationComponent implements OnInit {
     document.getElementById("main").style.width = "0";
   }
 
-  
+
   // getEmployeeById(){
   //   this.employeeService.getCurrentEmployee().subscribe(data=>{
   //     this.employeeId=data;

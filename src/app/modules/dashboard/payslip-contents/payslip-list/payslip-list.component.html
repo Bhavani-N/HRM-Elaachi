@@ -12,9 +12,9 @@
         <tbody *ngIf="payList">
           <tr *ngFor="let pay of payList | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
             <td>{{i+1}}</td>
-            <td *ngFor="let pid of pay.staffId"><a routerLink="/dashboard/employees/details/{{pid._id}}">
-                {{ pid.firstName }}
-              </a></td> 
+            <td><a routerLink="/dashboard/employees/details/{{pay.staffId._id}}">
+                {{ pay.staffId.firstName }}
+              </a></td>
             <td>{{pay.month}}</td>
             <td>{{pay.year}}</td>
             <td *ngFor="let pid of pay.file">
@@ -28,7 +28,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+</div>
 
 <!-- <button class="button btn-info" *ngIf='showFile' (click)='showFiles(false)'>Hide Files</button>
 
