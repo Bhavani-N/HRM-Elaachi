@@ -43,7 +43,7 @@ export class LeaveService {
   }
 
   getEmployeeLeavesBetweenDate(startDate, endDate): Observable<EmployeeLeave[]> {
-    return this.http.get<EmployeeLeave[]>(Constant.API_ENDPOINT + '/userLeave/byDate',
+    return this.http.get<EmployeeLeave[]>(Constant.API_ENDPOINT + '/userLeave/',
     {
       params: {
         date1: startDate,

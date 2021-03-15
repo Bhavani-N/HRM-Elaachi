@@ -2,19 +2,19 @@ import { Employee } from './employee';
 import { LeaveType } from './leaveType';
 
 export class EmployeeLeave {
-    leaveId: number;
-    employeeDTO: Employee;
-    leaveTypeDTO: LeaveType;
+    _id: String;
+    staffId: Employee;
+    leaveTypeId: LeaveType;
     leaveReason: string;
     dateFrom: Date;
     dateTo: Date;
-    approved: number;
     deniedReason: string;
-    status: number;
+    status: string;
     createdAt: Date;
+    fileChosen: string;
     reviewedBy: Employee;
 
-    constructor(leaveId) {
-        this.leaveId = leaveId;
+    constructor(_id) {
+        this. _id =  _id;
     }
 }
