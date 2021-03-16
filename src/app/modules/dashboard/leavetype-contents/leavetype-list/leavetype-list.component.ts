@@ -29,4 +29,11 @@ export class LeavetypeListComponent implements OnInit {
     )
   }
 
+  delete(id: string) {
+    const leave = this.leaveTypes.find(x => x._id === id);
+    if (!leave) return;
+    this.leaveTypeService.deleteLeaveType(id)
+      .subscribe(() => this.leaveTypes = this.leaveTypes.filter(x => x._id !== id));
+  }
+
 }

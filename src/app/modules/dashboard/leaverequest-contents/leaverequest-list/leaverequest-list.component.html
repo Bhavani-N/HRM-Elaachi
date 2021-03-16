@@ -28,7 +28,7 @@
             </td>
             <td class="edit-btn"><a routerLink="/dashboard/leaverequests/details/{{leaverequest._id}}">
                 <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button></a>
-                <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button (click)="delete(leaverequest._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </td>
           </tr>
         </tbody>

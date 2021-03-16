@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { NavnsideWrapperComponent } from './navigation-contents/navnside-wrapper/navnside-wrapper.component';
-import { SidebarComponent } from './navigation-contents/sidebar/sidebar.component';
 import { TopNavigationComponent } from './navigation-contents/top-navigation/top-navigation.component';
 import { SharedModule } from '../shared/shared.module';
 
@@ -18,7 +17,6 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     PageNotfoundComponent,
     NavnsideWrapperComponent,
-    SidebarComponent,
     TopNavigationComponent
   ],
   exports: [

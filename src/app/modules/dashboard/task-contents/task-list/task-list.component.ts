@@ -157,22 +157,20 @@ export class TaskListComponent implements OnInit {
     )
   }
   getData(data) {
-    console.log(data);
+    console.log('DATA..', data, this.events)
     this.projectName = data.projectCode.projectName;
     this.projectId = data.projectCode._id;
     this.dArray = [];
-    console.log(this.projectId)
     this.events.map(obj => {
       this.updateTaskForm(obj);
-      console.log(obj.project)
       if (this.projectId == obj.project) {
         this.dArray.push(obj)
-        console.log(this.dArray)
+        console.log(this.dArray, 'OBJ VAL')
         this.dArray.map(res => {
-          console.log(res);
+          console.log('duration??',res);
           this.duration = res;
           this.duration = this.duration.duration;
-          console.log(this.duration)
+          console.log(this.duration,'duration timings')
           //  console.log(res.duration)
           //    this.duration=res.duration;
           //  console.log(this.duration);
@@ -182,13 +180,13 @@ export class TaskListComponent implements OnInit {
           })
         })
       }
-      console.log(this.dArray)
-      this.durationArray = this.dArray;
-      this.durationArray.map(res => {
-        console.log(res.duration)
-        this.durationArray = res.duration;
-      })
-      console.log(this.taskFormGroup)
+      // console.log(this.dArray)
+      // this.durationArray = this.dArray;
+      // this.durationArray.map(res => {
+      //   console.log(res.duration)
+      //   this.durationArray = res.duration;
+      // })
+      // console.log(this.taskFormGroup)
     })
   }
 

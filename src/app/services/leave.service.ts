@@ -27,6 +27,11 @@ export class LeaveService {
     .pipe(catchError(this.errorHandler));
   }
 
+  deleteEmployeeLeaveById(id): Observable<EmployeeLeave> {
+    return this.http.delete<EmployeeLeave>(Constant.API_ENDPOINT + '/userLeave/' + id)
+    .pipe(catchError(this.errorHandler));
+  }
+
   createEmployeeLeave(EmployeeLeaveData): Observable<EmployeeLeave> {
     return this.http.post<EmployeeLeave>(Constant.API_ENDPOINT + '/userLeave/', EmployeeLeaveData)
       .pipe(catchError(this.errorHandler));

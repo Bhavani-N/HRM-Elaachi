@@ -63,7 +63,7 @@ export class PaySlipService {
     .pipe(catchError(this.errorHandler));
   }
 
-  deletePayslip(payslipData, id): Observable<any> {
+  deletePayslip(id): Observable<Payslip> {
     return this.http.delete<Payslip>(Constant.API_ENDPOINT + '/payslip/' + id)
     .pipe(catchError(this.errorHandler));
   }

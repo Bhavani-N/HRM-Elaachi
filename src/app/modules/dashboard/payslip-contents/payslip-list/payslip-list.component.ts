@@ -66,5 +66,10 @@ export class PayslipListComponent implements OnInit {
     );
   }
 
-
+  delete(id: string) {
+    const payslips = this.payList.find(x => x._id === id);
+    if (!payslips) return;
+    this.payslipService.deletePayslip(id)
+      .subscribe(() => this.payList = this.payList.filter(x => x._id !== id));
+  }
 }

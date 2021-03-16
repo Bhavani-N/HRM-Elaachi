@@ -45,6 +45,7 @@
             <td>{{event.value.startDate | date:'mediumDate'  }}</td>
             <td>{{event.value.endDate | date:'mediumDate' }}</td>
             <ng-container formArrayName="duration">
+              dummmy ==>>{{duration|json}}
               <ng-container *ngFor="let values of duration">
                 {{values | json}}
                 <ng-container *ngFor="let keys of values | keyvalue">

@@ -103,6 +103,13 @@ export class EmployeeListComponent implements OnInit {
         error => this.errorMsg = error);
   }
 
+  delete(id: string) {
+    const emps = this.employees.find(x => x._id === id);
+    if (!emps) return;
+    this._employeeService.deleteEmployeeById(id)
+      .subscribe(() => this.employees = this.employees.filter(x => x._id !== id));
+  }
+
   searchEmployee(form) {
     this.loading = true;
     console.log(form.value.q)

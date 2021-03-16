@@ -1,9 +1,13 @@
 export class Payslip {
+    _id: string;
     staffId: string;
-    dateIssued: string;
-    fileChosen: string;
+    month: string;
+    year: string;
+    file: string;
+    createdAt: string;
+    updatedAt: string;
 
-    constructor(id) {
-        this.staffId = id;
+    constructor(_id) {
+        this._id = _id;
     }
 }

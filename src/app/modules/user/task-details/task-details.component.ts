@@ -6,187 +6,111 @@ import { TaskService } from 'src/app/services/task.service';
 import { AddProjectComponent } from '../modals/add-project/add-project.component';
 import { AddTaskComponent } from '../modals/add-task/add-task.component';
 import { AuthService } from '../../../services/auth.service';
+import { EventService } from '../../../services/event.service';
+import { TaskListResponse } from '../../../models/task-list-response';
 @Component({
   selector: 'app-task-details',
   templateUrl: './task-details.component.html',
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit {
-  modalRef: BsModalRef | null;
-  modalRef2: BsModalRef;
-  projectList: any;
-  week: any = [];
-  private projectDetails: any;
-  // projectCode:any;
-  taskList: any;
-  taskStatus: any;
-  selectedObject: any;
-  projectForm: FormGroup;
-  projectName: any;
+  taskListFormGroup: FormGroup = new FormGroup({
+    listOfTasks: new FormArray([])
+  })
+  taskFormGroup: FormArray;
+  public taskArray: any;
+
+  get tasksFormArray(): FormArray {
+    return this.taskListFormGroup.get('listOfTasks') as FormArray
+  }
+
+  events;
+  errorMsg;
+
+  loading = true;
+  currentPage = 1;
+  totalElements;
+  numberOfElements;
+  size = 10;
+  sortKey = 'title';
+  reverse = false;
+
+  isEdit = false;
   submitted = false;
-  dummyArray: any = [];
-  taskForm: FormGroup;
-  userDetails: any;
-  loading: boolean;
-  billableHours: any;
-
-
-  constructor(
-    private modalService: BsModalService,
-    private taskService: TaskService,
-    private router: Router,
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private route: ActivatedRoute
-  ) {
-    this.getCurrentWeek();
+  public has_error = false;
+  create_event_msg: string;
+  projectDetails;
+  projectId;
+  projectName;
+  projectForm: FormGroup;
+  taskId: any;
+  dArray: Array<TaskListResponse> = [];
+  durationArray: any = [];
+  week: any = [];
+  duration;
+  time: any;
+  public weeksData: any = [];
+  constructor(private _eventService: EventService, private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.initTaskArrayForm();
-    this.displayDetails();
-    this.displayTaskDetails();
-
+    this.isEdit = false;
+    this.getAllEvents();
+    this.getAllProjectDetails();
     this.projectForm = this.fb.group({
-      projectCode: [''],
+      projectCode: ['']
     });
-    this.userDetails = JSON.parse(this.authService.getUserDetails);
-
-    // this.taskForm = this.fb.group({
-    //   taskName: [''],
-    //   taskCode: [''],
-    //   aliases: this.fb.array([
-
-    //   ])
-    // });
-  }
-  private initTaskArrayForm() {
-    this.taskForm = new FormGroup({
-      taskList: new FormArray([])
-    })
+    this.taskFormGroup = new FormArray([])
+    this.taskArray = <FormArray>this.taskFormGroup;
+    this.getCurrentWeek();
   }
 
-
-
-  private initTaskForm(data: any = {}) {
-    const taskData = this.fb.group({
-      duration: new FormArray((data.duration.length > 0) ? this.initTimeTakingDurationForm(data.duration) : []),
-      billableHrs: new FormControl(data.billableHours || null),
-      _id: new FormControl(data._id || null),
-      status: new FormControl(data.status || null),
-      taskCode: new FormControl(data.taskCode || null),
+  public updateTaskForm(data: any = {}) {
+    const newFormGroup = this.fb.group({
       taskName: new FormControl(data.taskName || null),
-      createdAt: new FormControl(data.createdAt || null)
-    })
-    return taskData;
-  }
-
-  private initTimeTakingDurationForm(data) {
-
-    const dummyTimings = [];
-    data.map((timingData) => {
-      dummyTimings.push(this.fb.group({
-        TimeTaken: new FormControl(timingData.TimeTaken || null),
-        dates: new FormControl(timingData.dates || null),
-        _id: new FormControl(timingData._id || null)
-      }));
-    })
-    return dummyTimings;
-  }
-
-  get formArr() {
-    return this.taskForm.get("TaskTiming") as FormArray;
-  }
-
-
-  onSave() {
-    console.log(this.taskForm.value)
-    this.taskForm.value['project']=this.projectDetails._id
-
-    this.submitted = true;
-    console.log(this.taskForm.value);
-
-
-    //  stop here if form is invalid
-    if (this.taskForm.invalid) {
-      return;
+      taskCode: new FormControl(data.taskCode|| null),
+      startDate: new FormControl(data.startDate|| null),
+      endDate: new FormControl(data.endDate|| null),
+      status: new FormControl(data.status|| null),
+      duration: new FormArray([])
+      // mondayValue: new FormControl(''),
+      // tuesdayValue: new FormControl(''),
+      // wednesdayValue: new FormControl(''),
+      // thursdayValue: new FormControl(''),
+      // fridayValue: new FormControl(''),
+      // saturdayValue: new FormControl(''),      
+      // sundayValue: new FormControl('')
+    });
+    const durationArray = <FormArray>newFormGroup.get('duration');
+    let curr = new Date();
+    for (let i = 1; i <= 7; i++) {
+      let first = curr.getDate() - curr.getDay() + i;
+      let day = new Date(curr.setDate(first)).toISOString().slice(5, 10).split('-').reverse().join('/')
+      const actualDate = new Date(curr.setDate(first));
+      durationArray.push(this.fb.group({
+        [`${actualDate}`]: new FormControl(null)
+      }))
     }
+    this.taskArray.push(newFormGroup);
+    console.log(newFormGroup, 'lkh')
+    // return newFormGroup;
+  }
 
+  selectEvent(event) {
+    this.isEdit = true;
+    console.log('is edit', event);
+  }
+
+  getPage(page: number) {
     this.loading = true;
-    // this.taskForm.value['_id'] = this.taskList
-    // console.log(this.taskForm.value)
-    this.taskService.updateTaskDetails(this.taskForm.value)
-
-      .subscribe(
-        data => {
-
-          console.log(data);
-          alert('inserted successfully');
-          // this.router.navigate(['../home'], { relativeTo: this.route });
-        },
-        error => {
-
-          console.log(error.error.message);
-
-          this.loading = false;
-        });
+    this.currentPage = page;
+    this.getAllEvents();
   }
-
-
-
-  onAddTask() {
-    console.log(this.projectDetails)
-    const modalRef = this.modalService.show(AddTaskComponent, { class: 'modal-lg', initialState: { projectData: this.projectDetails } });
-    modalRef.content.onClose.subscribe((res) => {
-      console.log(res, 'fghjkl;')
-    })
-  }
-
-  onAddProject() {
-    const modalRef = this.modalService.show(AddProjectComponent, { class: 'modal-lg' });
-    modalRef.content.onClose.subscribe((res) => {
-      console.log(res, 'fghjkl;')
-      this.projectList.unshift(res);
-    })
-  }
-
-  async displayDetails() {
-    this.taskService.getDetails().subscribe(
-      (res: any) => {
-        console.log('::::::::::::::::::::::::>>>>>>>>>>>>>>>>>>>>>', res);
-        this.projectList = res.result;
-        console.log(this.projectList)
-        this.projectDetails = res.result[0];
-        console.log(this.projectDetails)
-        this.projectName = res.result[0].projectName;
-
-      },
-      error => {
-        console.log(error);
-      }
-    )
-
-  }
-
-
-  getData(data) {
-    console.log(data);
-    this.projectName = data.projectName;
-    this.projectDetails = data;
-    this.dummyArray = []
-    console.log(this.projectDetails)
-    this.taskList.map(obj => {
-      console.log(obj._id)
-      if (obj.project) {
-        if (data._id == obj.project._id) {
-          this.dummyArray.push(obj)
-          console.log(this.dummyArray)
-        }
-      }
-    })
-
-    // this.projectDetails = dummyArray;
-
+  sort(key: string) {
+    this.loading = true;
+    this.sortKey = key + ','.concat(this.reverse ? 'DESC' : 'ASC');
+    this.reverse = !this.reverse;
+    this.getAllEvents();
   }
 
   getCurrentWeek() {
@@ -196,43 +120,86 @@ export class TaskDetailsComponent implements OnInit {
       let first = curr.getDate() - curr.getDay() + i;
       // let day = new Date(curr.setDate(first)).toISOString().slice(0, 10).split('-').reverse().join('/')
       let day = new Date(curr.setDate(first)).toISOString().slice(5, 10).split('-').reverse().join('/')
+      console.log(new Date(curr.setDate(first)).toISOString())
+      const actualDate = new Date(curr.setDate(first));
+      this.weeksData.push({
+        [`${actualDate}`]: null
+      });
+      // this.durationArray.push(this.fb.group({
+      //   [`${actualDate}`]: new FormControl(null)
+      // }))
       this.week.push(day)
     }
-
-    console.log(this.week)
+    console.log(this.week, this.weeksData, this.durationArray)
   }
 
-  async displayTaskDetails() {
-    this.taskService.getTaskDetails().subscribe(
-      (res: any) => {
-        console.log('>>>>>>>>>>', res);
-        this.taskList = res.result;
-
-        this.taskList.map((data: any) => {
-
-          if (data) {
-            console.log(data)
-            const taskFormData = <FormArray>this.taskForm.controls['taskList'];
-            taskFormData.push(this.initTaskForm(data));
-          }
-
-        })
-        console.log(this.taskForm)
-      },
-      error => {
-        console.log(error);
+  getAllProjectDetails() {
+    this._eventService.getAllProjects().subscribe(
+      data => {
+        console.log(data);
+        this.projectDetails = data.result
       }
     )
   }
-
-  goBack() {
-    this.router.navigate(['/home']);
+  getData(data) {
+    console.log(data);
+    this.projectName = data.projectCode.projectName;
+    this.projectId = data.projectCode._id;
+    this.dArray = [];
+    console.log(this.projectId)
+    this.events.map(obj => {
+      this.updateTaskForm(obj);
+      console.log(obj.project)
+      if (this.projectId == obj.project) {
+        this.dArray.push(obj)
+        console.log(this.dArray)
+        this.dArray.map(res => {
+          console.log(res);
+          this.duration = res;
+          this.duration = this.duration.duration;
+          console.log(this.duration)
+          //  console.log(res.duration)
+          //    this.duration=res.duration;
+          //  console.log(this.duration);
+          this.duration.map(res => {
+            this.time = res;
+            console.log(this.time);
+          })
+        })
+      }
+      console.log(this.dArray)
+      this.durationArray = this.dArray;
+      this.durationArray.map(res => {
+        console.log(res.duration)
+        this.durationArray = res.duration;
+      })
+      console.log(this.taskFormGroup)
+    })
   }
 
-  get aliases() {
-    return this.taskForm.get('aliases') as FormArray;
+  getAllEvents() {
+    this._eventService.getAllEvents()
+      .subscribe(
+        data => {
+          console.log(data);
+
+          this.events = data.data;
+          console.log(this.events)
+          this.taskId = this.events.project;
+          console.log(this.taskId)
+          this.totalElements = data.totalElements;
+          this.size = data.size;
+          this.numberOfElements = data.numberOfElements;
+          this.loading = false;
+          this.isEdit = false;
+          // console.log('Events data: ', data);
+        },
+
+        error => this.errorMsg = error);
+
   }
-  addAlias() {
-    this.aliases.push(this.fb.control(''));
-  }
+
+
+
+
 }

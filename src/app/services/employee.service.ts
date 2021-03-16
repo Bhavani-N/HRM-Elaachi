@@ -40,6 +40,11 @@ export class EmployeeService {
       .pipe(catchError(this.errorHandler));
   }
 
+  deleteEmployeeById(id): Observable<Employee[]> {
+    return this.http.delete<Employee[]>(Constant.API_ENDPOINT + '/staffs/' + id)
+      .pipe(catchError(this.errorHandler));
+  }
+
   createEmployee(EmployeeData): Observable<Employee[]> {
     return this.http.post<any>(Constant.API_ENDPOINT + '/staffs', EmployeeData)
       .pipe(catchError(this.errorHandler));

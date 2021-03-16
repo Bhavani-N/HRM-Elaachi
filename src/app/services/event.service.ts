@@ -50,6 +50,10 @@ export class EventService {
       .pipe(catchError(this.errorHandler));
   }
 
+  deleteEventById(id): Observable<Event[]> {
+    return this.http.delete<Event[]>(Constant.API_ENDPOINT + '/tasks/' + id)
+      .pipe(catchError(this.errorHandler));
+  }
 
   createEvent(TaskData): Observable<Event[]> {
     console.log(TaskData);

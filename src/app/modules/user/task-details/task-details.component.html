@@ -1,4 +1,4 @@
-<div class="time-tracking">
+<!-- <div class="time-tracking">
     <div class="d-flex">
         <button class="ml-4" (click)="goBack()">Go back</button>
         <button class="ml-auto" (click)="onAddProject()">Add project</button>
@@ -16,18 +16,16 @@
     <div>
         <label for="project"><b>Project:</b></label>
         <form [formGroup]="projectForm">
-            <td>
-
-                <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value.projectCode)">
-                    <option>Select Project</option>
-                    <option *ngFor="let prj of projectList" [ngValue]="prj">
-
-                        {{ prj.projectCode }}
-                    </option>
-                </select>ProjectName:<b> {{projectName}}</b>
-            </td>
+            <div class="py-4 pl-5">
+              <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value)">
+                <option>Select Project</option>
+                <option *ngFor="let prj of projectDetails" [ngValue]="prj">
+                  {{ prj.projectCode }}
+                </option>
+              </select>
+              <span class="pl-3">ProjectName :<b> {{projectName}}</b></span>
+            </div>
         </form>
-
     </div>
 
     <div class="container">
@@ -64,90 +62,91 @@
                                     <td><input formControlName="taskCode"></td>
                                     <td><input formControlName="status"></td>
                                     <ng-container formArrayName="duration">
-                                        <!-- <ng-container formArrayName="duration"> -->
                                             <ng-container *ngFor="let timing of task.get('duration').controls;let playerIndex=index" [formGroupName]="playerIndex">
                                                 <td ><input formControlName="TimeTaken"></td>
                                             </ng-container>
-                                        <!-- </ng-container> -->
                                     </ng-container>
                                 </tr>
                             </ng-container>
                         </ng-container>
-                        <!-- <tr> -->
-                        <!-- taskList -->
-                        <!-- <td scope="row">{{ task.taskCode }}</td>
-                                    <td>{{task.taskName}}</td> -->
-                        <!-- <ng-container formArrayName="taskList">
-                            <tr *ngFor="let task of taskList.controls"> -->
-                        <!-- {{task | json}} -->
-                        <!-- <ng-container [formGroup]="task">
-                                    {{task | json}}
-                                    <td scope="row">{{ task.taskCode }}</td>
-                                    <td>{{task.taskName}}</td>
-                                </ng-container> -->
-                        <!-- <td>
-                                    <div formArrayName="aliases">
-                                        <button (click)="addAlias()">Add Alias</button>
-    
-    
-                                        <div *ngFor="let alias of aliases.controls; let i=index">
-    
-                                            <input type="text" [formControlName]="i">
-    
-                                        </div>
-                                    </div>
-                                </td> -->
-                        <!-- <ng-container formGroupName="TaskTiming">
-                                    <ng-container formArrayName="duration">
-                                        <ng-container *ngFor="let duration of duration  ">
-                                            <td><input formControlName="TimeTaken"></td>
-                                        </ng-container>
-                                    </ng-container>
-                                </ng-container> -->
-
-                        <!-- <td>
-                                        <select formGroupName="status">
-                                            <option>pending</option>
-                                        </select>
-                                    </td> -->
-                        <!-- <ng-container formArrayName="TaskTiming">
-                                       
-                                            <td *ngFor="let item of taskForm.controls.TaskTiming.controls; let i=index;let l=last"
-                                                 [formGroupName]="i">
-                                                    <input type="number" formControlName="TimeTaken">
-                                            </td>
-                                    </ng-container> -->
-
-                        <!-- <td>
-                                        <input type="number" name="firstDay"  >
-                                    </td> -->
-                        <!-- <td>
-                                        <input type="number" name="secondDay" formControlName="TimeTaken" >
-                                    </td>
-                                    <td>
-                                        <input type="number" name="">
-                                    </td>
-                                    <td>
-                                        <input type="number" name="">
-                                    </td>
-                                    <td>
-                                        <input type="number" name="">
-                                    </td>
-                                    <td>
-                                        <input class="bg-grey" type="number">
-                                    </td>
-                                    <td>
-                                        <input class="bg-grey" type="number">
-                                    </td> 
-                                    <td>0.00</td> -->
-                        <!-- </tr>
-                        </ng-container> -->
                     </tbody>
                 </table>
 
                 <button type="submit">Save</button>
             </form>
-            <!-- <button type="button" (click)="addNewColumn()">Add new Column</button>  -->
         </div>
     </div>
+</div> -->
+
+<div class="content-box task-list">
+    <div *ngIf="!isEdit">
+      <form [formGroup]="projectForm">
+        <div class="py-4 pl-5">
+          <select formControlName="projectCode" (ngModelChange)="getData(projectForm.value)">
+            <option>Select Project</option>
+            <option *ngFor="let prj of projectDetails" [ngValue]="prj">
+              {{ prj.projectCode }}
+            </option>
+          </select>
+          <span class="pl-3">ProjectName :<b> {{projectName}}</b></span>
+        </div>
+      </form>
+  
+      <form [formGroup]="taskFormGroup" class="w-100" (ngSubmit)="onSubmit(taskFormGroup)">
+  
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th rowspan="2">S.N</th>
+              <th rowspan="2" (click)="sort('taskName')">TaskName </th>
+              <th rowspan="2" (click)="sort('taskCode')">TaskCode </th>
+              <th rowspan="2" (click)="sort('startDate')">Start Date </th>
+              <th class="date" rowspan="2" (click)="sort('endDate')">End Date </th>
+              <ng-container *ngFor="let dates of weeksData">
+                <th *ngFor="let dateObj of dates | keyvalue">{{dateObj?.key | date: 'E'}}</th>
+              </ng-container>
+              <th rowspan="2" (click)="sort('status')">Status</th>
+              <th rowspan="2">Options</th>
+            </tr>
+            <tr>
+              <ng-container *ngFor="let dates of weeksData">
+                <th *ngFor="let dateObj of dates | keyvalue">{{ dateObj?.key | date: "d/M" }}</th>
+              </ng-container>
+            </tr>
+          </thead>
+          <tbody >
+            <tr
+              *ngFor="let event of taskFormGroup?.controls; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{event.value.taskName}}</td>
+              <td>{{event.value.taskCode}}</td>
+              <td>{{event.value.startDate | date:'mediumDate'  }}</td>
+              <td>{{event.value.endDate | date:'mediumDate' }}</td>
+              <ng-container formArrayName="duration">
+                <ng-container *ngFor="let values of duration">
+                  {{values | json}}
+                  <ng-container *ngFor="let keys of values | keyvalue">
+                    <td><input type="text" value="0" class="form-control form-control-sm" formControlName="keys?.key"></td>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+  
+              <td>{{event.status}}</td>
+              <td><a routerLink="/dashboard/tasks/details/{{event._id}}">
+                  <button type="button">View</button></a></td>
+              <td>
+                <button type="submit" [disabled]="taskFormGroup.invalid">Update</button>
+              </td>
+            </tr>
+  
+  
+          </tbody>
+        </table>
+      </form>
+  
+  
+  
+    </div>
+  
+  
 </div>

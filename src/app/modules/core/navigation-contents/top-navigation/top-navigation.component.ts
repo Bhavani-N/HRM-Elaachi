@@ -12,6 +12,7 @@ export class TopNavigationComponent implements OnInit {
   // isLoggedIn: boolean = this._auth.login();
   userDetails;
   staffId;
+  staffName;
   constructor(private _sideBarService: SidebarService, private elRef: ElementRef, public _auth: AuthService, private employeeService:EmployeeService) { }
 
   toggleSidebar() {
@@ -21,7 +22,8 @@ export class TopNavigationComponent implements OnInit {
   ngOnInit() {
     this.userDetails = JSON.parse(this._auth.getUserDetails);
     this.staffId=this.userDetails.staffId;
-    console.log(this.staffId);
+    this.staffName = this.userDetails.firstName;
+    console.log(this.staffName);
   }
   openNav() {
     document.getElementById("mySidebar").style.width = "215px";

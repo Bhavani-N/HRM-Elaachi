@@ -68,6 +68,13 @@ export class LeaverequestListComponent implements OnInit {
     );
   }
 
+  delete(id: string) {
+    const leaves = this.leaveRequests.find(x => x._id === id);
+    if (!leaves) return;
+    this.empLeaveService.deleteEmployeeLeaveById(id)
+      .subscribe(() => this.leaveRequests = this.leaveRequests.filter(x => x._id !== id));
+  }
+
   // private loadEmployee() {
   //   this.allEmployees = concat(
   //     of([]), // default items

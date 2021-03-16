@@ -19,7 +19,7 @@ export class ProjectListComponent implements OnInit {
 
   isEdit = false;
 
-  constructor(private _eventService: EventService) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
     this.isEdit = false;
@@ -43,8 +43,15 @@ export class ProjectListComponent implements OnInit {
     this.getAllEvents();
   }
 
+  delete(id: string) {
+    const event = this.events.find(x => x._id === id);
+    if (!event) return;
+    this.eventService.deleteEventById(id)
+      .subscribe(() => this.events = this.events.filter(x => x._id !== id));
+  }
+
   getAllEvents() {
-    this._eventService.getAllProjects()
+    this.eventService.getAllProjects()
       .subscribe(
         data => {
           console.log(data);

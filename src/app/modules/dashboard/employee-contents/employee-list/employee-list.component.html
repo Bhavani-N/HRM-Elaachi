@@ -56,8 +56,8 @@
           <td [ngClass]="(result.status=='ACTIVE')?'text-success':'text-danger'">{{result.status}}</td>
           <td class="edit-btn"><a routerLink="/dashboard/employees/details/{{result._id}}">
                 <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button>
-                <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
               </a>
+              <button (click)="delete(result._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           </td>
         </tr>
       </tbody>

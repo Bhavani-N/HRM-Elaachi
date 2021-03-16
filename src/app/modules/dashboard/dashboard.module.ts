@@ -52,6 +52,7 @@ import { PayslipDetailsComponent } from './payslip-contents/payslip-details/pays
 import { PayslipListComponent } from './payslip-contents/payslip-list/payslip-list.component';
 import { CalendarHeaderComponent } from './dash-contents/calendar-contents/calendar-header/calendar-header.component';
 import { DashCalendarComponent } from './dash-contents/calendar-contents/dash-calendar/dash-calendar.component';
+import { CompanyListComponent } from './company-contents/company-list/company-list.component';
 
 @NgModule({
     declarations: [
@@ -89,6 +90,7 @@ import { DashCalendarComponent } from './dash-contents/calendar-contents/dash-ca
         PayslipListComponent,
         CalendarHeaderComponent,
         DashCalendarComponent,
+        CompanyListComponent,
     ],
     imports: [
         CommonModule,

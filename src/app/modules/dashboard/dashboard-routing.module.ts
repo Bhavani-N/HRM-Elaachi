@@ -28,6 +28,7 @@ import { MyProfileComponent } from './profile-contents/my-profile/my-profile.com
 import { CompanyMainComponent } from './company-contents/company-main/company-main.component';
 import { CompanyDetailsComponent } from './company-contents/company-details/company-details.component';
 import { CompanyManageComponent } from './company-contents/company-manage/company-manage.component';
+import { CompanyListComponent } from './company-contents/company-list/company-list.component';
 import { UploadPayslipComponent } from './payslip-contents/upload-payslip/upload-payslip.component';
 import { PayslipMainComponent } from './payslip-contents/payslip-main/payslip-main.component';
 import { PayslipDetailsComponent } from './payslip-contents/payslip-details/payslip-details.component';
@@ -54,7 +55,7 @@ const routes: Routes = [
               component: CompanyMainComponent,
               children: [
                 {path: '', redirectTo: 'details', pathMatch: 'full'},
-                {path: 'details', component: CompanyDetailsComponent},
+                {path: 'details', component: CompanyListComponent},
                 {path: 'details/:id', component:CompanyDetailsComponent},
                 {path: 'new', component: CompanyManageComponent}
               ]
