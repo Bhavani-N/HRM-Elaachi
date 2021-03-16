@@ -4,24 +4,43 @@
         <thead class="employee-details">
           <th>S.N</th>
           <th>Employee</th>
-          <th>Date</th>
-          <th>file</th>
+          <th>Month</th>
+          <th>Year</th>
+          <th>File</th>
           <th>Options</th>
         </thead>
         <tbody *ngIf="payList">
           <tr *ngFor="let pay of payList | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
             <td>{{i+1}}</td>
-            <td *ngFor="let pid of pay.staffId"><a routerLink="/dashboard/employees/details/{{pid._id}}">
-                {{ pid.firstName }}
-              </a></td> 
-            <td>{{pay.dateIssued | date:'mediumDate'}}</td>
-            <td>{{ pay.fileChosen }}</td>
+            <td><a routerLink="/dashboard/employees/details/{{pay.staffId._id}}">
+                {{ pay.staffId.firstName }}
+              </a></td>
+            <td>{{pay.month}}</td>
+            <td>{{pay.year}}</td>
+            <td *ngFor="let pid of pay.file">
+              <a href="http://localhost:3000/api/v1/files/{{ pid.file }}">{{ pid.file }}<i class="fa fa-download" aria-hidden="true"></i></a>
+            </td>
             <td class="edit-btn"><a routerLink="/dashboard/payslips/details/{{pay._id}}">
                 <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button></a>
-                <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button (click)="onDelete()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+</div>
+
+<!-- <button class="button btn-info" *ngIf='showFile' (click)='showFiles(false)'>Hide Files</button>
+
+<button class="button btn-info" *ngIf='!showFile' (click)='showFiles(true)'>Show Files</button>
+
+<div [hidden]="!showFile">
+  <div class="panel panel-primary">
+    <div class="panel-heading">List of Files</div>
+    <div *ngFor="let file of fileUploads | async">
+      <div class="panel-body">
+        <app-payslip-details [fileUpload]='file'></app-payslip-details>
+      </div>
+    </div>
   </div>
+</div> -->

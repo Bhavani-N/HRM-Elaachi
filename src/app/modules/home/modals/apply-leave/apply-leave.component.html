@@ -73,3 +73,87 @@
     </form>
   </div>
 </div> -->
+<form [formGroup]="leaveForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-7 my-4 form-box">
+
+  <div *ngIf="!!create_leave_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_leave_req_msg}}</div>
+
+  <h4 class="pb-3 form-title">Request For Leave</h4>
+
+  <div class="form-group row">
+    <div *ngIf="currentFileUpload" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+        {{progress.percentage}}%</div>
+    </div>
+
+    <label for="leaveType" class="col-sm-4 col-form-label">Leave Type&nbsp;<span class="text-danger">* </span></label> 
+    <div class="col-sm-7 pt-2">
+      <select formControlName="leaveTypeId" (ngModelChange)="getData(leaveForm.value)">
+          <option>Select Leave Type</option>
+          <option *ngFor="let leave of leaveTypes" [ngValue]="leave">
+              {{ leave.name }}
+          </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+      <label for="employee" class="col-sm-4 col-form-label">Employee ID&nbsp;<span class="text-danger">* </span></label>
+      <div class="col-sm-7" >
+          <input type="text" class="form-control"  formControlName="staffId">
+      </div>
+  </div>
+
+  <div class="form-group row">
+      <label for="employee" class="col-sm-4 col-form-label">Employee Name&nbsp;</label>
+      <div class="col-sm-7 pt-2 staff-name">
+          <span>{{staffName}}</span>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="leaveReason" class="col-sm-4 col-form-label">Leave Reason&nbsp;<span class="text-danger">*</span></label>
+    <div class="col-sm-7">
+      <input type="text" id="leaveReason" formControlName="leaveReason" class="form-control" placeholder="Leave Reason"
+        [ngClass]="{ 'is-invalid': submitted && f.leaveReason.errors }" />
+      <div *ngIf="submitted && f.leaveReason.errors" class="invalid-feedback">
+        <div *ngIf="f.leaveReason.errors.required">Leave Reason is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="leaveDateFrom" class="col-sm-4 col-form-label">Date From&nbsp;<span class="text-danger">*</span></label>
+    <div class="col-sm-7">
+      <input type="text" id="leaveDateFrom" formControlName="dateFrom" class="form-control" bsDatepicker [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date From"
+        [ngClass]="{ 'is-invalid': submitted && f.dateFrom.errors }" />
+      <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
+        <div *ngIf="f.dateFrom.errors.required">Date From is required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <label for="leaveDateTo" class="col-sm-4 col-form-label">Date To&nbsp;<span class="text-danger">*</span></label>
+    <div class="col-sm-7">
+      <input type="text" id="leaveDateTo" formControlName="dateTo" class="form-control" bsDatepicker [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'YYYY-MM-DD' }" placeholder="Date To"
+        [ngClass]="{ 'is-invalid': submitted && f.dateTo.errors }" />
+      <div *ngIf="submitted && f.dateTo.errors" class="invalid-feedback">
+        <div *ngIf="f.dateTo.errors.required">Date To is required</div>
+      </div>
+    </div>
+  </div>
+  <div formArrayName="file">
+    <div class="form-group row mb-4">
+      <label for="file" class="col-sm-4 col-form-label">Choose File</label>
+      <div class="col-sm-7">
+        <input type="file" id="file" formControlName="file" (change)="selectFile($event)" class="form-control" />
+        <div *ngIf="submitted && f.file.errors" class="invalid-feedback">
+          <div *ngIf="f.file.errors.required">File is required</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+
+</form>

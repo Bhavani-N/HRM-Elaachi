@@ -10,7 +10,7 @@ import { HRApprovalComponent } from "./hr-approval/hr-approval.component";
 import { PaySlipComponent } from "./pay-slip/pay-slip.component";
 
 const routes: Routes = [
-  { path: 'paySlip', component: PaySlipComponent },
+  { path: 'paySlip/:id', component: PaySlipComponent },
   { path: 'applyLeave', component: ApplyLeaveComponent },
   { path: 'taskDetails', component: TaskDetailsComponent },
 

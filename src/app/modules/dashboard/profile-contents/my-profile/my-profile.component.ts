@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
 import { debounceTime, distinctUntilChanged, tap, switchMap, catchError } from 'rxjs/operators';
 import { Observable, concat, of, Subject } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -32,7 +31,6 @@ export class MyProfileComponent implements OnInit {
   submitted = false;
 
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder,
-    public _authService: AuthService,
     private _employeeService: EmployeeService) { }
 
   ngOnInit() {
@@ -40,7 +38,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   routeId() {
-   
+
     this.sub = this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       // console.log(typeof this.id) // (+) converts string 'id' to a number
@@ -84,7 +82,7 @@ export class MyProfileComponent implements OnInit {
           data => {
             console.log(data);
             this.selectedEmployee = data;
-            
+
             this.selectedEmployee = this.selectedEmployee.result;
             console.log(this.selectedEmployee._id)
             this.isEmployeeSelected = true;
@@ -95,7 +93,7 @@ export class MyProfileComponent implements OnInit {
             // this.getEmployeeUnderSupervision();
           },
           error => {
-          
+
             this.errorMsg = error;
             this.selected_employee_msg = 'Oops ! Can\'t load selected employee';
           });

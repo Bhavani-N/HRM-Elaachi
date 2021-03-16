@@ -17,15 +17,23 @@
             <div  class="payslip p-4">
               <p>Staff Id : {{selectedStaff?._id}}</p>
               <p>Staff Name : {{selectedStaff?.firstName}}</p>
-              <p>Date Issued : {{selectedPay.dateIssued}}</p>
-              <p>File Chosen : {{selectedPay.fileChosen}}</p>
+              <p>Month : {{selectedPay.month}}</p>
+              <p>Year: {{selectedPay.year }}</p>
+              <p>File Chosen :
+                <a href="http://localhost:3000/api/v1/files/ {{selectedFile.file}}">{{selectedFile.file}}<i class="fa fa-download" aria-hidden="true"></i></a>
+              </p>
             </div>
-          </div>
+          </div>  
         </div>
 
         <div *ngIf="isEdit" class="col-md-8 payslip p-4 mt-4 mx-auto">
           <form [formGroup]="payUpdateForm" (ngSubmit)="onSubmit()">
             <div *ngIf="!!pay_update_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{pay_update_msg}}</div>
+            <div *ngIf="currentFileUpload" class="progress">
+              <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                {{progress.percentage}}%</div>
+            </div>
             <div class="form-group row m-0 mb-4 mt-2">
               <label for="staff" class="col-sm-4 pr-0 col-form-label">Staff Id &nbsp;<span class="text-danger">*</span></label>
               <div class="col-sm-8 p-0">
@@ -36,8 +44,7 @@
                 </div>
               </div>
             </div>
-
-            <div class="form-group row m-0 my-4">
+            <!-- <div class="form-group row m-0 my-4">
               <label for="dateIssued" class="col-sm-4 pr-0 col-form-label">Date Issued &nbsp;<span class="text-danger">*</span></label>
               <div class="col-sm-8 p-0">
                 <input type="text" id="dateIssued" formControlName="dateIssued" class="form-control" placeholder="Date Issued"
@@ -45,39 +52,42 @@
                 <div *ngIf="submitted && f.dateIssued.errors" class="invalid-feedback">
                   <div *ngIf="f.dateIssued.errors.required">Date Issued is required</div>
                 </div>
-              </div>
-            </div>
-
-            <div class="form-group row m-0 my-4">
-              <label for="dateIssued" class="col-sm-4 pr-0 col-form-label">Date Issued &nbsp;<span class="text-danger">*</span></label>
-              <div class="col-sm-8 p-0">
-                <input type="text" id="dateIssued" formControlName="dateIssued" class="form-control" placeholder="Date Issued"
-                  [ngClass]="{ 'is-invalid': submitted && f.dateIssued.errors }" />
-                <div *ngIf="submitted && f.dateIssued.errors" class="invalid-feedback">
-                  <div *ngIf="f.dateIssued.errors.required">Date Issued is required</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group row m-0 my-4">
-              <label for="fileChosen" class="col-sm-4 pr-0 col-form-label">Date Issued &nbsp;<span class="text-danger">*</span></label>
-              <div class="col-sm-8 p-0">
-                <input type="file" id="fileChosen" formControlName="fileChosen" class="form-control" (change)="upload($event.target.files)"
-                  [ngClass]="{ 'is-invalid': submitted && f.dateIssued.errors }" />
-                <div *ngIf="submitted && f.fileChosen.errors" class="invalid-feedback">
-                  <div *ngIf="f.fileChosen.errors.required">file is required</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- <div class="form-group row mb-4">
-              <label for="file" class="col-sm-4 col-form-label">Choose File</label>
-              <div class="col-sm-7">
-                <input type="file" id="file" formControlName="fileChosen" (change)="upload($event.target.files)" class="form-control" />
               </div>
             </div> -->
-
-            <button class="submit" type="submit">Submit</button>
+            <div class="form-group row m-0 mb-4 mt-2">
+              <label for="mon" class="col-sm-4 pr-0 col-form-label">Select Month&nbsp;<span class="text-danger">* </span></label>
+              <div class="col-sm-8 p-0">
+                <select formControlName="month" (ngModelChange)="getMonthData(payUpdateForm.value)">
+                    <option>Select Month</option>
+                    <option *ngFor="let month of monthNames" [ngValue]="month">
+                        {{ month }}
+                    </option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row m-0 mt-4">
+              <label for="mon" class="col-sm-4 col-form-label p-0">Select Year&nbsp;<span class="text-danger">* </span></label>
+              <div class="col-sm-8 p-0">
+                <select formControlName="year" (ngModelChange)="getYearData(payUpdateForm.value)">
+                    <option>Select Year</option>
+                    <option *ngFor="let year of years" [ngValue]="year">
+                        {{ year }}
+                    </option>
+                </select>
+              </div>
+            </div>
+            <div formArrayName="file">
+              <div class="form-group row m-0 my-4">
+                <label for="file" class="col-sm-4 pr-0 col-form-label">Choose File&nbsp;<span class="text-danger">*</span></label>
+                <div class="col-sm-8 p-0">
+                  <input type="file" id="file" formControlName="file" (change)="selectFile($event)" class="form-control">
+                  <div *ngIf="submitted && f.file.errors" class="invalid-feedback">
+                    <div *ngIf="f.file.errors.required">File is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="submit" [disabled]="payUpdateForm.invalid" type="submit">Submit</button>
           </form>
         </div>
         <!-- </div> -->
@@ -88,4 +98,10 @@
     </div>
   
   </div>
-;
+
+  <!-- <div class="col-md-4 p-0 pdf-viewer">
+    <pdf-viewer src="{{fileUpload}}" [render-text]="true" style="display: block;" 
+    [original-size]="false" 
+    ></pdf-viewer>
+  </div>
+  <a href="http://localhost:3000/api/v1/files/{{fileUpload}}">{{fileUpload}}</a> -->

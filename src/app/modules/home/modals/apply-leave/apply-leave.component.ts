@@ -1,168 +1,120 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { LeaveService } from '../../../../services/leave.service'
+import { Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
+
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LeaveTypeService } from '../../../../services/leaveType.service';
+
+import { LeaveType } from '../../../../models/leaveType';
+import { LeaveService } from '../../../../services/leave.service';
+import { AuthService } from '../../../../services/auth.service';
+import { UploadFileService } from '../../../..//services/upload-file.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-apply-leave',
   templateUrl: './apply-leave.component.html',
   styleUrls: ['./apply-leave.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ApplyLeaveComponent implements OnInit, AfterViewInit {
-//   @ViewChild('appCalendar', { static: false }) appCalendar: ElementRef;
-//   public sat = new Array();   //Declaring array for inserting Saturdays
-//   public sun = new Array();
-//   leaveType: any
-//   leavesReamaining: any
-//   leavesData:FormGroup;
-//   leaveForm:FormGroup;
-//   leaveInfo :any =[];
-//   dummyArray: any =[];
-//   leaveId: any;
-//   constructor(private elRef: ElementRef, private leaveService: LeaveService , private fb: FormBuilder) {
-    
-//   }
+export class ApplyLeaveComponent implements OnInit {
+  create_leave_req_msg: string;
+  public has_error = false;
+  uploadSuccess: boolean;
+
+  leaveTypes: any;
+  selectedLeaveType: LeaveType = null;
+  leaveForm: FormGroup;
+  minDate: Date;
+  submitted = false;
+  selectedCity: any;
+  leaveId: any;
+  fileToUpload: File = null;
+  sId: any;
+  staffName: any;
+  percentDone: number;
+  userDetails: any;
+
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
+
+  constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService,
+    private leaveTypeService: LeaveTypeService,  private uploadService: UploadFileService, private auth: AuthService) {
+      this.minDate = new Date();
+  }
 
   ngOnInit() {
-  //   this.leaveTypeData();
-  //   this.leavesUsed();
-  //   this.leaveInfoForm()
-  //   this.leavesData = new FormGroup({
-  //     leaveType: new FormControl()
-  //  });
-  //   let d = new Date();
-  //   var getTot = this.daysInMonth(d.getMonth(), d.getFullYear()); //Get total days in a month
-  //   //Declaring array for inserting Sundays
+    // decrypting token details
+    this.userDetails = JSON.parse(this.auth.getUserDetails);
+    this.sId=this.userDetails.staffId;
+    this.staffName = this.userDetails.firstName;
 
-  //   for (var i = 1; i <= getTot; i++) {    //looping through days in month
-  //     var newDate = new Date(d.getFullYear(), d.getMonth(), i)
-  //     if (newDate.getDay() == 0) {   //if Sunday
-  //       this.sun.push(i);
-  //     }
-  //     if (newDate.getDay() == 6) {   //if Saturday
-  //       this.sat.push(i);
-  //     }
+    // fetching leave types
+    this.leaveTypeService.getAllLeaveTypes().subscribe(res => {
+      this.leaveTypes = res;
+      this.leaveTypes = this.leaveTypes.result;
+    });
+    console.log(this.leaveTypes);
 
-  //   }
-  //   console.log(this.sat);
-  //   console.log(this.sun);
+    this.leaveForm = this.formBuilder.group({
+      leaveTypeId: [, Validators.required],
+      staffId: [this.sId, Validators.required],
+      leaveReason: ['', [Validators.required, Validators.minLength(3)]],
+      dateFrom: ['',  Validators.required],
+      dateTo: ['',  Validators.required],
+      file: new FormArray([])
+    });
   }
 
-//   daysInMonth(month, year) {
-//     return new Date(year, month, 0).getDate();
-//   }
-
-  ngAfterViewInit() {
-    // console.log(this.appCalendar)
-    // let d = new Date();
-    // console.log(d, d.getMonth())
-    // console.log(d.getMonth(), d.getFullYear())
-    // var getTot = this.daysInMonth(d.getMonth(), d.getFullYear());
-    // console.log(getTot)
-    // for(let day= 1; day <= getTot; day++) {
-    //   const isWeekend = day => {
-    //     let newDate= new Date(d.getFullYear(),d.getMonth(),day)
-    //     console.log(newDate)
-    //     if(newDate.getDay()==0){   //if Sunday
-    //       this.sun.push(day);
-    //     }
-    //     if(newDate.getDay()==6){   //if Saturday
-    //       this.sat.push(day);
-    //     }
-    //     return newDate.getDay() == 6  || newDate.getDay() == 0;
-    //   } 
-    //   console.log(this.sat);
-    //   console.log(this.sun);
-
-    //   console.log(this.getDayName(day));
-    //   const weekend = isWeekend(day)
-    //   console.log(weekend);
-    //   let name = "";
-    //   if (day <= 7) {
-    //     const dayName = this.getDayName(day);
-    //     name = `<div class="name">${dayName}</div>`
-    //   }
-    //   const dayName = this.getDayName(day);
-    //   const days = this.getDays(day);
-    //   console.log(days)
-    //   this.appCalendar.nativeElement.insertAdjacentHTML("beforeend", `<div class="day ${weekend ? "weekend" : ""}">
-    //   ${name}${day}</div>`);
-    //   console.log(day);
-    // }
-    // this.elRef.nativeElement.querySelectorAll("#app-calendar .day").forEach(day => {
-    //   console.log(day);
-    //   day.addEventListener("click", event => {
-    //     console.log(event.currentTarget)
-    //     event.currentTarget.classList.toggle("selected");
-    //   });
-    // });
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
-//   getDayName(day) {
-//     const curr = new Date();
-//     const getYear = curr.getFullYear();
-//     const getMonth = curr.getMonth();
-//     const date = new Date(Date.UTC(getYear, 3, day));
-//     console.log(date);
-//     return new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(date);
-//   }
+  upload() {
+    this.progress.percentage = 0;
+    this.currentFileUpload = this.selectedFiles.item(0);
+    const customizationArray = <FormArray>this.leaveForm.controls['file'];
+    customizationArray.push(this.formBuilder.group({
+      file: this.currentFileUpload.name
+    }));
+    console.log(this.leaveForm.value);
+    // console.log(this.currentFileUpload.name)
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is completely uploaded!');
+      }
+    })
 
-//   getDays(day) {
-//     const curr = new Date();
-//     console.log(curr.getDay());
-//     return
-//   }
+    this.selectedFiles = undefined;
+  }
 
-//   onClick() {
-//     console.log('working');
-//   }
-//   leaveTypeData() {
-//     this.leaveService.leaveType().subscribe((res: any) => {
-//       console.log(':::::::>>>>>>>>>>>>>>>>>>>>>', res);
-//       this.leaveType = res.result;
-      
+  get f() {
+    return this.leaveForm.controls;
+  }
 
-//     })
+  getData(data) {
+    console.log(data);
+  }
 
-     
-     
-//   }
-//   leavesUsed() {
-//     this.leaveService.userLeave().subscribe((res: any) => {
-//       this.leavesReamaining = res.data;
-//       console.log(this.leavesReamaining);
-//     })
-     
+
+  onSubmit() {
+    if (this.leaveForm.invalid) {
+      console.log('invalid')
+      return;
+    }
+    this.submitted = true;
+    this.upload();
+    this.empLeaveService.createEmployeeLeave(this.leaveForm.value).subscribe(res => {
+      this.has_error = false;
+      console.log(res)
+      this.create_leave_req_msg = 'Leave Request successfully submitted';
+      this.leaveForm.reset();
+      this.submitted = false;
+    }, error => { 
+      this.has_error = true;
+      this.create_leave_req_msg = error.error.message;
+    });
+  }
    
-//   }
-//   getData(data){
-//   console.log(data);
-//   this.leaveId = data.leaveType._id;
-//   console.log(this.leaveId);
-//   this.leavesReamaining.value=this.leaveId
-//   console.log(this.leavesReamaining);
-//  }
-  
-//   // this.leaveType.filter(leave=>{
-//   //   this.leaveInfo.push(leave._id)
-//   //   console.log(leave._id)
-//   //   console.log(this.leaveInfo)
-//     // this.dummyArray=[]
-//     // this.leavesReamaining.map(obj=>{
-//     //   console.log(obj._id)
-//     //   if (leave._id == obj._id) {
-//     //     this.dummyArray.push(obj)
-//     //     console.log(this.dummyArray)
-//     //   }
-//     // })
-//   //  })
-  
-//   leaveInfoForm(){
-//     this.leaveForm = this.fb.group({
-
-//     });
-//   }
-//   onSubmit(){
-//     // this.leaveForm.value['leave']=this.leaveInfo
-//     console.log('Your form data : ', this.leaveForm.value );
-//   }
 }

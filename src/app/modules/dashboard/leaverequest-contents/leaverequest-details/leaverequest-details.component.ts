@@ -30,6 +30,7 @@ export class LeaverequestDetailsComponent implements OnInit {
   sId: any;
   staffName: any;
   userDetails: any;
+  selectFile;
 
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private employeeLeaveService: LeaveService,
     private router: Router,  private auth: AuthService) { }
@@ -93,13 +94,18 @@ export class LeaverequestDetailsComponent implements OnInit {
           console.log(data) 
           this.selectedLeaveRequest = data;
           this.selectedLeaveRequest = this.selectedLeaveRequest.result;
-          this.leaveRequestId = this.selectedLeaveRequest._id;
-          this.selectedStaff = this.selectedLeaveRequest.staffId;
-          this.selectedStaff.map(res => {
-            console.log(res.firstName)
-            this.selectedStaff = res
+          console.log(this.selectedLeaveRequest)
+          this.selectFile = this.selectedLeaveRequest.file;
+          this.selectFile =  this.selectFile.map(res => {
+            return res.file
           })
-          console.log(this.selectedStaff);
+          console.log(this.selectFile)
+          this.leaveRequestId = this.selectedLeaveRequest._id;
+          // this.selectedStaff = this.selectedLeaveRequest.staffId;
+          // this.selectedStaff.map(res => {
+          //   console.log(res.firstName)
+          //   this.selectedStaff = res
+          // })
           this.selectedLeave = this.selectedLeaveRequest.leaveTypeId;
           this.selectedLeave.map(res => {
             this.selectedLeave = res

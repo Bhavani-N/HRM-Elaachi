@@ -8,6 +8,7 @@ import { ApplyLeaveComponent } from './modals/apply-leave/apply-leave.component'
 import { AttendanceComponent } from "./modals/attendance/attendance.component";
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from "@angular/forms";
         CommonModule,
         SharedModule,
         HomeRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BsDatepickerModule.forRoot(),
     ],
     entryComponents: [
         ApplyLeaveComponent,

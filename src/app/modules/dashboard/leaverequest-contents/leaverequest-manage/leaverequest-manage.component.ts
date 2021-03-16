@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LeaveTypeService } from '../../../../services/leaveType.service';
 
 import { LeaveType } from '../../../../models/leaveType';
 import { LeaveService } from '../../../../services/leave.service';
 import { AuthService } from '../../../../services/auth.service';
+import { UploadFileService } from '../../../..//services/upload-file.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-leaverequest-manage',
@@ -29,8 +31,12 @@ export class LeaverequestManageComponent implements OnInit {
   percentDone: number;
   userDetails: any;
 
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
+
   constructor(private formBuilder: FormBuilder, private empLeaveService: LeaveService,
-    private leaveTypeService: LeaveTypeService, private auth: AuthService) {
+    private leaveTypeService: LeaveTypeService,  private uploadService: UploadFileService, private auth: AuthService) {
       this.minDate = new Date();
   }
 
@@ -53,10 +59,34 @@ export class LeaverequestManageComponent implements OnInit {
       leaveReason: ['', [Validators.required, Validators.minLength(3)]],
       dateFrom: ['',  Validators.required],
       dateTo: ['',  Validators.required],
-      fileChosen: ['']
+      file: new FormArray([])
     });
   }
 
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload() {
+    this.progress.percentage = 0;
+
+    this.currentFileUpload = this.selectedFiles.item(0);
+    const customizationArray = <FormArray>this.leaveForm.controls['file'];
+    customizationArray.push(this.formBuilder.group({
+      file: this.currentFileUpload.name
+    }));
+    console.log(this.leaveForm.value);
+    // console.log(this.currentFileUpload.name)
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is completely uploaded!');
+      }
+    })
+
+    this.selectedFiles = undefined;
+  }
 
   get f() {
     return this.leaveForm.controls;
@@ -66,35 +96,20 @@ export class LeaverequestManageComponent implements OnInit {
     console.log(data);
   }
 
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-  }
-
-  upload(files: File[]) {
-    this.uploadAndProgress(files);
-  }
-
-  uploadAndProgress(files: File[]){
-    console.log(files);
-    let formData = new FormData();
-    Array.from(files).forEach(f => formData.append('file', f))
-    console.log(formData)
-  }
 
   onSubmit() {
-    this.submitted = true;
-    // this.leaveForm.value['staffId'] = this.sId;
-    // console.log(this.leaveForm.value)
     if (this.leaveForm.invalid) {
       return;
     }
+    this.submitted = true;
+    this.upload();
     this.empLeaveService.createEmployeeLeave(this.leaveForm.value).subscribe(res => {
       this.has_error = false;
       console.log(res)
       this.create_leave_req_msg = 'Leave Request successfully submitted';
       this.leaveForm.reset();
       this.submitted = false;
-    }, error => {
+    }, error => { 
       this.has_error = true;
       this.create_leave_req_msg = error.error.message;
     });

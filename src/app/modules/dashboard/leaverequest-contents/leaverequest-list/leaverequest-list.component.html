@@ -9,19 +9,23 @@
           <th (click)="sort('fromDate')">From Date</th>
           <th (click)="sort('toDate')">To Date</th>
           <th (click)="sort('status')">Status</th>
+          <th>File</th>
           <th>Options</th>
         </thead>
         <tbody *ngIf="leaveRequests">
           <tr *ngFor="let leaverequest of leaveRequests | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
             <td>{{i+1}}</td>
-            <td *ngFor="let leaveid of leaverequest.staffId"><a routerLink="/dashboard/employees/details/{{leaveid._id}}">
-                {{ leaveid.firstName }}
-              </a></td>
+            <td><a routerLink="/dashboard/employees/details/{{leaverequest.staffId._id}}">
+                {{ leaverequest.staffId.firstName }}
+              </a></td> 
             <td *ngFor="let leave of leaverequest.leaveTypeId">{{leave.name}}</td>
             <!-- <td *ngFor="let leaveid of leaverequest.staffId">{{ leaveid._id }}</td> -->
             <td>{{leaverequest.dateFrom | date:'mediumDate'}}</td>
             <td>{{leaverequest.dateTo | date:'mediumDate'}}</td>
             <td [ngClass]="(leaverequest.status=='APPROVED')?'text-success':'text-danger'">{{leaverequest.status}}</td>
+            <td *ngFor="let lid of leaverequest.file">
+              <a href="http://localhost:3000/api/v1/files/{{ lid.file }}">{{ lid.file }}<i class="fa fa-download" aria-hidden="true"></i></a>
+            </td>
             <td class="edit-btn"><a routerLink="/dashboard/leaverequests/details/{{leaverequest._id}}">
                 <button class="mr-2"><i class="fa fa-pencil-square-o font-weight-bold" aria-hidden="true"></i></button></a>
                 <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>

@@ -1,14 +1,19 @@
 export class Employee {
 
-    id: string;
-    fullName: string;
+    _id: string;
+    firstName: string;
+    lastName: string;
     username: string;
     password: string;
+    phoneNumber: number;
     role: string;
-    status: number;
-    employeeSupervisor: Employee;
+    status: string;
+    updatedAt: string;
+    createdAt: string;
+    email: string;
+    profileImage: string;
 
-    constructor(id) {
-       this.id = id;
+    constructor(_id) {
+       this._id = _id;
     }
 }
